@@ -2,7 +2,12 @@
 
 ## Spline Architect – Procedūrinės Sienos, Pastatai ir Struktūros pagal Spline'us
 
+# [Trailer (YouTube)](https://www.youtube.com/watch?v=HEbpTogXNvM)
+
+![](assets/cover.jpg)
+
 Spline Architect yra Unreal Engine 5 pluginas, kuris leidžia lengvai ir greitai kurti paprastas ar sudėtingas struktūras/pastatus iš modulinių meshų non-destructive būdu, išdėstymą kontroliuojant spline'ais.
+
 
 ### Ypatybės
 
