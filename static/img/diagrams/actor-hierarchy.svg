@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 390" role="img" aria-labelledby="title desc">
+  <title id="title">Connected Wall stack and reusable Building</title>
+  <desc id="desc">A root wall owns child walls. The connected stack becomes a Building Preset used by Building actors.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0 L8 3 L0 6Z" fill="#19a9dc"/></marker></defs>
+  <rect width="980" height="390" rx="22" fill="#101827"/>
+  <g font-family="Segoe UI,Arial" fill="#f4f8fc">
+    <text x="48" y="54" font-size="26" font-weight="700">Connected Wall stack</text>
+    <rect x="48" y="82" width="245" height="70" rx="12" fill="#172f50" stroke="#35c3ef" stroke-width="2"/>
+    <text x="74" y="113" font-size="20" font-weight="650">Root Wall</text><text x="74" y="137" font-size="14" fill="#adbed2">ground floor • owns the spline</text>
+    <path d="M170 152V190" stroke="#19a9dc" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="48" y="198" width="245" height="70" rx="12" fill="#172f50" stroke="#35c3ef" stroke-width="2"/>
+    <text x="74" y="229" font-size="20" font-weight="650">Child Wall</text><text x="74" y="253" font-size="14" fill="#adbed2">upper floor • parent = Root</text>
+    <path d="M170 268V306" stroke="#19a9dc" stroke-width="3" marker-end="url(#arrow)"/>
+    <rect x="48" y="314" width="245" height="48" rx="12" fill="#172f50" stroke="#35c3ef" stroke-width="2"/>
+    <text x="74" y="345" font-size="18" font-weight="650">Optional roof / trim layer</text>
+
+    <path d="M320 220H473" stroke="#19a9dc" stroke-width="4" marker-end="url(#arrow)"/>
+    <rect x="490" y="148" width="210" height="142" rx="16" fill="#1a4770" stroke="#35c3ef" stroke-width="2"/>
+    <text x="519" y="196" font-size="22" font-weight="700">Building Preset</text>
+    <text x="519" y="226" font-size="15" fill="#c1d5e6">wall IDs + parents</text>
+    <text x="519" y="250" font-size="15" fill="#c1d5e6">presets + overrides</text>
+    <text x="519" y="274" font-size="15" fill="#c1d5e6">floor ranges</text>
+    <path d="M700 220H800" stroke="#19a9dc" stroke-width="4" marker-end="url(#arrow)"/>
+    <rect x="817" y="148" width="116" height="142" rx="16" fill="#e5f7fd" stroke="#35c3ef" stroke-width="2"/>
+    <path d="M843 254V190h65v64M843 216h65M860 190v64M891 190v64" fill="none" stroke="#146995" stroke-width="6"/>
+    <text x="837" y="321" font-size="19" font-weight="700">Building actor</text>
+    <text x="837" y="344" font-size="13" fill="#adbed2">reusable footprint</text>
+  </g>
+</svg>

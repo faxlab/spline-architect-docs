@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 360" role="img" aria-labelledby="title desc">
+  <title id="title">Streets Network to PCG data flow</title>
+  <desc id="desc">A Streets Network outputs lot boundaries, road edges, centerlines, crossings and intersections into SA PCG nodes that generate buildings and props.</desc>
+  <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0 0L8 3L0 6Z" fill="#20b9e9"/></marker></defs>
+  <rect width="1120" height="360" rx="22" fill="#101827"/>
+  <g font-family="Segoe UI,Arial">
+    <text x="45" y="50" fill="#f4f8fc" font-size="26" font-weight="700">Streets → PCG city data</text>
+    <rect x="45" y="115" width="205" height="112" rx="16" fill="#18466c" stroke="#37c5ef" stroke-width="2"/>
+    <text x="72" y="157" fill="#fff" font-size="21" font-weight="700">Streets Network</text><text x="72" y="185" fill="#bed5e7" font-size="14">authored graph + lot zones</text><text x="72" y="207" fill="#bed5e7" font-size="14">roads + intersections</text>
+    <g fill="#18324e" stroke="#37c5ef" stroke-width="2">
+      <rect x="344" y="74" width="220" height="58" rx="12"/><rect x="344" y="151" width="220" height="58" rx="12"/><rect x="344" y="228" width="220" height="58" rx="12"/>
+    </g>
+    <g fill="#f4f8fc" font-size="16" font-weight="650"><text x="366" y="110">SA Get Lots</text><text x="366" y="187">SA Get Road Edges</text><text x="366" y="264">Centerlines / crossings</text></g>
+    <g stroke="#20b9e9" stroke-width="3" marker-end="url(#arr)"><path d="M250 171L330 103"/><path d="M250 171H330"/><path d="M250 171L330 257"/></g>
+    <g fill="#18324e" stroke="#37c5ef" stroke-width="2"><rect x="664" y="74" width="220" height="90" rx="14"/><rect x="664" y="203" width="220" height="90" rx="14"/></g>
+    <text x="688" y="112" fill="#fff" font-size="18" font-weight="700">Subdivide / offset</text><text x="688" y="139" fill="#bed5e7" font-size="14">lot boundaries + attributes</text>
+    <text x="688" y="241" fill="#fff" font-size="18" font-weight="700">Edge Placer / sampler</text><text x="688" y="268" fill="#bed5e7" font-size="14">props + exact bounds</text>
+    <g stroke="#20b9e9" stroke-width="3" marker-end="url(#arr)"><path d="M564 103H650"/><path d="M564 180L650 241"/><path d="M564 257L650 257"/></g>
+    <g fill="#e7f8fe" stroke="#37c5ef" stroke-width="2"><rect x="968" y="74" width="112" height="90" rx="14"/><rect x="968" y="203" width="112" height="90" rx="14"/></g>
+    <text x="1024" y="112" text-anchor="middle" fill="#175b80" font-size="17" font-weight="700">Buildings</text><text x="1024" y="136" text-anchor="middle" fill="#396c88" font-size="13">SA Spawn</text>
+    <text x="1024" y="241" text-anchor="middle" fill="#175b80" font-size="17" font-weight="700">Props</text><text x="1024" y="265" text-anchor="middle" fill="#396c88" font-size="13">stock spawners</text>
+    <g stroke="#20b9e9" stroke-width="3" marker-end="url(#arr)"><path d="M884 119H954"/><path d="M884 248H954"/></g>
+  </g>
+</svg>
