@@ -5,6 +5,16 @@ description: Complete reference for modular wall fitting, corners, fillers, plac
 
 A Wall Preset is both a DataTable row and an inline structure. The same controls appear inside Wall actors, Building wall nodes, and SA Spawn Wall.
 
+## Preset metadata
+
+| Control | What it does |
+| --- | --- |
+| **Preset Tags** | Exact Name values such as `BaseFloor`, `Facade`, or `Trim`. They classify output without changing geometry. |
+
+A standalone Wall actor and all of its generated components receive the Wall Preset tags. When a Building uses the Wall Preset, only components produced by that Wall layer receive its tags; the Building actor keeps only its own Building Preset tags. This precision lets PCG filter one generated layer without classifying the complete Building as that layer.
+
+Changing Wall presets removes stale tags previously applied by Spline Architect while preserving unrelated Actor Tags you authored yourself.
+
 ## Core Dimensions
 
 | Control | What it does |

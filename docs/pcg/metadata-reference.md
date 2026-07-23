@@ -3,7 +3,7 @@ title: SA PCG metadata reference
 description: Attribute names, types, meaning, domains, and downstream usage for Spline Architect PCG data.
 ---
 
-Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots and element filters after sampling for individual points.
+Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots and element filters after sampling for individual points. PCG data tags are separate from metadata attributes; use **Filter Data By Tag** for them.
 
 ## Streets and lots
 
@@ -85,6 +85,21 @@ SA Get Spline can write:
 | `SA_Mesh` | Soft Object Path | Mesh selected/generated for Static Mesh Spawner By Attribute. |
 | `SA_Actor` | Soft Object Path | Actor class selected for Spawn Actor By Attribute. |
 | `SA_SpawnedActor` | Soft Object Path | PCG-managed actor reference emitted in Components/Actors modes. |
+| `SA_PresetTags` | Name Array | Exact applicable Building/Wall Preset tags on generated piece, Dynamic Mesh, or actor-reference output. |
 | `SA_DistanceToSpline` | Double | Horizontal or 3D distance computed by SA Orient To Spline. |
+
+## Preset tags and filtering
+
+`SA_PresetTags` preserves the authored Name values and their component-level precision:
+
+- a standalone Wall piece carries its Wall Preset tags;
+- a Building piece carries the Building Preset tags plus only the Wall Preset tags that produced that component;
+- a Building actor-reference point carries only the Building Preset tags;
+- a Wall actor-reference point carries only the Wall Preset tags;
+- Curve output carries an empty array because Curve presets do not define Preset Tags.
+
+In **Data** output, static-piece points store the array on each point. Each Dynamic Mesh stores it on the Data domain. Components/Actors reference points also expose the top-level array.
+
+To keep individual pieces with a tag such as `BaseFloor`, use stock **Array Contains** on `SA_PresetTags`, then feed its result to **Attribute Filter**. To keep or branch a complete generated output by a top-level tag such as `Small`, use **Filter Data By Tag**. Dynamic Mesh outputs also carry their precise component tags as PCG data tags.
 
 Do not rename these attributes in the middle of a shared graph without updating every filter and stock spawner. For a stable studio graph, wrap common SA branches in PCG subgraphs and expose only high-level parameters.
