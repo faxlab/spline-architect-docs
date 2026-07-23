@@ -1,33 +1,35 @@
-# Ignore Photoshop files
+# Source assets and archives
 *.psd
 *.rar
 *.zip
 
-# Node modules (if you're using Node.js)
+# Node and Docusaurus output
 node_modules/
+.docusaurus/
+build/
+.cache-loader/
+.playwright-cli/
+/site
 
-# macOS system files
+# macOS and Windows system files
 .DS_Store
+Thumbs.db
 
-# Log files
+# Logs
 *.log
 
 # Environment files
 .env
 .env.local
 
-# Compiled output
+# Other compiled output
 dist/
-build/
 
 # IDE settings
 .vscode/
 .idea/
+.vs/
 
-# OS or temp files
-Thumbs.db
+# Temporary files
 *.swp
 *.tmp
-
-.vs/
-/site
