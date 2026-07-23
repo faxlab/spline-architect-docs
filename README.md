@@ -11,4 +11,8 @@ npm run build
 npm run serve
 ```
 
-Pull requests build the site without deploying it. A push to `main` publishes through GitHub Actions after GitHub Pages has been switched to the Actions source.
+Pull requests and pushes to `main` build the site without deploying it. To publish a release, switch GitHub Pages to the GitHub Actions source and manually run the **Documentation** workflow from `main` with **Deploy** enabled.
+
+Until the v6 Fab release, the public site uses the preserved pre-v6 MkDocs build from `gh-pages`.
+
+Google Analytics uses the existing GA4 measurement ID, `G-YV8FLGPN35`, through the Docusaurus `gtag` configuration.
