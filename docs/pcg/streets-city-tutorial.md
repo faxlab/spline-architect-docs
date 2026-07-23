@@ -28,6 +28,14 @@ This tutorial starts with one Streets Network and ends with PCG-owned buildings 
 
 Confirm that intersection patches are closed and visible and that block interiors resolve as lots. If not, fix the authored graph before adding PCG.
 
+Choose **Default Lot Config → Elevation Mode** before building the PCG graph:
+
+- **Follow Elevation** preserves the road-derived boundary elevations;
+- **Flatten to Lowest Boundary** creates a flat lot at its lowest edge;
+- **Flatten to Highest Boundary** creates a flat lot at its highest edge.
+
+Use **Lot Overrides** when one block needs a different mode. The visible surface and the boundary read by PCG will stay aligned. Flattening does not create retaining walls or cut the terrain.
+
 ## 2. Add semantic zones
 
 Draw closed Lot Zone actors over parts of the blocks and set names such as `Residential`, `Commercial`, and `Park`. Rebuild the Streets Network after moving a zone. The smallest overlapping zone wins.
@@ -56,9 +64,10 @@ Feed a branch to **SA Subdivide Lots**. Start with:
 - Gap: a small firebreak/alley width;
 - Knockout: `0` while validating;
 - Boundary Filter: All;
+- Elevation Mode: Follow Elevation;
 - fixed Seed.
 
-Use `SA_IsExterior` downstream if perimeter and interior lots need different rules.
+Follow Elevation preserves each reconstructed child boundary. Lowest/Highest first reconstruct the terrain Z, then flatten every child independently to its own extreme boundary elevation. In all modes, each child's boundary spline, Dynamic Mesh, and Ground Surface agree. Use `SA_IsExterior` downstream if perimeter and interior lots need different rules.
 
 ## 5. Create a setback
 
@@ -66,13 +75,28 @@ Connect subdivided **Lot Boundaries** to **SA Polygon Offset**. Use a negative *
 
 ## 6. Generate buildings
 
-Connect offset Polygons to **SA Spawn Building → Footprints**. Assign a Building Preset DataTable row and choose **Output = Data**.
+Add useful **Preset Tags** to the source rows before building the selection graph:
+
+- Building Presets: values such as `Residential`, `Commercial`, `Small`, or `Tower`;
+- Wall Presets: precise generated-layer values such as `BaseFloor`, `Facade`, or `Trim`.
+
+Connect offset Polygons to **SA Spawn Building → Footprints**, choose **Preset Source = Random From DataTable**, assign the Building Preset DataTable, and keep **Output = Data**.
+
+For a small residential pool:
+
+- add `Residential` and `Small` to **Filter Terms**;
+- use **Term Match Mode = All**;
+- **Include Row Names** is enabled by default; disable it when terms should match only authored Preset Tags.
+
+Empty Filter Terms include the complete table. **Any** accepts rows matching at least one term. Selection is equal-probability, with replacement, and deterministic for fixed graph/footprint seeds. Only Building Preset tags classify Building rows; tags on referenced Wall Presets do not expand the candidate pool.
 
 - Connect **Generated** to a stock **Static Mesh Spawner**.
 - In the spawner choose **Mesh Selector Type = By Attribute** and **Attribute Name = `SA_Mesh`**.
 - Connect **Dynamic Meshes** to **Spawn Dynamic Mesh** for floor/roof or other non-static pieces.
+- To isolate individual `BaseFloor` pieces, use **Array Contains** on `SA_PresetTags`, then **Attribute Filter**.
+- To keep a complete Building output tagged `Small`, use **Filter Data By Tag**.
 
-If a district uses another Building Preset, branch before SA Spawn Building rather than changing rows per output point.
+If districts need different pools, branch by `SA_LotZone` and configure a different query on each SA Spawn Building node. This keeps district intent explicit without adding one node per Building row.
 
 ## 7. Place road-edge props
 
@@ -87,6 +111,7 @@ Add **SA Get Road Edges** for the same network and connect **Road Edges** to **S
 ## 8. Validate ownership and determinism
 
 - Regenerate the graph twice and confirm fixed seeds produce identical lots and picks.
+- Confirm the same footprints choose the same random Building rows after a second regeneration.
 - Move one street node, rebuild Streets, then regenerate PCG; confirm lots and downstream output update.
 - Move a Lot Zone, rebuild, regenerate, and confirm the `SA_LotZone` branch changes.
 - Delete/regenerate the PCG component and confirm it cleans its own output.

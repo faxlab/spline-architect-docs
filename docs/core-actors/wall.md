@@ -13,7 +13,7 @@ The Wall is the primary modular generator. It fits pieces along one or more spli
 | --- | --- |
 | **Data Table Preset** | Selects a `Wall Preset` row. Disabled while baked. A valid row takes priority over the inline preset. |
 | **Rename Actor on Preset Selection** | Renames the actor to the selected row name. |
-| **Wall Preset** | Inline configuration used when no DataTable row is selected. See [Wall Preset reference](/authoring/wall-presets). |
+| **Wall Preset** | Inline configuration used when no DataTable row is selected. Its **Preset Tags** classify the Wall and generated components. See [Wall Preset reference](/authoring/wall-presets). |
 | **Use Parameter Overrides** | Exposes non-destructive overrides on top of a DataTable row. |
 | **Parameter Overrides** | Toggles and values for Height, Corner Size, Z Handling, Inset, Num Floors, Treat Spline Reversed, nearby-point collapse, offsets, floor surfaces, posts, material parameters, and instance custom data. |
 | **Save Preset** | Saves the effective Wall setup as a DataTable row. |

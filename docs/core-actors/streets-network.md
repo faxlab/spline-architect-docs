@@ -40,12 +40,26 @@ Streets Network owns an authored graph of nodes and edges, generates road ribbon
 | **Ribbon Material / Intersection Material** | Defaults for roads and junction patches. Intersections can fall back to the widest incoming material, then Ribbon Material. |
 | **UV Tile Size** | World-unit repeat size for road, intersection, and lot-surface materials. |
 | **Street Surface** | Shared fill/edge vertex colors, edge band, blur, extrusion, and related surface controls. |
-| **Default Lot Config** | Fallback `Zone`, Empty state, surface override/layers, and seed override for lots without an explicit entry. |
-| **Lot Overrides** | Per-lot Empty, surface, seed, Zone, and stable boundary key data. |
+| **Default Lot Config** | Fallback Elevation Mode, `Zone`, Empty state, surface override/layers, and seed override for lots without an explicit entry. |
+| **Lot Overrides** | Per-lot Elevation Mode, Empty, surface, seed, Zone, and stable boundary key data. |
 | **Facet Angle** | Removes nearly collinear lot boundary points; `0` disables. |
 | **Seed** | Master lot and selection seed. |
 | **Lot Surfaces** | Default remeshed/extruded lot surface layers. |
 | **Lot Point Merge Distance** | Merges near-coincident consecutive points before generating lot actors; `0` disables. |
+
+### Lot elevation modes
+
+**Elevation Mode** controls the boundary and generated surface of each lot:
+
+| Mode | Result |
+| --- | --- |
+| **Follow Elevation** | Default. Preserves the elevations inherited from the surrounding road boundary. |
+| **Flatten to Lowest Boundary** | Moves the complete lot boundary and surface to its lowest boundary elevation. |
+| **Flatten to Highest Boundary** | Moves the complete lot boundary and surface to its highest boundary elevation. |
+
+The effective mode is resolved per stable lot before its surface is built. The viewport surface, extracted lot boundary, baked/broken lot output, and **SA Get Lots** therefore use the same elevation. A **Lot Override** wins over **Default Lot Config**.
+
+Flattening changes the top lot surface only. It does not cut the terrain or add retaining walls, skirts, or other side geometry; existing lot-surface thickness settings still apply.
 
 ## Baking
 

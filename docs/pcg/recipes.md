@@ -26,6 +26,31 @@ Useful filters:
 
 Facade frames intentionally do not exclude openings. Filter cells by your own semantic rules or author a mask branch when doors/windows must be avoided.
 
+## Tagged Building pools and pieces
+
+Author broad classification on Building Presets (`Small`, `Residential`, `Industrial`) and layer-specific classification on Wall Presets (`BaseFloor`, `Facade`, `Trim`).
+
+```text
+Lot Footprints
+  → SA Spawn Building
+      Preset Source: Random From DataTable
+      Filter Terms: Residential, Small
+      Term Match Mode: All
+```
+
+The node chooses uniformly from the matching Building rows and repeats for fixed graph/footprint seeds. Leave Filter Terms empty for the complete table; switch to **Any** for a broader union. Row-name substring matching is controlled separately by **Include Row Names**.
+
+For individual generated pieces:
+
+```text
+SA Spawn Building (Generated)
+  → Array Contains (SA_PresetTags contains BaseFloor)
+  → Attribute Filter
+  → Static Mesh Spawner
+```
+
+For complete generated outputs, use **Filter Data By Tag** with a top-level Building tag such as `Small`. Building actors carry only Building tags; their generated components carry Building tags plus the precise Wall tags that produced them.
+
 ## Lamps along a road
 
 ```text
