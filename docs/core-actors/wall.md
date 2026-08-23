@@ -30,6 +30,10 @@ The Wall is the primary modular generator. It fits pieces along one or more spli
 | **Center Transform** | Moves the actor origin to the spline center while preserving the world-space path. |
 | **Force Regenerate** | Rebuilds this Wall and its connected generation tree. |
 
+**Spline Architect → Insert Wall** adds a wall directly **beneath** the selected one. The selection and everything stacked above it, custom pieces included, move up by the new wall's height.
+
+Used on the bottom wall, this slides a new base under an existing building: the new wall becomes the footprint and takes over the spline, curves and all, along with the mirror settings that the footprint defines for the whole stack. The old bottom wall keeps its custom pieces and becomes the floor above.
+
 ## Spline
 
 | Control | Options and effect |

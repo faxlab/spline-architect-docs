@@ -38,6 +38,12 @@ Use **Keep World Scale** when a piece must retain its authored proportions. Othe
 - Configure source collision for repeated static pieces. Newly collapsed static meshes should be checked after conversion.
 - For baked/static lighting, enable generated lightmap UVs in [Project Settings](/reference/project-settings) or use the [Lightmap Tool](/production/editor-tools#lightmap-tool).
 
+## What PCG measures a prop by
+
+The SA prop pools measure an asset by its **visible bounds**, not its collision. A prop with tight or missing collision still reserves the room its mesh occupies, which is what keeps packed placement and footprint pruning honest.
+
+For a Blueprint prop, every visible component counts: static and skeletal meshes, instanced meshes and all their instances, shapes, and any child actor's own geometry. Editor-only visualizers such as arrows and billboards are ignored. A Blueprint with no visible geometry at all falls back to a small placeholder box, so a prop that packs suspiciously tightly is usually one whose geometry is spawned at runtime rather than present in the class.
+
 ## Fix a pivot without leaving Unreal
 
 Select one or more Static Mesh assets and open **Spline Architect → Pivot Tool**. Choose Min, Center, Max, or Keep per axis, decide whether to overwrite or create suffixed assets, then apply. See [Pivot Tool](/production/editor-tools#pivot-tool) for every option.

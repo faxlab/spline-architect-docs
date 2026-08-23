@@ -17,6 +17,8 @@ Use the Spline Architect menu to:
 
 Multi-loop shapes are valid for actor-level application and can drive Multi Spline polygon operations.
 
+**Import Shape From Mesh...** extracts the boundary loops of a Static Mesh and saves them as a shape. Selecting **several** meshes imports them all in one pass: names come from the source meshes with no prompt, meshes already imported are skipped, genuine name collisions are suffixed, and one notification summarises what was imported, skipped, and had no usable outline. A single-file import still prompts for a name as before.
+
 ## Spline menu commands
 
 | Command | Result |

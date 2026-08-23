@@ -22,6 +22,18 @@ Conversion is a one-way handoff from Spline Architect authoring to independent U
 
 Quick commands **Convert Selected/Each to Mesh** and **Convert Selected/Each to BP** expose the corresponding focused options.
 
+## Convert to Building
+
+A Wall stack that has grown into a whole building can become a single **Building** actor. Select the topmost wall of the stack and press **Convert to Building** in its **Preset** category.
+
+The Building carries the stack's settings as its **own inline preset** - nothing is written to a DataTable and there is no save prompt. Meshes, materials, floors, roofs, attached custom pieces, the spline, the seed, the resolved mirror mode, and the actor's Outliner folder and attach parent all come along. It is one undo step, and works across a multi-selection.
+
+Save a Building **preset** to a DataTable separately when you want to reuse the design elsewhere; converting is about collapsing one authored stack into one actor.
+
+:::note Preset fields are no longer locked while baked
+Assigning, changing, or clearing a preset source works in any bake state. The actor unbakes itself first when it needs to.
+:::
+
 ## Building Proxy LOD
 
 For **Convert to Static Mesh**, enable **Generate Building Proxy LOD** to add a welded footprint-and-roof proxy as LOD1 for eligible Building output. It uses the traditional non-Nanite LOD path and forces a source bake before capture.

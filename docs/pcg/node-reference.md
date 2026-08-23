@@ -156,13 +156,15 @@ Building-generated pieces carry Building Preset tags plus the exact Wall Preset 
 
 - **Input:** `Edges` (Polyline). **Output:** `Props` (Point).
 - **Settings:** weighted Mesh/Actor Class Pool; Side (Center/Left/Right); Facing (Toward/Away/Along); Fill (Packed/Fixed/Random); conditional gap/spacing range; Lateral Offset; Z Offset; Edge Sample Spacing; normal PCG Seed.
-- Each pool entry must define exactly one Mesh or Actor Class. Emits `SA_Mesh` or `SA_Actor` and exact local bounds.
+- Each pool entry must define exactly one Mesh or Actor Class, and a weight of zero or less is never picked. Emits `SA_Mesh` or `SA_Actor` and exact local bounds.
+- **Filling the pool:** above the list is **Add Selected Assets (or drop here)**. Select Static Meshes and Actor Blueprints in the Content Browser and press it, or drag a multi-selection straight onto it. Each asset becomes one entry at weight 1, existing entries and their weights are left alone, assets already in the pool are skipped, and anything else is ignored. See [what PCG measures a prop by](/getting-started/preparing-meshes#what-pcg-measures-a-prop-by) for how footprints are derived.
 
 ### SA Pick From Pool
 
 - **Input:** `Points` (Point). **Output:** `Picked Points` (Point).
 - **Settings:** weighted Pool and Set Bounds; normal PCG Seed.
-- Preserves input transforms/attributes, assigns `SA_Mesh` or `SA_Actor`, and optionally replaces point bounds with true mesh or actor collision/render bounds.
+- Preserves input transforms/attributes, assigns `SA_Mesh` or `SA_Actor`, and optionally replaces point bounds with the asset's real footprint.
+- The pool is filled the same way as SA Edge Placer's, through **Add Selected Assets (or drop here)** above the list, and measures assets by the same [visible bounds](/getting-started/preparing-meshes#what-pcg-measures-a-prop-by).
 
 ### SA Prune Footprints
 

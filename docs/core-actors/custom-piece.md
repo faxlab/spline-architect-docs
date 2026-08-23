@@ -14,6 +14,10 @@ Custom Piece replaces or overlays part of a Wall with a door, arch, window modul
 | **Locked Location** | World position restored when the actor is locked and moved. |
 | **Lock Position / Unlock Position** | Captures the current location or allows movement again. |
 
+Locking pins a piece against the generator sliding it along the spline. It does **not** pin it in the world: the piece travels with its wall when the wall moves, and stays put when the wall's pivot is reset or centred.
+
+Custom pieces can also be placed from a PCG graph. Mark scattered points with [SA Set Custom Piece](/pcg/node-reference#sa-set-custom-piece) and feed them into SA Spawn Wall's or SA Spawn Curve's `Custom Pieces` pin.
+
 ## Custom Piece Preset
 
 | Control | What it does |

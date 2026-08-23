@@ -35,4 +35,4 @@ Curve fits repeated meshes along a spline using architectural Z-up or transporte
 
 ## Production notes
 
-Use Z Up for roads, curbs, and trims that must remain upright through elevation changes. Use Transported for pipes or cables that should roll naturally along a 3D path. For individual corner tuning, edit **Fillet Radii** on the actor instead of duplicating a preset.
+Use Z Up for roads, curbs, and trims that must remain upright through elevation changes. Use Transported for pipes or cables that should roll naturally along a 3D path; Transported pieces deform to follow a 3D bend, while straight sloped runs stay rigid. For individual corner tuning, edit **Fillet Radii** on the actor instead of duplicating a preset.

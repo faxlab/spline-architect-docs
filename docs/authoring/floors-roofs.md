@@ -41,7 +41,9 @@ Edge presets reuse the Wall generator, so orient their mesh length along X and u
 
 ## Lot Surface
 
-Streets lot layers expose **Material**, **Thickness**, **Subdivisions**, **UV Scale**, **Fill Color**, **Edges Color**, and **Color Blur Iterations**. PCG's SA Get Lots and SA Subdivide Lots can additionally emit a graded Ground Surface whose spacing and smoothing are configured on the node.
+A Streets lot surface is built from a list of layers, each of which can produce a filled cap, a border skirt, and corner pads with their own materials. **Surface Edge Length** and **Surface Smoothing Iterations** behave exactly as they do for Floor and Roof surfaces here. See [lot surface layers](/core-actors/streets-network#lot-surface-layers) for the full set.
+
+PCG's SA Get Lots and SA Subdivide Lots can additionally emit a graded Ground Surface whose spacing and smoothing are configured on the node.
 
 ## Surface failure checklist
 

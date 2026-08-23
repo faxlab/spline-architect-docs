@@ -26,9 +26,13 @@ Select the root Wall and choose **Spline Architect → Add Wall to Selected**. C
 
 Repeat for additional layers. Use **Select Connected** or **Select Roots** to inspect the hierarchy. Every layer should have a unique role: ground floor, repeated upper floor, parapet, trim, or roof edge.
 
+To slide a new storey in **underneath** an existing stack, select the bottom wall and choose **Insert Wall**. The new wall takes over the footprint and everything above it moves up, custom pieces included.
+
 ## 3. Save a Building Preset
 
 Select the root Wall. In its **Preset** category, click **Save Building Preset**. Choose or create a Building Preset DataTable and a row name.
+
+If you only want this one stack collapsed into a single actor and do not need to reuse the design, press [**Convert to Building**](/production/conversion-export#convert-to-building) instead - it carries the settings inline, with no DataTable row.
 
 The saved hierarchy records:
 

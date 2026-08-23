@@ -24,6 +24,16 @@ Select Static Mesh assets in the Content Browser, then choose **Spline Architect
 
 Use copies first when the asset is already referenced. Moving a pivot preserves the visible mesh placement in the asset but changes how new actors, fitting bounds, and downstream tools interpret its origin.
 
+**Overwrite Existing**, the pivot anchors, the transform, and the suffix are remembered between sessions.
+
+### Reset and Center Transform on an actor
+
+The **Reset Transform** and **Center Transform** buttons on a Spline Architect actor move only the actor's own pivot. Everything it carries stays exactly where it was in the world - the spline points, and the attached actors including custom pieces. Reset Transform also preserves tangents and point types, so the curve between the points keeps its shape.
+
+A **locked** custom piece is pinned against the generator sliding it along its spline, not against its wall moving. It travels with the building.
+
+## Lightmap Tool
+
 ## Lightmap Tool
 
 Select Static Mesh assets, then open **Spline Architect → Lightmap Tool**.

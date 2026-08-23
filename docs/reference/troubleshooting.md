@@ -35,6 +35,10 @@ Enable Spline Architect and its dependencies, then restart. Streets Network, Lot
 
 Set a non-negative Seed. A `-1` seed resolves once to a concrete value, but duplicated/imported legacy actors should still be inspected and saved with an explicit resolved seed when exact reproducibility matters.
 
+### A spline command skipped my actor
+
+**Close/Open**, **Gridify**, **Flatten**, **Reverse**, **Mirror**, and **Apply Shape** refuse to guess when an actor has more than one spline, and tell you which actors they skipped. Select the spline component in the level editor, or pick a point on the path in Architect Mode, then run the command again. Actors with a single spline are unaffected.
+
 ### A transformed actor behaves strangely
 
 Use Reset Transform or keep Auto Normalize Actor Scale enabled. Avoid leaving non-unit scale on spline-driven actors; bake it into points instead.

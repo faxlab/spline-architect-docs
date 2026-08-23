@@ -17,6 +17,10 @@ Open **Edit → Project Settings → Plugins → Spline Architect Settings**. Th
 | **On Level Save Action** | Nothing, Rebake Unbaked, Rebake All, or Unbake All. **Nothing** is the safest team default because it avoids a large implicit save-time mutation. |
 | **Auto Normalize Actor Scale** | Applies non-unit actor scale to spline points while preserving world shape, then resets the actor to 1,1,1. |
 
+:::note Some settings are remembered per user, not here
+The Pivot Tool's and Lightmap Tool's **Overwrite Existing**, the **Delete Original Actors** choices in the Convert, Collapse to Mesh, and Convert to Blueprint dialogs, the Preset Library's view mode, category tab, and favorites filter, the Streets Mode **Node Merge Radius** and Subdivide recipe, and the remembered destination folders are all editor preferences stored per user and per project. They are not part of Project Settings and are not checked in with the project.
+:::
+
 ## Lightmaps
 
 | Control | What it does |
