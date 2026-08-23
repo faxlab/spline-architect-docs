@@ -217,10 +217,34 @@
   .card-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
 }
 
+.looping-clip {
+  margin: 1.6rem 0 2rem;
+}
+
+.looping-clip__media {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: 1px solid var(--sa-border);
+  border-radius: 12px 12px 0 0;
+  background: var(--sa-panel);
+}
+
+.looping-clip figcaption {
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--sa-border);
+  border-top: 0;
+  border-radius: 0 0 12px 12px;
+  background: var(--sa-panel);
+  color: var(--sa-muted);
+  font-size: 0.88rem;
+}
+
 @media (max-width: 620px) {
   .card-grid {grid-template-columns: 1fr;}
   .markdown table {display: block; overflow-x: auto;}
   .hero-panel {padding: 1.15rem;}
   .annotated-shot__pin {width: 1.55rem; height: 1.55rem; font-size: 0.72rem;}
   .annotated-shot figcaption {grid-template-columns: 1fr;}
+  .looping-clip figcaption {font-size: 0.84rem;}
 }
