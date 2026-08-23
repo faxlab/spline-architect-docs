@@ -1,49 +1,44 @@
 ---
 title: Migrate from v5 to v6
-description: Back up, upgrade assets, adopt Architect Mode and baked-first generation, and replace legacy generators with UE 5.8 PCG.
+description: Upgrade a copy, learn what replaced your v5 workflow, and retire the old branch only after checks pass.
 ---
 
-Treat the v6 upgrade as an authoring-workflow migration, not only a binary replacement. Upgrade a copy or source-controlled branch and keep a working v5 build until representative maps pass.
+v6 changes how you author, not just what version number the plugin reports. Upgrade **a copy** of the project - or a source-controlled branch - and keep the v5 build openable until your maps have passed the checks at the bottom of this page.
 
 ## Before opening in v6
 
-1. Back up the project and plugin.
-2. Save important procedural results and record preset DataTables/seeds.
-3. Convert irreplaceable legacy generated output to independent assets if it cannot be reconstructed.
-4. Install the v6 package matching the target engine. Use UE 5.8 if the replacement PCG workflows are required.
+1. Back up the project and the old plugin package.
+2. Note the preset DataTables and seeds your maps depend on.
+3. If a legacy generated result cannot be reconstructed, convert it to independent assets first.
+4. Install the v6 package matching your engine. Streets and the PCG replacements need UE 5.8 - see [compatibility](/reference/compatibility).
 
-## What changed
+## What replaced your v5 workflow
 
-| v5 concept | v6 workflow |
+| You used in v5 | You use in v6 |
 | --- | --- |
-| Draw/utility-widget path creation | **Architect Mode** with creation, point/segment editing, branching, snapping, shapes, and preset picker. |
-| Ad-hoc preset browsing | **Preset Library** with DataTable filters, search, favorites, thumbnails, drag/drop, and metadata. |
-| Wall groups copied by hand | Connected Wall stack → **Save Building Preset** → reusable **Building** actor. |
-| Editor preview treated as final | **Baked-first** generation, automatic unbake after authored changes, explicit Bake/Rebake Connected. |
-| MultiBuilding actor | UE 5.8: **Streets Network → SA Get Lots → SA Subdivide Lots → SA Spawn Building**. |
-| Legacy Prop Spawner | UE 5.8: **SA Edge Placer**, normal Surface/Spline Samplers, **SA Pick From Pool**, **SA Prune Footprints**, and stock spawners. |
-| Raw spline-only PCG reads | **SA Get Spline** for the effective generation path and semantic attributes. |
+| Draw/utility-widget path creation | [Architect Mode](/authoring/architect-mode) - drawing, editing, branching, snapping, and shapes in the viewport. |
+| Ad-hoc preset browsing | The [Preset Library](/authoring/preset-library): search, filters, favorites, thumbnails, drag and drop. |
+| Wall groups copied by hand | A connected stack saved as a **Building Preset**, placed as a [Building](/core-actors/building) on any footprint. |
+| Treating the preview as final | The [baked-first workflow](/getting-started/baked-first-workflow): explicit Bake Connected, automatic unbake on change. |
+| **MultiBuilding** | UE 5.8 PCG: Streets lots → [SA Subdivide Lots](/pcg/node-reference#sa-subdivide-lots) → SA Spawn Building. |
+| **Legacy Prop Spawner** | UE 5.8 PCG: [SA Edge Placer](/pcg/node-reference#sa-edge-placer), samplers, SA Pick From Pool, SA Prune Footprints. |
 
-MultiBuilding and the legacy Prop Spawner are not user-facing v6 actors. Existing baked/static output can remain as ordinary Unreal content, but procedural authoring should move to the PCG graph equivalents.
+MultiBuilding and the Prop Spawner are gone from v6, not hidden. Their baked output survives as ordinary content, but new procedural work goes through the PCG graph.
 
-## Presets and actor checks
+## Check your content
 
-- Open each Wall/Building/Curve DataTable and confirm its row structure.
-- Check inline vs DataTable precedence and Parameter Overrides.
-- Save deterministic seeds for assets that must not change.
-- Inspect connected Wall parent IDs after loading complex stacks.
-- Verify Custom Piece floor strings, insert/overlap behavior, and child actors.
-- Rebuild Streets and check lot keys/zones before connecting PCG.
+- Open each Wall, Building, and Curve DataTable and confirm the rows load with the expected struct.
+- Actors using **Parameter Overrides**: confirm the override still masks the value you meant it to.
+- Assets that must not change appearance: pin their **Seed** to a fixed value now.
+- Complex connected stacks: check parent IDs after loading.
+- Custom Pieces: verify floor strings and Insert/Overlap behavior.
 
-## Production checks
+## Retire v5 only after this passes
 
-1. Open representative levels in v6 and allow generation to settle.
-2. Compare paths, piece packing, corners, floors, roofs, materials, and Booleans.
-3. Bake/Rebake Connected and inspect Diagnostics.
-4. Test one Convert-to-Mesh, Convert-to-Blueprint, and standalone export flow used by the project.
-5. In UE 5.8, rebuild legacy city/prop workflows as PCG graphs and validate cleanup plus deterministic regeneration.
-6. Only retire the v5 branch after visual, collision, lighting, and gameplay checks pass.
+1. Open your representative maps in v6 and let generation settle.
+2. Compare piece packing, corners, floors, roofs, materials, and Boolean cuts against the v5 result.
+3. **Bake/Rebake Connected**, then read [Diagnostics](/production/baking#diagnostics-and-baked-asset-registry).
+4. Run one of each conversion flow your project uses - to mesh, to Blueprint, or standalone export.
+5. Rebuild one legacy MultiBuilding or Prop Spawner setup as a PCG graph and confirm it regenerates deterministically.
 
-## Current v6 highlights
-
-v6 adds Architect Mode, reusable Building presets, the Preset Library and managed thumbnails, semantic Streets and Lot Zones, Curve improvements, reversible connected baking, diagnostics and baked asset tracking, unified conversion/export with optional Building proxy LOD, pivot/lightmap tools, deterministic Wall piece layout policies, and the UE 5.8 SA PCG node suite.
+When those pass on your own maps - not before - retire the v5 branch.

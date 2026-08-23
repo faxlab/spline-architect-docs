@@ -3,7 +3,7 @@ title: Wall Preset reference
 description: Complete reference for modular wall fitting, corners, fillers, placement, randomization, materials, and instance data.
 ---
 
-A Wall Preset is both a DataTable row and an inline structure. The same controls appear inside Wall actors, Building wall nodes, and SA Spawn Wall.
+A Wall Preset is the recipe a Wall follows: which meshes, how they fit, what happens at corners, what gets randomized. The same recipe works as a shared DataTable row or inline on one actor, and the same controls appear inside Wall actors, Building wall layers, and SA Spawn Wall - so everything on this page applies in all three places.
 
 ## Preset metadata
 

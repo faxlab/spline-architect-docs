@@ -95,7 +95,7 @@ const config: Config = {
           {label: 'Baking workflow', to: '/production/baking'},
         ]},
         {title: 'Reference', items: [
-          {label: 'Core actors', to: '/core-actors/wall'},
+          {label: 'Walls and Buildings', to: '/core-actors/wall'},
           {label: 'SA PCG nodes', to: '/pcg/node-reference'},
           {label: 'Troubleshooting', to: '/reference/troubleshooting'},
         ]},

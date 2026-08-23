@@ -3,7 +3,7 @@ title: Convert, collapse, proxy LOD, and export
 description: Turn Spline Architect sources into independent actors, meshes, Blueprints, or a standalone level.
 ---
 
-Conversion is a one-way handoff from Spline Architect authoring to independent Unreal output. Leave source deletion off until the converted result has been inspected.
+Conversion is the exit: it turns Spline Architect output into plain Unreal actors, meshes, or Blueprints that no longer need the plugin. It is one-way - which is why every dialog here ships with **Delete Original Actors** off, and why you leave it off until you have looked at the result.
 
 ## Unified Convert dialog
 

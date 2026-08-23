@@ -17,22 +17,13 @@ import LoopingClip from '@site/src/components/LoopingClip';
   }
 >
 
-This tutorial starts with one Streets Network and ends with PCG-owned buildings and road props. Work in an unsaved staging level or duplicate the example map before experimenting.
+One Streets Network in, a city out: this tutorial wires lots to buildings and road edges to props, and by the end the graph rebuilds all of it whenever you move a street. Work in a staging level or a duplicate of the example map.
 
 Once the graph is wired, the city is live: move a street and the lots, buildings, and props regenerate to match.
 
 </ClipAside>
 
-<AnnotatedShot
-  alt="The validated SACity Streets and PCG graph"
-  src="img/screens/pcg-streets-graph.png"
-  callouts={[
-    {label: 'Preview and debug-object viewport', x: 20, y: 33},
-    {label: 'Road-edge prop branch', x: 43, y: 43},
-    {label: 'Lots, subdivision, and Building branch', x: 57, y: 46},
-    {label: 'Selected-node settings', x: 82, y: 31},
-  ]}
-/>
+<!-- CAPTURE still pcg-streets-graph (annotated): the city graph at 1920x1040 with the Sub-Lot Boundaries pin name visible; callouts get placed once the shot exists. -->
 
 ## 1. Author the street graph
 

@@ -3,6 +3,8 @@ title: Floors, roofs, posts, and lot surfaces
 description: Complete nested surface controls shared by Wall, Building, Curve, Streets, and PCG workflows.
 ---
 
+Walls make the shell; these settings make everything the shell contains and wears - the floor slab inside a footprint, the pitched or flat roof on top, and the ground surface of a Streets lot. The same controls appear wherever a surface can exist, so learning them once covers Wall, Building, Curve, and Streets.
+
 ## Floor Surface
 
 | Control | What it does |

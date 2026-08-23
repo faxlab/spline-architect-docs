@@ -5,7 +5,18 @@ description: Author in Baked mode, let stale output unbake itself, and rebake de
 
 Spline Architect assumes your production output is baked geometry, and that you get there by editing a live preview - not by committing early and hoping. One habit makes the whole plugin behave predictably: **treat baking as a checkpoint, not a finish line.**
 
-![Baked-first authoring lifecycle](/img/diagrams/baking-lifecycle.svg)
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="A baked Building is edited, drops back to an editable preview, regenerates, and is rebaked"
+      poster="img/clips/unbake-rebake.webp"
+      src="img/clips/unbake-rebake.mp4"
+    />
+  }
+>
 
 ## The loop
 
@@ -14,6 +25,8 @@ Spline Architect assumes your production output is baked geometry, and that you 
 3. When a design is ready, select any part of the connected stack and run **Bake Connected**. The preview becomes persistent components.
 4. Change something later and the affected output **unbakes itself**, back to a live preview. Spline Architect never silently re-commits a bake, and it never leaves stale baked geometry standing either.
 5. Look at the regenerated result, then run **Rebake Connected**.
+
+</ClipAside>
 
 The point of step 4: you can always trust what you see. If it is baked, it matches its inputs; if an input changed, you are looking at the new preview and the rebake is yours to make.
 

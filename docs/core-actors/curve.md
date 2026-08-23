@@ -3,7 +3,7 @@ title: Curve
 description: Complete user-facing reference for the Spline Architect Curve actor and Curve Preset.
 ---
 
-Curve fits repeated meshes along a spline using architectural Z-up or transported 3D frames. Use it for curbs, rails, pipes, trims, cables, paths, and floor-surface strips.
+Curve repeats one mesh along a path: curbs, rails, pipes, trims, cables. Where Wall thinks in storeys and corners, Curve thinks in profile and flow - its one big decision is whether the profile stays upright through slopes (**Z Up**, for roads and curbs) or rolls with the path (**Transported**, for pipes and cables).
 
 ## Actor controls
 

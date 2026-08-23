@@ -3,9 +3,9 @@ title: Building
 description: Complete user-facing reference for the Spline Architect Building actor.
 ---
 
-A Building maps a reusable hierarchy of Wall definitions onto one or more footprint splines. It is the production-friendly replacement for rebuilding the same connected Wall stack by hand.
+A Building is a saved Wall stack that rebuilds itself on any footprint you draw. Edit the preset once and every placement follows; edit one placement's overrides and only it changes.
 
-![Building actor and its Building Preset controls in SACity](/img/screens/building-details.png)
+<!-- CAPTURE still building-two-footprints (shared with first-building): one Building Preset on two different footprints. -->
 
 ## Preset and controls
 

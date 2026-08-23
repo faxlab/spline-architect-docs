@@ -3,11 +3,9 @@ title: UE 5.8 PCG integration
 description: Use Spline Architect actors as semantic inputs and generation kernels in Unreal Engine 5.8 PCG graphs.
 ---
 
-The `SplineArchitectPCG` module is available in the UE 5.8 package. It exposes effective SA splines, Streets lots and road data, facade cells, floor/roof samples, polygon tools, bounds-aware prop tools, and Wall/Curve/Building generation nodes.
+The SA nodes turn what you authored - streets, lots, walls, footprints - into data a PCG graph can read, reshape, and build from. You draw the city's skeleton by hand; the graph fills in the buildings, props, and details, and refills them every time the skeleton changes.
 
-![Streets Network to PCG data flow](/img/diagrams/streets-pcg-flow.svg)
-
-## Design principle
+## How the nodes divide the work
 
 SA PCG nodes separate authored meaning from spawned output:
 

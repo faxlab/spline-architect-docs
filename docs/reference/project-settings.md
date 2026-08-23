@@ -3,7 +3,7 @@ title: Project settings
 description: Complete reference for Spline Architect project-wide defaults, lightmaps, preset behavior, and performance controls.
 ---
 
-Open **Edit → Project Settings → Plugins → Spline Architect Settings**. These settings provide defaults and editor behavior; per-actor values override them where noted.
+**Edit → Project Settings → Plugins → Spline Architect Settings** holds the project-wide defaults. A value set on an actor always wins over these.
 
 ## Settings
 

@@ -3,7 +3,7 @@ title: Shapes and spline utilities
 description: Apply, save, import, merge, mirror, gridify, flatten, reverse, and repair Spline Architect paths.
 ---
 
-Spline Architect's shape library and path tools turn common footprint work into repeatable operations.
+Footprints repeat: the L, the U, the rectangle with a notch. The Shape Library stores them once so drawing one is a click, and the spline commands handle the rest of the everyday path surgery - mirroring, flattening, merging, repairing.
 
 ## Shape Library
 

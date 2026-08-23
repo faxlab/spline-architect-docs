@@ -3,7 +3,7 @@ title: Custom Piece
 description: Complete user-facing reference for inserted and overlapping Wall pieces.
 ---
 
-Custom Piece replaces or overlays part of a Wall with a door, arch, window module, gap, special corner, or child actor. Add it from the Spline Architect menu while a Wall is selected, then position it along the target path.
+A Custom Piece is the exception in a wall: the door, the arch, the gap, the one special corner. Add it from the Spline Architect menu while a Wall is selected, drag it along the path to where it belongs, and the wall regenerates around it.
 
 ## Actor controls
 
