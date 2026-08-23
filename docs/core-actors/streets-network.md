@@ -84,7 +84,9 @@ Flattening changes the top lot surface only. It does not cut the terrain by itse
 
 ## Lot surface layers
 
-<!-- CAPTURE S6 still: lot-surface-layers.png -->
+![Wireframe view of generated Streets geometry: road ribbons with their curb edge, the triangle fans of the intersection patches, and each lot's cap ringed by a denser skirt band that follows the boundary and fans into pads at the corners](/img/screens/lot-surface-layers.webp)
+
+The wireframe shows what one layer produces. Each lot has a cap of evenly sized triangles, a tighter band of them running just inside the boundary - the skirt - and a fan of triangles at every street corner where a pad sits. The roads are separate ribbons with their own dark curb edge, and the intersections are their own patches.
 
 **Lot Surfaces** is a list, not a single surface. Each entry is one layer, built in order, and each layer can contribute up to three separate meshes with their own materials:
 
