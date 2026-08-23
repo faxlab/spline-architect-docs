@@ -286,8 +286,37 @@
   border-radius: 12px;
 }
 
+.clip-aside__zoom {
+  position: relative;
+  display: inline-block;
+  cursor: zoom-in;
+}
+
+.clip-aside__zoom--expanded {
+  cursor: zoom-out;
+}
+
+.clip-aside__zoom:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.clip-aside__zoom:hover .looping-clip__hint,
+.clip-aside__zoom:focus-visible .looping-clip__hint {
+  opacity: 1;
+}
+
+/* Expanded media of either kind takes the whole row. A still at full size keeps
+   its natural width and may exceed the column, so let it scroll rather than squash. */
+.clip-aside--expanded .clip-aside__media,
 .clip-aside__media:has(.looping-clip--expanded) {
   grid-column: 1 / -1;
+  overflow-x: auto;
+}
+
+.clip-aside--expanded .clip-aside__still {
+  width: auto;
+  max-width: none;
 }
 
 @media (max-width: 620px) {

@@ -7,6 +7,7 @@ import ClipAside from '@site/src/components/ClipAside';
 
 <ClipAside
   image="img/screens/preset-library.png"
+  scale={0.25}
   alt="The Preset Library docked as a panel: category tabs, table filter, search, the toolbar, a thumbnail grid with favorites, and the selected preset's settings below"
 >
 

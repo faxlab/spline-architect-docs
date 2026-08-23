@@ -40,7 +40,7 @@ Changing Wall presets removes stale tags previously applied by Spline Architect 
 
 ### Fit Height or Uniform Scale
 
-<!-- CAPTURE S11 still: height-mode-compare.png -->
+![The same gateway wall in Fit Height, with a flat top and the portico stretched to match the walls, and in Uniform Scale, where the portico keeps its proportions and its crown steps above the walls](/img/screens/height-mode-compare.webp)
 
 **Fit Height** is the default and gives a guaranteed flat top: every mesh is stretched to exactly **Wall Height**, and sideways to fill its slot. A mixed-height kit is levelled, and pieces are distorted as much as it takes.
 
