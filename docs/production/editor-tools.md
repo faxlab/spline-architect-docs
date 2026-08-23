@@ -9,7 +9,7 @@ Use [Diagnostics and the baked registry](/production/baking#diagnostics-and-bake
 
 ## Randomize Seeds
 
-**Randomize Seeds** assigns new seeds to every Spline Architect actor in the level. Runtime and unbaked actors regenerate; baked output is intentionally left unchanged. To avoid an unexpected scene-wide change, duplicate the level or record important seeds before using it.
+Assigns new seeds to every actor in the level - unbaked and Runtime actors regenerate, baked output stays put. It is scene-wide, so record the seeds you care about first.
 
 ## Pivot Tool
 
@@ -53,4 +53,4 @@ PatchBuilder is the safest default for broken source UVs. XAtlas can reduce stre
 
 ## Pinned toolbar
 
-The Spline Architect toolbar can pin commands, presets, and shape entries. Use it for the small set of operations repeated by your team—typically Architect Mode, Add Wall to Selected, Bake/Rebake Connected, Preset Library, Diagnostics, and Convert. Pinned state and recent shapes are editor-user settings, not shared project content.
+Pin the commands, presets, and shapes you reach for daily. It is on by default and purely for comfort; pinned state is a per-user setting, not project content.

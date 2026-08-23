@@ -23,7 +23,7 @@ Settings: stills as PNG (converted to WebP on intake), clips 6-12 s silent MP4 u
 | baked-output | A baked Building beside its Baking details category - instanced components in the Outliner, Bake/Unbake, method, mobility. Gets callout pins. | baking |
 | diagnostics-window | The Diagnostics tab, Actor Overview and Baked Assets populated. Crop to the window. | baking |
 | pcg-streets-graph | The city graph at 1920x1040 with the Sub-Lot Boundaries pin visible. Gets callout pins. | streets-city-tutorial |
-| pcg-facade-graph | The facade-frames graph at 1920x1040. | recipes |
+| pcg-facade-graph | For the "Facade attachments" recipe: a **minimal** graph, 4-5 nodes - SA Get Facade Frames → Filter Attribute Elements → SA Pick From Pool → Static Mesh Spawner - at 1920x1040. A small graph teaches the recipe better than the production one. | recipes |
 | alley-result | A subdivided block with Gap > 0: alleys between sub-lots, props along the sides, bollards at the mouths. | recipes (optional) |
 | landscape-patch-result | A flattened park on sloping terrain, path cut through, pad under a prop. Needs a sloped scene - deferred until one exists (#294 is the natural moment). | landscape-patch (deferred) |
 

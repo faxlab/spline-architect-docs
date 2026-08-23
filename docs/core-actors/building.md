@@ -51,4 +51,4 @@ Every Wall entry exposes:
 
 The Building shares the Wall's **Multi Spline Mode**, **Union Z Mode**, **Mirror Mode**, **Invert Mirror**, and **Apply Mirror to Spline** controls. Baking exposes **Baked**, **Generation Mode**, **Bake Method**, **Baked Mobility**, **Corner Angle Increment**, **Lightmap Texel Density Override**, **Bake**, **Unbake**, and **Prebake Corners**.
 
-Use Baked mode for placed environments. **Break** is for one-off art direction; **Unbake** is the reversible operation that preserves the Building actor.
+Use Baked mode for placed environments. **Unbake** is the reversible operation that keeps the Building actor. **Break** goes further - back to individual Walls - and pairs with **Convert to Building** as the art-direction round-trip: break, adjust the walls one by one, collapse back into a Building whose inline preset carries the changes. The shared preset row never notices.
