@@ -4,11 +4,24 @@ description: Generate subdivided lots, buildings, road props, and zone variation
 ---
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
+import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Dragging a street node in Streets Mode; the lot re-extracts and the PCG buildings on it regenerate to the new parcel"
+      poster="img/clips/streets-to-pcg.png"
+      src="img/clips/streets-to-pcg.mp4"
+    />
+  }
+>
 
 This tutorial starts with one Streets Network and ends with PCG-owned buildings and road props. Work in an unsaved staging level or duplicate the example map before experimenting.
 
-<!-- CAPTURE T1-c clip: streets-to-pcg.mp4 + streets-to-pcg.png -->
+Once the graph is wired, the city is live: move a street and the lots, buildings, and props regenerate to match.
+
+</ClipAside>
 
 <AnnotatedShot
   alt="The validated SACity Streets and PCG graph"
