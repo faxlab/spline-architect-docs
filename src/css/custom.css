@@ -221,13 +221,60 @@
   margin: 1.6rem 0 2rem;
 }
 
-.looping-clip__media {
+/* Compact by default: a fixed, modest height so a tall capture cannot take over the
+   page. The media letterboxes inside it. Expanded: full content width, natural ratio. */
+.looping-clip__frame {
+  position: relative;
   display: block;
-  width: 100%;
-  margin: 0;
+  height: 320px;
+  overflow: hidden;
   border: 1px solid var(--sa-border);
   border-radius: 12px 12px 0 0;
   background: var(--sa-panel);
+  cursor: zoom-in;
+  transition: height 180ms ease;
+}
+
+.looping-clip--expanded .looping-clip__frame {
+  height: auto;
+  cursor: zoom-out;
+}
+
+.looping-clip__frame:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.looping-clip__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.looping-clip--expanded .looping-clip__media {
+  height: auto;
+}
+
+.looping-clip__hint {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(16, 35, 58, 0.72);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.looping-clip__frame:hover .looping-clip__hint,
+.looping-clip__frame:focus-visible .looping-clip__hint {
+  opacity: 1;
 }
 
 .looping-clip figcaption {
@@ -247,4 +294,5 @@
   .annotated-shot__pin {width: 1.55rem; height: 1.55rem; font-size: 0.72rem;}
   .annotated-shot figcaption {grid-template-columns: 1fr;}
   .looping-clip figcaption {font-size: 0.84rem;}
+  .looping-clip__frame {height: 220px;}
 }
