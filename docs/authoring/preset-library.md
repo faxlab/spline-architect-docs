@@ -3,12 +3,20 @@ title: Preset Library and DataTables
 description: Browse, save, edit, thumbnail, favorite, filter, and drag Spline Architect presets.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+
+<ClipAside
+  image="img/screens/preset-library.png"
+  alt="The Preset Library docked as a panel: category tabs, table filter, search, the toolbar, a thumbnail grid with favorites, and the selected preset's settings below"
+>
+
 The Preset Library is the central browser for Wall, Building, Curve, Custom Piece, and Streets-compatible preset rows. Open it from the Spline Architect menu or the Architect Mode panel.
 
-<!-- CAPTURE T2-c clip: preset-drag-multi.mp4 + preset-drag-multi.png -->
-<!-- CAPTURE S9 still: preset-library.png (replaces the broken copy) -->
+It docks like any editor tab. The top half is the browser - category tabs, a DataTable filter, search, the action toolbar, and the presets themselves as a list or a thumbnail grid. The bottom half shows the selected preset's settings, so you can tweak a row without leaving the panel.
 
-![Preset Library browsing SACity presets](/img/screens/preset-library.png)
+</ClipAside>
+
+<!-- CAPTURE T2-c clip: preset-drag-multi.mp4 + preset-drag-multi.png -->
 
 ## Library controls
 

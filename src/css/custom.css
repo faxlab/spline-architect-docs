@@ -277,6 +277,15 @@
 .clip-aside__text > :first-child {margin-top: 0;}
 .clip-aside__text > :last-child {margin-bottom: 0;}
 
+.clip-aside__still {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 1px solid var(--sa-border);
+  border-radius: 12px;
+}
+
 .clip-aside__media:has(.looping-clip--expanded) {
   grid-column: 1 / -1;
 }
