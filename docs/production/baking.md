@@ -4,6 +4,8 @@ description: Production lifecycle, connected commands, bake methods, mobility, c
 ---
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
 
 Baking is reversible. It replaces generated preview/runtime output with persistent editor components or assets while the Spline Architect actor remains the source of truth.
 
@@ -30,9 +32,19 @@ Baking is reversible. It replaces generated preview/runtime output with persiste
 
 ## Automatic unbake
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="A baked Building is edited, drops back to an editable preview, regenerates, and is rebaked"
+      poster="img/clips/unbake-rebake.png"
+      src="img/clips/unbake-rebake.mp4"
+    />
+  }
+>
+
 When an authored change would make persistent output stale, Spline Architect automatically unbakes the affected output and regenerates an editable preview. It does not silently commit a new production bake. Review the result and run **Bake/Rebake Connected**.
 
-<!-- CAPTURE T1-d clip: unbake-rebake.mp4 + unbake-rebake.png -->
+</ClipAside>
 
 Changes include relevant actor properties, preset rows, spline topology, connected hierarchy, custom pieces, and Boolean inputs. If a baked actor appears unchanged after an edit, check whether you edited the shared row, an overridden value, or the actor you intended.
 
