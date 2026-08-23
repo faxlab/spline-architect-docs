@@ -36,7 +36,7 @@ Choose **Default Lot Config → Elevation Mode** before building the PCG graph:
 - **Flatten to Lowest Boundary** creates a flat lot at its lowest edge;
 - **Flatten to Highest Boundary** creates a flat lot at its highest edge.
 
-Use **Lot Overrides** when one block needs a different mode. The visible surface and the boundary read by PCG will stay aligned. Flattening does not create retaining walls or cut the terrain.
+Use **Lot Overrides** when one block needs a different mode. The visible surface and the boundary read by PCG will stay aligned. Flattening does not create retaining walls or cut the terrain by itself; feed the lots to [SA Landscape Patch](/pcg/landscape-patch) when the ground should follow them.
 
 ## 2. Add semantic zones
 
@@ -73,7 +73,7 @@ Follow Elevation preserves each reconstructed child boundary. Lowest/Highest fir
 
 ## 5. Create a setback
 
-Connect subdivided **Lot Boundaries** to **SA Polygon Offset**. Use a negative **Offset** for a building setback. A large inset can split or remove a narrow lot, so preview this output before spawning.
+Connect **Sub-Lot Boundaries** to **SA Polygon Offset**. Use a negative **Offset** for a building setback. A large inset can split or remove a narrow lot, so preview this output before spawning.
 
 ## 6. Generate buildings
 

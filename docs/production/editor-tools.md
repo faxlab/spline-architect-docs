@@ -34,8 +34,6 @@ A **locked** custom piece is pinned against the generator sliding it along its s
 
 ## Lightmap Tool
 
-## Lightmap Tool
-
 Select Static Mesh assets, then open **Spline Architect → Lightmap Tool**.
 
 | Control | What it does |
