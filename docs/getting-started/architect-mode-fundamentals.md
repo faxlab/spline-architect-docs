@@ -4,15 +4,22 @@ description: Draw, select, edit, extend, branch, snap, and finish Spline Archite
 ---
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
+import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Drawing a footprint in Architect Mode; the wall regenerates as a point is dragged"
+      poster="img/clips/architect-draw.png"
+      src="img/clips/architect-draw.mp4"
+    />
+  }
+>
 
 Architect Mode is the main viewport workflow for Wall, Building, and Curve paths. It combines preset selection, path creation, point/segment editing, grid and surface placement, and a screen-space transform gizmo.
 
-<LoopingClip
-  caption="Draw a footprint, and the wall follows every edit."
-  poster="img/clips/architect-draw.png"
-  src="img/clips/architect-draw.mp4"
-/>
+</ClipAside>
 
 <AnnotatedShot
   alt="Architect Mode in SACity with its preset panel and viewport controls"

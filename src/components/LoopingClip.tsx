@@ -2,8 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 type LoopingClipProps = {
-  /** Short sentence describing what the clip shows. Also the accessible label. */
-  caption: string;
+  /** What the clip shows. Used as the accessible label; not rendered as text. */
+  alt: string;
   /** Poster still, shown before playback and whenever motion is reduced. */
   poster: string;
   /** Silent, looping mp4. */
@@ -11,14 +11,14 @@ type LoopingClipProps = {
 };
 
 /**
- * A short silent screen capture that loops in place.
+ * A short silent screen capture that loops in place, with no chrome of its own.
  *
- * Renders compact so it does not push the page around; click to expand to the
- * full content width, click again to shrink. Readers who have asked their system
- * to reduce motion get the poster still instead, with the caption still describing
- * the action.
+ * Click to expand to the full content width, click again to shrink. Readers who
+ * have asked their system to reduce motion get the poster still instead.
+ *
+ * Place it inside a <ClipAside> to sit beside a paragraph, or on its own.
  */
-export default function LoopingClip({caption, poster, src}: LoopingClipProps) {
+export default function LoopingClip({alt, poster, src}: LoopingClipProps) {
   const posterUrl = useBaseUrl(poster);
   const srcUrl = useBaseUrl(src);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -47,38 +47,35 @@ export default function LoopingClip({caption, poster, src}: LoopingClipProps) {
   };
 
   return (
-    <figure className={`looping-clip${expanded ? ' looping-clip--expanded' : ''}`}>
-      <div
-        aria-expanded={expanded}
-        aria-label={expanded ? 'Shrink clip' : 'Expand clip'}
-        className="looping-clip__frame"
-        onClick={toggle}
-        onKeyDown={onKey}
-        role="button"
-        tabIndex={0}
-        title={expanded ? 'Click to shrink' : 'Click to expand'}
-      >
-        {reduceMotion ? (
-          <img alt={caption} className="looping-clip__media" src={posterUrl} />
-        ) : (
-          <video
-            aria-label={caption}
-            autoPlay
-            className="looping-clip__media"
-            loop
-            muted
-            playsInline
-            poster={posterUrl}
-            preload="metadata"
-            ref={videoRef}
-            src={srcUrl}
-          />
-        )}
-        <span aria-hidden="true" className="looping-clip__hint">
-          {expanded ? 'shrink' : 'expand'}
-        </span>
-      </div>
-      <figcaption>{caption}</figcaption>
-    </figure>
+    <div
+      aria-expanded={expanded}
+      aria-label={expanded ? 'Shrink clip' : 'Expand clip'}
+      className={`looping-clip${expanded ? ' looping-clip--expanded' : ''}`}
+      onClick={toggle}
+      onKeyDown={onKey}
+      role="button"
+      tabIndex={0}
+      title={expanded ? 'Click to shrink' : 'Click to expand'}
+    >
+      {reduceMotion ? (
+        <img alt={alt} className="looping-clip__media" src={posterUrl} />
+      ) : (
+        <video
+          aria-label={alt}
+          autoPlay
+          className="looping-clip__media"
+          loop
+          muted
+          playsInline
+          poster={posterUrl}
+          preload="metadata"
+          ref={videoRef}
+          src={srcUrl}
+        />
+      )}
+      <span aria-hidden="true" className="looping-clip__hint">
+        {expanded ? 'shrink' : 'expand'}
+      </span>
+    </div>
   );
 }

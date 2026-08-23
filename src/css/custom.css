@@ -217,30 +217,22 @@
   .card-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
 }
 
+/* A silent looping capture with no chrome. Compact by default; click to expand. */
 .looping-clip {
-  margin: 1.6rem 0 2rem;
-}
-
-/* Compact by default: a fixed, modest height so a tall capture cannot take over the
-   page. The media letterboxes inside it. Expanded: full content width, natural ratio. */
-.looping-clip__frame {
   position: relative;
   display: block;
-  height: 320px;
+  margin: 0;
   overflow: hidden;
-  border: 1px solid var(--sa-border);
-  border-radius: 12px 12px 0 0;
+  border-radius: 12px;
   background: var(--sa-panel);
   cursor: zoom-in;
-  transition: height 180ms ease;
 }
 
-.looping-clip--expanded .looping-clip__frame {
-  height: auto;
+.looping-clip--expanded {
   cursor: zoom-out;
 }
 
-.looping-clip__frame:focus-visible {
+.looping-clip:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
   outline-offset: 2px;
 }
@@ -248,14 +240,9 @@
 .looping-clip__media {
   display: block;
   width: 100%;
-  height: 100%;
-  margin: 0;
-  object-fit: contain;
-  pointer-events: none;
-}
-
-.looping-clip--expanded .looping-clip__media {
   height: auto;
+  margin: 0;
+  pointer-events: none;
 }
 
 .looping-clip__hint {
@@ -272,19 +259,26 @@
   transition: opacity 150ms ease;
 }
 
-.looping-clip__frame:hover .looping-clip__hint,
-.looping-clip__frame:focus-visible .looping-clip__hint {
+.looping-clip:hover .looping-clip__hint,
+.looping-clip:focus-visible .looping-clip__hint {
   opacity: 1;
 }
 
-.looping-clip figcaption {
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--sa-border);
-  border-top: 0;
-  border-radius: 0 0 12px 12px;
-  background: var(--sa-panel);
-  color: var(--sa-muted);
-  font-size: 0.88rem;
+/* Text beside a clip. The clip column is the narrower one, so the paragraph reads
+   first; expanding the clip lets it take the whole row. */
+.clip-aside {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1.4rem;
+  align-items: start;
+  margin: 1.2rem 0 2rem;
+}
+
+.clip-aside__text > :first-child {margin-top: 0;}
+.clip-aside__text > :last-child {margin-bottom: 0;}
+
+.clip-aside__media:has(.looping-clip--expanded) {
+  grid-column: 1 / -1;
 }
 
 @media (max-width: 620px) {
@@ -293,6 +287,5 @@
   .hero-panel {padding: 1.15rem;}
   .annotated-shot__pin {width: 1.55rem; height: 1.55rem; font-size: 0.72rem;}
   .annotated-shot figcaption {grid-template-columns: 1fr;}
-  .looping-clip figcaption {font-size: 0.84rem;}
-  .looping-clip__frame {height: 220px;}
+  .clip-aside {grid-template-columns: 1fr;}
 }
