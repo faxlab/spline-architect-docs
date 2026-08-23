@@ -71,6 +71,31 @@ SA Get Road Crossings → SA Edge Placer → Static Mesh Spawner
 
 Each crossing is a short two-point spline across a road mouth and carries `SA_RoadWidth` and `SA_ConfigIndex`. Use those attributes to select stripe dimensions or materials by street type.
 
+## Alleys between sub-lots
+
+```text
+SA Subdivide Lots (Gap > 0) → Gap Outlines → SA Filter Spline Edges → SA Edge Placer
+```
+
+Give SA Subdivide Lots a **Gap** and each cut becomes an alley instead of a shared boundary. **Gap Outlines** emits the whole alley network as one closed shape whose points carry `SA_TouchesBoundary`: `true` where the alley opens onto the lot edge, `false` along its sides.
+
+Feed that into SA Filter Spline Edges, which splits it into two sets of splines:
+
+- **`Unflagged`** is the alley sides. Send it to SA Edge Placer with **Facing = Toward Edge** for hedges, fences, lanterns, or bins along the backs of the plots.
+- **`Flagged`** is the alley mouths. Send it to a second SA Edge Placer for bollards, a gate, or a change of ground material where the alley meets the street.
+
+Wire **Cut Lines** to SA Landscape Patch's `Paths` in the same graph to sink the alley surface into the terrain, using the alley width as the Path Width.
+
+## Curb ramps at every junction
+
+```text
+SA Get Intersections → SA Set Custom Piece (Apply To All In Range) → SA Spawn Wall (Custom Pieces)
+```
+
+Intersection points already carry their own footprint, so turn **Apply Radius** off and let the intersection's real shape be the reach. Turn **Apply To All In Range** on: a junction should give a ramp to *every* sidewalk running through it, not just the nearest one.
+
+Leave Apply To All In Range off for pieces that must be unique in place, such as a gate in a fence run - otherwise one point puts a gate in every fence it touches.
+
 ## Rooftop scatter
 
 ```text

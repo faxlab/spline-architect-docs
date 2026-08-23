@@ -33,8 +33,8 @@ import Link from '@docusaurus/Link';
 | [Wall](/core-actors/wall) | Modular pieces along one or more splines, including floors, roofs, posts, and stacked walls. |
 | [Building](/core-actors/building) | A reusable hierarchy of Wall presets placed on a footprint. |
 | [Curve](/core-actors/curve) | Repeated or deformed meshes along a path: roads, rails, pipes, trims, and similar profiles. |
-| [Streets Network](/core-actors/streets-network) | Connected roads, intersections, lot boundaries, surfaces, and PCG-ready city data. |
-| [Lot Zone](/core-actors/lot-zone) | A closed area that assigns an `SA_LotZone` tag to Streets lots. |
+| [Streets Network](/core-actors/streets-network) | **UE 5.8.** Connected roads, intersections, lot boundaries, surfaces, and PCG-ready city data. |
+| [Lot Zone](/core-actors/lot-zone) | **UE 5.8.** A closed area that assigns an `SA_LotZone` tag to Streets lots. |
 | [Custom Piece](/core-actors/custom-piece) | A door, arch, corner, gap, or child actor placed into a Wall. |
 | [Boolean](/core-actors/boolean) | Subtract or cull overlapping Wall, Building, Curve, and Streets output. |
 
@@ -54,4 +54,4 @@ Use **Runtime** generation when gameplay must create or change geometry procedur
 
 ## Version scope
 
-This guide shows UE 5.8. The Wall, Building, Curve, Streets Network, Lot Zone, Custom Piece, Boolean, authoring, and baking workflows also ship for UE 5.5–5.7. The **SplineArchitectPCG module and SA PCG nodes require UE 5.8**. See [compatibility](/reference/compatibility).
+This guide shows UE 5.8. The Wall, Building, Curve, Custom Piece, and Boolean actors, and the authoring and baking workflows around them, also ship for UE 5.5–5.7. **Streets Network, Lot Zone, Streets Mode, and the SA PCG nodes require UE 5.8** and are absent from the older packages. See [compatibility](/reference/compatibility).

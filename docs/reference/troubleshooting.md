@@ -11,7 +11,7 @@ Close Unreal, replace the plugin with the exact UE 5.5/5.6/5.7/5.8 package, and 
 
 ### The plugin or SA nodes are missing
 
-Enable Spline Architect and its dependencies, then restart. SA PCG nodes exist only in the UE 5.8 package; Streets itself exists in every supported v6 package.
+Enable Spline Architect and its dependencies, then restart. Streets Network, Lot Zone, Streets Mode, and the SA PCG nodes exist **only in the UE 5.8 package** — they are absent from the 5.5, 5.6, and 5.7 archives, so a missing Streets Network actor on an older engine is expected, not a broken install. See [compatibility](/reference/compatibility).
 
 ## Actor generation
 

@@ -5,6 +5,8 @@ description: Browse, save, edit, thumbnail, favorite, filter, and drag Spline Ar
 
 The Preset Library is the central browser for Wall, Building, Curve, Custom Piece, and Streets-compatible preset rows. Open it from the Spline Architect menu or the Architect Mode panel.
 
+<!-- TBD motion capture: preset search, filtering, drag-and-drop, and parameter overrides -->
+
 ![Preset Library browsing SACity presets](/img/screens/preset-library.png)
 
 ## Library controls

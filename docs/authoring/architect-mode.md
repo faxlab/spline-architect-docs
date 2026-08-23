@@ -53,6 +53,8 @@ The branch operation can create another spline within the actor or a connected a
 
 Select a Streets Network and press **Edit**. The overlay switches between Draw and Select and lets you choose the active Street Config.
 
+<!-- TBD motion capture: Streets Mode node, edge, fillet, banking, and Z-ramp editing -->
+
 ![Streets Mode editing a network in SACity](/img/screens/streets-mode.png)
 
 ### Draw

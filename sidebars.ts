@@ -25,7 +25,7 @@ const sidebars: SidebarsConfig = {
     ]},
     {type: 'category', label: 'UE 5.8 PCG', collapsed: false, items: [
       'pcg/overview', 'pcg/streets-city-tutorial', 'pcg/recipes',
-      'pcg/node-reference', 'pcg/metadata-reference',
+      'pcg/node-reference', 'pcg/landscape-patch', 'pcg/metadata-reference',
     ]},
     {type: 'category', label: 'Reference', items: [
       'reference/compatibility', 'reference/project-settings',

@@ -7,6 +7,8 @@ import AnnotatedShot from '@site/src/components/AnnotatedShot';
 
 Architect Mode is the main viewport workflow for Wall, Building, and Curve paths. It combines preset selection, path creation, point/segment editing, grid and surface placement, and a screen-space transform gizmo.
 
+<!-- TBD motion capture: Architect Mode path editing, branching, and snapping -->
+
 <AnnotatedShot
   alt="Architect Mode in SACity with its preset panel and viewport controls"
   src="img/screens/architect-mode.png"

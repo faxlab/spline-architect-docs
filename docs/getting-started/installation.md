@@ -23,7 +23,18 @@ Do not mix binaries built for different Unreal Engine versions. A 5.8 package be
 
 ## Dependencies
 
-Spline Architect enables the Geometry Scripting dependency. In UE 5.8 it also includes the PCG integration module and requires Epic's **PCG** plugin. If Unreal asks to enable or restart for either dependency, accept and restart.
+Spline Architect enables Epic's **Geometry Scripting** plugin on every engine version.
+
+The UE 5.8 package additionally ships the `SplineArchitectPCG` module and enables three more Epic plugins:
+
+| Plugin | Needed for |
+| --- | --- |
+| **Geometry Scripting** | All generated meshes, on every engine version. |
+| **PCG** | The SA PCG nodes. |
+| **PCG Geometry Script Interop** | Passing generated meshes between SA nodes and PCG. |
+| **Landscape Patch** | SA Landscape Patch. Without it that node cannot change the terrain. |
+
+The UE 5.5–5.7 packages declare only Geometry Scripting. If Unreal asks to enable a dependency or to restart, accept and restart.
 
 ## Confirm the installation
 
@@ -31,7 +42,7 @@ After restarting:
 
 - The main toolbar or **Tools** menu includes **Spline Architect** commands.
 - The Modes panel includes **Architect Mode**.
-- Placing Actors exposes the seven Spline Architect actor types.
+- Placing Actors exposes the Spline Architect actor types: five on UE 5.5–5.7, and seven on UE 5.8 where Streets Network and Lot Zone are also available.
 - In UE 5.8, a PCG graph's node palette finds nodes whose names begin with **SA**.
 
 If any item is missing, see [installation troubleshooting](/reference/troubleshooting#installation-and-startup).

@@ -3,6 +3,10 @@ title: Streets Network
 description: Complete user-facing reference for roads, intersections, lots, surfaces, Streets Mode, baking, and PCG data.
 ---
 
+:::info UE 5.8 only
+Streets Network, Streets Mode, and Lot Zone ship only in the UE 5.8 package. See [compatibility](/reference/compatibility).
+:::
+
 Streets Network owns an authored graph of nodes and edges, generates road ribbons and intersections, extracts blocks as lots, applies Lot Zones, and exposes the result to SA PCG nodes.
 
 ![Streets Network result in SACity](/img/screens/streets-network.png)
