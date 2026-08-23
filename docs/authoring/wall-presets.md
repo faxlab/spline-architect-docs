@@ -40,6 +40,8 @@ Changing Wall presets removes stale tags previously applied by Spline Architect 
 
 ### Fit Height or Uniform Scale
 
+<!-- CAPTURE S11 still: height-mode-compare.png -->
+
 **Fit Height** is the default and gives a guaranteed flat top: every mesh is stretched to exactly **Wall Height**, and sideways to fill its slot. A mixed-height kit is levelled, and pieces are distorted as much as it takes.
 
 **Uniform Scale** never distorts anything. Every mesh is multiplied by one shared factor on all three axes, derived from Wall Height divided by the average height of the meshes in the preset. Three consequences follow:

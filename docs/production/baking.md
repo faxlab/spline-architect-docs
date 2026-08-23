@@ -32,7 +32,7 @@ Baking is reversible. It replaces generated preview/runtime output with persiste
 
 When an authored change would make persistent output stale, Spline Architect automatically unbakes the affected output and regenerates an editable preview. It does not silently commit a new production bake. Review the result and run **Bake/Rebake Connected**.
 
-<!-- TBD motion capture: automatic unbake followed by explicit Rebake Connected -->
+<!-- CAPTURE T1-d clip: unbake-rebake.mp4 + unbake-rebake.png -->
 
 Changes include relevant actor properties, preset rows, spline topology, connected hierarchy, custom pieces, and Boolean inputs. If a baked actor appears unchanged after an edit, check whether you edited the shared row, an overridden value, or the actor you intended.
 

@@ -35,6 +35,8 @@ Streets Network owns an authored graph of nodes and edges, generates road ribbon
 
 ### Per-segment overrides
 
+<!-- CAPTURE S7 still: streets-segment-override.png -->
+
 A street config is shared by every segment using it. To give **one** segment its own width, material, or elevation ramp, select it in Streets Mode and tick **Override This Segment** in the **Selected Segments** panel, then edit **Segment Config** below it.
 
 The override starts as a copy of the config the segment was already using, so ticking the box changes nothing until you edit a field - it never snaps the road to some unrelated default.
@@ -81,6 +83,8 @@ The effective mode is resolved per stable lot before its surface is built. The v
 Flattening changes the top lot surface only. It does not cut the terrain by itself; existing lot-surface thickness settings still apply. To make the terrain follow a lot, use [SA Landscape Patch](/pcg/landscape-patch).
 
 ## Lot surface layers
+
+<!-- CAPTURE S6 still: lot-surface-layers.png -->
 
 **Lot Surfaces** is a list, not a single surface. Each entry is one layer, built in order, and each layer can contribute up to three separate meshes with their own materials:
 

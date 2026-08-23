@@ -11,6 +11,8 @@ It is the one SA node that **changes the world** rather than only producing data
 This node ships in the UE 5.8 package and needs Epic's **Landscape Patch** plugin, which the package enables for you. It works in the **editor only** - during PIE, at runtime, and in a cooked build it passes its inputs through and changes nothing.
 :::
 
+<!-- CAPTURE S16 still: landscape-patch-result.png -->
+
 ## Pins
 
 | Pin | Type | Feed it |

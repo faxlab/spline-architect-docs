@@ -7,7 +7,7 @@ import AnnotatedShot from '@site/src/components/AnnotatedShot';
 
 This tutorial starts with one Streets Network and ends with PCG-owned buildings and road props. Work in an unsaved staging level or duplicate the example map before experimenting.
 
-<!-- TBD motion capture: deterministic Streets-to-PCG regeneration and managed-output cleanup -->
+<!-- CAPTURE T1-c clip: streets-to-pcg.mp4 + streets-to-pcg.png -->
 
 <AnnotatedShot
   alt="The validated SACity Streets and PCG graph"

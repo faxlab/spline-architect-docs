@@ -43,6 +43,8 @@ The branch operation can create another spline within the actor or a connected a
 
 Three controls in the viewport bar drive the drawing grid.
 
+<!-- CAPTURE S12 still: architect-grid-strip.png -->
+
 | Control | What it does |
 | --- | --- |
 | **Grid** | Snap points to the grid while drawing and dragging. Shows its state, and is the same toggle as the **G** key. |
@@ -76,7 +78,7 @@ If an actor has several splines and nothing says which, **it is skipped rather t
 
 Select a Streets Network and press **Edit**. The overlay switches between Draw and Select and lets you choose the active Street Config.
 
-<!-- TBD motion capture: Streets Mode node, edge, fillet, banking, and Z-ramp editing -->
+<!-- CAPTURE T2-a clip: streets-draw-edit.mp4 + streets-draw-edit.png -->
 
 ![Streets Mode editing a network in SACity](/img/screens/streets-mode.png)
 
@@ -97,6 +99,8 @@ Select a Streets Network and press **Edit**. The overlay switches between Draw a
 - Drag a selected degree-two corner's fillet ring to switch it to Manual and adjust radius.
 - Deleting a **corner** - a node with exactly two streets - joins its two streets back into one instead of leaving a hole in the road. At a junction or a dead end the node is removed with its streets as before.
 - Select two or more nodes and press **Merge Nodes** in the **Selected Nodes** panel to fuse them into one intersection. The node you clicked **last** is the one that stays, keeping its position and its fillet; the others hand over their streets. One undo step.
+<!-- CAPTURE T2-b clip: streets-drag-absorb.mp4 + streets-drag-absorb.png -->
+
 - Dragging a node onto another one merges them too, governed by **Node Merge Radius**. The node being dragged survives and keeps following the cursor. A ring is drawn around each dragged node at the merge radius so you can judge its reach; nodes travelling together in the same drag never eat each other. Slide the radius up and drag one node through a cluster to clean up near-identical intersections, which subdivision can leave a lot of. Set it to `0` to turn merging-on-drag off. The whole drag is one undo step.
 - Right-click segments to **Set Config**, **Make Street Straight**, **Delete Segment(s)**, or **Regenerate**. Selected segment details also expose its name/config; node details expose fillet mode and radius.
 
@@ -109,8 +113,12 @@ The **Subdivide** button sits in the viewport bar and appears only in **Select**
 1. Regenerate the network first, so its lots carry stable keys. If a lot cannot be read you are told to regenerate and reselect.
 2. Switch to **Select** and click the lot or lots to subdivide.
 3. Press **Subdivide**. Ghost streets appear immediately, one colour per pass.
+
+<!-- CAPTURE T1-b clip: subdivide-preview.mp4 + subdivide-preview.png -->
 4. Adjust passes, guards, and seed. Every edit updates the preview at once. **Reroll** shuffles the layout.
 5. Press **Apply**, or Enter.
+
+<!-- CAPTURE S10 still: subdivide-panel.png -->
 
 #### Passes
 

@@ -5,6 +5,7 @@ description: Complete user-facing reference for the Spline Architect Wall actor.
 
 The Wall is the primary modular generator. It fits pieces along one or more splines, resolves corners, adds floors, roofs and posts, accepts Custom Pieces and Booleans, and can form connected stacks.
 
+<!-- CAPTURE S4 still: wall-details.png (re-shoot as a RESULT shot) -->
 ![Wall actor and Details panel in SACity](/img/screens/wall-details.png)
 
 ## Preset

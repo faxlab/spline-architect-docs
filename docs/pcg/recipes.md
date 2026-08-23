@@ -73,6 +73,8 @@ Each crossing is a short two-point spline across a road mouth and carries `SA_Ro
 
 ## Alleys between sub-lots
 
+<!-- CAPTURE S17 still: alley-result.png -->
+
 ```text
 SA Subdivide Lots (Gap > 0) → Gap Outlines → SA Filter Spline Edges → SA Edge Placer
 ```
