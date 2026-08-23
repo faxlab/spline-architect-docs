@@ -83,7 +83,7 @@ If an actor has several splines and nothing says which, **it is skipped rather t
   media={
     <LoopingClip
       alt="Drawing a road that splits a block, then dragging one node onto another so the two intersections merge"
-      poster="img/clips/streets-draw-edit.png"
+      poster="img/clips/streets-draw-edit.webp"
       src="img/clips/streets-draw-edit.mp4"
     />
   }
@@ -119,7 +119,7 @@ Draw cuts new roads through the network; Select moves what is there. In the clip
   media={
     <LoopingClip
       alt="Dragging a corner's fillet ring to widen the bend by hand, then switching the node's Fillet Mode back to Auto"
-      poster="img/clips/streets-fillet.png"
+      poster="img/clips/streets-fillet.webp"
       src="img/clips/streets-fillet.mp4"
     />
   }
@@ -135,7 +135,7 @@ Corners are tuned per node. Dragging the fillet ring switches the corner to **Ma
   media={
     <LoopingClip
       alt="Subdividing a waterfront lot: ghost streets appear, the grid tightens and switches to angled cuts, then Apply builds the real roads"
-      poster="img/clips/subdivide-preview.png"
+      poster="img/clips/subdivide-preview.webp"
       src="img/clips/subdivide-preview.mp4"
     />
   }

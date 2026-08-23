@@ -36,7 +36,7 @@ Baking is reversible. It replaces generated preview/runtime output with persiste
   media={
     <LoopingClip
       alt="A baked Building is edited, drops back to an editable preview, regenerates, and is rebaked"
-      poster="img/clips/unbake-rebake.png"
+      poster="img/clips/unbake-rebake.webp"
       src="img/clips/unbake-rebake.mp4"
     />
   }

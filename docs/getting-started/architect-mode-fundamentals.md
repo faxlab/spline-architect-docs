@@ -11,7 +11,7 @@ import LoopingClip from '@site/src/components/LoopingClip';
   media={
     <LoopingClip
       alt="Drawing a footprint in Architect Mode; the wall regenerates as a point is dragged"
-      poster="img/clips/architect-draw.png"
+      poster="img/clips/architect-draw.webp"
       src="img/clips/architect-draw.mp4"
     />
   }

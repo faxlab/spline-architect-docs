@@ -11,7 +11,7 @@ import LoopingClip from '@site/src/components/LoopingClip';
   media={
     <LoopingClip
       alt="Dragging a street node in Streets Mode; the lot re-extracts and the PCG buildings on it regenerate to the new parcel"
-      poster="img/clips/streets-to-pcg.png"
+      poster="img/clips/streets-to-pcg.webp"
       src="img/clips/streets-to-pcg.mp4"
     />
   }
