@@ -3,17 +3,15 @@ title: Spline Architect v6
 description: Build modular walls, buildings, streets, curves, and PCG-driven cities in Unreal Engine.
 slug: /getting-started/overview
 sidebar_position: 1
+hide_title: true
 ---
 
 import Link from '@docusaurus/Link';
 
-<div className="hero-panel">
-  <div>
-    <p className="small-note">USER GUIDE · UNREAL ENGINE 5.8 FIRST</p>
-    <h2>Draw splines. Get buildings you can still edit.</h2>
-    <p>Spline Architect fits your modular meshes along paths you draw in the viewport: walls, whole buildings, street networks, curves, and props. The result stays editable until you bake it, and baking is reversible.</p>
-  </div>
+<div className="hero-brand">
   <img src="/spline-architect-docs/img/logo.png" alt="Spline Architect" />
+  <p className="hero-brand__tagline">Streamline your level design with Spline Architect</p>
+  <p className="small-note">USER GUIDE · UNREAL ENGINE 5.8 FIRST</p>
 </div>
 
 ![A street in the SACity example, built with Spline Architect](/img/screens/overview-sacity.webp)

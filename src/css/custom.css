@@ -159,6 +159,33 @@
   vertical-align: top;
 }
 
+/* Overview masthead: the wordmark and tagline, nothing else. */
+.hero-brand {
+  margin: 0.4rem 0 2rem;
+  padding: clamp(1.4rem, 4vw, 2.7rem);
+  border: 1px solid var(--sa-border);
+  border-radius: 18px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--sa-panel) 88%, #1b3d8b) 0%, var(--sa-panel) 70%);
+  text-align: center;
+}
+
+.hero-brand img {
+  width: min(520px, 80%);
+  margin: 0 auto 1rem;
+  border: 0;
+  box-shadow: none;
+}
+
+.hero-brand__tagline {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.hero-brand .small-note {
+  margin: 0;
+}
+
 .hero-panel {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
