@@ -3,6 +3,9 @@ title: Architect Mode and Streets Mode
 description: Complete viewport-control and settings reference for Spline Architect path editing.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
 ## Architect Mode
 
 Architect Mode creates and edits Wall, Building, and Curve paths directly in the level viewport. **Browse Presets** is the primary picker: Recent and All tabs, search, DataTable filtering, type filters, and optional thumbnails are available without leaving the mode.
@@ -106,15 +109,25 @@ Select a Streets Network and press **Edit**. The overlay switches between Draw a
 
 ### Subdivide lots
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Subdividing a waterfront lot: ghost streets appear, the grid tightens and switches to angled cuts, then Apply builds the real roads"
+      poster="img/clips/subdivide-preview.png"
+      src="img/clips/subdivide-preview.mp4"
+    />
+  }
+>
+
 Subdivide cuts new streets through a lot you select, previewing them live before anything is written. It is how a drawn block becomes a neighbourhood, and it is the same mechanism for greenfield and infill: draw a closed road loop, select the lot it encloses, subdivide.
 
 The **Subdivide** button sits in the viewport bar and appears only in **Select** sub-mode with at least one lot selected. Press it and the button is replaced by **Apply**, **Reroll**, and **Cancel** while a **Subdivide Preview** panel appears in the mode panel.
 
+</ClipAside>
+
 1. Regenerate the network first, so its lots carry stable keys. If a lot cannot be read you are told to regenerate and reselect.
 2. Switch to **Select** and click the lot or lots to subdivide.
 3. Press **Subdivide**. Ghost streets appear immediately, one colour per pass.
-
-<!-- CAPTURE T1-b clip: subdivide-preview.mp4 + subdivide-preview.png -->
 4. Adjust passes, guards, and seed. Every edit updates the preview at once. **Reroll** shuffles the layout.
 5. Press **Apply**, or Enter.
 
