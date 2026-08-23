@@ -12,7 +12,7 @@ import Link from '@docusaurus/Link';
   <img className="hero-shot__bg" src="/spline-architect-docs/img/screens/overview-sacity.webp" alt="A street in the SACity example, built with Spline Architect" />
   <div className="hero-shot__top">
     <img className="hero-shot__logo" src="/spline-architect-docs/img/logo.png" alt="Spline Architect" />
-    <p className="hero-shot__tagline">Streamline your level design with Spline Architect</p>
+    <p className="hero-shot__tagline">Streamline your level design</p>
     <p className="hero-shot__note">Unreal Engine Plugin Documentation</p>
   </div>
   <span className="hero-shot__version">v6.0.0</span>

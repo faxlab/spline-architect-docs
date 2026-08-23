@@ -168,27 +168,29 @@
   border-radius: 18px;
 }
 
+.markdown .hero-shot img {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
 .hero-shot__bg {
   display: block;
   width: 100%;
-  margin: 0;
-  border: 0;
-  box-shadow: none;
 }
 
 .hero-shot__top {
   position: absolute;
   inset: 0 0 auto 0;
-  padding: clamp(1.2rem, 4vw, 2.4rem) 1rem 3.2rem;
+  padding: clamp(1.2rem, 4vw, 2.4rem) clamp(1.2rem, 3vw, 2rem) 3.2rem;
   background: linear-gradient(180deg, rgba(8, 18, 34, 0.62) 0%, rgba(8, 18, 34, 0.28) 62%, transparent 100%);
-  text-align: center;
+  text-align: right;
 }
 
-.hero-shot__logo {
+.markdown .hero-shot .hero-shot__logo {
   width: min(480px, 72%);
-  margin: 0 auto 0.9rem;
-  border: 0;
-  box-shadow: none;
+  margin: 0 0 0.9rem auto;
 }
 
 .hero-shot__tagline {
