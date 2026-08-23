@@ -4,6 +4,7 @@ description: Generate subdivided lots, buildings, road props, and zone variation
 ---
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
+import LoopingClip from '@site/src/components/LoopingClip';
 
 This tutorial starts with one Streets Network and ends with PCG-owned buildings and road props. Work in an unsaved staging level or duplicate the example map before experimenting.
 

@@ -32,18 +32,31 @@ helps, places every capture into the pages, and keeps the build green.
 
 **Goal:** prove the motion pipeline end-to-end before recording seven clips into it.
 
-1. Record **T1-a, drawing a building** (6–12 s, silent, H.264, < 3 MB) and export a poster
-   frame.
-2. Drop both into `static/img/clips/`. Claude wires a `LoopingClip` into
-   `architect-mode-fundamentals.md` and starts the dev server.
-3. Look at it in the browser: does it loop cleanly, is the caption right, does the size
-   feel right on the page? Toggle the OS reduce-motion setting and confirm the poster
-   shows instead.
-4. Fix anything about the component **now** — crop, border, caption size, file budget —
-   while there is one clip to re-export, not seven.
+Already done ahead of the session with a stand-in clip (2026-08-23): `LoopingClip` lays
+out at the full content width with the caption beneath, plays, loops, and the poster
+resolves. What remains is the part only a real recording can answer:
 
-**Checkpoint:** one clip live on a page, and the recording recipe (resolution, crop, length,
-export settings) is settled and written at the top of `CAPTURE-SHOTLIST.md`.
+1. Record **T1-a, drawing a building** with ShareX (Shift+PrintScreen starts, again stops).
+2. Run `.\scripts\claim.ps1 T1-a` — it names the file, moves it in, cuts a poster, and
+   warns if it is over 3 MB or longer than 15 s.
+3. Claude wires it into `architect-mode-fundamentals.md`; the dev server reloads.
+4. Look at it: crop, length, loop point, caption. In Chrome DevTools → Rendering →
+   *Emulate CSS media feature prefers-reduced-motion* → confirm the poster shows instead.
+5. Fix anything **now**, while there is one clip to re-export, not seven.
+
+**Checkpoint:** one real clip live on a page and the recipe settled.
+
+### The capture loop, for every item after this
+
+```
+record in ShareX  →  .\scripts\claim.ps1 <ID>  →  "claimed"  →  Claude wires it  →  page reloads  →  look  →  next
+```
+
+`.\scripts\capture-intake.ps1 -Watch` in a second terminal shows the running tally.
+
+ShareX defaults were adjusted for this (backup in `Documents\ShareX\Backup\`): PNG is
+never auto-converted to JPEG, video is CRF 23 / preset slow instead of a fixed 25 Mbps,
+and no audio track is encoded.
 
 ---
 
