@@ -16,7 +16,7 @@ import Link from '@docusaurus/Link';
   <img src="/spline-architect-docs/img/logo.png" alt="Spline Architect" />
 </div>
 
-![Spline Architect actors in the SACity example](/img/screens/overview-sacity.png)
+![A street in the SACity example, built with Spline Architect](/img/screens/overview-sacity.webp)
 
 ## Choose a path
 
