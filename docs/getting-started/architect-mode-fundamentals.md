@@ -17,7 +17,7 @@ import LoopingClip from '@site/src/components/LoopingClip';
   }
 >
 
-Architect Mode is the main viewport workflow for Wall, Building, and Curve paths. It combines preset selection, path creation, point/segment editing, grid and surface placement, and a screen-space transform gizmo.
+Architect Mode is where you draw. Pick a preset, click out a path in the viewport, and the actor generates along it as you go; the same mode edits existing paths point by point.
 
 </ClipAside>
 
@@ -36,10 +36,10 @@ Architect Mode is the main viewport workflow for Wall, Building, and Curve paths
 
 ## Draw a path
 
-1. Enter **Architect Mode** from the Modes panel or Spline Architect menu.
-2. Choose **Browse Presets**, then select a Wall, Building, or Curve preset.
+1. Enter **Architect Mode** from the Modes panel or the Spline Architect menu.
+2. **Browse Presets** and pick a Wall, Building, or Curve preset.
 3. Click in the viewport to add points.
-4. Click the first point to close the loop, click the last point to finish an open path, or press **Enter** to finish.
+4. Click the first point to close the loop - the right move for a building footprint - or click the last point or press **Enter** to finish an open run like a fence.
 
 While drawing:
 
@@ -57,7 +57,7 @@ While drawing:
 
 ## Edit an existing path
 
-Select a Spline Architect actor and enter Architect Mode. Click points or segments, Shift-drag a marquee, or press **Ctrl+A** to select all editable elements. Drag a point directly or use the axis, plane, and center handles.
+Select a Spline Architect actor and enter Architect Mode. Click points or segments, Shift-drag a marquee, or press **Ctrl+A** for everything. Points drag directly; the gizmo adds axis and plane handles when you want a constrained move.
 
 | Input | Result |
 | --- | --- |
@@ -71,4 +71,4 @@ Select a Spline Architect actor and enter Architect Mode. Click points or segmen
 | Right-click | Open context actions, including branching. |
 | Alt+click an actor | Pick a different Spline Architect actor under the cursor. |
 
-Use **Planar Locked** placement for architectural footprints and **Surface Projected** when points should follow terrain or another surface. Full settings and advanced path operations are in [Architect Mode reference](/authoring/architect-mode).
+**Placement Profile** decides where clicks land: **Planar Locked** keeps a footprint flat, which is what architecture usually wants; **Surface Projected** follows terrain, which is what paths and fences usually want. Everything else - branching, snapping, shapes, the grid - is in the [Architect Mode reference](/authoring/architect-mode).

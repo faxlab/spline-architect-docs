@@ -3,7 +3,7 @@ title: Prepare modular meshes
 description: Prepare pivots, axes, bounds, materials, UVs, and dimensions for predictable Spline Architect generation.
 ---
 
-Good modular assets make every preset easier to author. Spline Architect can compensate for imperfect meshes, but a consistent asset kit produces cleaner corners, fewer overrides, and more predictable baking.
+You can learn the whole plugin on the example content - come back here when you bring your own kit. Spline Architect compensates for imperfect meshes, but a consistent kit means cleaner corners, fewer overrides, and less time spent wondering why one piece sits wrong.
 
 ## Coordinate contract
 

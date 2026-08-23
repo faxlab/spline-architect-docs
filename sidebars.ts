@@ -5,10 +5,10 @@ const sidebars: SidebarsConfig = {
     {type: 'doc', id: 'getting-started/overview', label: 'Overview'},
     {type: 'category', label: 'Getting Started', collapsed: false, items: [
       'getting-started/installation',
-      'getting-started/preparing-meshes',
       'getting-started/architect-mode-fundamentals',
       'getting-started/first-building',
       'getting-started/baked-first-workflow',
+      'getting-started/preparing-meshes',
     ]},
     {type: 'category', label: 'Core Actors', items: [
       'core-actors/wall', 'core-actors/building', 'core-actors/curve',

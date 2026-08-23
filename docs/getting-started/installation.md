@@ -3,7 +3,7 @@ title: Install and enable Spline Architect
 description: Install Spline Architect from Fab or a packaged plugin and enable its Unreal Engine dependencies.
 ---
 
-Spline Architect is an Unreal Engine project plugin. Install the build that matches the exact engine version used by your project.
+Install the package that matches your project's engine version exactly - a 5.8 build in a 5.8 project. Mixed versions are the single most common install problem.
 
 ## Install from Fab
 
@@ -19,7 +19,7 @@ Spline Architect is an Unreal Engine project plugin. Install the build that matc
 3. Copy the packaged `SplineArchitect` folder into `Plugins`.
 4. Reopen the project and enable **Spline Architect** under **Edit → Plugins**.
 
-Do not mix binaries built for different Unreal Engine versions. A 5.8 package belongs in a 5.8 project; use the separate 5.5, 5.6, or 5.7 package for those engines.
+The same rule as above: never copy binaries between engine versions. Each engine gets its own package.
 
 ## Dependencies
 
@@ -49,4 +49,4 @@ If any item is missing, see [installation troubleshooting](/reference/troublesho
 
 ## Open this guide from Unreal
 
-Choose **Spline Architect → Documentation**. The plugin descriptor points to this site's stable root URL, so documentation links continue to work as pages evolve.
+**Spline Architect → Documentation** opens this site.

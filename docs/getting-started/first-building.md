@@ -3,7 +3,7 @@ title: Build a reusable Building
 description: Create a connected Wall stack, save it as a Building Preset, and place reusable Building actors.
 ---
 
-This workflow builds a reusable Building from the same Wall layers you can inspect and art-direct individually.
+A Building is a Wall stack you taught the plugin to rebuild anywhere. This page builds one the long way once - draw the stack, save it, place it - so you know exactly what the preset contains.
 
 ![A connected Wall stack in the SACity example](/img/screens/first-building-stack.png)
 
@@ -11,20 +11,15 @@ This workflow builds a reusable Building from the same Wall layers you can inspe
 
 ## 1. Draw the root Wall
 
-Enter Architect Mode, choose a ground-floor Wall preset, and draw a closed footprint. The root Wall owns the spline used by the connected stack.
+Enter Architect Mode, choose a ground-floor Wall preset, and draw a closed footprint. The root Wall owns the spline; every layer you stack on it follows that same footprint.
 
-For a predictable first result:
-
-- use a deterministic **Seed** such as `42`;
-- leave **Multi Spline Mode** at Independent;
-- keep **Generation Mode** at Baked;
-- correct the footprint before adding upper layers.
+For a first run that behaves the same every time: set **Seed** to something fixed like `42`, and get the footprint right *before* stacking - a footprint edit regenerates every layer above it.
 
 ## 2. Add connected Wall layers
 
-Select the root Wall and choose **Spline Architect → Add Wall to Selected**. Choose an upper-floor or roof-line preset. The new Wall is connected to its parent and follows the same effective footprint with its own cumulative **Offset Stacked By** and preset controls.
+Select the root Wall and choose **Spline Architect → Add Wall to Selected**, then pick an upper-floor or roof-line preset. The new Wall connects to its parent, follows the same footprint, and stacks by its own height.
 
-Repeat for additional layers. Use **Select Connected** or **Select Roots** to inspect the hierarchy. Every layer should have a unique role: ground floor, repeated upper floor, parapet, trim, or roof edge.
+Repeat per layer, giving each one job: ground floor, repeated upper floor, parapet, trim, roof edge. **Select Connected** and **Select Roots** navigate the stack when it grows.
 
 To slide a new storey in **underneath** an existing stack, select the bottom wall and choose **Insert Wall**. The new wall takes over the footprint and everything above it moves up, custom pieces included.
 
@@ -49,8 +44,8 @@ You can also place a Building actor, assign **Data Table Building Preset**, and 
 
 ## 5. Bake the connected result
 
-Use **Bake Connected** from the Spline Architect menu. This bakes the root and every connected layer with a consistent bake method and mobility. If you change a spline, preset, seed, or relevant control later, the affected output automatically unbakes. Review the regenerated building and run **Rebake Connected**.
+Run **Bake Connected** from the Spline Architect menu - it bakes the root and every connected layer together. If you edit anything later, the affected output unbakes itself and shows the new preview; look it over and **Rebake Connected**. That loop is the [baked-first workflow](/getting-started/baked-first-workflow).
 
 :::note Breaking a Building
-The Building actor's **Break** button decomposes it into editable connected Wall output and removes the Building. Use it when a reusable preset needs one-off art direction. It is intentionally a destructive conversion of that actor, so duplicate first if the reusable version must remain.
+**Break** turns a placed Building back into editable connected Walls and removes the Building actor - the move when one placement needs one-off art direction. It is deliberately destructive for that actor, so duplicate it first if you still need the reusable version.
 :::
