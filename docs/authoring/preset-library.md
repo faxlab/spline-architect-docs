@@ -4,6 +4,7 @@ description: Browse, save, edit, thumbnail, favorite, filter, and drag Spline Ar
 ---
 
 import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
 
 <ClipAside
   image="img/screens/preset-library.png"
@@ -17,7 +18,6 @@ It docks like any editor tab. The top half is the browser - category tabs, a Dat
 
 </ClipAside>
 
-<!-- CAPTURE T2-c clip: preset-drag-multi.mp4 + preset-drag-multi.png -->
 
 ## Library controls
 
@@ -46,9 +46,21 @@ Selecting a row exposes editable metadata: **Display Name**, **Description**, **
 
 ## Drag and drop
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Several Building presets selected in the library and dragged into the viewport together, landing as a spaced cluster at the drop point"
+      poster="img/clips/preset-drag-multi.webp"
+      src="img/clips/preset-drag-multi.mp4"
+    />
+  }
+>
+
 - Drag a preset into the level viewport to create its actor. Dragging with several presets selected places **all** of them in one step and one undo: free-standing actors are arranged on a grid centred on the drop point and spaced by their measured bounds, so nothing overlaps. Custom pieces that find an owner are positioned by that owner's spline instead.
 - Drag a preset onto the Architect Mode panel to make it the active drawing preset.
 - Use recent-preset chips for the last Wall, Building, and Curve rows without reopening the full library.
+
+</ClipAside>
 
 :::tip Presets missing after reopening the library?
 The active category tab and the **Favorites only** toggle are both remembered between sessions. A library that looks empty is usually filtered to a type you were last working in, or to favorites - check those two before the DataTable filter.

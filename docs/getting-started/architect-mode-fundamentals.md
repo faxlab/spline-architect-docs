@@ -22,14 +22,15 @@ Architect Mode is the main viewport workflow for Wall, Building, and Curve paths
 </ClipAside>
 
 <AnnotatedShot
-  alt="Architect Mode in SACity with its preset panel and viewport controls"
-  src="img/screens/architect-mode.png"
+  alt="Architect Mode drawing a Building footprint in SACity, with the mode settings, the Preset Library, and the viewport bar"
+  src="img/screens/architect-mode.webp"
   callouts={[
-    {label: 'Mode and path-creation settings', x: 5, y: 31},
-    {label: 'Preset Library', x: 14, y: 17},
-    {label: 'Live viewport instructions', x: 44, y: 20},
-    {label: 'Finish, close, cancel, and grid actions', x: 54, y: 69},
-    {label: 'Selected actor controls and authored data', x: 82, y: 48},
+    {label: 'Mode, grid, snapping, and gizmo settings', x: 8, y: 35},
+    {label: 'Preset Library with the active Building preset', x: 24, y: 20},
+    {label: 'Live viewport instructions', x: 43, y: 9},
+    {label: "The selected preset's authored data", x: 24, y: 70},
+    {label: 'Finish, close, and cancel', x: 72, y: 96},
+    {label: 'Grid toggle, spacing, and grid space', x: 85, y: 96},
   ]}
 />
 

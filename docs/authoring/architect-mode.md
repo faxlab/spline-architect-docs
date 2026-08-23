@@ -46,7 +46,7 @@ The branch operation can create another spline within the actor or a connected a
 
 Three controls in the viewport bar drive the drawing grid.
 
-<!-- CAPTURE S12 still: architect-grid-strip.png -->
+![The viewport bar while drawing: Create Path, Clear Selected, Finish, Close/Open, Cancel, the Grid toggle, Spacing, and Grid Space](/img/screens/architect-grid-strip.webp)
 
 | Control | What it does |
 | --- | --- |
@@ -153,7 +153,7 @@ The **Subdivide** button sits in the viewport bar and appears only in **Select**
 4. Adjust passes, guards, and seed. Every edit updates the preview at once. **Reroll** shuffles the layout.
 5. Press **Apply**, or Enter.
 
-<!-- CAPTURE S10 still: subdivide-panel.png -->
+![A two-pass Subdivide preview: an 8-lane arterial pass and a finer default pass, their ghost streets in two colours over the selected lot, with Guards, Merge, Seed, and Apply beneath](/img/screens/subdivide-panel.webp)
 
 #### Passes
 

@@ -102,6 +102,7 @@ const config: Config = {
         {title: 'Spline Architect', items: [
           {label: 'Fab listing', href: 'https://www.fab.com/listings/356b1d13-5080-4418-893d-5a39546bc276'},
           {label: 'FaxLab3D on Fab', href: 'https://www.fab.com/sellers/FaxLab3D'},
+          {label: 'Credits', to: '/reference/credits'},
         ]},
       ],
       copyright: `Copyright © ${new Date().getFullYear()} FaxLab3D. Built with Docusaurus.`,

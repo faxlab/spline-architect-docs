@@ -35,7 +35,7 @@ Streets Network owns an authored graph of nodes and edges, generates road ribbon
 
 ### Per-segment overrides
 
-<!-- CAPTURE S7 still: streets-segment-override.png -->
+![One selected segment with Override This Segment ticked: its Segment Config gives it a greater width and a bridge-road material, and in the viewport the dark, wider segment runs up to the ordinary roads on either side](/img/screens/streets-segment-override.webp)
 
 A street config is shared by every segment using it. To give **one** segment its own width, material, or elevation ramp, select it in Streets Mode and tick **Override This Segment** in the **Selected Segments** panel, then edit **Segment Config** below it.
 

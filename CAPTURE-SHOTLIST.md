@@ -8,6 +8,24 @@ The user drives the editor; Claude places each result into the pages.
 
 ---
 
+## Status 2026-08-24
+
+**Captured and placed:** S1 hero, S2 architect-mode (annotated, 6 pins), S6 lot layers
+(wireframe), S7 segment override, S8 boolean, S9 preset library, S10 subdivide panel,
+S11 height-mode compare, S12 grid strip (cropped from S2's source, no extra capture),
+plus 7 clips: architect-draw, subdivide-preview, streets-to-pcg, unbake-rebake,
+streets-draw-edit (covers draw/split AND node merge), streets-fillet (unplanned, earned
+its place), preset-drag-multi.
+
+**Skipped by choice:** S16 landscape-patch result (no sloped scene ready).
+
+**Still open:** S3 first-building stack (July still in place, usable), S4 wall result
+shot (July details shot in place), S5 streets-network hero (July still in place),
+S13/S14 baking + diagnostics (July stills in place, acceptable), S15 PCG graph re-shot
+(July still shows the old pin name), S17 alley result.
+
+---
+
 ## The principle behind the list
 
 A still earns its place when the reader must **recognise** something: a panel they have to

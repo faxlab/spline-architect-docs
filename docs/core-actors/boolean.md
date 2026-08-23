@@ -23,7 +23,7 @@ Boolean combines child Static Mesh and Spline shapes into one cutter. It can sub
 | **Affect Floors / Affect Roofs / Affect Walls** | Selects which generated systems participate. Walls includes wall pieces, Custom Pieces, and posts. |
 | **Wall Mode** | **Boolean Subtract** cuts intersecting mesh volume; **Cull** removes overlapping generated components entirely. |
 
-<!-- CAPTURE S8 still: boolean-cut.png -->
+![A Boolean's extruded spline cutter, shown in red, carving a rounded bite out of a tower's facade](/img/screens/boolean-cut.webp)
 
 ## Build a cutter
 
