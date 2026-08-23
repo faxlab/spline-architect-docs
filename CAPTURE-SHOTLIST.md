@@ -193,7 +193,7 @@ and the behaviours are covered by S3, S4, and the Streets shots.
 | # | File | Page | Set up and show |
 | --- | --- | --- | --- |
 | S15 | `pcg-streets-graph.png` (1920x1040) | `streets-city-tutorial.md` — **AnnotatedShot** | The tutorial's graph, re-shot so the **Sub-Lot Boundaries** pin name is visible. Callouts as today. |
-| S16 | `landscape-patch-result.png` | `pcg/landscape-patch.md` | **Result, not graph.** A park lot flattened on sloping terrain with a path ribbon cut through it and a level pad under a bench. Shot from low, so the edge fade reads. The settings table does the rest. |
+| S16 | `landscape-patch-result.png` | `pcg/landscape-patch.md` | **SKIPPED 2026-08-23** - no sloped-landscape scene ready in SACity. The page stands on its tables; add this when a terrain map exists (the #294 example project work is a natural moment). |
 | S17 | `alley-result.png` | `pcg/recipes.md`, **Alleys between sub-lots** | Top-down-ish view of a subdivided block with Gap > 0: alley corridors between sub-lots, hedges along the sides, bollards at the mouths. |
 | S18 | `pcg-facade-graph.png` | `recipes.md`, **Facade attachments** | Keep the existing shot. |
 

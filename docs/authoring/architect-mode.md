@@ -79,11 +79,21 @@ If an actor has several splines and nothing says which, **it is skipped rather t
 
 ## Streets Mode
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Drawing a road that splits a block, then dragging one node onto another so the two intersections merge"
+      poster="img/clips/streets-draw-edit.png"
+      src="img/clips/streets-draw-edit.mp4"
+    />
+  }
+>
+
 Select a Streets Network and press **Edit**. The overlay switches between Draw and Select and lets you choose the active Street Config.
 
-<!-- CAPTURE T2-a clip: streets-draw-edit.mp4 + streets-draw-edit.png -->
+Draw cuts new roads through the network; Select moves what is there. In the clip, a new road splits a block in two, and dragging one node onto another fuses them into a single intersection.
 
-![Streets Mode editing a network in SACity](/img/screens/streets-mode.png)
+</ClipAside>
 
 ### Draw
 
@@ -102,10 +112,22 @@ Select a Streets Network and press **Edit**. The overlay switches between Draw a
 - Drag a selected degree-two corner's fillet ring to switch it to Manual and adjust radius.
 - Deleting a **corner** - a node with exactly two streets - joins its two streets back into one instead of leaving a hole in the road. At a junction or a dead end the node is removed with its streets as before.
 - Select two or more nodes and press **Merge Nodes** in the **Selected Nodes** panel to fuse them into one intersection. The node you clicked **last** is the one that stays, keeping its position and its fillet; the others hand over their streets. One undo step.
-<!-- CAPTURE T2-b clip: streets-drag-absorb.mp4 + streets-drag-absorb.png -->
-
 - Dragging a node onto another one merges them too, governed by **Node Merge Radius**. The node being dragged survives and keeps following the cursor. A ring is drawn around each dragged node at the merge radius so you can judge its reach; nodes travelling together in the same drag never eat each other. Slide the radius up and drag one node through a cluster to clean up near-identical intersections, which subdivision can leave a lot of. Set it to `0` to turn merging-on-drag off. The whole drag is one undo step.
 - Right-click segments to **Set Config**, **Make Street Straight**, **Delete Segment(s)**, or **Regenerate**. Selected segment details also expose its name/config; node details expose fillet mode and radius.
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Dragging a corner's fillet ring to widen the bend by hand, then switching the node's Fillet Mode back to Auto"
+      poster="img/clips/streets-fillet.png"
+      src="img/clips/streets-fillet.mp4"
+    />
+  }
+>
+
+Corners are tuned per node. Dragging the fillet ring switches the corner to **Manual** and sets its radius directly in the viewport; the node's details swap it back to **Auto** when the network should decide again.
+
+</ClipAside>
 
 ### Subdivide lots
 
