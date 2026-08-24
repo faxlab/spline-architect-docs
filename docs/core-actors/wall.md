@@ -3,7 +3,24 @@ title: Wall
 description: Complete user-facing reference for the Spline Architect Wall actor.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="What a Wall can be: a single textured slab, a shuttered shopfront with a sign, a window piece, curbed planters and platforms with floor surfaces, and railings enclosing a yard"
+      poster="img/clips/wall-examples.webp"
+      src="img/clips/wall-examples.mp4"
+    />
+  }
+>
+
 Wall is the actor everything else builds on. Give it a spline and a preset, and it fits your modular pieces along the path, resolves the corners, and adds floors, roofs, and posts. Stack Walls to make storeys; the stack is what [becomes a Building](/getting-started/first-building).
+
+Do not read "wall" too literally. The same actor makes shopfronts, fences, and railings; with a floor surface and a curb mesh it makes planters, platforms, and plazas. Anything modular along a path is a Wall.
+
+</ClipAside>
 
 ![An L-shaped wall run: repeated facade pieces, a resolved corner, a shopfront custom piece with an awning, and the preset controls that produced them](/img/screens/wall-anatomy.webp)
 
