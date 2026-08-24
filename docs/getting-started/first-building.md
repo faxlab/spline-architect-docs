@@ -14,7 +14,7 @@ The plugin ships the tools, not the bricks. A fresh install has an empty Preset 
 
 Two ways to have something to draw with in the next step:
 
-- **Open the [example project](https://github.com/faxlab/SplineArchitectExampleProject)** (recommended for a first session). It contains finished Wall, Building, and Curve presets with their meshes, so every page of this guide works immediately, and the presets double as reference for authoring your own.
+- **Open the example project** (recommended for a first session). It downloads alongside the plugin from Fab, as a separate file in the same listing, and contains finished Wall, Building, Curve, and Streets presets with the meshes behind them - so every page of this guide works immediately, and the presets double as reference for authoring your own.
 - **Make a preset from your own meshes.** Place a Spline Architect Wall, and in its **Wall Preset → Wall Meshes** add any modular wall mesh you have - a piece from a kitbash pack, or any static mesh at all while testing. Draw, and it repeats along the path. [Prepare modular meshes](/getting-started/preparing-meshes) covers what makes a mesh fit well; **Save Preset** puts it in the library for reuse.
 
 ## 1. Draw the root Wall

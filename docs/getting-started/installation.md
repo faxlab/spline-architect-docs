@@ -49,7 +49,11 @@ If any item is missing, see [installation troubleshooting](/reference/troublesho
 
 ## Get content to build with
 
-The plugin installs empty of meshes and presets - it generates from *your* modular content. For a first session, open the [example project](https://github.com/faxlab/SplineArchitectExampleProject): it ships working presets and meshes for everything in this guide. To start from your own kit instead, begin at [prepare modular meshes](/getting-started/preparing-meshes).
+The plugin installs empty of meshes and presets - it generates from *your* modular content.
+
+For a first session, download the **example project** from the same Fab listing. It is a separate file beside the plugin downloads, and contains a built city with working presets and meshes for everything in this guide. Open it as an ordinary Unreal project, with the matching plugin build installed.
+
+To start from your own kit instead, begin at [prepare modular meshes](/getting-started/preparing-meshes).
 
 ## Open this guide from Unreal
 
