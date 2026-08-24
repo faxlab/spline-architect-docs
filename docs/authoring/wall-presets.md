@@ -3,6 +3,9 @@ title: Wall Preset reference
 description: Complete reference for modular wall fitting, corners, fillers, placement, randomization, materials, and instance data.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
 A Wall Preset is the recipe a Wall follows: which meshes, how they fit, what happens at corners, what gets randomized. The same recipe works as a shared DataTable row or inline on one actor, and the same controls appear inside Wall actors, Building wall layers, and SA Spawn Wall - so everything on this page applies in all three places.
 
 ## Preset metadata
@@ -67,6 +70,20 @@ Stacked floors, roofs, and floor alignment all follow the same shared factor, so
 Best Fit retains the raw source-length fallback when no piece fits. Filler packing can automatically place a valid filler before a main piece; there is no separate “prefer wall pieces before fillers” switch.
 
 ## Corner and placement
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="One wall corner cycling through its treatments: a dedicated corner mesh, a straight miter, a chamfer, and smooth bends"
+      poster="img/clips/wall-corners.webp"
+      src="img/clips/wall-corners.mp4"
+    />
+  }
+>
+
+How a turn is built is one choice: give it a dedicated **Corner Mesh**, or let **Corner Type** shape the wall pieces themselves - mitered square, cut on the diagonal, or carried around a curve.
+
+</ClipAside>
 
 | Control | What it does |
 | --- | --- |
