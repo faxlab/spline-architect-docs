@@ -78,30 +78,51 @@ Follow Elevation preserves each reconstructed child boundary. Lowest/Highest fir
 
 Connect **Sub-Lot Boundaries** to **SA Polygon Offset**. Use a negative **Offset** for a building setback. A large inset can split or remove a narrow lot, so preview this output before spawning.
 
-## 6. Generate buildings
+## 6. Fill the lots with buildings
 
-Add useful **Preset Tags** to the source rows before building the selection graph:
+There are two ways to do this, and picking the wrong one is the most common way to make a city that will not run.
 
-- Building Presets: values such as `Residential`, `Commercial`, `Small`, or `Tower`;
-- Wall Presets: precise generated-layer values such as `BaseFloor`, `Facade`, or `Trim`.
+| | **Instance finished buildings** | **Generate buildings in the graph** |
+| --- | --- | --- |
+| What it places | One static mesh per building, from a pool you built earlier | Every wall piece, floor, and roof, generated per footprint |
+| Cost per building | One instance | Dozens of pieces, generated on every regeneration |
+| Use it for | The city - blocks, districts, everything in the background | Hero buildings, the street the player walks down, anything the camera gets close to |
+| Footprint | Whatever the mesh is | Fits the lot exactly, whatever its shape |
 
-Connect offset Polygons to **SA Spawn Building → Footprints**, choose **Preset Source = Random From DataTable**, assign the Building Preset DataTable, and keep **Output = Data**.
+**Build the city out of instanced meshes, and spend SA Spawn Building only where it shows.** A district of procedurally generated buildings looks the same from a distance as a district of instanced ones and costs enormously more, in generation time and in draw calls.
 
-For a small residential pool:
+### Instance finished buildings
 
-- add `Residential` and `Small` to **Filter Terms**;
-- use **Term Match Mode = All**;
-- **Include Row Names** is enabled by default; disable it when terms should match only authored Preset Tags.
+Author a handful of buildings first, the normal way: draw them, stack the walls, get them looking right. Then [convert each one to a static mesh](/production/conversion-export) - one mesh per building, with a proxy LOD if they will be seen from far away. That library is what the city is made of.
 
-Empty Filter Terms include the complete table. **Any** accepts rows matching at least one term. Selection is equal-probability, with replacement, and deterministic for fixed graph/footprint seeds. Only Building Preset tags classify Building rows; tags on referenced Wall Presets do not expand the candidate pool.
+To line them along the streets:
 
-- Connect **Generated** to a stock **Static Mesh Spawner**.
-- In the spawner choose **Mesh Selector Type = By Attribute** and **Attribute Name = `SA_Mesh`**.
-- Connect **Dynamic Meshes** to **Spawn Dynamic Mesh** for floor/roof or other non-static pieces.
-- To isolate individual `BaseFloor` pieces, use **Array Contains** on `SA_PresetTags`, then **Attribute Filter**.
-- To keep a complete Building output tagged `Small`, use **Filter Data By Tag**.
+```text
+SA Get Road Edges → SA Edge Placer → Static Mesh Spawner (By Attribute: SA_Mesh)
+```
 
-If districts need different pools, branch by `SA_LotZone` and configure a different query on each SA Spawn Building node. This keeps district intent explicit without adding one node per Building row.
+Put your building meshes in the **Mesh Pool** with weights, set **Fill = Packed** so each one advances by its own true width, and **Facing = Away From Edge** so they front the street. Packed fitting means a pool of differently sized buildings lines up without gaps or overlaps - the same behavior that packs [mixed-size barriers](/pcg/recipes#mixed-size-barriers), applied to whole buildings.
+
+Vary it by district: branch on `SA_LotZone` before the Edge Placer and give each branch its own pool.
+
+### Generate buildings in the graph
+
+Where a building needs to fit its lot exactly, or the camera gets close enough that repetition shows, generate it.
+
+Tag your source rows first - Building Presets get values like `Residential`, `Small`, or `Tower`; Wall Presets get layer-precise ones like `BaseFloor`, `Facade`, or `Trim`.
+
+Connect offset Polygons to **SA Spawn Building → Footprints**, choose **Preset Source = Random From DataTable**, assign the Building Preset DataTable, and keep **Output = Data**. For a small residential pool, add `Residential` and `Small` to **Filter Terms** with **Term Match Mode = All**. Empty Filter Terms include the whole table; **Any** widens it to rows matching at least one term. **Include Row Names** is on by default - turn it off when terms should match only authored Preset Tags.
+
+Selection is equal-probability with replacement, and repeats exactly for fixed graph and footprint seeds. Only Building Preset tags classify a Building row; tags on the Wall Presets it references do not widen the pool.
+
+Then:
+
+- **Generated** → stock **Static Mesh Spawner**, with **Mesh Selector Type = By Attribute** and **Attribute Name = `SA_Mesh`**.
+- **Dynamic Meshes** → **SA Spawn Dynamic Mesh** for floors, roofs, and other non-static pieces.
+- To reach individual pieces - every `BaseFloor`, say - use **Array Contains** on `SA_PresetTags`, then **Attribute Filter**.
+- To keep a whole generated building tagged `Small`, use **Filter Data By Tag**.
+
+Branch on `SA_LotZone` and give each district its own query on its own SA Spawn Building node.
 
 ## 7. Place road-edge props
 

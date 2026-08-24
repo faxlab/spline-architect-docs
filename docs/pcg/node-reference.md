@@ -113,6 +113,7 @@ All SA nodes require the UE 5.8 Spline Architect package. Actor-reading nodes ev
 ### SA Spawn Building
 
 - **Input:** `Footprints` (Polyline). **Outputs:** `Generated` (Point), `Dynamic Meshes` (Dynamic Mesh).
+- **Cost:** this generates every piece of every building it is given, every time the graph regenerates. Use it where the detail shows. For a whole city, instance finished building meshes instead - see [filling lots with buildings](/pcg/streets-city-tutorial#6-fill-the-lots-with-buildings).
 - **Preset Source = Single Preset:** uses a Building DataTable row, falling back to the inline Building Preset when the row is unset or cannot resolve. This is the default and preserves existing graphs.
 - **Preset Source = Random From DataTable:** chooses independently for every footprint from **Building Preset DataTable**. Every matching row has equal probability, selection is with replacement, and fixed graph/footprint seeds repeat.
 - **Filter Terms:** empty includes every Building row. Otherwise, each term matches an exact Building **Preset Tag** or—when **Include Row Names** is enabled (default)—a case-insensitive row-name substring.
