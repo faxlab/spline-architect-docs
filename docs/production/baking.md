@@ -9,7 +9,16 @@ import LoopingClip from '@site/src/components/LoopingClip';
 
 Baking is reversible. It replaces generated preview/runtime output with persistent editor components or assets while the Spline Architect actor remains the source of truth.
 
-<!-- CAPTURE still baked-output (annotated): a baked Building beside its Baking details category - instanced components in the Outliner, Bake/Unbake buttons, method and mobility. -->
+<AnnotatedShot
+  alt="A baked Building with its Baking category open: the static mesh components it produced, and the Bake, Unbake, and Break actions"
+  src="img/screens/baked-output.webp"
+  callouts={[
+    {label: 'Baked output: one component per piece', x: 40, y: 45},
+    {label: 'The components the bake produced', x: 88, y: 17},
+    {label: 'Bake, Unbake, Prebake Corners, Break', x: 88, y: 40},
+    {label: 'Baked state, mode, method, mobility', x: 88, y: 48},
+  ]}
+/>
 
 ## Commands
 
@@ -70,6 +79,6 @@ Open **Spline Architect → Diagnostics**.
 - **Baked Assets** lists registry entries, category, source, usage state, and triangle count. Filter by category/usage or search by name.
 - Context actions select actors, set generation mode, set bake method, bake/unbake selected actors, and inspect assets.
 
-<!-- CAPTURE still diagnostics-window: the Diagnostics tab with the Actor Overview and Baked Assets lists populated. Crop to the window. -->
+![The Diagnostics window listing every Spline Architect actor with its type, state, preset, seed, component and triangle counts](/img/screens/diagnostics-window.webp)
 
 Never delete an apparently unused baked asset only from the Content Browser without checking Diagnostics and Unreal referencers. Conversion/export assets are independent and may be referenced outside the current level.

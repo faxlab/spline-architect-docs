@@ -5,7 +5,7 @@ description: Complete user-facing reference for the Spline Architect Building ac
 
 A Building is a saved Wall stack that rebuilds itself on any footprint you draw. Edit the preset once and every placement follows; edit one placement's overrides and only it changes.
 
-<!-- CAPTURE still building-two-footprints (shared with first-building): one Building Preset on two different footprints. -->
+![Three buildings from one Building Preset on three different footprint splines](/img/screens/building-two-footprints.webp)
 
 ## Preset and controls
 

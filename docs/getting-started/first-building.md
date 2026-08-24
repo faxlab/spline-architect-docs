@@ -3,9 +3,10 @@ title: Build a reusable Building
 description: Draw a Wall stack, save it as a Building Preset, and place the same building on any footprint.
 ---
 
-A Building is a Wall stack you taught the plugin to rebuild anywhere. This page builds one the long way once - draw the stack, save it, place it - so you know exactly what the preset contains.
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
 
-<!-- CAPTURE clip building-stack: select root wall -> Add Wall to Selected -> pick an upper-floor preset -> the layer lands on the footprint; repeat once more. ~10 s. -->
+A Building is a Wall stack you taught the plugin to rebuild anywhere. This page builds one the long way once - draw the stack, save it, place it - so you know exactly what the preset contains.
 
 ## 1. Draw the root Wall
 
@@ -15,9 +16,21 @@ For a first run that behaves the same every time: set **Seed** to something fixe
 
 ## 2. Stack the layers
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Adding storeys to a wall from the Preset Library: each new layer lands on the same footprint and the building grows"
+      poster="img/clips/building-stack.webp"
+      src="img/clips/building-stack.mp4"
+    />
+  }
+>
+
 Select the root Wall and choose **Spline Architect → Add Wall to Selected**, then pick an upper-floor or roof-line preset. The new Wall connects to its parent, follows the same footprint, and stacks by its own height.
 
 Repeat per layer, giving each one job: ground floor, repeated upper floor, parapet, trim, roof edge. **Select Connected** and **Select Roots** navigate the stack when it grows.
+
+</ClipAside>
 
 To slide a new storey in **underneath** an existing stack, select the bottom wall and choose **Insert Wall**. The new wall takes over the footprint and everything above it moves up, custom pieces included.
 
@@ -33,9 +46,9 @@ If you only want *this* stack collapsed into a single actor and will never reuse
 
 In Architect Mode, switch to Building presets, select your saved row, and draw a **different** closed footprint - wider, L-shaped, whatever the block needs. The Building resolves the same layer stack onto it.
 
-<!-- CAPTURE still building-two-footprints: the same Building Preset standing on two visibly different footprints side by side. This is the payoff frame of the page. -->
+![Three buildings from one Building Preset, each drawn on a different footprint spline - a cross, an H, and an octagon](/img/screens/building-two-footprints.webp)
 
-This is the point of a Building over a copied wall stack: one preset, any footprint, and an edit to the preset row updates every placement when it regenerates.
+This is the point of a Building over a copied wall stack: one preset, any footprint. Corners, floors, and roofs resolve to whatever shape you drew, and an edit to the preset row updates every placement when it regenerates.
 
 ## 5. Bake the connected result
 

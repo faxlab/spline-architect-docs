@@ -5,7 +5,7 @@ description: Complete user-facing reference for the Spline Architect Wall actor.
 
 Wall is the actor everything else builds on. Give it a spline and a preset, and it fits your modular pieces along the path, resolves the corners, and adds floors, roofs, and posts. Stack Walls to make storeys; the stack is what [becomes a Building](/getting-started/first-building).
 
-<!-- CAPTURE still wall-anatomy: one wall run showing a corner piece, a door custom piece, and posts - the anatomy in a single frame, shot close. -->
+![An L-shaped wall run: repeated facade pieces, a resolved corner, a shopfront custom piece with an awning, and the preset controls that produced them](/img/screens/wall-anatomy.webp)
 
 ## Preset
 

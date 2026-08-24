@@ -9,7 +9,7 @@ Streets Network, Streets Mode, and Lot Zone ship only in the UE 5.8 package. See
 
 You draw the roads; Streets Network builds everything they imply. From a graph of nodes and edges it generates the road ribbons and intersections, extracts every enclosed block as a lot with its own surface, and hands the whole structure - roads, junctions, lots, zones - to the SA PCG nodes to build on.
 
-<!-- CAPTURE still streets-network-hero: a generated network from above at a slight angle - intersections with fillets, lot surfaces, road markings. -->
+![A generated Streets Network on an island: road ribbons with filleted junctions, every enclosed block extracted as a lot, and the authored node graph over the top](/img/screens/streets-network-hero.webp)
 
 ## Controls and authored data
 

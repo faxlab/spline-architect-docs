@@ -1,36 +1,31 @@
-# Capture list — round 2
+# Capture list
 
-What the docs still need from the editor. Everything else is placed; every item below has
-a named `<!-- CAPTURE ... -->` slot already sitting in its page, so each capture drops
-straight in. Same recipe as round 1: record, tell Claude, done.
-
-Settings: stills as PNG (converted to WebP on intake), clips 6-12 s silent MP4 under
-3 MB after re-encode. Editor stills ~1968 wide, graph stills 1920x1040.
-
-## Clips
-
-| ID | What to record | Page |
-| --- | --- | --- |
-| building-stack | Select the root wall → Add Wall to Selected → pick an upper-floor preset → the layer lands. Repeat once. ~10 s. | first-building |
-
-## Stills
+## Outstanding — 2 items
 
 | ID | What to frame | Page |
 | --- | --- | --- |
-| building-two-footprints | The same Building Preset standing on two visibly different footprints, side by side. The payoff frame for Buildings. | first-building + building |
-| wall-anatomy | One wall run, shot close: a corner piece, a door custom piece, posts. | wall |
-| streets-network-hero | A generated network from above at a slight angle: filleted intersections, lot surfaces, markings. | streets-network |
-| baked-output | A baked Building beside its Baking details category - instanced components in the Outliner, Bake/Unbake, method, mobility. Gets callout pins. | baking |
-| diagnostics-window | The Diagnostics tab, Actor Overview and Baked Assets populated. Crop to the window. | baking |
-| pcg-streets-graph | The city graph at 1920x1040 with the Sub-Lot Boundaries pin visible. Gets callout pins. | streets-city-tutorial |
-| pcg-facade-graph | For the "Facade attachments" recipe: a **minimal** graph, 4-5 nodes - SA Get Facade Frames → Filter Attribute Elements → SA Pick From Pool → Static Mesh Spawner - at 1920x1040. A small graph teaches the recipe better than the production one. | recipes |
-| alley-result | A subdivided block with Gap > 0: alleys between sub-lots, props along the sides, bollards at the mouths. | recipes (optional) |
-| landscape-patch-result | A flattened park on sloping terrain, path cut through, pad under a prop. Needs a sloped scene - deferred until one exists (#294 is the natural moment). | landscape-patch (deferred) |
+| pcg-streets-graph | The city graph at 1920x1040, with the **Sub-Lot Boundaries** pin name visible (the old shot showed the pre-rename label). Gets callout pins after. | streets-city-tutorial |
+| pcg-facade-graph | A **minimal** graph for the Facade attachments recipe, 4-5 nodes: SA Get Facade Frames → Filter Attribute Elements → SA Pick From Pool → Static Mesh Spawner. 1920x1040. A small graph teaches the recipe better than the production one. | recipes |
 
-## Round 1, for the record
+## Deferred
 
-Placed 2026-08-23/24: hero overview shot (now the masthead), architect-mode annotated
-still, subdivide panel, segment override, boolean cutter, preset library panel, height-mode
-comparison, lot-surface wireframe, grid-strip crop, and 7 clips (architect-draw,
-subdivide-preview, streets-to-pcg, unbake-rebake, streets-draw-edit, streets-fillet,
-preset-drag-multi). The July-era stills and the three flowchart SVGs are deleted.
+| landscape-patch-result | A flattened park on sloping terrain, path cut through, pad under a prop. Needs a sloped scene; the #294 example-project work is the natural moment. | landscape-patch |
+
+## Placed
+
+**Clips (8):** architect-draw, building-stack, subdivide-preview, streets-draw-edit,
+streets-fillet, streets-to-pcg, unbake-rebake, preset-drag-multi.
+
+**Stills (14):** overview hero (the masthead), architect-mode (annotated), architect-grid-strip,
+building-two-footprints, wall-anatomy, streets-network-hero, streets-segment-override,
+subdivide-panel, lot-surface-layers, preset-library, height-mode-compare, boolean-cut,
+baked-output (annotated), diagnostics-window, alley-result.
+
+Every July-era screenshot and all three flowchart SVGs are deleted. Everything on the site
+was captured 2026-08-23/24.
+
+## Recipe, for next time
+
+Stills: PNG from ShareX, converted to WebP at quality 90 on intake (a 3 MB PNG lands at
+~250 KB with no visible loss). Clips: silent MP4, re-encoded CRF 26-27, under 3 MB, with a
+WebP poster cut from a representative frame.
