@@ -172,7 +172,7 @@ Adding a pass prefills it at half the previous pass's target area, so one click 
 
 #### Guards
 
-**Guards** are quality limits applied to every pass. A cut that fails one is rejected and another is tried; a block whose every attempt is rejected simply stays whole. Guards never consume randomness, so switching one on or off never reshuffles the rest of the layout.
+**Guards** are quality limits applied to every pass. A cut that fails one is rejected and another is tried; a block whose every attempt is rejected stays whole. Guards never consume randomness, so switching one on or off never reshuffles the rest of the layout.
 
 - **Min Block Width** - the narrowest mean width a block may end up with. `-1` is **Auto**, which scales itself from the smallest enabled pass's Target Area, so asking for smaller blocks does not require lowering this by hand. `0` turns it off.
 - **Min Road Angle** - the shallowest angle at which a new street may meet the road it ends on. `0` turns it off.
@@ -190,7 +190,7 @@ If nothing subdivides, the status bar names the effective value that rejected ev
 
 Afterwards the lot selection clears, because the subdivided faces are new lots with new keys. To cut again inside a resulting block, let the network regenerate and reselect.
 
-:::caution The preview is dismissed easily
+:::caution One click dismisses the preview
 Any left click in the viewport, any Delete, and switching sub-mode all cancel the preview silently - it behaves like a popover. Esc and right-click cancel it with a message. Nothing was written, so cancelling reverts nothing, but the settings you were tuning go with it. **Apply before doing anything else.**
 :::
 

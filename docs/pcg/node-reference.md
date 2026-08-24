@@ -197,7 +197,7 @@ Building-generated pieces carry Building Preset tags plus the exact Wall Preset 
 - **How a point finds its wall:** a run counts if its spline passes through the point's box **seen from above**. Height plays no part, which is what makes a flat scatter work over hilly ground - and means a merely taller point gains no extra reach. The box turns with the point, so a long thin point reaches far along its length and barely across it.
 - Among the runs in reach the **closest one wins**, unless **Apply To All In Range** is on, in which case every run in reach gets a piece. That is the difference between a gate, which must not appear in two fences at once, and a junction point that should give all four sidewalks a curb ramp.
 - Turn **Apply Radius** off for points that already carry their own footprint, such as SA Get Intersections or SA Get Lots output - their real shape and facing becomes the reach. A point with no size at all falls back to the nearest run at any distance.
-- Points that reach nothing are simply unused, with no warning. With a level-wide scatter that is the normal majority.
+- Points that reach nothing are unused, with no warning. With a level-wide scatter that is the normal majority.
 - Curves only build Segment pieces; a Corner preset fed to SA Spawn Curve is placed as a Segment piece and the node says so once.
 
 ## Polygon 2D interop

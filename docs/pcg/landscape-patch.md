@@ -22,7 +22,7 @@ This node ships in the UE 5.8 package and needs Epic's **Landscape Patch** plugi
 | `Props` | Point | Points with bounds. Each becomes a level pad at the prop's base, its footprint grown by Pad Expansion. |
 | `Patched Shapes` | Point, Curve | Every input, passed through unchanged. Chain into surface creation, sampling, or spawning as usual. |
 
-All three inputs are optional - an unwired pin simply contributes nothing. `Patched Shapes` always forwards its inputs, whether or not the terrain was touched, so the rest of the graph never depends on the patch having run.
+All three inputs are optional - an unwired pin contributes nothing. `Patched Shapes` always forwards its inputs, whether or not the terrain was touched, so the rest of the graph never depends on the patch having run.
 
 ### How each pin becomes a shape
 
