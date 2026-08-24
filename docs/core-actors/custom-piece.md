@@ -3,7 +3,24 @@ title: Custom Piece
 description: Complete user-facing reference for inserted and overlapping Wall pieces.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Custom pieces dragged along a facade: a doorway inserted among the shutters, shop signs overlaid on the wall, and a vertical element placed up the storeys"
+      poster="img/clips/custom-piece-examples.webp"
+      src="img/clips/custom-piece-examples.mp4"
+    />
+  }
+>
+
 A Custom Piece is the exception in a wall: the door, the arch, the gap, the one special corner. Add it from the Spline Architect menu while a Wall is selected, drag it along the path to where it belongs, and the wall regenerates around it.
+
+In the clip: a doorway **inserted** among the ground-floor shutters - it cuts its slot - then shop signs **overlaid** on top of the generated wall, and a vertical piece assigned to a range of **Floors** so it runs up the facade.
+
+</ClipAside>
 
 ## Actor controls
 
