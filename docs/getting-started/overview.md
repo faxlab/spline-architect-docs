@@ -6,8 +6,6 @@ sidebar_position: 1
 hide_title: true
 ---
 
-import Link from '@docusaurus/Link';
-
 <div className="hero-shot">
   <img className="hero-shot__bg" src="/spline-architect-docs/img/screens/overview-sacity.webp" alt="A street in the SACity example, built with Spline Architect" />
   <div className="hero-shot__top">
@@ -17,14 +15,6 @@ import Link from '@docusaurus/Link';
   </div>
   <span className="hero-shot__version">v6.0.0</span>
 </div>
-
-<div className="card-grid">
-  <Link to="/core-actors/wall"><strong>Walls</strong>Modular pieces along a spline: corners, floors, roofs, posts, doors. Everything starts here.</Link>
-  <Link to="/core-actors/building"><strong>Buildings</strong>Save a wall stack once, rebuild it on any footprint you draw.</Link>
-  <Link to="/core-actors/streets-network"><strong>Streets</strong>Draw roads; get intersections, lots, and PCG-ready city data. UE 5.8.</Link>
-</div>
-
-## The actors
 
 | Actor | Use it for |
 | --- | --- |
