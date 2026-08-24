@@ -47,6 +47,10 @@ After restarting:
 
 If any item is missing, see [installation troubleshooting](/reference/troubleshooting#installation-and-startup).
 
+## Get content to build with
+
+The plugin installs empty of meshes and presets - it generates from *your* modular content. For a first session, open the [example project](https://github.com/faxlab/SplineArchitectExampleProject): it ships working presets and meshes for everything in this guide. To start from your own kit instead, begin at [prepare modular meshes](/getting-started/preparing-meshes).
+
 ## Open this guide from Unreal
 
 **Spline Architect → Documentation** opens this site.

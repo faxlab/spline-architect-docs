@@ -15,6 +15,10 @@ Enable Spline Architect and its dependencies, then restart. Streets Network, Lot
 
 ## Actor generation
 
+### The Preset Library is empty
+
+Nothing is wrong - a fresh install has no presets, because presets are built from your meshes and the plugin does not ship meshes. Open the [example project](https://github.com/faxlab/SplineArchitectExampleProject) for ready-made presets, or [make one from your own meshes](/getting-started/first-building#0-get-something-to-build-with). If you had presets and they vanished, check the library's category tab and Favorites filter - both are remembered between sessions.
+
 ### A Wall is empty
 
 - Assign a valid Wall Mesh or Custom Wall Mesh.

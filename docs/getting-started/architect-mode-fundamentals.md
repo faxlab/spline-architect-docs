@@ -37,7 +37,7 @@ Architect Mode is where you draw. Pick a preset, click out a path in the viewpor
 ## Draw a path
 
 1. Enter **Architect Mode** from the Modes panel or the Spline Architect menu.
-2. **Browse Presets** and pick a Wall, Building, or Curve preset.
+2. **Browse Presets** and pick a Wall, Building, or Curve preset. (Empty library? A fresh install has no presets yet - [get content to build with](/getting-started/first-building#0-get-something-to-build-with) first.)
 3. Click in the viewport to add points.
 4. Click the first point to close the loop - the right move for a building footprint - or click the last point or press **Enter** to finish an open run like a fence.
 
