@@ -9,9 +9,9 @@ import LoopingClip from '@site/src/components/LoopingClip';
 <ClipAside
   media={
     <LoopingClip
-      alt="What a Wall can be: a single textured slab, a shuttered shopfront with a sign, a window piece, curbed planters and platforms with floor surfaces, and railings enclosing a yard"
-      poster="img/clips/wall-examples.webp"
-      src="img/clips/wall-examples.mp4"
+      alt="What stacked wall layers make: a sci-fi interior with a glowing trim band and angled upper walls, a plaza platform growing a railing, a street corner, and stepped ruin rings"
+      poster="img/clips/wall-stacking.webp"
+      src="img/clips/wall-stacking.mp4"
     />
   }
 >
@@ -21,8 +21,6 @@ Wall is the actor everything else builds on. Give it a spline and a preset, and 
 Do not read "wall" too literally. The same actor makes shopfronts, fences, and railings; with a floor surface and a curb mesh it makes planters, platforms, and plazas. Anything modular along a path is a Wall.
 
 </ClipAside>
-
-![An L-shaped wall run: repeated facade pieces, a resolved corner, a shopfront custom piece with an awning, and the preset controls that produced them](/img/screens/wall-anatomy.webp)
 
 ## Preset
 
@@ -49,21 +47,9 @@ Do not read "wall" too literally. The same actor makes shopfronts, fences, and r
 
 ## Stacked walls
 
-<ClipAside
-  media={
-    <LoopingClip
-      alt="What stacked wall layers make: a sci-fi interior with a glowing trim band and angled upper walls, a plaza platform growing a railing, a street corner, and stepped ruin rings"
-      poster="img/clips/wall-stacking.webp"
-      src="img/clips/wall-stacking.mp4"
-    />
-  }
->
-
 **Add Wall to Selected** connects a new Wall to the selected one as a child. The child follows its parent's effective footprint and sits on top of it, raised by the parent's height; **Offset Stacked By** in the preset shifts a layer beyond that.
 
-Storeys are the obvious use, but a layer can be anything: a trim band between floors, a railing on a plinth, an inset upper ring. Each layer keeps its own preset, materials, and seed, so a stack composes structures no single preset could describe - and saving the stack as a preset is how a [Building](/getting-started/first-building) is born.
-
-</ClipAside>
+Storeys are the obvious use, but a layer can be anything: a trim band between floors, a railing on a plinth, an inset upper ring - the clip at the top of this page is all stacks. Each layer keeps its own preset, materials, and seed, so a stack composes structures no single preset could describe - and saving the stack as a preset is how a [Building](/getting-started/first-building) is born.
 
 **Spline Architect → Insert Wall** adds a wall directly **beneath** the selected one. The selection and everything stacked above it, custom pieces included, move up by the new wall's height.
 
