@@ -18,8 +18,6 @@ import Link from '@docusaurus/Link';
   <span className="hero-shot__version">v6.0.0</span>
 </div>
 
-## The three systems
-
 <div className="card-grid">
   <Link to="/core-actors/wall"><strong>Walls</strong>Modular pieces along a spline: corners, floors, roofs, posts, doors. Everything starts here.</Link>
   <Link to="/core-actors/building"><strong>Buildings</strong>Save a wall stack once, rebuild it on any footprint you draw.</Link>
