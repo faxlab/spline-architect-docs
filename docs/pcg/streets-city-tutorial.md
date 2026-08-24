@@ -23,8 +23,6 @@ Once the graph is wired, the city is live: move a street and the lots, buildings
 
 </ClipAside>
 
-<!-- CAPTURE still pcg-streets-graph (annotated): the city graph at 1920x1040 with the Sub-Lot Boundaries pin name visible; callouts get placed once the shot exists. -->
-
 ## 1. Author the street graph
 
 1. Place a **Spline Architect Streets Network**.

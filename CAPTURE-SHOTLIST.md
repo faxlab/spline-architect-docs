@@ -1,11 +1,10 @@
 # Capture list
 
-## Outstanding — 2 items
+## Outstanding — none
 
-| ID | What to frame | Page |
-| --- | --- | --- |
-| pcg-streets-graph | The city graph at 1920x1040, with the **Sub-Lot Boundaries** pin name visible (the old shot showed the pre-rename label). Gets callout pins after. | streets-city-tutorial |
-| pcg-facade-graph | A **minimal** graph for the Facade attachments recipe, 4-5 nodes: SA Get Facade Frames → Filter Attribute Elements → SA Pick From Pool → Static Mesh Spawner. 1920x1040. A small graph teaches the recipe better than the production one. | recipes |
+The two PCG graph shots were dropped by decision on 2026-08-24. Both recipes already print
+their node chain as a text diagram, which stays correct when pins are renamed; a screenshot
+of a graph does not.
 
 ## Deferred
 

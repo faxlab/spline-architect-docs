@@ -5,8 +5,6 @@ description: Practical UE 5.8 recipes for facade grids, road-edge props, crossin
 
 ## Facade attachments
 
-<!-- CAPTURE still pcg-facade-graph: the facade-frames graph, 1920x1040 - Get Facade Frames -> filters -> Pick From Pool -> Static Mesh Spawner. -->
-
 ```text
 SA Get Facade Frames
   → Filter Attribute Elements
