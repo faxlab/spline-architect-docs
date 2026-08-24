@@ -3,6 +3,10 @@ title: Lot Zone
 description: Assign semantic zone tags to Streets Network lots for PCG filtering.
 ---
 
+:::info UE 5.8 only
+Lot Zone exists to tag Streets lots, so it ships with Streets in the UE 5.8 package only. See [compatibility](/reference/compatibility).
+:::
+
 Lot Zone is a lightweight semantic actor. Its closed spline stamps a `Name` value onto every Streets lot whose centroid falls inside it. SA Get Lots emits that value as `SA_LotZone` for PCG filters and branching.
 
 | Control | What it does |

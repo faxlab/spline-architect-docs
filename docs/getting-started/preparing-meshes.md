@@ -3,7 +3,7 @@ title: Prepare modular meshes
 description: Prepare pivots, axes, bounds, materials, UVs, and dimensions for predictable Spline Architect generation.
 ---
 
-Good modular assets make every preset easier to author. Spline Architect can compensate for imperfect meshes, but a consistent asset kit produces cleaner corners, fewer overrides, and more predictable baking.
+You can learn the whole plugin on the example content - come back here when you bring your own kit. Spline Architect compensates for imperfect meshes, but a consistent kit means cleaner corners, fewer overrides, and less time spent wondering why one piece sits wrong.
 
 ## Coordinate contract
 
@@ -37,6 +37,12 @@ Use **Keep World Scale** when a piece must retain its authored proportions. Othe
 - Nanite is compatible with generated and baked static meshes, subject to the normal Unreal limitations of the output component type.
 - Configure source collision for repeated static pieces. Newly collapsed static meshes should be checked after conversion.
 - For baked/static lighting, enable generated lightmap UVs in [Project Settings](/reference/project-settings) or use the [Lightmap Tool](/production/editor-tools#lightmap-tool).
+
+## What PCG measures a prop by
+
+The SA prop pools measure an asset by its **visible bounds**, not its collision. A prop with tight or missing collision still reserves the room its mesh occupies, which is what keeps packed placement and footprint pruning honest.
+
+For a Blueprint prop, every visible component counts: static and skeletal meshes, instanced meshes and all their instances, shapes, and any child actor's own geometry. Editor-only visualizers such as arrows and billboards are ignored. A Blueprint with no visible geometry at all falls back to a small placeholder box, so a prop that packs suspiciously tightly is usually one whose geometry is spawned at runtime rather than present in the class.
 
 ## Fix a pivot without leaving Unreal
 

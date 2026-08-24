@@ -3,9 +3,21 @@ title: Preset Library and DataTables
 description: Browse, save, edit, thumbnail, favorite, filter, and drag Spline Architect presets.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  image="img/screens/preset-library.png"
+  scale={0.25}
+  alt="The Preset Library docked as a panel: category tabs, table filter, search, the toolbar, a thumbnail grid with favorites, and the selected preset's settings below"
+>
+
 The Preset Library is the central browser for Wall, Building, Curve, Custom Piece, and Streets-compatible preset rows. Open it from the Spline Architect menu or the Architect Mode panel.
 
-![Preset Library browsing SACity presets](/img/screens/preset-library.png)
+It docks like any editor tab. The top half is the browser - category tabs, a DataTable filter, search, the action toolbar, and the presets themselves as a list or a thumbnail grid. The bottom half shows the selected preset's settings, so you can tweak a row without leaving the panel.
+
+</ClipAside>
+
 
 ## Library controls
 
@@ -22,13 +34,37 @@ The Preset Library is the central browser for Wall, Building, Curve, Custom Piec
 | **Delete** | Removes selected rows after confirmation; multi-selection can span DataTables. |
 | **Open Source DataTable** | Opens the selected row's table in Unreal's DataTable editor. |
 
+### Acting on several presets at once
+
+The right-click menu acts on the **whole selection**, and its entries name the count. **Add to Favorites**, **Duplicate**, and **Delete** all work across a multi-selection, spanning DataTables, and Delete asks once for the lot. Favoriting is a single decision for the group: if any selected preset is not yet a favorite, the action favorites them all; only when they are all favorites already does it clear them.
+
+Right-clicking a preset that is *outside* the current selection acts on that preset alone, the same way the Content Browser behaves.
+
+The remaining actions - Start Drawing, Apply to Selected, Create from Preset, Spawn as Attached, Insert into Stack, Overwrite, Update Thumbnail, Rename, and Open Source DataTable - need a single target and are disabled on a multi-selection.
+
 Selecting a row exposes editable metadata: **Display Name**, **Description**, **Favorite**, and optional custom **Thumbnail**. If no custom texture is supplied, supported preset types can render a managed thumbnail or fall back to a representative mesh.
 
 ## Drag and drop
 
-- Drag a preset into the level viewport to create its actor.
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Several Building presets selected in the library and dragged into the viewport together, landing as a spaced cluster at the drop point"
+      poster="img/clips/preset-drag-multi.webp"
+      src="img/clips/preset-drag-multi.mp4"
+    />
+  }
+>
+
+- Drag a preset into the level viewport to create its actor. Dragging with several presets selected places **all** of them in one step and one undo: free-standing actors are arranged on a grid centred on the drop point and spaced by their measured bounds, so nothing overlaps. Custom pieces that find an owner are positioned by that owner's spline instead.
 - Drag a preset onto the Architect Mode panel to make it the active drawing preset.
 - Use recent-preset chips for the last Wall, Building, and Curve rows without reopening the full library.
+
+</ClipAside>
+
+:::tip Presets missing after reopening the library?
+The active category tab and the **Favorites only** toggle are both remembered between sessions. A library that looks empty is usually filtered to a type you were last working in, or to favorites - check those two before the DataTable filter.
+:::
 
 ## Create the correct DataTable
 

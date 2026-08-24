@@ -3,9 +3,9 @@ title: Building
 description: Complete user-facing reference for the Spline Architect Building actor.
 ---
 
-A Building maps a reusable hierarchy of Wall definitions onto one or more footprint splines. It is the production-friendly replacement for rebuilding the same connected Wall stack by hand.
+A Building is a saved Wall stack that rebuilds itself on any footprint you draw. Edit the preset once and every placement follows; edit one placement's overrides and only it changes.
 
-![Building actor and its Building Preset controls in SACity](/img/screens/building-details.png)
+![Three buildings from one Building Preset on three different footprint splines](/img/screens/building-two-footprints.webp)
 
 ## Preset and controls
 
@@ -51,4 +51,4 @@ Every Wall entry exposes:
 
 The Building shares the Wall's **Multi Spline Mode**, **Union Z Mode**, **Mirror Mode**, **Invert Mirror**, and **Apply Mirror to Spline** controls. Baking exposes **Baked**, **Generation Mode**, **Bake Method**, **Baked Mobility**, **Corner Angle Increment**, **Lightmap Texel Density Override**, **Bake**, **Unbake**, and **Prebake Corners**.
 
-Use Baked mode for placed environments. **Break** is for one-off art direction; **Unbake** is the reversible operation that preserves the Building actor.
+Use Baked mode for placed environments. **Unbake** is the reversible operation that keeps the Building actor. **Break** goes further - back to individual Walls - and pairs with **Convert to Building** as the art-direction round-trip: break, adjust the walls one by one, collapse back into a Building whose inline preset carries the changes. The shared preset row never notices.

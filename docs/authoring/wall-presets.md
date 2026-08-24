@@ -3,7 +3,10 @@ title: Wall Preset reference
 description: Complete reference for modular wall fitting, corners, fillers, placement, randomization, materials, and instance data.
 ---
 
-A Wall Preset is both a DataTable row and an inline structure. The same controls appear inside Wall actors, Building wall nodes, and SA Spawn Wall.
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
+A Wall Preset is the recipe a Wall follows: which meshes, how they fit, what happens at corners, what gets randomized. The same recipe works as a shared DataTable row or inline on one actor, and the same controls appear inside Wall actors, Building wall layers, and SA Spawn Wall - so everything on this page applies in all three places.
 
 ## Preset metadata
 
@@ -19,7 +22,8 @@ Changing Wall presets removes stale tags previously applied by Spline Architect 
 
 | Control | What it does |
 | --- | --- |
-| **Wall Height / Height Override** | Logical Z height; otherwise detected from the first Wall Mesh. |
+| **Wall Height / Height Override** | Logical Z height; otherwise detected from the first Wall Mesh. Its exact meaning depends on **Height Mode**. |
+| **Height Mode** | How meshes are resized to reach Wall Height. **Fit Height** stretches each mesh to exactly Wall Height, and sideways to fill its slot: a flat top, but modular facade pieces get distorted. **Uniform Scale** multiplies every mesh by one shared factor on all three axes, so proportions are never distorted. |
 | **Wall Length / Length Override** | Logical segment slot length; otherwise detected from the first Wall Mesh. |
 | **Corner Length / Corner Length Override** | Corner target span or bend/cut size; otherwise detected from Corner Mesh. |
 | **Corner Height Add** | Compensates for corner meshes with bounds above/below the wall body. |
@@ -33,9 +37,23 @@ Changing Wall presets removes stale tags previously applied by Spline Architect 
 | **Skip Pieces** | None, Angled, or Flat. Useful when a kit has dedicated slope/step handling. |
 | **Inset** | Lateral offset from the spline. |
 | **Overlap Pieces By** | Extends neighbors to close seams. |
-| **Num Floors** | Vertically repeats the preset by Wall Height. |
+| **Num Floors** | Vertically repeats the preset. Floors sit **Wall Height** apart in Fit Height mode, and the height of the tallest generated piece apart in Uniform Scale mode. |
 | **Treat Spline Reversed** | Flips effective point order and piece orientation. |
 | **Collapse Nearby Spline Point Distance** | Merges consecutive near points; `0` disables. |
+
+### Fit Height or Uniform Scale
+
+![The same gateway wall in Fit Height, with a flat top and the portico stretched to match the walls, and in Uniform Scale, where the portico keeps its proportions and its crown steps above the walls](/img/screens/height-mode-compare.webp)
+
+**Fit Height** is the default and gives a guaranteed flat top: every mesh is stretched to exactly **Wall Height**, and sideways to fill its slot. A mixed-height kit is levelled, and pieces are distorted as much as it takes.
+
+**Uniform Scale** never distorts anything. Every mesh is multiplied by one shared factor on all three axes, derived from Wall Height divided by the average height of the meshes in the preset. Three consequences follow:
+
+- **The top varies.** A mixed-height set keeps its height differences, so Wall Height is the height the meshes reach *on average* rather than a ceiling they all meet. Use Fit Height when you need a flat top.
+- **Pieces keep their real width**, so a different number fits along each segment than you would expect from the authored sizes.
+- **Leftover space is filled by Filler Wall Meshes**, and fillers still stretch. A kit used in Uniform Scale wants a filler.
+
+Stacked floors, roofs, and floor alignment all follow the same shared factor, so layers of mixed-height meshes never interpenetrate.
 
 ## Wall Meshes and fitting
 
@@ -52,6 +70,20 @@ Changing Wall presets removes stale tags previously applied by Spline Architect 
 Best Fit retains the raw source-length fallback when no piece fits. Filler packing can automatically place a valid filler before a main piece; there is no separate “prefer wall pieces before fillers” switch.
 
 ## Corner and placement
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="One wall corner cycling through its treatments: a dedicated corner mesh, a straight miter, a chamfer, and smooth bends"
+      poster="img/clips/wall-corners.webp"
+      src="img/clips/wall-corners.mp4"
+    />
+  }
+>
+
+How a turn is built is one choice: give it a dedicated **Corner Mesh**, or let **Corner Type** shape the wall pieces themselves - mitered square, cut on the diagonal, or carried around a curve.
+
+</ClipAside>
 
 | Control | What it does |
 | --- | --- |

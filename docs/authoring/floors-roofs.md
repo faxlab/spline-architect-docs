@@ -3,6 +3,8 @@ title: Floors, roofs, posts, and lot surfaces
 description: Complete nested surface controls shared by Wall, Building, Curve, Streets, and PCG workflows.
 ---
 
+Walls make the shell; these settings make everything the shell contains and wears - the floor slab inside a footprint, the pitched or flat roof on top, and the ground surface of a Streets lot. The same controls appear wherever a surface can exist, so learning them once covers Wall, Building, Curve, and Streets.
+
 ## Floor Surface
 
 | Control | What it does |
@@ -41,7 +43,9 @@ Edge presets reuse the Wall generator, so orient their mesh length along X and u
 
 ## Lot Surface
 
-Streets lot layers expose **Material**, **Thickness**, **Subdivisions**, **UV Scale**, **Fill Color**, **Edges Color**, and **Color Blur Iterations**. PCG's SA Get Lots and SA Subdivide Lots can additionally emit a graded Ground Surface whose spacing and smoothing are configured on the node.
+A Streets lot surface is built from a list of layers, each of which can produce a filled cap, a border skirt, and corner pads with their own materials. **Surface Edge Length** and **Surface Smoothing Iterations** behave exactly as they do for Floor and Roof surfaces here. See [lot surface layers](/core-actors/streets-network#lot-surface-layers) for the full set.
+
+PCG's SA Get Lots and SA Subdivide Lots can additionally emit a graded Ground Surface whose spacing and smoothing are configured on the node.
 
 ## Surface failure checklist
 

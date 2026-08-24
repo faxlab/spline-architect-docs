@@ -3,7 +3,7 @@ title: Project settings
 description: Complete reference for Spline Architect project-wide defaults, lightmaps, preset behavior, and performance controls.
 ---
 
-Open **Edit → Project Settings → Plugins → Spline Architect Settings**. These settings provide defaults and editor behavior; per-actor values override them where noted.
+**Edit → Project Settings → Plugins → Spline Architect Settings** holds the project-wide defaults. A value set on an actor always wins over these.
 
 ## Settings
 
@@ -16,6 +16,10 @@ Open **Edit → Project Settings → Plugins → Spline Architect Settings**. Th
 | **Default Bake Method** | Initial Components, Instanced, or Hierarchical Instanced method. |
 | **On Level Save Action** | Nothing, Rebake Unbaked, Rebake All, or Unbake All. **Nothing** is the safest team default because it avoids a large implicit save-time mutation. |
 | **Auto Normalize Actor Scale** | Applies non-unit actor scale to spline points while preserving world shape, then resets the actor to 1,1,1. |
+
+:::note Some settings are remembered per user, not here
+The Pivot Tool's and Lightmap Tool's **Overwrite Existing**, the **Delete Original Actors** choices in the Convert, Collapse to Mesh, and Convert to Blueprint dialogs, the Preset Library's view mode, category tab, and favorites filter, the Streets Mode **Node Merge Radius** and Subdivide recipe, and the remembered destination folders are all editor preferences stored per user and per project. They are not part of Project Settings and are not checked in with the project.
+:::
 
 ## Lightmaps
 

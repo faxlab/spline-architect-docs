@@ -3,11 +3,9 @@ title: UE 5.8 PCG integration
 description: Use Spline Architect actors as semantic inputs and generation kernels in Unreal Engine 5.8 PCG graphs.
 ---
 
-The `SplineArchitectPCG` module is available in the UE 5.8 package. It exposes effective SA splines, Streets lots and road data, facade cells, floor/roof samples, polygon tools, bounds-aware prop tools, and Wall/Curve/Building generation nodes.
+The SA nodes turn what you authored - streets, lots, walls, footprints - into data a PCG graph can read, reshape, and build from. You draw the city's skeleton by hand; the graph fills in the buildings, props, and details, and refills them every time the skeleton changes.
 
-![Streets Network to PCG data flow](/img/diagrams/streets-pcg-flow.svg)
-
-## Design principle
+## How the nodes divide the work
 
 SA PCG nodes separate authored meaning from spawned output:
 
@@ -17,9 +15,15 @@ SA PCG nodes separate authored meaning from spawned output:
 
 Prefer the **Data** output mode on SA Spawn nodes. It emits static pieces as points with `SA_Mesh` for Unreal's Static Mesh Spawner and non-static pieces as Dynamic Mesh data. Building and Wall output also carries precise `SA_PresetTags`, so one generated layer can be filtered without splitting the generation graph by asset. PCG then owns the normal spawn lifecycle and keeps the Outliner clean.
 
+## Generate what shows, instance the rest
+
+SA Spawn Building generates a whole modular building - every piece - for every footprint you hand it, on every regeneration. That is the right cost for a building the player walks past and the wrong cost for a skyline.
+
+For anything at city scale, author a few buildings, [convert them to static meshes](/production/conversion-export), and instance those with SA Edge Placer or SA Pick From Pool. Keep SA Spawn Building for hero buildings and close-up streets. The [city tutorial](/pcg/streets-city-tutorial#6-fill-the-lots-with-buildings) covers both, side by side.
+
 ## First graph
 
-For a city block, use:
+For a hero block - a handful of buildings, generated in full - use:
 
 ```text
 SA Get Lots (Lot Boundaries)

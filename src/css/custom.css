@@ -159,6 +159,69 @@
   vertical-align: top;
 }
 
+/* Overview hero: the screenshot is the container; brand and version overlay it. */
+.hero-shot {
+  position: relative;
+  margin: 0.4rem 0 2rem;
+  overflow: hidden;
+  border: 1px solid var(--sa-border);
+  border-radius: 18px;
+}
+
+.markdown .hero-shot img {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.hero-shot__bg {
+  display: block;
+  width: 100%;
+}
+
+.hero-shot__top {
+  position: absolute;
+  inset: 0 0 auto 0;
+  padding: clamp(1.2rem, 4vw, 2.4rem) clamp(1.2rem, 3vw, 2rem) 3.2rem;
+  background: linear-gradient(180deg, rgba(8, 18, 34, 0.62) 0%, rgba(8, 18, 34, 0.28) 62%, transparent 100%);
+  text-align: right;
+}
+
+.markdown .hero-shot .hero-shot__logo {
+  width: min(480px, 72%);
+  margin: 0 0 0.9rem auto;
+}
+
+.hero-shot__tagline {
+  margin: 0 0 0.35rem;
+  color: #fff;
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+  font-weight: 600;
+  text-shadow: 0 1px 10px rgba(4, 14, 28, 0.7);
+}
+
+.hero-shot__note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-shot__version {
+  position: absolute;
+  left: 0.9rem;
+  bottom: 0.9rem;
+  padding: 0.22rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(8, 18, 34, 0.72);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
 .hero-panel {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(260px, 0.8fr);
@@ -217,10 +280,113 @@
   .card-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
 }
 
+/* A silent looping capture with no chrome. Compact by default; click to expand. */
+.looping-clip {
+  position: relative;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--sa-panel);
+  cursor: zoom-in;
+}
+
+.looping-clip--expanded {
+  cursor: zoom-out;
+}
+
+.looping-clip:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.looping-clip__media {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  pointer-events: none;
+}
+
+.looping-clip__hint {
+  position: absolute;
+  right: 0.6rem;
+  bottom: 0.6rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  background: rgba(16, 35, 58, 0.72);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.looping-clip:hover .looping-clip__hint,
+.looping-clip:focus-visible .looping-clip__hint {
+  opacity: 1;
+}
+
+/* Text beside a clip. The clip column is the narrower one, so the paragraph reads
+   first; expanding the clip lets it take the whole row. */
+.clip-aside {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: 1.4rem;
+  align-items: start;
+  margin: 1.2rem 0 2rem;
+}
+
+.clip-aside__text > :first-child {margin-top: 0;}
+.clip-aside__text > :last-child {margin-bottom: 0;}
+
+.clip-aside__still {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border: 1px solid var(--sa-border);
+  border-radius: 12px;
+}
+
+.clip-aside__zoom {
+  position: relative;
+  display: inline-block;
+  cursor: zoom-in;
+}
+
+.clip-aside__zoom--expanded {
+  cursor: zoom-out;
+}
+
+.clip-aside__zoom:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 2px;
+}
+
+.clip-aside__zoom:hover .looping-clip__hint,
+.clip-aside__zoom:focus-visible .looping-clip__hint {
+  opacity: 1;
+}
+
+/* Expanded media of either kind takes the whole row. A still at full size keeps
+   its natural width and may exceed the column, so let it scroll rather than squash. */
+.clip-aside--expanded .clip-aside__media,
+.clip-aside__media:has(.looping-clip--expanded) {
+  grid-column: 1 / -1;
+  overflow-x: auto;
+}
+
+.clip-aside--expanded .clip-aside__still {
+  width: auto;
+  max-width: none;
+}
+
 @media (max-width: 620px) {
   .card-grid {grid-template-columns: 1fr;}
   .markdown table {display: block; overflow-x: auto;}
   .hero-panel {padding: 1.15rem;}
   .annotated-shot__pin {width: 1.55rem; height: 1.55rem; font-size: 0.72rem;}
   .annotated-shot figcaption {grid-template-columns: 1fr;}
+  .clip-aside {grid-template-columns: 1fr;}
 }

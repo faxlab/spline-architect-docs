@@ -3,7 +3,7 @@ title: Convert, collapse, proxy LOD, and export
 description: Turn Spline Architect sources into independent actors, meshes, Blueprints, or a standalone level.
 ---
 
-Conversion is a one-way handoff from Spline Architect authoring to independent Unreal output. Leave source deletion off until the converted result has been inspected.
+Conversion is the exit: it turns Spline Architect output into plain Unreal actors, meshes, or Blueprints that no longer need the plugin. It is one-way - which is why every dialog here ships with **Delete Original Actors** off, and why you leave it off until you have looked at the result.
 
 ## Unified Convert dialog
 
@@ -21,6 +21,18 @@ Conversion is a one-way handoff from Spline Architect authoring to independent U
 | **Delete Original Actors** | Removes sources only after successful conversion. Leave off for the first pass. |
 
 Quick commands **Convert Selected/Each to Mesh** and **Convert Selected/Each to BP** expose the corresponding focused options.
+
+## Convert to Building
+
+A Wall stack that has grown into a whole building can become a single **Building** actor. Select the topmost wall of the stack and press **Convert to Building** in its **Preset** category.
+
+The Building carries the stack's settings as its **own inline preset** - nothing is written to a DataTable and there is no save prompt. Meshes, materials, floors, roofs, attached custom pieces, the spline, the seed, the resolved mirror mode, and the actor's Outliner folder and attach parent all come along. It is one undo step, and works across a multi-selection.
+
+Save a Building **preset** to a DataTable separately when you want to reuse the design elsewhere; converting collapses one authored stack into one actor. It is also the return leg of the **Break** round-trip: break a Building, art-direct its walls, convert back - the result carries the changes inline while the shared row stays as it was.
+
+:::note Preset fields are no longer locked while baked
+Assigning, changing, or clearing a preset source works in any bake state. The actor unbakes itself first when it needs to.
+:::
 
 ## Building Proxy LOD
 

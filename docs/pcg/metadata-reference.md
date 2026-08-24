@@ -24,6 +24,23 @@ Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots
 | `SA_RoadWidth` | Float | Full width at the crossing. |
 | `SA_ConfigIndex` | Int | Streets Street Config index. |
 | `SA_DistanceAlongSpline` | Float | Cumulative world distance on centerlines or effective splines. |
+| `SA_StreetConfigIndex` | Int | Street Config that built the road a lot edge follows. |
+| `SA_LotPerimeter` | Float | Boundary length in cm. |
+| `SA_LotWidth` | Float | Frontage width of the lot, in cm. |
+| `SA_LotDepth` | Float | Depth back from the frontage, in cm. |
+| `SA_LotForward` | Vector | Direction the lot faces, away from its street. |
+| `SA_LotFrontageCount` | Int | How many streets the lot fronts onto. |
+| `SA_IsCornerLot` | Bool | Lot fronts two or more streets that meet at a corner. |
+| `SA_StreetFacing` | Bool | Per boundary point: this edge runs along a street. |
+| `SA_AtIntersection` | Bool | Per boundary point: this point sits at an intersection. |
+| `SA_TouchesBoundary` | Bool | Per point: the edge starting here lies on the source boundary. On Gap Outlines this marks an alley mouth; on alley sides it is false. |
+| `SA_CutGap` | Float | Alley width on Cut Lines and Gap Outlines. `0` when there is no gap. |
+| `SA_CutPass` | Int | Which subdivision pass produced this cut line. |
+| `SA_JunctionDegree` | Int | How many cut lines meet at a Cut Junction point. |
+| `SA_JunctionOnBoundary` | Bool | The Cut Junction sits on the lot edge rather than inside it. |
+| `SA_IslandArea` | Double | Plan-view area of a boundary island, after facet thinning. |
+
+Lot shape metrics - `SA_LotWidth`, `SA_LotDepth`, `SA_LotForward`, `SA_LotFrontageCount`, `SA_IsCornerLot` - are what make "put shops on corner lots and houses elsewhere" a one-node filter.
 
 ## Effective spline attributes
 
@@ -87,6 +104,23 @@ SA Get Spline can write:
 | `SA_SpawnedActor` | Soft Object Path | PCG-managed actor reference emitted in Components/Actors modes. |
 | `SA_PresetTags` | Name Array | Exact applicable Building/Wall Preset tags on generated piece, Dynamic Mesh, or actor-reference output. |
 | `SA_DistanceToSpline` | Double | Horizontal or 3D distance computed by SA Orient To Spline. |
+| `SA_IsHole` | Bool | This closed shape is the hole of a larger shape, not a shape of its own. Written on every output of the nodes that can emit holes, `false` on outlines, so a filter always finds it. |
+| `SA_PointCount` | Int | How many input points belong to a shape traced by SA Polygon From Points. |
+| `SA_PresetRow` | Name | Custom Piece Preset row chosen by SA Set Custom Piece. |
+| `SA_PresetTable` | Soft Object Path | The DataTable that row lives in. |
+| `SA_ApplyToAll` | Bool | This piece point spreads to every run in reach instead of only the nearest. |
+| `SA_ActorClass` | Soft Object Path | Actor class resolved for a spawned piece. |
+| `SA_PCGManaged` | Tag | Actor tag on everything PCG spawns for SA. Present so SA's own getters can ignore their output and never feed it back in - do not filter on it by hand. |
+
+## Attribute inheritance through transforms
+
+Nodes that reshape lots pass attributes along rather than starting fresh, so a filter written against **SA Get Lots** still works after a subdivision.
+
+**SA Subdivide Lots** emits its own `SA_LotIndex`, `SA_LotArea`, `SA_LotSeed`, and `SA_IsExterior` describing each **sub-lot**, and these override the parent's values of the same name. Every other Data-domain attribute of the parent lot rides through untouched - `SA_LotZone`, `SA_StreetConfigIndex`, `SA_RoadWidth`, `SA_LotSurfaceMaterial`, `SA_SourceActor`, and anything an upstream Add Attribute put there.
+
+One consequence to keep in mind: inherited **shape metrics** still describe the **parent** lot. After a subdivision, `SA_LotWidth`, `SA_LotDepth`, `SA_LotForward`, `SA_LotFrontageCount`, and `SA_IsCornerLot` are the block's, not the sub-lot's.
+
+**SA Polygon Merge** and **SA Polygon Offset** keep an attribute only when every input agrees on its value. Merging lots from two different Streets Networks drops `SA_SourceActor`; merging lots at all drops `SA_LotIndex` and `SA_LotArea`, because the island has no single answer.
 
 ## Preset tags and filtering
 

@@ -3,9 +3,24 @@ title: Wall
 description: Complete user-facing reference for the Spline Architect Wall actor.
 ---
 
-The Wall is the primary modular generator. It fits pieces along one or more splines, resolves corners, adds floors, roofs and posts, accepts Custom Pieces and Booleans, and can form connected stacks.
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
 
-![Wall actor and Details panel in SACity](/img/screens/wall-details.png)
+<ClipAside
+  media={
+    <LoopingClip
+      alt="What stacked wall layers make: a sci-fi interior with a glowing trim band and angled upper walls, a plaza platform growing a railing, a street corner, and stepped ruin rings"
+      poster="img/clips/wall-stacking.webp"
+      src="img/clips/wall-stacking.mp4"
+    />
+  }
+>
+
+Wall is the actor everything else builds on. Give it a spline and a preset, and it fits your modular pieces along the path, resolves the corners, and adds floors, roofs, and posts. Stack Walls to make storeys; the stack is what [becomes a Building](/getting-started/first-building).
+
+Do not read "wall" too literally. The same actor makes shopfronts, fences, and railings; with a floor surface and a curb mesh it makes planters, platforms, and plazas. Anything modular along a path is a Wall.
+
+</ClipAside>
 
 ## Preset
 
@@ -29,6 +44,16 @@ The Wall is the primary modular generator. It fits pieces along one or more spli
 | **Reset Transform** | Applies the actor transform to the path and returns the actor transform to its expected basis. |
 | **Center Transform** | Moves the actor origin to the spline center while preserving the world-space path. |
 | **Force Regenerate** | Rebuilds this Wall and its connected generation tree. |
+
+## Stacked walls
+
+**Add Wall to Selected** connects a new Wall to the selected one as a child. The child follows its parent's effective footprint and sits on top of it, raised by the parent's height; **Offset Stacked By** in the preset shifts a layer beyond that.
+
+Storeys are the obvious use, but a layer can be anything: a trim band between floors, a railing on a plinth, an inset upper ring - the clip at the top of this page is all stacks. Each layer keeps its own preset, materials, and seed, so a stack composes structures no single preset could describe - and saving the stack as a preset is how a [Building](/getting-started/first-building) is born.
+
+**Spline Architect → Insert Wall** adds a wall directly **beneath** the selected one. The selection and everything stacked above it, custom pieces included, move up by the new wall's height.
+
+Used on the bottom wall, this slides a new base under an existing building: the new wall becomes the footprint and takes over the spline, curves and all, along with the mirror settings that the footprint defines for the whole stack. The old bottom wall keeps its custom pieces and becomes the floor above.
 
 ## Spline
 
@@ -62,6 +87,5 @@ The Wall is the primary modular generator. It fits pieces along one or more spli
 ## Production notes
 
 - **Random Fit** is deterministic for a resolved seed and cycles a shuffled, fit-aware bag; **Ordered Sequence** follows array order; **Best Fit** chooses the closest natural length that fits.
-- Filler pieces may be packed before the main piece when that produces a valid fit. This is automatic, not a separate user toggle.
 - Use **Use Parent** mirror mode on stacked child Walls so the hierarchy shares the root's symmetry.
 - For bulk operations, prefer the connected commands in [Baking](/production/baking) to pressing per-actor buttons repeatedly.

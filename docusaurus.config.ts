@@ -95,13 +95,14 @@ const config: Config = {
           {label: 'Baking workflow', to: '/production/baking'},
         ]},
         {title: 'Reference', items: [
-          {label: 'Core actors', to: '/core-actors/wall'},
+          {label: 'Walls and Buildings', to: '/core-actors/wall'},
           {label: 'SA PCG nodes', to: '/pcg/node-reference'},
           {label: 'Troubleshooting', to: '/reference/troubleshooting'},
         ]},
         {title: 'Spline Architect', items: [
           {label: 'Fab listing', href: 'https://www.fab.com/listings/356b1d13-5080-4418-893d-5a39546bc276'},
           {label: 'FaxLab3D on Fab', href: 'https://www.fab.com/sellers/FaxLab3D'},
+          {label: 'Credits', to: '/reference/credits'},
         ]},
       ],
       copyright: `Copyright © ${new Date().getFullYear()} FaxLab3D. Built with Docusaurus.`,

@@ -11,9 +11,13 @@ Close Unreal, replace the plugin with the exact UE 5.5/5.6/5.7/5.8 package, and 
 
 ### The plugin or SA nodes are missing
 
-Enable Spline Architect and its dependencies, then restart. SA PCG nodes exist only in the UE 5.8 package; Streets itself exists in every supported v6 package.
+Enable Spline Architect and its dependencies, then restart. Streets Network, Lot Zone, Streets Mode, and the SA PCG nodes exist **only in the UE 5.8 package** — they are absent from the 5.5, 5.6, and 5.7 archives, so a missing Streets Network actor on an older engine is expected, not a broken install. See [compatibility](/reference/compatibility).
 
 ## Actor generation
+
+### The Preset Library is empty
+
+Nothing is wrong - a fresh install has no presets, because presets are built from your meshes and the plugin does not ship meshes. Open the [example project](https://github.com/faxlab/SplineArchitectExampleProject) for ready-made presets, or [make one from your own meshes](/getting-started/first-building#0-get-something-to-build-with). If you had presets and they vanished, check the library's category tab and Favorites filter - both are remembered between sessions.
 
 ### A Wall is empty
 
@@ -34,6 +38,10 @@ Enable Spline Architect and its dependencies, then restart. SA PCG nodes exist o
 ### The actor changes every rebuild
 
 Set a non-negative Seed. A `-1` seed resolves once to a concrete value, but duplicated/imported legacy actors should still be inspected and saved with an explicit resolved seed when exact reproducibility matters.
+
+### A spline command skipped my actor
+
+**Close/Open**, **Gridify**, **Flatten**, **Reverse**, **Mirror**, and **Apply Shape** refuse to guess when an actor has more than one spline, and tell you which actors they skipped. Select the spline component in the level editor, or pick a point on the path in Architect Mode, then run the command again. Actors with a single spline are unaffected.
 
 ### A transformed actor behaves strangely
 

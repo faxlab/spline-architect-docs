@@ -4,16 +4,19 @@ description: Production lifecycle, connected commands, bake methods, mobility, c
 ---
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
 
 Baking is reversible. It replaces generated preview/runtime output with persistent editor components or assets while the Spline Architect actor remains the source of truth.
 
 <AnnotatedShot
-  alt="Generated and baked Building output in SACity"
-  src="img/screens/baked-output.png"
+  alt="A baked Building with its Baking category open: the static mesh components it produced, and the Bake, Unbake, and Break actions"
+  src="img/screens/baked-output.webp"
   callouts={[
-    {label: 'Persistent instanced facade output', x: 50, y: 53},
-    {label: 'Actor Bake and Unbake actions', x: 78, y: 72},
-    {label: 'Baked state, mode, method, and mobility', x: 83, y: 83},
+    {label: 'Baked output: one component per piece', x: 40, y: 45},
+    {label: 'The components the bake produced', x: 88, y: 17},
+    {label: 'Bake, Unbake, Prebake Corners, Break', x: 88, y: 40},
+    {label: 'Baked state, mode, method, mobility', x: 88, y: 48},
   ]}
 />
 
@@ -30,7 +33,19 @@ Baking is reversible. It replaces generated preview/runtime output with persiste
 
 ## Automatic unbake
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="A baked Building is edited, drops back to an editable preview, regenerates, and is rebaked"
+      poster="img/clips/unbake-rebake.webp"
+      src="img/clips/unbake-rebake.mp4"
+    />
+  }
+>
+
 When an authored change would make persistent output stale, Spline Architect automatically unbakes the affected output and regenerates an editable preview. It does not silently commit a new production bake. Review the result and run **Bake/Rebake Connected**.
+
+</ClipAside>
 
 Changes include relevant actor properties, preset rows, spline topology, connected hierarchy, custom pieces, and Boolean inputs. If a baked actor appears unchanged after an edit, check whether you edited the shared row, an overridden value, or the actor you intended.
 
@@ -64,6 +79,6 @@ Open **Spline Architect → Diagnostics**.
 - **Baked Assets** lists registry entries, category, source, usage state, and triangle count. Filter by category/usage or search by name.
 - Context actions select actors, set generation mode, set bake method, bake/unbake selected actors, and inspect assets.
 
-![SA Diagnostics showing actor and baked-asset status](/img/screens/diagnostics.png)
+![The Diagnostics window listing every Spline Architect actor with its type, state, preset, seed, component and triangle counts](/img/screens/diagnostics-window.webp)
 
 Never delete an apparently unused baked asset only from the Content Browser without checking Diagnostics and Unreal referencers. Conversion/export assets are independent and may be referenced outside the current level.

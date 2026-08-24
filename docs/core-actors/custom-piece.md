@@ -3,7 +3,24 @@ title: Custom Piece
 description: Complete user-facing reference for inserted and overlapping Wall pieces.
 ---
 
-Custom Piece replaces or overlays part of a Wall with a door, arch, window module, gap, special corner, or child actor. Add it from the Spline Architect menu while a Wall is selected, then position it along the target path.
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Custom pieces dragged along a facade: a doorway inserted among the shutters, shop signs overlaid on the wall, and a vertical element placed up the storeys"
+      poster="img/clips/custom-piece-examples.webp"
+      src="img/clips/custom-piece-examples.mp4"
+    />
+  }
+>
+
+A Custom Piece is the exception in a wall: the door, the arch, the gap, the one special corner. Add it from the Spline Architect menu while a Wall is selected, drag it along the path to where it belongs, and the wall regenerates around it.
+
+In the clip: a doorway **inserted** among the ground-floor shutters - it cuts its slot - then shop signs **overlaid** on top of the generated wall, and a vertical piece assigned to a range of **Floors** so it runs up the facade.
+
+</ClipAside>
 
 ## Actor controls
 
@@ -13,6 +30,10 @@ Custom Piece replaces or overlays part of a Wall with a door, arch, window modul
 | **Location Locked** | Read-only state showing whether manual movement is constrained. |
 | **Locked Location** | World position restored when the actor is locked and moved. |
 | **Lock Position / Unlock Position** | Captures the current location or allows movement again. |
+
+Locking pins a piece against the generator sliding it along the spline. It does **not** pin it in the world: the piece travels with its wall when the wall moves, and stays put when the wall's pivot is reset or centred.
+
+Custom pieces can also be placed from a PCG graph. Mark scattered points with [SA Set Custom Piece](/pcg/node-reference#sa-set-custom-piece) and feed them into SA Spawn Wall's or SA Spawn Curve's `Custom Pieces` pin.
 
 ## Custom Piece Preset
 

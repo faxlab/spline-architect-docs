@@ -1,52 +1,68 @@
 ---
 title: Build a reusable Building
-description: Create a connected Wall stack, save it as a Building Preset, and place reusable Building actors.
+description: Draw a Wall stack, save it as a Building Preset, and place the same building on any footprint.
 ---
 
-This workflow builds a reusable Building from the same Wall layers you can inspect and art-direct individually.
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
 
-![A connected Wall stack in the SACity example](/img/screens/first-building-stack.png)
+A Building is a Wall stack you taught the plugin to rebuild anywhere. This page builds one the long way once - draw the stack, save it, place it - so you know exactly what the preset contains.
 
-![Connected Wall hierarchy becoming a Building Preset and Building actor](/img/diagrams/actor-hierarchy.svg)
+## 0. Get something to build with
+
+The plugin ships the tools, not the bricks. A fresh install has an empty Preset Library, because a Wall preset is your modular meshes plus fitting rules - and the meshes are yours.
+
+Two ways to have something to draw with in the next step:
+
+- **Open the [example project](https://github.com/faxlab/SplineArchitectExampleProject)** (recommended for a first session). It contains finished Wall, Building, and Curve presets with their meshes, so every page of this guide works immediately, and the presets double as reference for authoring your own.
+- **Make a preset from your own meshes.** Place a Spline Architect Wall, and in its **Wall Preset → Wall Meshes** add any modular wall mesh you have - a piece from a kitbash pack, or any static mesh at all while testing. Draw, and it repeats along the path. [Prepare modular meshes](/getting-started/preparing-meshes) covers what makes a mesh fit well; **Save Preset** puts it in the library for reuse.
 
 ## 1. Draw the root Wall
 
-Enter Architect Mode, choose a ground-floor Wall preset, and draw a closed footprint. The root Wall owns the spline used by the connected stack.
+Enter Architect Mode, choose a ground-floor Wall preset, and draw a closed footprint. The root Wall owns the spline; every layer you stack on it follows that same footprint.
 
-For a predictable first result:
+For a first run that behaves the same every time: set **Seed** to something fixed like `42`, and get the footprint right *before* stacking - a footprint edit regenerates every layer above it.
 
-- use a deterministic **Seed** such as `42`;
-- leave **Multi Spline Mode** at Independent;
-- keep **Generation Mode** at Baked;
-- correct the footprint before adding upper layers.
+## 2. Stack the layers
 
-## 2. Add connected Wall layers
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Adding storeys to a wall from the Preset Library: each new layer lands on the same footprint and the building grows"
+      poster="img/clips/building-stack.webp"
+      src="img/clips/building-stack.mp4"
+    />
+  }
+>
 
-Select the root Wall and choose **Spline Architect → Add Wall to Selected**. Choose an upper-floor or roof-line preset. The new Wall is connected to its parent and follows the same effective footprint with its own cumulative **Offset Stacked By** and preset controls.
+Select the root Wall and choose **Spline Architect → Add Wall to Selected**, then pick an upper-floor or roof-line preset. The new Wall connects to its parent, follows the same footprint, and stacks by its own height.
 
-Repeat for additional layers. Use **Select Connected** or **Select Roots** to inspect the hierarchy. Every layer should have a unique role: ground floor, repeated upper floor, parapet, trim, or roof edge.
+Repeat per layer, giving each one job: ground floor, repeated upper floor, parapet, trim, roof edge. **Select Connected** and **Select Roots** navigate the stack when it grows.
 
-## 3. Save a Building Preset
+</ClipAside>
 
-Select the root Wall. In its **Preset** category, click **Save Building Preset**. Choose or create a Building Preset DataTable and a row name.
+To slide a new storey in **underneath** an existing stack, select the bottom wall and choose **Insert Wall**. The new wall takes over the footprint and everything above it moves up, custom pieces included.
 
-The saved hierarchy records:
+## 3. Save it as a Building Preset
 
-- a stable `Wall ID` for each layer and its `Parent Wall ID`;
-- whether the layer uses a Wall DataTable row or an inline Wall preset;
-- per-layer parameter overrides;
-- optional random floor ranges.
+Select the root Wall. In its **Preset** category, click **Save Building Preset**, and choose or create a Building Preset DataTable and a row name.
 
-## 4. Place the reusable Building
+The row records the whole hierarchy: each layer's identity and parent, whether it uses a Wall DataTable row or carries its settings inline, its parameter overrides, and any random floor ranges. That is the entire building, as data - which is why the next step works.
 
-In Architect Mode, switch to Building presets and select the row you saved. Draw a new closed footprint. Spline Architect creates a Building actor whose **Building Preset** resolves the saved Wall hierarchy onto that footprint.
+If you only want *this* stack collapsed into a single actor and will never reuse the design, press [**Convert to Building**](/production/conversion-export#convert-to-building) instead. It carries the settings inline, with no DataTable row and no save prompt.
 
-You can also place a Building actor, assign **Data Table Building Preset**, and use its spline tools. Turn on **Rename Actor on Building Preset Selection** to keep Outliner labels aligned with row names.
+## 4. Place it on any footprint
+
+In Architect Mode, switch to Building presets, select your saved row, and draw a **different** closed footprint - wider, L-shaped, whatever the block needs. The Building resolves the same layer stack onto it.
+
+![Three buildings from one Building Preset, each drawn on a different footprint spline - a cross, an H, and an octagon](/img/screens/building-two-footprints.webp)
+
+This is the point of a Building over a copied wall stack: one preset, any footprint. Corners, floors, and roofs resolve to whatever shape you drew, and an edit to the preset row updates every placement when it regenerates.
 
 ## 5. Bake the connected result
 
-Use **Bake Connected** from the Spline Architect menu. This bakes the root and every connected layer with a consistent bake method and mobility. If you change a spline, preset, seed, or relevant control later, the affected output automatically unbakes. Review the regenerated building and run **Rebake Connected**.
+Run **Bake Connected** from the Spline Architect menu - it bakes the root and every connected layer together. If you edit anything later, the affected output unbakes itself and shows the new preview; look it over and **Rebake Connected**. That loop is the [baked-first workflow](/getting-started/baked-first-workflow).
 
-:::note Breaking a Building
-The Building actor's **Break** button decomposes it into editable connected Wall output and removes the Building. Use it when a reusable preset needs one-off art direction. It is intentionally a destructive conversion of that actor, so duplicate first if the reusable version must remain.
+:::note The Break round-trip
+A placed Building is hard to art-direct as one actor - it is many walls. **Break** turns it back into editable connected Walls; adjust them individually, then press **Convert to Building** to collapse the result into a Building again, carrying your changes as its own inline preset. The original preset row is untouched, so every other placement keeps following it.
 :::

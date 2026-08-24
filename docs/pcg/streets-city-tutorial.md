@@ -3,20 +3,22 @@ title: Tutorial — Streets to a PCG city
 description: Generate subdivided lots, buildings, road props, and zone variation from a Streets Network in UE 5.8.
 ---
 
-import AnnotatedShot from '@site/src/components/AnnotatedShot';
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
 
-This tutorial starts with one Streets Network and ends with PCG-owned buildings and road props. Work in an unsaved staging level or duplicate the example map before experimenting.
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Dragging a street node in Streets Mode; the lot re-extracts and the PCG buildings on it regenerate to the new parcel"
+      poster="img/clips/streets-to-pcg.webp"
+      src="img/clips/streets-to-pcg.mp4"
+    />
+  }
+>
 
-<AnnotatedShot
-  alt="The validated SACity Streets and PCG graph"
-  src="img/screens/pcg-streets-graph.png"
-  callouts={[
-    {label: 'Preview and debug-object viewport', x: 20, y: 33},
-    {label: 'Road-edge prop branch', x: 43, y: 43},
-    {label: 'Lots, subdivision, and Building branch', x: 57, y: 46},
-    {label: 'Selected-node settings', x: 82, y: 31},
-  ]}
-/>
+One Streets Network in, a city out: this tutorial wires lots to buildings and road edges to props, and by the end the graph rebuilds all of it whenever you move a street - that is what the clip shows. Work in a staging level or a duplicate of the example map.
+
+</ClipAside>
 
 ## 1. Author the street graph
 
@@ -34,7 +36,7 @@ Choose **Default Lot Config → Elevation Mode** before building the PCG graph:
 - **Flatten to Lowest Boundary** creates a flat lot at its lowest edge;
 - **Flatten to Highest Boundary** creates a flat lot at its highest edge.
 
-Use **Lot Overrides** when one block needs a different mode. The visible surface and the boundary read by PCG will stay aligned. Flattening does not create retaining walls or cut the terrain.
+Use **Lot Overrides** when one block needs a different mode. The visible surface and the boundary read by PCG will stay aligned. Flattening does not create retaining walls or cut the terrain by itself; feed the lots to [SA Landscape Patch](/pcg/landscape-patch) when the ground should follow them.
 
 ## 2. Add semantic zones
 
@@ -55,7 +57,7 @@ Inspect the **Lot Boundaries** output. Each closed spline carries `SA_LotIndex`,
 
 Add **Filter Data By Attribute** after Lot Boundaries and keep `SA_LotEmpty == false`. Branch by `SA_LotZone` if different districts need different presets.
 
-Feed a branch to **SA Subdivide Lots**. Start with:
+Subdivision shapes the city's fabric - block sizes, alleys, parcel rhythm - and both building routes in step 6 sit on top of it. Feed a branch to **SA Subdivide Lots**. Start with:
 
 - Lot Target Area: `6,000,000 cm²`;
 - Max Subdivisions: `2`;
@@ -69,34 +71,57 @@ Feed a branch to **SA Subdivide Lots**. Start with:
 
 Follow Elevation preserves each reconstructed child boundary. Lowest/Highest first reconstruct the terrain Z, then flatten every child independently to its own extreme boundary elevation. In all modes, each child's boundary spline, Dynamic Mesh, and Ground Surface agree. Use `SA_IsExterior` downstream if perimeter and interior lots need different rules.
 
-## 5. Create a setback
+## 5. A setback, for the lots you will generate on
 
-Connect subdivided **Lot Boundaries** to **SA Polygon Offset**. Use a negative **Offset** for a building setback. A large inset can split or remove a narrow lot, so preview this output before spawning.
+Connect **Sub-Lot Boundaries** to **SA Polygon Offset** and use a negative **Offset** for a building setback. A large inset can split or remove a narrow lot, so preview this output before spawning.
 
-## 6. Generate buildings
+Only lots headed for **SA Spawn Building** need this - the instancing route in the next step lines buildings along road edges and never looks at the sub-lot shape.
 
-Add useful **Preset Tags** to the source rows before building the selection graph:
+## 6. Fill the lots with buildings
 
-- Building Presets: values such as `Residential`, `Commercial`, `Small`, or `Tower`;
-- Wall Presets: precise generated-layer values such as `BaseFloor`, `Facade`, or `Trim`.
+There are two ways to do this, and picking the wrong one is the most common way to make a city that will not run.
 
-Connect offset Polygons to **SA Spawn Building → Footprints**, choose **Preset Source = Random From DataTable**, assign the Building Preset DataTable, and keep **Output = Data**.
+| | **Instance finished buildings** | **Generate buildings in the graph** |
+| --- | --- | --- |
+| What it places | One static mesh per building, from a pool you built earlier | Every wall piece, floor, and roof, generated per footprint |
+| Cost per building | One instance | Dozens of pieces, generated on every regeneration |
+| Use it for | The city - blocks, districts, everything in the background | Hero buildings, the street the player walks down, anything the camera gets close to |
+| Footprint | Whatever the mesh is | Fits the lot exactly, whatever its shape |
 
-For a small residential pool:
+**Build the city out of instanced meshes, and spend SA Spawn Building only where it shows.** A district of procedurally generated buildings looks the same from a distance as a district of instanced ones and costs enormously more, in generation time and in draw calls.
 
-- add `Residential` and `Small` to **Filter Terms**;
-- use **Term Match Mode = All**;
-- **Include Row Names** is enabled by default; disable it when terms should match only authored Preset Tags.
+### Instance finished buildings
 
-Empty Filter Terms include the complete table. **Any** accepts rows matching at least one term. Selection is equal-probability, with replacement, and deterministic for fixed graph/footprint seeds. Only Building Preset tags classify Building rows; tags on referenced Wall Presets do not expand the candidate pool.
+Author a handful of buildings first, the normal way: draw them, stack the walls, get them looking right. Then [convert each one to a static mesh](/production/conversion-export) - one mesh per building, with a proxy LOD if they will be seen from far away. That library is what the city is made of.
 
-- Connect **Generated** to a stock **Static Mesh Spawner**.
-- In the spawner choose **Mesh Selector Type = By Attribute** and **Attribute Name = `SA_Mesh`**.
-- Connect **Dynamic Meshes** to **Spawn Dynamic Mesh** for floor/roof or other non-static pieces.
-- To isolate individual `BaseFloor` pieces, use **Array Contains** on `SA_PresetTags`, then **Attribute Filter**.
-- To keep a complete Building output tagged `Small`, use **Filter Data By Tag**.
+To line them along the streets:
 
-If districts need different pools, branch by `SA_LotZone` and configure a different query on each SA Spawn Building node. This keeps district intent explicit without adding one node per Building row.
+```text
+SA Get Road Edges → SA Edge Placer → Static Mesh Spawner (By Attribute: SA_Mesh)
+```
+
+Put your building meshes in the **Mesh Pool** with weights, set **Fill = Packed** so each one advances by its own true width, and **Facing = Away From Edge** so they front the street. Packed fitting means a pool of differently sized buildings lines up without gaps or overlaps - the same behavior that packs [mixed-size barriers](/pcg/recipes#mixed-size-barriers), applied to whole buildings.
+
+Vary it by district: branch on `SA_LotZone` before the Edge Placer and give each branch its own pool.
+
+### Generate buildings in the graph
+
+Where a building needs to fit its lot exactly, or the camera gets close enough that repetition shows, generate it.
+
+Tag your source rows first - Building Presets get values like `Residential`, `Small`, or `Tower`; Wall Presets get layer-precise ones like `BaseFloor`, `Facade`, or `Trim`.
+
+Connect Polygon Offset's **Offset Polygons** to **SA Spawn Building → Footprints**, choose **Preset Source = Random From DataTable**, assign the Building Preset DataTable, and keep **Output = Data**. For a small residential pool, add `Residential` and `Small` to **Filter Terms** with **Term Match Mode = All**. Empty Filter Terms include the whole table; **Any** widens it to rows matching at least one term. **Include Row Names** is on by default - turn it off when terms should match only authored Preset Tags.
+
+Selection is equal-probability with replacement, and repeats exactly for fixed graph and footprint seeds. Only Building Preset tags classify a Building row; tags on the Wall Presets it references do not widen the pool.
+
+Then:
+
+- **Generated** → stock **Static Mesh Spawner**, with **Mesh Selector Type = By Attribute** and **Attribute Name = `SA_Mesh`**.
+- **Dynamic Meshes** → **SA Spawn Dynamic Mesh** for floors, roofs, and other non-static pieces.
+- To reach individual pieces - every `BaseFloor`, say - use **Array Contains** on `SA_PresetTags`, then **Attribute Filter**.
+- To keep a whole generated building tagged `Small`, use **Filter Data By Tag**.
+
+Branch on `SA_LotZone` and give each district its own query on its own SA Spawn Building node.
 
 ## 7. Place road-edge props
 

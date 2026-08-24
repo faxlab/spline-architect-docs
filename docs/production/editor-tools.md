@@ -9,7 +9,7 @@ Use [Diagnostics and the baked registry](/production/baking#diagnostics-and-bake
 
 ## Randomize Seeds
 
-**Randomize Seeds** assigns new seeds to every Spline Architect actor in the level. Runtime and unbaked actors regenerate; baked output is intentionally left unchanged. To avoid an unexpected scene-wide change, duplicate the level or record important seeds before using it.
+Assigns new seeds to every actor in the level - unbaked and Runtime actors regenerate, baked output stays put. It is scene-wide, so record the seeds you care about first.
 
 ## Pivot Tool
 
@@ -23,6 +23,14 @@ Select Static Mesh assets in the Content Browser, then choose **Spline Architect
 | **Suffix** | When overwrite is off, creates copies such as `_pivot`. |
 
 Use copies first when the asset is already referenced. Moving a pivot preserves the visible mesh placement in the asset but changes how new actors, fitting bounds, and downstream tools interpret its origin.
+
+**Overwrite Existing**, the pivot anchors, the transform, and the suffix are remembered between sessions.
+
+### Reset and Center Transform on an actor
+
+The **Reset Transform** and **Center Transform** buttons on a Spline Architect actor move only the actor's own pivot. Everything it carries stays exactly where it was in the world - the spline points, and the attached actors including custom pieces. Reset Transform also preserves tangents and point types, so the curve between the points keeps its shape.
+
+A **locked** custom piece is pinned against the generator sliding it along its spline, not against its wall moving. It travels with the building.
 
 ## Lightmap Tool
 
@@ -45,4 +53,4 @@ PatchBuilder is the safest default for broken source UVs. XAtlas can reduce stre
 
 ## Pinned toolbar
 
-The Spline Architect toolbar can pin commands, presets, and shape entries. Use it for the small set of operations repeated by your team—typically Architect Mode, Add Wall to Selected, Bake/Rebake Connected, Preset Library, Diagnostics, and Convert. Pinned state and recent shapes are editor-user settings, not shared project content.
+Pin the commands, presets, and shapes you reach for daily. It is on by default and purely for comfort; pinned state is a per-user setting, not project content.
