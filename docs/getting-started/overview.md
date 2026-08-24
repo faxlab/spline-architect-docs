@@ -18,12 +18,12 @@ import Link from '@docusaurus/Link';
   <span className="hero-shot__version">v6.0.0</span>
 </div>
 
-## Choose a path
+## The three systems
 
 <div className="card-grid">
-  <Link to="/getting-started/first-building"><strong>Build your first building</strong>Draw a Wall stack, save it as a Building Preset, and place a reusable Building.</Link>
-  <Link to="/pcg/streets-city-tutorial"><strong>Generate a PCG city</strong>Turn Streets Network lots and road data into buildings, roadside props, and facade details.</Link>
-  <Link to="/production/baking"><strong>Prepare production output</strong>Bake, convert, export, and check the result with Diagnostics.</Link>
+  <Link to="/core-actors/wall"><strong>Walls</strong>Modular pieces along a spline: corners, floors, roofs, posts, doors. Everything starts here.</Link>
+  <Link to="/core-actors/building"><strong>Buildings</strong>Save a wall stack once, rebuild it on any footprint you draw.</Link>
+  <Link to="/core-actors/streets-network"><strong>Streets</strong>Draw roads; get intersections, lots, and PCG-ready city data. UE 5.8.</Link>
 </div>
 
 ## The actors

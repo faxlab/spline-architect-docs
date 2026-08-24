@@ -3,6 +3,18 @@ title: PCG facade and prop recipes
 description: Practical UE 5.8 recipes for facade grids, road-edge props, crossings, rooftops, and footprint-aware scattering.
 ---
 
+## A street of buildings
+
+```text
+SA Get Road Edges → SA Edge Placer → Static Mesh Spawner (By Attribute: SA_Mesh)
+```
+
+The scalable way to fill a city. Author a few buildings with Spline Architect, [convert each to a static mesh](/production/conversion-export), and put those meshes in the Edge Placer's **Mesh Pool** with weights.
+
+Set **Fill = Packed** so each building advances the placement by its own real width, **Facing = Away From Edge** so they front the street, and a **Lateral Offset** to hold them off the kerb. Differently sized buildings then line the street without gaps or overlaps.
+
+Branch on `SA_LotZone` first to give each district its own pool. Keep [SA Spawn Building](/pcg/node-reference#sa-spawn-building) for the hero buildings the camera gets close to.
+
 ## Facade attachments
 
 ```text
@@ -56,18 +68,6 @@ SA Get Road Edges → SA Edge Placer → Static Mesh Spawner
 ```
 
 Set Edge Placer to Right or Left, **Facing = Away From Edge**, **Fill = Fixed Spacing**, and enter lamp spacing in centimeters. The node uses exact mesh or collision bounds, including off-center pivots, so the prop's bounds face sits flush to the edge.
-
-## A street of buildings
-
-```text
-SA Get Road Edges → SA Edge Placer → Static Mesh Spawner (By Attribute: SA_Mesh)
-```
-
-The scalable way to fill a city. Author a few buildings with Spline Architect, [convert each to a static mesh](/production/conversion-export), and put those meshes in the Edge Placer's **Mesh Pool** with weights.
-
-Set **Fill = Packed** so each building advances the placement by its own real width, **Facing = Away From Edge** so they front the street, and a **Lateral Offset** to hold them off the kerb. Differently sized buildings then line the street without gaps or overlaps.
-
-Branch on `SA_LotZone` first to give each district its own pool. Keep [SA Spawn Building](/pcg/node-reference#sa-spawn-building) for the hero buildings the camera gets close to.
 
 ## Mixed-size barriers
 

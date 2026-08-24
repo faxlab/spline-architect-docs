@@ -3,7 +3,6 @@ title: Tutorial — Streets to a PCG city
 description: Generate subdivided lots, buildings, road props, and zone variation from a Streets Network in UE 5.8.
 ---
 
-import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
@@ -17,9 +16,7 @@ import LoopingClip from '@site/src/components/LoopingClip';
   }
 >
 
-One Streets Network in, a city out: this tutorial wires lots to buildings and road edges to props, and by the end the graph rebuilds all of it whenever you move a street. Work in a staging level or a duplicate of the example map.
-
-Once the graph is wired, the city is live: move a street and the lots, buildings, and props regenerate to match.
+One Streets Network in, a city out: this tutorial wires lots to buildings and road edges to props, and by the end the graph rebuilds all of it whenever you move a street - that is what the clip shows. Work in a staging level or a duplicate of the example map.
 
 </ClipAside>
 
@@ -60,7 +57,7 @@ Inspect the **Lot Boundaries** output. Each closed spline carries `SA_LotIndex`,
 
 Add **Filter Data By Attribute** after Lot Boundaries and keep `SA_LotEmpty == false`. Branch by `SA_LotZone` if different districts need different presets.
 
-Feed a branch to **SA Subdivide Lots**. Start with:
+Subdivision shapes the city's fabric - block sizes, alleys, parcel rhythm - and both building routes in step 6 sit on top of it. Feed a branch to **SA Subdivide Lots**. Start with:
 
 - Lot Target Area: `6,000,000 cm²`;
 - Max Subdivisions: `2`;
@@ -74,9 +71,11 @@ Feed a branch to **SA Subdivide Lots**. Start with:
 
 Follow Elevation preserves each reconstructed child boundary. Lowest/Highest first reconstruct the terrain Z, then flatten every child independently to its own extreme boundary elevation. In all modes, each child's boundary spline, Dynamic Mesh, and Ground Surface agree. Use `SA_IsExterior` downstream if perimeter and interior lots need different rules.
 
-## 5. Create a setback
+## 5. A setback, for the lots you will generate on
 
-Connect **Sub-Lot Boundaries** to **SA Polygon Offset**. Use a negative **Offset** for a building setback. A large inset can split or remove a narrow lot, so preview this output before spawning.
+Connect **Sub-Lot Boundaries** to **SA Polygon Offset** and use a negative **Offset** for a building setback. A large inset can split or remove a narrow lot, so preview this output before spawning.
+
+Only lots headed for **SA Spawn Building** need this - the instancing route in the next step lines buildings along road edges and never looks at the sub-lot shape.
 
 ## 6. Fill the lots with buildings
 
@@ -111,7 +110,7 @@ Where a building needs to fit its lot exactly, or the camera gets close enough t
 
 Tag your source rows first - Building Presets get values like `Residential`, `Small`, or `Tower`; Wall Presets get layer-precise ones like `BaseFloor`, `Facade`, or `Trim`.
 
-Connect offset Polygons to **SA Spawn Building → Footprints**, choose **Preset Source = Random From DataTable**, assign the Building Preset DataTable, and keep **Output = Data**. For a small residential pool, add `Residential` and `Small` to **Filter Terms** with **Term Match Mode = All**. Empty Filter Terms include the whole table; **Any** widens it to rows matching at least one term. **Include Row Names** is on by default - turn it off when terms should match only authored Preset Tags.
+Connect Polygon Offset's **Offset Polygons** to **SA Spawn Building → Footprints**, choose **Preset Source = Random From DataTable**, assign the Building Preset DataTable, and keep **Output = Data**. For a small residential pool, add `Residential` and `Small` to **Filter Terms** with **Term Match Mode = All**. Empty Filter Terms include the whole table; **Any** widens it to rows matching at least one term. **Include Row Names** is on by default - turn it off when terms should match only authored Preset Tags.
 
 Selection is equal-probability with replacement, and repeats exactly for fixed graph and footprint seeds. Only Building Preset tags classify a Building row; tags on the Wall Presets it references do not widen the pool.
 

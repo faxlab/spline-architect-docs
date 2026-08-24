@@ -112,7 +112,7 @@ All SA nodes require the UE 5.8 Spline Architect package. Actor-reading nodes ev
 
 ### SA Spawn Building
 
-- **Input:** `Footprints` (Polyline). **Outputs:** `Generated` (Point), `Dynamic Meshes` (Dynamic Mesh).
+- **Input:** `Footprints` (Curve). **Outputs:** `Generated` (Point), `Dynamic Meshes` (Dynamic Mesh).
 - **Cost:** this generates every piece of every building it is given, every time the graph regenerates. Use it where the detail shows. For a whole city, instance finished building meshes instead - see [filling lots with buildings](/pcg/streets-city-tutorial#6-fill-the-lots-with-buildings).
 - **Preset Source = Single Preset:** uses a Building DataTable row, falling back to the inline Building Preset when the row is unset or cannot resolve. This is the default and preserves existing graphs.
 - **Preset Source = Random From DataTable:** chooses independently for every footprint from **Building Preset DataTable**. Every matching row has equal probability, selection is with replacement, and fixed graph/footprint seeds repeat.
@@ -123,7 +123,7 @@ All SA nodes require the UE 5.8 Spline Architect package. Actor-reading nodes ev
 
 ### SA Spawn Wall / SA Spawn Curve
 
-- **Input:** `Splines` (Polyline). **Outputs:** `Generated` (Point), `Dynamic Meshes` (Dynamic Mesh).
+- **Input:** `Splines` (Curve). **Outputs:** `Generated` (Point), `Dynamic Meshes` (Dynamic Mesh).
 - **Settings:** matching DataTable row or inline preset; Output; Attach Options for Actors mode.
 
 For **SA Spawn Wall** and **SA Spawn Curve**, and for **SA Spawn Building** in Single Preset mode, a valid DataTable row wins; an unresolved configured row warns and falls back to the inline preset. Output modes:
@@ -155,7 +155,7 @@ Building-generated pieces carry Building Preset tags plus the exact Wall Preset 
 
 ### SA Edge Placer
 
-- **Input:** `Edges` (Polyline). **Output:** `Props` (Point).
+- **Input:** `Edges` (Curve). **Output:** `Props` (Point).
 - **Settings:** weighted Mesh/Actor Class Pool; Side (Center/Left/Right); Facing (Toward/Away/Along); Fill (Packed/Fixed/Random); conditional gap/spacing range; Lateral Offset; Z Offset; Edge Sample Spacing; normal PCG Seed.
 - Each pool entry must define exactly one Mesh or Actor Class, and a weight of zero or less is never picked. Emits `SA_Mesh` or `SA_Actor` and exact local bounds.
 - **Filling the pool:** above the list is **Add Selected Assets (or drop here)**. Select Static Meshes and Actor Blueprints in the Content Browser and press it, or drag a multi-selection straight onto it. Each asset becomes one entry at weight 1, existing entries and their weights are left alone, assets already in the pool are skipped, and anything else is ignored. See [what PCG measures a prop by](/getting-started/preparing-meshes#what-pcg-measures-a-prop-by) for how footprints are derived.
