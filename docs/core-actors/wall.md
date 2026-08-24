@@ -47,6 +47,24 @@ Do not read "wall" too literally. The same actor makes shopfronts, fences, and r
 | **Center Transform** | Moves the actor origin to the spline center while preserving the world-space path. |
 | **Force Regenerate** | Rebuilds this Wall and its connected generation tree. |
 
+## Stacked walls
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="What stacked wall layers make: a sci-fi interior with a glowing trim band and angled upper walls, a plaza platform growing a railing, a street corner, and stepped ruin rings"
+      poster="img/clips/wall-stacking.webp"
+      src="img/clips/wall-stacking.mp4"
+    />
+  }
+>
+
+**Add Wall to Selected** connects a new Wall to the selected one as a child. The child follows its parent's effective footprint and sits on top of it, raised by the parent's height; **Offset Stacked By** in the preset shifts a layer beyond that.
+
+Storeys are the obvious use, but a layer can be anything: a trim band between floors, a railing on a plinth, an inset upper ring. Each layer keeps its own preset, materials, and seed, so a stack composes structures no single preset could describe - and saving the stack as a preset is how a [Building](/getting-started/first-building) is born.
+
+</ClipAside>
+
 **Spline Architect → Insert Wall** adds a wall directly **beneath** the selected one. The selection and everything stacked above it, custom pieces included, move up by the new wall's height.
 
 Used on the bottom wall, this slides a new base under an existing building: the new wall becomes the footprint and takes over the spline, curves and all, along with the mirror settings that the footprint defines for the whole stack. The old bottom wall keeps its custom pieces and becomes the floor above.
