@@ -8,18 +8,19 @@ import LoopingClip from '@site/src/components/LoopingClip';
 
 A Building is a Wall stack you taught the plugin to rebuild anywhere. This page builds one the long way once - draw the stack, save it, place it - so you know exactly what the preset contains.
 
-## 0. Get something to build with
+## 0. Start with a Wall preset {#0-get-something-to-build-with}
 
-The plugin ships the tools, not the bricks. A fresh install has an empty Preset Library, because a Wall preset is your modular meshes plus fitting rules - and the meshes are yours.
+The plugin includes starter meshes and presets. For this tutorial, use the **Wall** preset from the included **SA_Walls** table. It supplies the meshes and fitting settings so you can learn to draw and stack walls before preparing your own kit.
 
-Two ways to have something to draw with in the next step:
+To try a complete building first, choose the included **Building** preset from **SA_Buildings** and [draw a closed footprint](/getting-started/architect-mode-fundamentals#draw-a-path). Continue below to learn how to author a building from individual Walls. If the library appears empty, check the [preset filters and installation](/reference/troubleshooting#the-preset-library-is-empty).
 
-- **Open the example project** (recommended for a first session). It downloads alongside the plugin from Fab, as a separate file in the same listing, and contains finished Wall, Building, Curve, and Streets presets with the meshes behind them - so every page of this guide works immediately, and the presets double as reference for authoring your own.
-- **Make a preset from your own meshes.** Place a Spline Architect Wall, and in its **Wall Preset → Wall Meshes** add any modular wall mesh you have - a piece from a kitbash pack, or any static mesh at all while testing. Draw, and it repeats along the path. [Prepare modular meshes](/getting-started/preparing-meshes) covers what makes a mesh fit well; **Save Preset** puts it in the library for reuse.
+For more designs to study, the separate **SACity example project** on Fab contains a built city with additional presets and meshes. It requires **UE 5.8** and the matching plugin; the starter kit in the plugin works on UE 5.5–5.8.
+
+When you are ready to use your own kit, [prepare modular meshes](/getting-started/preparing-meshes) explains what makes a mesh fit well. **Save Preset** puts your setup in the library for reuse.
 
 ## 1. Draw the root Wall
 
-Enter Architect Mode, choose a ground-floor Wall preset, and draw a closed footprint. The root Wall owns the spline; every layer you stack on it follows that same footprint.
+Enter Architect Mode, choose the starter **Wall** preset or a ground-floor preset from your own kit, and draw a closed footprint. The root Wall owns the spline; every layer you stack on it follows that same footprint.
 
 For a first run that behaves the same every time: set **Seed** to something fixed like `42`, and get the footprint right *before* stacking - a footprint edit regenerates every layer above it.
 
@@ -36,6 +37,8 @@ For a first run that behaves the same every time: set **Seed** to something fixe
 >
 
 Select the root Wall and choose **Spline Architect → Add Wall to Selected**, then pick an upper-floor or roof-line preset. The new Wall connects to its parent, follows the same footprint, and stacks by its own height.
+
+With the starter kit, reuse the **Wall** preset for another storey. You can choose a different design once you have learned how the layers connect.
 
 Repeat per layer, giving each one job: ground floor, repeated upper floor, parapet, trim, roof edge. **Select Connected** and **Select Roots** navigate the stack when it grows.
 

@@ -17,7 +17,13 @@ Enable Spline Architect and its dependencies, then restart. Streets Network, Lot
 
 ### The Preset Library is empty
 
-Nothing is wrong - a fresh install has no presets, because presets are built from your meshes and the plugin does not ship meshes. Open the example project that downloads with the plugin on Fab for ready-made presets, or [make one from your own meshes](/getting-started/first-building#0-get-something-to-build-with). If you had presets and they vanished, check the library's category tab and Favorites filter - both are remembered between sessions.
+The plugin includes starter presets for Walls, Buildings, Curves and Custom Pieces. An empty library is not the expected starting point.
+
+Clear the search text, turn off **Favorites** filtering, and select the matching category. The category and Favorites filter are remembered between sessions.
+
+If the presets are still missing, check that your installed plugin includes the **SA_Walls**, **SA_Buildings**, **SA_Curves** and **SA_CustomPieces** DataTables in its **Content/Presets** folder. These ship with the UE 5.5–5.8 packages. If the files are missing, reinstall the complete package for your engine version using the [installation guide](/getting-started/installation).
+
+If the presets are visible but a newly placed actor starts empty, check its default preset under **Project Settings → Plugins → Spline Architect Settings**. Existing projects can override the starter defaults. Changing a default affects new actors; assign a preset directly to an actor that is already in the level.
 
 ### A Wall is empty
 
