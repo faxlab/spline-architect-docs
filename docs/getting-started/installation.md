@@ -47,11 +47,13 @@ After restarting:
 
 If any item is missing, see [installation troubleshooting](/reference/troubleshooting#installation-and-startup).
 
-## Get content to build with
+## Start with the included content {#get-content-to-build-with}
 
-The plugin installs empty of meshes and presets - it generates from *your* modular content.
+The plugin includes a modular starter kit and presets for **Walls, Buildings, Curves and Custom Pieces**. The kit ships with every supported engine package, from UE 5.5 to 5.8. Use it to learn the tools in your own project before preparing your own meshes.
 
-For a first session, download the **example project** from the same Fab listing. It is a separate file beside the plugin downloads, and contains a built city with working presets and meshes for everything in this guide. Open it as an ordinary Unreal project, with the matching plugin build installed.
+Begin with [drawing a path](/getting-started/architect-mode-fundamentals#draw-a-path), then [build a reusable Building](/getting-started/first-building). New actors use the starter presets by default; existing projects can override those defaults in **Project Settings → Plugins → Spline Architect Settings**.
+
+For a larger worked example, download the separate **SACity example project** from the Fab listing. It contains a built city with additional presets and meshes. The example requires **UE 5.8** and the matching Spline Architect plugin installed separately. It is optional for learning the core tools. Streets and the SA PCG nodes also require UE 5.8.
 
 To start from your own kit instead, begin at [prepare modular meshes](/getting-started/preparing-meshes).
 
