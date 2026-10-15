@@ -28,6 +28,7 @@ const sidebars: SidebarsConfig = {
       'authoring/preset-library',
       'authoring/shapes-spline-tools',
       'production/editor-tools',
+      'authoring/ai-agents',
     ]},
     {type: 'category', label: 'Production', items: [
       'production/baking',
