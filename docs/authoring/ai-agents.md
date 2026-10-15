@@ -22,7 +22,7 @@ There is nothing to set up in Spline Architect. When the Toolset Registry is pre
 | Toolset | What it covers |
 | --- | --- |
 | **SplineArchitectTools** | The guides and this manual; every actor type and setting with its tooltip; presets and shapes; spawning, shaping, stacking, presets, Spline Architect menu commands, baking, saving presets, converting; a summary of what an actor generated. |
-| **SplineArchitectStreetsTools** | Streets networks: draw streets (crossings become intersections, as in Streets Mode), change road profiles, move and round junctions, delete streets and junctions, read the lots. |
+| **SplineArchitectStreetsTools** | Streets networks: draw streets (crossings become intersections, as in Streets Mode), change road profiles, move and round junctions, delete streets and junctions, read the lots. Import real streets and land areas from OpenStreetMap sources you have downloaded. |
 | **SplineArchitectPCGTools** | The SA PCG nodes: list them, read their pins and settings, add them to a graph. Epic's PCG tools then connect and configure them like any other node. |
 
 The assistant reads the same tooltips you see in the Details panel, so a clear tooltip helps both of you. It also gets three working guides - general, Streets, and PCG - written for agents: the preset-first workflow, units, and the traps that cost time, such as the actor selector that makes the editor lag.
@@ -33,7 +33,7 @@ The assistant reads the same tooltips you see in the Details panel, so a clear t
 - Commands that open a dialog are not available to it - it cannot click one, and an open dialog would block the editor. Save Preset and Convert have dialog-free versions instead.
 - Saving a preset writes the preset table to disk immediately, exactly like the **Save Preset** button. Everything else waits for you to save (**File > Save All**).
 - Converting keeps the original actors unless you ask it to delete them.
-- Downloading map regions for **Import Map** stays with you.
+- Downloading map regions for **Import Map** stays with you. Once a source is downloaded, the assistant can import areas from it (found by place name or coordinates) with the window's current choices, and passes on the OpenStreetMap attribution the data must carry.
 
 ## Getting good results
 
