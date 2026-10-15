@@ -21,6 +21,7 @@ const sidebars: SidebarsConfig = {
     {type: 'doc', id: 'core-actors/curve', label: 'Curve'},
     {type: 'category', label: 'Streets', items: [
       'core-actors/streets-network',
+      'core-actors/import-map',
       'core-actors/lot-zone',
     ]},
     {type: 'category', label: 'Editor Tools', items: [

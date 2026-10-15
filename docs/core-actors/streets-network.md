@@ -9,6 +9,8 @@ Streets Network, Streets Mode, and Lot Zone ship only in the UE 5.8 package. See
 
 You draw the roads; Streets Network builds everything they imply. From a graph of nodes and edges it generates the road ribbons and intersections, extracts every enclosed block as a lot with its own surface, and hands the whole structure - roads, junctions, lots, zones - to the SA PCG nodes to build on.
 
+To start from a real place instead of drawing, [Import Map](/core-actors/import-map) builds the network from OpenStreetMap roads.
+
 ![A generated Streets Network on an island: road ribbons with filleted junctions, every enclosed block extracted as a lot, and the authored node graph over the top](/img/screens/streets-network-hero.webp)
 
 ## Controls and authored data
@@ -17,6 +19,8 @@ You draw the roads; Streets Network builds everything they imply. From a graph o
 | --- | --- |
 | **Edit** | Opens Streets Mode for graph drawing and editing. |
 | **Rebuild Network** | Forces complete road, intersection, lot, and surface regeneration. |
+| **Import OSM** | Opens [Import Map](/core-actors/import-map) to fill this network with real streets from OpenStreetMap. Replaces the streets already in it; one Undo restores them. |
+| **Review Issues** | Lists the places the last generation flagged - left-out map sections, width conflicts, failed lots - and frames each one. See [Review Issues](/core-actors/import-map#review-issues). |
 | **Add Test Grid** | Creates a temporary validation grid. Use only for evaluation, not final authored roads. |
 | **Booleans to Use** | Explicit cutters for roads, intersections, and lot surfaces. |
 | **Output Mode** | **Generate** builds full geometry; **Debug (Skeleton Only)** displays the graph without generated surfaces. |
