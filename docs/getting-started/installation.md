@@ -5,6 +5,8 @@ description: Install Spline Architect from Fab or a packaged plugin and enable i
 
 Install the package that matches your project's engine version exactly - a 5.8 build in a 5.8 project. Mixed versions are the single most common install problem.
 
+Current releases target **UE 5.8 on Windows**. UE 5.5-5.7 downloads remain available as legacy versions and receive no further updates. The older installation notes below apply to those archived packages.
+
 ## Install from Fab
 
 1. Add [Spline Architect on Fab](https://www.fab.com/listings/356b1d13-5080-4418-893d-5a39546bc276) to your library.

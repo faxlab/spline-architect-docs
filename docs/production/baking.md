@@ -27,27 +27,18 @@ Baking is reversible. It replaces generated preview/runtime output with persiste
 | **Bake/Rebake Connected** | Refreshes selected roots and connected Wall stacks. This is the normal production command. |
 | **Unbake Connected** | Restores spline-driven editing for the connected selection. |
 | **Bake Unbaked** | Bakes only unbaked Spline Architect roots in the level. |
+| **Rebake out-of-date actors** | Refreshes frozen actors whose presets changed, including older untracked bakes. |
 | **Rebake All** | Refreshes every compatible root. Use after a shared preset change only when the scope is understood. |
 | **Unbake All** | Restores all baked roots to generated editing. |
 | Actor **Bake / Unbake** buttons | Operate on one placed actor. Prefer connected commands for hierarchies. |
 
-## Automatic unbake
+## Frozen snapshots and explicit Unbake
 
-<ClipAside
-  media={
-    <LoopingClip
-      alt="A baked Building is edited, drops back to an editable preview, regenerates, and is rebaked"
-      poster="img/clips/unbake-rebake.webp"
-      src="img/clips/unbake-rebake.mp4"
-    />
-  }
->
+Baked actors keep their geometry until you explicitly unbake or rebake them. Their preset and spline geometry are read-only; the Details panel says **Baked - click Unbake to edit** and provides the Unbake action. Moving or rotating the whole actor remains allowed.
 
-When an authored change would make persistent output stale, Spline Architect automatically unbakes the affected output and regenerates an editable preview. It does not silently commit a new production bake. Review the result and run **Bake/Rebake Connected**.
+Use **Unbake Connected**, edit the preview, then **Bake/Rebake Connected**. Editing a borrowed source spline or a shared preset never discards another actor's baked geometry.
 
-</ClipAside>
-
-Changes include relevant actor properties, preset rows, spline topology, connected hierarchy, custom pieces, and Boolean inputs. If a baked actor appears unchanged after an edit, check whether you edited the shared row, an overridden value, or the actor you intended.
+When a shared preset changes, baked actors show **Preset changed since bake**. **Rebake out-of-date actors** updates affected snapshots in the current level in one action. Older bakes without preset tracking are included until they have been explicitly rebaked once.
 
 ## Method and mobility
 

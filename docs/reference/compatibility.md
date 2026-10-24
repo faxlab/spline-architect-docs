@@ -1,9 +1,11 @@
 ---
 title: Unreal Engine compatibility
-description: Feature matrix and package differences for Spline Architect v6 on UE 5.5 through 5.8.
+description: Current UE 5.8 support and feature differences in archived UE 5.5-5.7 downloads.
 ---
 
-Spline Architect v6 ships separate binary packages for each supported Unreal Engine version. Always install the package that exactly matches the project engine.
+Current releases, starting with **6.1.0**, target **UE 5.8 on Windows only**. UE 5.5-5.7 downloads remain available as legacy versions and receive no further updates. Always install the package that exactly matches the project engine.
+
+The matrix below describes features in those existing archives; it does not promise new releases for older engines.
 
 | Feature | UE 5.5 | UE 5.6 | UE 5.7 | UE 5.8 |
 | --- | :---: | :---: | :---: | :---: |
@@ -17,7 +19,7 @@ Spline Architect v6 ships separate binary packages for each supported Unreal Eng
 | **Streets Network, Streets Mode, Lot Zone** | — | — | — | **✓** |
 | **SplineArchitectPCG module and SA PCG nodes** | — | — | — | **✓** |
 
-The UE 5.5, 5.6, and 5.7 packages exclude **both** the PCG module and the entire Streets feature. Their archives contain no Streets source, no Streets content, and no Streets Mode, so the Streets Network and Lot Zone actors do not appear in Place Actors and the road materials and textures are not installed. Everything else is the shared v6 workflow, and pages outside the UE 5.8 sections describe it unless a page says otherwise.
+The UE 5.5, 5.6, and 5.7 packages exclude **both** the PCG module and the entire Streets feature. Their archives contain no Streets source, no Streets content, and no Streets Mode, so the Streets Network and Lot Zone actors do not appear in Place Actors and the road materials and textures are not installed. Their authoring tools follow the legacy v6 workflow. Current documentation describes UE 5.8; new MCP tools and frozen-bake editing behavior are part of the 6.1.0 update.
 
 Lot Zone exists only to tag Streets lots, so it ships with Streets and is equally 5.8-only.
 

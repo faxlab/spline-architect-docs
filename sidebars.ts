@@ -21,10 +21,12 @@ const sidebars: SidebarsConfig = {
     {type: 'doc', id: 'core-actors/curve', label: 'Curve'},
     {type: 'category', label: 'Streets', items: [
       'core-actors/streets-network',
+      'core-actors/import-map',
       'core-actors/lot-zone',
     ]},
     {type: 'category', label: 'Editor Tools', items: [
       'authoring/architect-mode',
+      'authoring/ai-agents',
       'authoring/preset-library',
       'authoring/shapes-spline-tools',
       'production/editor-tools',

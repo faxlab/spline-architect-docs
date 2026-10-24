@@ -19,7 +19,7 @@ v6 changes how you author, not just what version number the plugin reports. Upgr
 | Draw/utility-widget path creation | [Architect Mode](/authoring/architect-mode) - drawing, editing, branching, snapping, and shapes in the viewport. |
 | Ad-hoc preset browsing | The [Preset Library](/authoring/preset-library): search, filters, favorites, thumbnails, drag and drop. |
 | Wall groups copied by hand | A connected stack saved as a **Building Preset**, placed as a [Building](/core-actors/building) on any footprint. |
-| Treating the preview as final | The [baked-first workflow](/getting-started/baked-first-workflow): explicit Bake Connected, automatic unbake on change. |
+| Treating the preview as final | The [baked-first workflow](/getting-started/baked-first-workflow): explicit Bake Connected, frozen snapshots, and explicit Unbake before edits. |
 | **MultiBuilding** | UE 5.8 PCG: Streets lots → [SA Subdivide Lots](/pcg/node-reference#sa-subdivide-lots) → SA Spawn Building. |
 | **Legacy Prop Spawner** | UE 5.8 PCG: [SA Edge Placer](/pcg/node-reference#sa-edge-placer), samplers, SA Pick From Pool, SA Prune Footprints. |
 
