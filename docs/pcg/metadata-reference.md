@@ -86,12 +86,15 @@ SA Get Spline can write:
 | --- | --- | --- |
 | `SA_SourceActor` | String | Source Wall, Building, or Curve. |
 | `SA_SurfaceType` | Name | Floor or Roof. |
-| `SA_SurfaceFloor` / `SA_SurfaceRoof` | Bool | Convenient type flags. |
-| `SA_FloorIndex` | Int | Sampled floor index. |
-| `SA_IsTopFloor` | Bool | Sample belongs to the uppermost resolved floor. |
-| `SA_Preset` | Name | Source preset. |
-| `SA_Material` | Soft Object Path | Sampled surface material. |
+| `SA_FloorIndex` | Int | Zero-based included sampled floor level within the source actor, lowest first; `-1` for roofs. |
+| `SA_IsTopFloor` | Bool | Floor sample belongs to the highest included sampled level of its actor; always false for roofs. |
+| `SA_Preset` | Name | Source Wall/Curve preset row; Building samples retain the source Wall row. `None` for inline presets. |
+| `SA_Material` | Soft Object Path | Sampled triangle's material, including component material overrides. |
 | `SA_Slope` | Float | Surface slope in degrees. |
+
+These point attributes are emitted for live and tagged baked surfaces. `SA_SurfaceFloor` and `SA_SurfaceRoof` are **mesh component tags**, not boolean point attributes. Filter sampled points with `SA_SurfaceType`.
+
+Floor levels group sampled world heights into 50 cm bands and assume horizontal floors. Tilted or continuously sloped floors do not provide reliable architectural floor indices. Preset/include filters apply before level assignment, so excluding surfaces can renumber levels and change which level is top. Top-floor status is per actor, not a visibility, occlusion, or exterior-roof test.
 
 ## Polygon, prop, and spawn output
 

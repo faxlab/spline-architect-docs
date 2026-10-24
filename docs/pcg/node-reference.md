@@ -5,6 +5,18 @@ description: Pins, settings, outputs, attributes, and spawn modes for every Spli
 
 All SA nodes require the UE 5.8 Spline Architect package. Actor-reading nodes evaluate live level state and are intentionally refreshed rather than serving stale cached geometry.
 
+## Baked sources
+
+Keep the SA source actor when PCG needs its floor/roof identity, Streets graph, or facade recipe. Baking that actor preserves those workflows. [Converting to independent output](/production/conversion-export) creates plain actors, meshes, or Blueprints; use stock PCG geometry sampling for those outputs. SA readers require the retained SA actor and do not reconstruct its authoring identity from a converted mesh.
+
+| Reader | Baked workflow |
+| --- | --- |
+| SA Sample Floor/Roof | Reads baked Wall/Building/Curve slabs with Components, Instanced, or Hierarchical Instanced output. Older bakes need one rebake to retain surface identity and the geometry needed for sampling in cooked games. |
+| Streets readers | Lots, road edges/centerlines, intersections, crossings, and network boundaries remain available on baked Networks. Required data is restored on the first read after a game-level load, preserving baked mesh components. |
+| SA Get Spline / SA Get Facade Frames | Read the retained authored paths and current preset settings. Changing a shared preset without rebaking can make facade points differ from frozen mesh geometry. |
+
+SA readers exclude actors managed by PCG spawn nodes to prevent generation feeding back into itself. Bake state does not remove that exclusion.
+
 ## Actor and Streets readers
 
 ### SA Get Spline
@@ -62,7 +74,10 @@ All SA nodes require the UE 5.8 Spline Architect package. Actor-reading nodes ev
 
 - **Input:** none. **Output:** `Points` (Point).
 - **Settings:** Actor Selector, Include Floors, Include Roofs, optional Preset Row filter, Max Surface Slope, Point Spacing, Max Samples Per Surface.
-- Samples upward-facing Wall/Building/Curve surface triangles and emits floor/roof, top-floor, material, slope, preset, and source attributes.
+- Samples upward-facing triangles on live or baked Wall/Building floors and roofs, and Curve floors. Reads each baked instance at its world transform; material attributes follow the sampled triangle and component overrides.
+- `SA_IsTopFloor` selects the highest included sampled floor level **per actor**. It is intended for flat floors, including a roof authored as a floor. It does not identify exposed exterior surfaces, and generated roofs have `SA_IsTopFloor = false`.
+- **Point Spacing** is the Poisson radius in world centimeters: use half the desired minimum distance between point centers. Sampling applies independently to source meshes/instances. **Max Samples Per Surface** caps coverage and warns when reached.
+- See [rooftop scatter](/pcg/recipes#rooftop-scatter) and the exact [sample attributes](/pcg/metadata-reference#floor-and-roof-samples).
 
 ## Polygon and lot transforms
 
@@ -228,6 +243,8 @@ SA shapes and stock PCG **Polygon 2D** data are interchangeable in both directio
 | Symptom | Check |
 | --- | --- |
 | Getter outputs nothing | UE 5.8 package is installed; Actor Selector finds the intended actor; PCG bounds include it; source actor has regenerated valid data. |
+| Floor/roof samples disappear after baking | Rebake older output once. Keep the source SA actor; a plain converted actor is read through stock PCG geometry sampling. Check Include Floors/Include Roofs and the preset filter. |
+| A pitched roof disappears behind the top-floor filter | `SA_IsTopFloor` applies to floors. Use Include Roofs or `SA_SurfaceType == Roof` for generated roofs. |
 | Lots missing | Streets form closed blocks; Output Mode is Generate; empty lots are included while debugging; Facet Angle is not over-simplifying. |
 | Building node has points but no meshes | Static Mesh Spawner uses **By Attribute → `SA_Mesh`**; Dynamic Meshes is wired separately; preset row resolves to the correct struct. |
 | Random Building table produces nothing | Preset Source is Random From DataTable; the table uses the Building Preset row struct; every All-mode term matches; row-name matching is enabled when relying on row substrings. |

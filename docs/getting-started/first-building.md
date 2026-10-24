@@ -64,7 +64,7 @@ This is the point of a Building over a copied wall stack: one preset, any footpr
 
 ## 5. Bake the connected result
 
-Run **Bake Connected** from the Spline Architect menu - it bakes the root and every connected layer together. If you edit anything later, the affected output unbakes itself and shows the new preview; look it over and **Rebake Connected**. That loop is the [baked-first workflow](/getting-started/baked-first-workflow).
+Run **Bake Connected** from the Spline Architect menu - it bakes the root and every connected layer together. For later changes, explicitly **Unbake Connected**, edit and inspect the preview, then **Rebake Connected**. That loop is the [baked-first workflow](/getting-started/baked-first-workflow).
 
 :::note The Break round-trip
 A placed Building is hard to art-direct as one actor - it is many walls. **Break** turns it back into editable connected Walls; adjust them individually, then press **Convert to Building** to collapse the result into a Building again, carrying your changes as its own inline preset. The original preset row is untouched, so every other placement keeps following it.

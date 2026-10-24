@@ -30,8 +30,8 @@ The Building carries the stack's settings as its **own inline preset** - nothing
 
 Save a Building **preset** to a DataTable separately when you want to reuse the design elsewhere; converting collapses one authored stack into one actor. It is also the return leg of the **Break** round-trip: break a Building, art-direct its walls, convert back - the result carries the changes inline while the shared row stays as it was.
 
-:::note Preset fields are no longer locked while baked
-Assigning, changing, or clearing a preset source works in any bake state. The actor unbakes itself first when it needs to.
+:::note Baked presets are read-only
+Explicitly Unbake before assigning, changing, or clearing a preset source. Conversion can still capture existing frozen output.
 :::
 
 ## Building Proxy LOD

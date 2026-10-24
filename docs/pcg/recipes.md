@@ -36,6 +36,8 @@ Useful filters:
 
 Facade frames intentionally do not exclude openings. Filter cells by your own semantic rules or author a mask branch when doors/windows must be avoided.
 
+Baked SA Walls and Buildings still provide facade frames through their retained paths and preset settings. After changing a shared preset, rebake the building before relying on those frames to match its frozen mesh. Plain converted output uses generic PCG geometry instead.
+
 ## Tagged Building pools and pieces
 
 Author broad classification on Building Presets (`Small`, `Residential`, `Industrial`) and layer-specific classification on Wall Presets (`BaseFloor`, `Facade`, `Trim`).
@@ -83,8 +85,7 @@ Each crossing is a short two-point spline across a road mouth and carries `SA_Ro
 
 ## Alleys between sub-lots
 
-![A pedestrianised street between two blocks: bollards lined across the mouth where it meets the road, benches, planters, and lamps down the sides](/img/screens/alley-result.webp)
-
+[Image: A pedestrianised street between two blocks: bollards lined across the mouth where it meets the road, benches, planters, and lamps down the sides]
 
 ```text
 SA Subdivide Lots (Gap > 0) → Gap Outlines → SA Filter Spline Edges → SA Edge Placer
@@ -111,6 +112,8 @@ Leave Apply To All In Range off for pieces that must be unique in place, such as
 
 ## Rooftop scatter
 
+For a **flat roof authored as a floor**, tag the intended Building or final Wall in a connected stack, select it with **Actor Selector → By Tag**, and enable **Include Floors**:
+
 ```text
 SA Sample Floor/Roof
   → Filter Attribute Elements (SA_IsTopFloor == true)
@@ -118,6 +121,14 @@ SA Sample Floor/Roof
   → SA Prune Footprints
   → Static Mesh Spawner / Spawn Actor
 ```
+
+This works on live surfaces and baked **Components**, **Instanced**, or **Hierarchical Instanced** output. Older bakes need one rebake. Keep the SA actor as the source; for [plain converted meshes](/production/conversion-export), use stock PCG geometry sampling instead.
+
+Top-floor status is calculated separately for each selected actor, among its included sampled floor levels. Target the final Wall explicitly when the building is a stack of separate Wall actors. The filter does not test whether a surface is visible from outside or covered by another mesh.
+
+For a **generated roof**, enable **Include Roofs**, disable **Include Floors**, and omit the `SA_IsTopFloor` filter. Alternatively branch on `SA_SurfaceType == Roof`. Use **Max Surface Slope** or the emitted `SA_Slope` to limit props to suitable roof faces.
+
+**Point Spacing** is a radius in world centimeters: `100` gives a minimum point-center distance of `200` on each sampled mesh/instance. Reduce it for denser placement; raise **Max Samples Per Surface** if the node warns that coverage reached its cap.
 
 SA Pick From Pool writes real local bounds. SA Prune Footprints compares their rotated plan-view hulls and ignores Z separation, which is better for sloped terrain or rooftop props than world-axis 3D AABBs.
 
