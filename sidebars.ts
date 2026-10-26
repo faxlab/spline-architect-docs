@@ -41,7 +41,8 @@ const sidebars: SidebarsConfig = {
     ]},
     {type: 'category', label: 'Reference', items: [
       'reference/compatibility', 'reference/project-settings',
-      'reference/troubleshooting', 'reference/migration-v6', 'reference/credits',
+      'reference/release-notes', 'reference/troubleshooting', 'reference/migration-v6',
+      'reference/credits',
     ]},
   ],
 };

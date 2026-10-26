@@ -6,6 +6,8 @@ sidebar_position: 1
 hide_title: true
 ---
 
+import LatestVersion from '@site/src/components/LatestVersion';
+
 <div className="hero-shot">
   <img className="hero-shot__bg" src="/spline-architect-docs/img/screens/overview-sacity.webp" alt="A street in the SACity example, built with Spline Architect" />
   <div className="hero-shot__top">
@@ -13,7 +15,7 @@ hide_title: true
     <p className="hero-shot__tagline">Streamline your level design</p>
     <p className="hero-shot__note">Unreal Engine Plugin Documentation</p>
   </div>
-  <span className="hero-shot__version">v6.0.0</span>
+  <span className="hero-shot__version"><LatestVersion /></span>
 </div>
 
 | Actor | Use it for |
