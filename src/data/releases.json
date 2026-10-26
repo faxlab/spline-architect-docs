@@ -1,0 +1,47 @@
+[
+  {
+    "version": "6.1.0",
+    "date": "2026-10",
+    "engines": "UE 5.8",
+    "summary": "Work with AI assistants, import real streets from OpenStreetMap, and keep baked output frozen until you choose to unbake it.",
+    "highlights": [
+      "Work with AI assistants through Unreal Engine's optional Model Context Protocol plugin. Assistants can place Spline Architect actors, apply presets, edit streets, import map sources, run SA PCG nodes, and convert results through the editor's own tools.",
+      "Import real streets and land areas from OpenStreetMap. Add a map file you already have, or download a regional extract after confirming its size.",
+      "Baked output stays frozen until you unbake it. Presets and spline shape are read-only while baked; moving or rotating the whole actor is still allowed. Editing a shared preset no longer discards other actors' bakes.",
+      "See which actors use a shared preset that changed since their last bake, and update them all with **Rebake out-of-date actors**.",
+      "SA PCG nodes can sample the floor and roof surfaces of baked Walls, Buildings, and Curves. Baked Streets networks restore their PCG data in a game world.",
+      "Streets ships with default appearance settings and portable sidewalk materials. Junctions, sidewalk corners, and skirt UVs are cleaner, and viewport editing works the same way across nodes, segments, and junctions.",
+      "Lot extrusions gain inset and upper bevel profiles.",
+      "Fixed: thin roof faces could stop street-driven PCG regeneration with a zero edge length."
+    ],
+    "notes": [
+      "New builds target **UE 5.8 only**. The UE 5.5-5.7 downloads stay available as legacy versions and receive no further updates.",
+      "AI tools need Unreal's experimental Model Context Protocol plugin with Toolset Registry and Python support. Ordinary editing does not.",
+      "Bakes made before 6.1 have no preset tracking or surface tags. Rebake them once before sampling their floors and roofs in PCG."
+    ]
+  },
+  {
+    "version": "6.0.1",
+    "date": "2026-09",
+    "engines": "UE 5.5-5.8",
+    "summary": "Undo fixes for spline command buttons.",
+    "highlights": [
+      "Mirror, Flatten, Reverse, Gridify, and Apply Mirror To Spline buttons in the Details panel can now be undone with one Ctrl+Z. Before, undo skipped the button and reverted the edit made before it.",
+      "The Streets Network Details panel no longer shows the raw node and edge arrays."
+    ]
+  },
+  {
+    "version": "6.0.0",
+    "date": "2026-08",
+    "engines": "UE 5.5-5.8",
+    "summary": "The v6 rewrite: Architect Mode, the Preset Library, baking, Streets, and the SA PCG node family.",
+    "highlights": [
+      "Architect Mode for drawing and editing every Spline Architect actor in the viewport.",
+      "Preset Library for saving and reusing Wall, Building, and Curve setups.",
+      "Live preview while you edit, with explicit Bake and Rebake for persistent output.",
+      "Streets Network and Lot Zone actors with Streets Mode (UE 5.8).",
+      "The SA PCG node family for driving cities from Spline Architect data (UE 5.8).",
+      "See [Migrate from v5 to v6](/reference/migration-v6) when upgrading an existing project."
+    ]
+  }
+]
