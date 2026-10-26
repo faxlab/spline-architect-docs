@@ -83,6 +83,15 @@ SA Get Road Crossings → SA Edge Placer → Static Mesh Spawner
 
 Each crossing is a short two-point spline across a road mouth and carries `SA_RoadWidth` and `SA_ConfigIndex`. Use those attributes to select stripe dimensions or materials by street type.
 
+## Traffic lights at intersections
+
+```text
+SA Get Road Crossings → Filter Data By Attribute (@Data.SA_NodeDegree >= 3) → Spline Sampler (Subdivision, 0, Unbounded)
+  → Filter Elements By Index (0) → Transform Points (back from the curb, yaw 180) → SA Pick From Pool → Static Mesh Spawner
+```
+
+Crossings also exist at dead ends and where a road simply continues, so filter on `SA_NodeDegree` first. The two sampled points are the crossing's ends at the curb: index `0` takes the signal pole, the other end can take a pedestrian signal. Turn on **Unbounded** on the Spline Sampler - a freshly dropped PCG Volume is small, and the sampler otherwise only samples inside it. To keep poles off the road on large imported junctions, subtract SA Get Intersections `Intersection Polygons 2D` and SA Get Road Centerlines `Road Footprint Polygons 2D` with a Difference node before picking the mesh.
+
 ## Alleys between sub-lots
 
 [Image: A pedestrianised street between two blocks: bollards lined across the mouth where it meets the road, benches, planters, and lamps down the sides]

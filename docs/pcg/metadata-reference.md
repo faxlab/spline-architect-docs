@@ -21,6 +21,7 @@ Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots
 | `SA_CorridorIndex` | Int | Resolved road corridor index. |
 | `SA_RoadSide` | Name | `Left` or `Right`. |
 | `SA_CrossingIndex` | Int | Road-mouth crossing order. |
+| `SA_NodeDegree` | Int | Roads meeting where a crossing sits: `1` dead end, `2` the road just continues, `3`+ a real intersection. |
 | `SA_RoadWidth` | Float | Full width at the crossing. |
 | `SA_ConfigIndex` | Int | Streets Street Config index. |
 | `SA_DistanceAlongSpline` | Float | Cumulative world distance on centerlines or effective splines. |

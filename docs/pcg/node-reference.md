@@ -54,7 +54,7 @@ SA readers exclude actors managed by PCG spawn nodes to prevent generation feedi
 
 - **Input:** none. **Output:** `Road Crossings` (Spline).
 - **Setting:** Actor Selector.
-- Emits a two-point spline across each road/intersection attachment with road width and config index.
+- Emits a two-point spline across each road/intersection attachment with road width, config index and `SA_NodeDegree` (how many roads meet there).
 
 ### SA Get Network Boundary
 
