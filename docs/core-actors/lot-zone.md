@@ -14,7 +14,7 @@ Lot Zone is a lightweight semantic actor. Its closed spline stamps a `Name` valu
 | **Zone Spline** | Closed boundary. Edit its points with Architect Mode or the normal spline tools. |
 | **Zone** | Name written to matching lots, such as `Residential`, `Commercial`, `Park`, or `Industrial`. |
 
-When zones overlap, the smallest-area matching Lot Zone wins. A Lot Zone overrides a per-lot Streets setting; if neither supplies a value, the Streets Network's **Default Lot Config → Zone** is used.
+When zones overlap, the smallest-area matching Lot Zone wins. A Lot Zone overrides a per-lot Streets setting; if neither supplies a value, the Streets Network's **Lots → Default Zone** is used.
 
 After moving or editing a Lot Zone, rebuild the Streets Network and regenerate dependent PCG graphs. Lot Zones are metadata only: they do not directly create or remove road geometry.
 
