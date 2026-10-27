@@ -11,7 +11,7 @@ SA Get Road Edges → SA Edge Placer → Static Mesh Spawner (By Attribute: SA_M
 
 The scalable way to fill a city. Author a few buildings with Spline Architect, [convert each to a static mesh](/production/conversion-export), and put those meshes in the Edge Placer's **Mesh Pool** with weights.
 
-Set **Fill = Packed** so each building advances the placement by its own real width, **Facing = Away From Edge** so they front the street, and a **Lateral Offset** to hold them off the kerb. Differently sized buildings then line the street without gaps or overlaps.
+Set **Fill = Packed** so each building advances the placement by its own real width, **Facing = Away From Edge** so they front the street, and a **Lateral Offset** to hold them off the kerb. Differently sized buildings then line the street without gaps or overlaps. On a corner lot each row stops where the other street's offset begins, so no building reaches onto the corner sidewalk.
 
 Branch on `SA_LotZone` first to give each district its own pool. Keep [SA Spawn Building](/pcg/node-reference#sa-spawn-building) for the hero buildings the camera gets close to.
 
