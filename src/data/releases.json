@@ -20,7 +20,7 @@
       "Fixed: with sidewalks enabled, many lots of an imported map could come out empty; lots too narrow for their sidewalk are now built as plain ground.",
       "Fixed: Import Map now offers the region download before any map source is set up.",
       "Lot extrusions gain inset and upper bevel profiles.",
-      "Fixed: SA Edge Placer rows with a Lateral Offset, such as buildings or fences set back behind a sidewalk, ran past lot corners onto the neighbouring sidewalk; they now stop at the inner corner.",
+      "Fixed: SA Edge Placer rows with a Lateral Offset, such as buildings or fences set back behind a sidewalk, ran past lot corners onto the neighbouring sidewalk; they now stop at the inner corner, and with Fit Inside Shape a deep building at a sharp corner no longer reaches into the other street's sidewalk.",
       "Fixed: thin roof faces could stop street-driven PCG regeneration with a zero edge length."
     ],
     "notes": [
