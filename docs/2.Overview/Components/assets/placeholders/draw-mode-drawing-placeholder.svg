@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#1b2b24"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#294035" stroke="#67c095" stroke-width="4"/>
+  <text x="80" y="130" fill="#f5fff9" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#d4efde" font-family="Arial, sans-serif" font-size="32">Draw Mode while drawing a new path</text>
+  <text x="80" y="300" fill="#aac7b4" font-family="Arial, sans-serif" font-size="24">Capture an in-progress draft path in the viewport.</text>
+</svg>

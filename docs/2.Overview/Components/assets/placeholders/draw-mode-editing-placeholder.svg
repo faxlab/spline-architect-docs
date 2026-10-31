@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#2d241b"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#43342a" stroke="#d7a36b" stroke-width="4"/>
+  <text x="80" y="130" fill="#fff8f2" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#f1dcc4" font-family="Arial, sans-serif" font-size="32">Draw Mode editing with gizmo and selection</text>
+  <text x="80" y="300" fill="#c8b296" font-family="Arial, sans-serif" font-size="24">Capture selected points, gizmo axes, and edit feedback in the viewport.</text>
+</svg>

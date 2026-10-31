@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#232323"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#363636" stroke="#c9c9c9" stroke-width="4"/>
+  <text x="80" y="130" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#e4e4e4" font-family="Arial, sans-serif" font-size="32">Current SA menu or pinned toolbar</text>
+  <text x="80" y="300" fill="#b8b8b8" font-family="Arial, sans-serif" font-size="24">Capture the modern editor tools workflow entry points.</text>
+</svg>

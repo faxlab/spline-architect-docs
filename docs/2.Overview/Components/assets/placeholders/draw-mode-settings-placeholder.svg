@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#241f31"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#342b47" stroke="#b28de7" stroke-width="4"/>
+  <text x="80" y="130" fill="#fbf7ff" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#e4d7fa" font-family="Arial, sans-serif" font-size="32">Draw Mode settings panel</text>
+  <text x="80" y="300" fill="#bbabd3" font-family="Arial, sans-serif" font-size="24">Capture preset source, snapping, and gizmo settings in one shot.</text>
+</svg>

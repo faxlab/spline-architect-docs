@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#201f2d"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#312f43" stroke="#9384db" stroke-width="4"/>
+  <text x="80" y="130" fill="#faf8ff" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#dfd7ff" font-family="Arial, sans-serif" font-size="32">SplineArchitectMultiBuilding overview</text>
+  <text x="80" y="300" fill="#b8addf" font-family="Arial, sans-serif" font-size="24">Capture the actor selected with the main lot-generation settings visible.</text>
+</svg>

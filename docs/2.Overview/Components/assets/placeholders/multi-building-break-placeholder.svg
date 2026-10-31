@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#28251c"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#3b372a" stroke="#d0bb64" stroke-width="4"/>
+  <text x="80" y="130" fill="#fffcef" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#efe6bb" font-family="Arial, sans-serif" font-size="32">MultiBuilding Break result</text>
+  <text x="80" y="300" fill="#c7bc92" font-family="Arial, sans-serif" font-size="24">Capture the level after Break has spawned separate result actors.</text>
+</svg>

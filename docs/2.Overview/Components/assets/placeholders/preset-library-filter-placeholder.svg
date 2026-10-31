@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#1f2929"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#2e3d3d" stroke="#75c2b0" stroke-width="4"/>
+  <text x="80" y="130" fill="#f4fffc" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#d5efe8" font-family="Arial, sans-serif" font-size="32">Preset Library filters</text>
+  <text x="80" y="300" fill="#abc9c0" font-family="Arial, sans-serif" font-size="24">Capture search, favorites-only, and type filtering together.</text>
+</svg>

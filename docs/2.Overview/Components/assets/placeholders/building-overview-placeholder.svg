@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#18222d"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#223140" stroke="#5fa3d6" stroke-width="4"/>
+  <text x="80" y="130" fill="#f4f7fa" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#d5e5f2" font-family="Arial, sans-serif" font-size="32">SplineArchitectBuilding overview in Details panel</text>
+  <text x="80" y="300" fill="#9db7ca" font-family="Arial, sans-serif" font-size="24">Replace with a full actor screenshot from Unreal Editor.</text>
+</svg>

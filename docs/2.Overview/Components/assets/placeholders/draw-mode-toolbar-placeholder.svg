@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#1b2231"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#27334b" stroke="#6ca0ff" stroke-width="4"/>
+  <text x="80" y="130" fill="#f3f7ff" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#d4e1ff" font-family="Arial, sans-serif" font-size="32">Draw Mode toolbar or SA menu entry</text>
+  <text x="80" y="300" fill="#adbfdf" font-family="Arial, sans-serif" font-size="24">Capture the Draw Mode action in an active state.</text>
+</svg>

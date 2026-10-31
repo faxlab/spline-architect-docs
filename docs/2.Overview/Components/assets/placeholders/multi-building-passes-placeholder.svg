@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#2a1e1e"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#3f2e2e" stroke="#d68c7a" stroke-width="4"/>
+  <text x="80" y="130" fill="#fff6f3" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#f0d1c9" font-family="Arial, sans-serif" font-size="32">MultiBuilding lot passes</text>
+  <text x="80" y="300" fill="#c8a59c" font-family="Arial, sans-serif" font-size="24">Capture the Passes array with at least two configured passes and subdivision options visible.</text>
+</svg>

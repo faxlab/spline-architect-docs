@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#1e2430"/>
+  <rect x="40" y="40" width="1200" height="640" rx="20" fill="#2b3444" stroke="#d7a65a" stroke-width="4"/>
+  <text x="80" y="130" fill="#fff7ea" font-family="Arial, sans-serif" font-size="42" font-weight="700">Placeholder Image</text>
+  <text x="80" y="220" fill="#f0dfbe" font-family="Arial, sans-serif" font-size="32">Building preset row picker and inline preset editing</text>
+  <text x="80" y="300" fill="#cab894" font-family="Arial, sans-serif" font-size="24">Capture the Details panel with DataTableBuildingPreset and inline BuildingPreset visible.</text>
+</svg>
