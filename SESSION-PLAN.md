@@ -17,7 +17,7 @@ helps, places every capture into the pages, and keeps the build green.
    or switch to `main`.
 2. Build the editor target, editor closed:
    ```bash
-   "D:/Games/UE_5.8/Engine/Build/BatchFiles/Build.bat" UnrealEditor Win64 Development -Project="C:/Users/f4x11ut/Documents/Unreal Projects/SACity/SACity.uproject" -NoXGE -NoUBA -MaxParallelActions=8 -WaitMutex
+   "C:/Users/kajus/Epic Games/UE_5.8/Engine/Build/BatchFiles/Build.bat" UnrealEditor Win64 Development -Project="C:/WORK/SACity/SACity.uproject" -NoXGE -NoUBA -MaxParallelActions=8 -WaitMutex
    ```
 3. Confirm a **real** compile happened — `Binaries/Win64` has DLLs and the
    `Module.SplineArchitect.cpp.obj` mtime is now. "Result: Succeeded" in two seconds means
