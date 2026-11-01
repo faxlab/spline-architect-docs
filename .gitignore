@@ -33,3 +33,17 @@ dist/
 # Temporary files
 *.swp
 *.tmp
+
+# Local tooling and generated files
+.claude/worktrees/
+.claude/settings.local.json
+.env.*
+!.env.example
+!.env.*.example
+desktop.ini
+_to_delete/
+bakup/
+_PluginBackups/
+.codex/
+.turbo/
+target/

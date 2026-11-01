@@ -14,7 +14,7 @@
   .\scripts\claim.ps1 T1-a
   .\scripts\claim.ps1 S6
   .\scripts\claim.ps1 T1-b -PosterAt 4.5
-  .\scripts\claim.ps1 S9 -Path "C:\Users\f4x11ut\Documents\ShareX\Screenshots\2026-08\abc123.png"
+  .\scripts\claim.ps1 S9 -Path "C:\Users\kajus\Documents\ShareX\Screenshots\2026-08\abc123.png"
 #>
 param(
   [Parameter(Mandatory)][string]$Id,
@@ -23,11 +23,11 @@ param(
 )
 $ErrorActionPreference = 'Stop'
 $root    = Split-Path -Parent $PSScriptRoot
-$shareX  = 'C:\Users\f4x11ut\Documents\ShareX\Screenshots'
+$shareX  = 'C:\Users\kajus\Documents\ShareX\Screenshots'
 $screens = Join-Path $root 'static\img\screens'
 $clips   = Join-Path $root 'static\img\clips'
-$ffmpeg  = 'C:\Users\f4x11ut\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe'
-$ffprobe = 'C:\Users\f4x11ut\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe'
+$ffmpeg  = 'C:\Users\kajus\AppData\Local\Microsoft\WinGet\Links\ffmpeg.exe'
+$ffprobe = 'C:\Users\kajus\AppData\Local\Microsoft\WinGet\Links\ffprobe.exe'
 $clipBudgetMB = 3.0
 
 $map = @{
