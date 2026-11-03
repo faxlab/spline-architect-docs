@@ -1,11 +1,11 @@
 ---
 title: SA Landscape Patch
-description: Shape the landscape from PCG - flatten lots, cut walkways, and press level pads under props, with edge fade, noise, and paint layers.
+description: Shape the landscape from PCG - flatten lots, cut walkways, and press level pads under props, with edge fade and noise.
 ---
 
 SA Landscape Patch makes the terrain conform to shapes built in the graph. Flatten a park lot so its ground meets the lot surface exactly, cut a walkway ribbon along a path, or press a level pad under a placed prop so it does not float or sink.
 
-It is the one SA node that **changes the world** rather than only producing data. That makes two of its rules unusually important: the [tracking hazard](#scope-the-selectors-upstream) and [Settle Props](#settle-props-and-regenerating-forever).
+It **changes the world** rather than only producing data, as does its sibling [SA Landscape Paint](/pcg/node-reference#sa-landscape-paint), which paints a material layer instead of moving the ground. That makes two of its rules unusually important: the [tracking hazard](#scope-the-selectors-upstream) and [Settle Props](#settle-props-and-regenerating-forever).
 
 :::info UE 5.8 only
 This node ships in the UE 5.8 package and needs Epic's **Landscape Patch** plugin, which the package enables for you. It works in the **editor only** - during PIE, at runtime, and in a cooked build it passes its inputs through and changes nothing.
@@ -51,7 +51,9 @@ All three inputs are optional - an unwired pin contributes nothing. `Patched Sha
 
 Each shape gets its own deterministic noise variation from its `SA_LotSeed`, so the same lot roughens the same way every regeneration.
 
-**Paint Layer:** tick **Paint Layer** and name a layer to also paint it inside each shape, with the same Edge Fade. The layer must exist on the landscape's material **and** have a Layer Info assigned, or nothing is painted and the node warns.
+**Painting a layer:** this node only shapes the ground. [SA Landscape Paint](/pcg/node-reference#sa-landscape-paint) paints a material layer on the same three pins, with its own Edge Fade, so wire the same shapes into both to flatten and grass a park.
+
+A graph saved when this node could still paint may keep a **Paint Layer** on it. The node no longer paints. It warns once per run, naming the layer, and nothing is painted until you add an SA Landscape Paint node, set its **Paint Layer** to that name, and wire the same shapes into its `Areas`, `Paths` and `Props` pins.
 
 ## Scope the selectors upstream
 
@@ -92,5 +94,7 @@ The earlier version of this node had a single `Shapes` pin. Spline connections m
 3. **Get Actor Data**, scoped **By Tag** to the placed benches and trees, into `Props`.
 4. Set **Blend** to **Raise Only** so the park never digs into the surrounding hillside, **Edge Fade** to a few metres, and a small **Noise Amount** with **Noise Edge Fade** so the lot borders stay exact.
 5. Chain `Patched Shapes` onward to build the park's surface and scatter on it.
+
+To grass the park as well, wire the same `Areas` and `Paths` into an [SA Landscape Paint](/pcg/node-reference#sa-landscape-paint) node and set its **Paint Layer** to your grass layer. Give it a wider **Edge Fade** than the Patch, so the grass bleeds past the flattened ground.
 
 For a second node carving something on top of this one, give it a higher **Apply Order**.

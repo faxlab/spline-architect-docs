@@ -9,7 +9,7 @@ The SA nodes turn what you authored - streets, lots, walls, footprints - into da
 
 SA PCG nodes separate authored meaning from spawned output:
 
-1. **Read** live Spline Architect actors: lots, road edges, crossings, intersections, facades, surfaces, imported map buildings, or effective generation splines.
+1. **Read** live Spline Architect actors: lots, road edges, crossings, intersections, facades, surfaces, imported map buildings and land areas, or effective generation splines.
 2. **Transform** boundaries and points: subdivide, offset, merge, sample, orient, choose assets, and prune footprints.
 3. **Generate** Wall, Curve, or Building data—or feed normal PCG spawners.
 

@@ -119,8 +119,6 @@ Crossings also exist at dead ends and where a road simply continues, so filter o
 
 ## Alleys between sub-lots
 
-[Image: A pedestrianised street between two blocks: bollards lined across the mouth where it meets the road, benches, planters, and lamps down the sides]
-
 ```text
 SA Subdivide Lots (Gap > 0) → Gap Outlines → SA Filter Spline Edges → SA Edge Placer
 ```
@@ -132,15 +130,17 @@ Feed that into SA Filter Spline Edges, which splits it into two sets of splines:
 - **`Unflagged`** is the alley sides. Send it to SA Edge Placer with **Facing = Toward Edge** for hedges, fences, lanterns, or bins along the backs of the plots.
 - **`Flagged`** is the alley mouths. Send it to a second SA Edge Placer for bollards, a gate, or a change of ground material where the alley meets the street.
 
+When both halves only go to SA Edge Placer, skip the split. Feed `Gap Outlines` straight into each Edge Placer and set its **Edge Filter**: **Skip Flagged Edges** places along the alley sides, **Only Flagged Edges** places across the mouths. Keep SA Filter Spline Edges for splines that go to other nodes as well.
+
 Wire **Cut Lines** to SA Landscape Patch's `Paths` in the same graph to sink the alley surface into the terrain, using the alley width as the Path Width.
 
 ## Curb ramps at every junction
 
 ```text
-SA Get Intersections → SA Set Custom Piece (Apply To All In Range) → SA Spawn Wall (Custom Pieces)
+SA Get Intersections (Intersection Centers) → SA Set Custom Piece (Apply To All In Range) → SA Spawn Wall (Custom Pieces)
 ```
 
-Intersection points already carry their own footprint, so turn **Apply Radius** off and let the intersection's real shape be the reach. Turn **Apply To All In Range** on: a junction should give a ramp to *every* sidewalk running through it, not just the nearest one.
+Tick **Emit Intersection Points** on SA Get Intersections and wire its `Intersection Centers` pin. Those points already carry their own footprint, so turn **Apply Radius** off and let the intersection's real shape be the reach. Turn **Apply To All In Range** on: a junction should give a ramp to *every* sidewalk running through it, not just the nearest one.
 
 Leave Apply To All In Range off for pieces that must be unique in place, such as a gate in a fence run - otherwise one point puts a gate in every fence it touches.
 

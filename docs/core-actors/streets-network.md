@@ -34,7 +34,7 @@ Settings are grouped the way you work: **Controls**, **Streets**, **Sidewalks & 
 | **Street Types** | The kinds of road the network builds - each has a name, width, road material, corner rounding and ramp settings. |
 | **Default Street Type** | Picked by name: the type new roads use, and that roads without a type of their own fall back to. |
 | **Minimum Road Width** | Narrowest any road may be, in centimetres; `0` turns it off. Thinner roads - from a street type or from imported map data - are widened to it, and lots, sidewalks and PCG follow. Roads you set by hand (Segment Override or Manual Width) keep their width. `1600` is about four lanes. |
-| **Road Material / Junction Material** | Materials for road surfaces and the junctions where roads meet. A street type with its own material uses that; an empty Junction Material uses the widest road's material, then the Road Material. |
+| **Road Material / Junction Material** | Materials for road surfaces and the junctions where roads meet. A street type with its own material uses that; an empty Junction Material uses the widest road's material, then the Road Material. A new network starts with the [Default Street materials](/reference/project-settings#streets-materials) from Project Settings. |
 | **Texture Tile Size** | How often road, junction and lot-ground textures repeat: one tile per this many centimetres. |
 | **Road Surface** | Vertex colors and the darker edge band along roads and junctions, for materials that read them. |
 
@@ -142,7 +142,7 @@ Per-lot Zone, tags, and surface overrides survive ordinary street editing - addi
 
 | Control | What it does |
 | --- | --- |
-| **Baked / Generation Mode** | State and editor-vs-runtime intent. Streets defaults can differ from other actors, so set Baked for production output. |
+| **Baked / Generation Mode** | State and editor-vs-runtime intent. A newly placed Streets Network starts in the project's [Default Generation Mode](/reference/project-settings#new-actors), Baked unless you changed it. Set Baked for production output. |
 | **Bake Method** | Components, Instanced, or Hierarchical Instanced. |
 | **Baked Mobility / Lightmap Texel Density Override** | Component mobility and optional per-actor lightmap density. |
 | **Bake / Unbake** | Produces persistent road output and independent lot actors, or restores generated editing. |

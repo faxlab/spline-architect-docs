@@ -54,9 +54,15 @@ When a shared preset changes, baked actors show **Preset changed since bake**. *
 
 Bulk **Set Generation Mode**, **Set Bake Method**, and **Set Mobility** commands apply a consistent configuration to the current selection. Mixed selections show an indeterminate state rather than guessing.
 
+A newly placed actor starts with the **Default Generation Mode**, **Default Bake Method**, and **Default Baked Mobility** from [Project settings](/reference/project-settings#new-actors).
+
 ## Corner variants
 
 **Prebake Corners** generates reusable corner meshes for the current wall angles. **Corner Angle Increment** rounds nearby angles to reduce unique assets; `0` inherits the Project Settings value. Lower increments preserve exact architecture but increase asset count.
+
+## Where baked meshes are saved
+
+Meshes that belong to a level go to a `<LevelName>_Baked` folder next to the level. Corner and skew pieces made from your own meshes go to a `Baked` folder beside the source mesh. To collect every generated mesh in one folder, set **Generated Asset Folder Override** in [Project settings](/reference/project-settings#generated-mesh-folder). Meshes that already exist are not moved.
 
 ## Nanite on baked meshes
 

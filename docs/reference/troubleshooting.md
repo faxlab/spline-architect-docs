@@ -122,8 +122,28 @@ See the [node failure table](/pcg/node-reference#common-graph-failures). Also co
 - Increase edit debounce if slider scrubbing triggers excessive work.
 - Lower the interactive task budget if viewport hitches matter more than completion time.
 - Increase the idle budget to drain queued generation faster after input stops.
+- Keep **Defer Generation While Dragging** and **Defer Dynamic Mesh Collision** on. Turning either off makes drags and rebuilds heavier.
+- Leave **Finish Generation In One Tick** off for city-scale work. It freezes the editor for the whole rebuild. All of these are in [Project settings](/reference/project-settings#performance).
 - Reduce surface density, smoothing iterations, roof resolution, and PCG sample counts before changing architecture.
 - Use Debug (Skeleton Only) while editing a large Streets graph.
+
+## Console variables
+
+Type these in the editor's console. Most are switches with a normal setting you rarely need to change.
+
+| Variable | Default | What it does |
+| --- | --- | --- |
+| `sa.PCGAutoRefresh` | `1` | PCG components whose graphs read Spline Architect data run again by themselves once a generation burst settles. `0` turns that off, so you regenerate PCG by hand. |
+| `sa.DeferGenerationWhileDragging` | The project setting | `1` waits until a drag ends before rebuilding. `0` rebuilds continuously during the drag. Once something sets it, it wins over [Project settings](/reference/project-settings#performance). |
+| `sa.DeferDynamicMeshCollision` | The project setting | `1` cooks collision for generated meshes once at the end of a rebuild. `0` cooks it after every edit. Once something sets it, it wins over Project settings. |
+| `sa.LandscapePatch.SettleLog` | `0` | `1` logs the settle and convergence details of every SA Landscape Patch run: the props anchored, moved or new, and the band tested for each prop that was not anchored. `0` logs only the one-line rebuild summary. |
+| `sa.Building.MoveGeneratedParts` | `1` | `1`: a Building takes over the parts its temporary walls generated. `0`: it duplicates them instead, as before 6.2, which is several times slower on big map imports. |
+| `sa.Wall.TreeBuildsStackOnce` | `1` | `1`: rebuilding a connected stack, as **Force Regenerate** does, builds every wall of the stack once, parents first. `0`: each wall also rebuilds the stacked walls above it, as before 6.2. The result is the same, built several times. |
+| `sa.FacadeKit.PhotographSourceGeometry` | `1` | `1`: Make Facade Kit photographs every Nanite piece as a temporary non-Nanite copy of its full source geometry. `0`: it photographs the pieces as Nanite draws them, which is often still coarse in a capture, with windows cut into triangles. |
+| `sa.GenerationSequenceLog` | `0` | `1` logs the generation queue, execution and dependency refresh sequence. |
+| `sa.Perf.Enabled` | `1` | Collects timing samples for Spline Architect work. |
+| `sa.Perf.Dump` | Command | Prints the collected timings. Add `csv` to also write `Saved/SplineArchitectPerf.csv`. |
+| `sa.Perf.Reset` | Command | Clears the collected timings. They accumulate from the last reset, so dump after the slow operation, not before. |
 
 ## Where is MultiBuilding or Prop Spawner?
 

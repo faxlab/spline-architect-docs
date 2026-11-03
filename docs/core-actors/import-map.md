@@ -245,7 +245,7 @@ A building comes in whole when the centre of its largest outline lies inside you
 | --- | --- | --- |
 | **Map building outlines** (eye) | On | Shows the map's building outlines while you browse, when the view is closer than about 3 km. The first look at a place reads its buildings, with progress on the map; after that they show at once. Never changes the import. |
 | **Footprints only** | Off | Creates the Buildings with only their footprint and map data and no style, so nothing generates. Use them from PCG, attach your own SA actors, or give them a style later. Greys out the Styles list. |
-| **Actors** | Per building | How many Building actors the buildings come in. See below. |
+| **Actors** | One per building | How many Building actors the buildings come in. See below. |
 | **Skip buildings outside lots** | Off | Leaves out buildings that stand on no street lot, such as in parks, rail yards or between ramps. A building counts as on a lot when its centre or most of its corners are on it. It needs Roads on, because lots come from the streets. The preview shows the buildings it leaves out dimmed, and a wall they shared with a neighbour is no longer shared. |
 
 Under these settings sit two folds: **Styles** (open) and **Heights and filters** (folded).
@@ -254,11 +254,11 @@ Under these settings sit two folds: **Styles** (open) and **Heights and filters*
 
 | Choice | What you get |
 | --- | --- |
-| **Per building** | One Building actor per map building. The easiest to move, delete or restyle one at a time. |
-| **Per lot** | One Building actor per street lot, holding every building on that lot. It needs streets in the same import; without them each building gets its own actor. A building on no lot keeps an actor of its own. |
+| **One per building** | One Building actor per map building. The easiest to move, delete or restyle one at a time. |
+| **One per lot** | One Building actor per street lot, holding every building on that lot. It needs streets in the same import; without them each building gets its own actor. A building on no lot keeps an actor of its own. |
 | **One for all** | One Building actor holding every imported building. The fewest actors in the level. |
 
-Each building keeps its own footprint, style and height whichever you pick. The preview outlines the buildings that share an actor in one bright colour. A shared actor takes the style most of its buildings use, and a building gets a style of its own only where it differs. The Map Import Group's Details lists the same three choices as **One per building**, **One per lot** and **One for all**.
+Each building keeps its own footprint, style and height whichever you pick. The preview outlines the buildings that share an actor in one bright colour. A shared actor takes the style most of its buildings use, and a building gets a style of its own only where it differs.
 
 #### Styles
 
