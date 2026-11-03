@@ -66,7 +66,7 @@ SA readers exclude actors managed by PCG spawn nodes to prevent generation feedi
 
 - **Input:** none. **Output:** `Road Crossings` (Spline).
 - **Setting:** Actor Selector.
-- Emits a two-point spline across each road/intersection attachment with road width and config index.
+- Emits a two-point spline across each road/intersection attachment with road width, config index and `SA_NodeDegree` (how many roads meet there).
 
 ### SA Get Network Boundary
 
@@ -186,8 +186,9 @@ Building-generated pieces carry Building Preset tags plus the exact Wall Preset 
 ### SA Edge Placer
 
 - **Input:** `Edges` (Curve). **Output:** `Props` (Point).
-- **Settings:** weighted Mesh/Actor Class Pool; Side (Center/Left/Right); Facing (Toward/Away/Along); Fill (Packed/Fixed/Random); conditional gap/spacing range; Lateral Offset; Z Offset; Edge Sample Spacing; normal PCG Seed.
+- **Settings:** weighted Mesh/Actor Class Pool; Side (Center/Left/Right); Facing (Toward/Away/Along); Fill (Packed/Fixed/Random); conditional gap/spacing range; Lateral Offset; Z Offset; Stay Upright; Edge Sample Spacing; normal PCG Seed.
 - Each pool entry must define exactly one Mesh or Actor Class, and a weight of zero or less is never picked. Emits `SA_Mesh` or `SA_Actor` and exact local bounds.
+- **Stay Upright** (on by default) keeps props standing straight on sloped edges, such as buildings along a street that climbs a hill. Each prop only turns to follow the edge's direction and sits at the lowest point under its footprint, so no end floats; the uphill end sinks slightly into the ground. Turn it off for fences, rails or curbs that should tilt with the slope.
 - **Filling the pool:** above the list is **Add Selected Assets (or drop here)**. Select Static Meshes and Actor Blueprints in the Content Browser and press it, or drag a multi-selection straight onto it. Each asset becomes one entry at weight 1, existing entries and their weights are left alone, assets already in the pool are skipped, and anything else is ignored. See [what PCG measures a prop by](/getting-started/preparing-meshes#what-pcg-measures-a-prop-by) for how footprints are derived.
 
 ### SA Pick From Pool
@@ -218,6 +219,15 @@ Building-generated pieces carry Building Preset tags plus the exact Wall Preset 
 - Consecutive edges on the same side stay one spline, and a closed loop whose edges all land on the same side stays closed.
 - Its main use is SA Subdivide Lots' `Gap Outlines`: `Unflagged` is the alley sides, for trees and lanterns; `Flagged` is the alley mouths on the lot edge, for bollards.
 - A spline without the named attribute sends every edge to `Unflagged`, and the node warns once.
+
+### SA Filter Data By Rank
+
+- **Input:** `In` (any data). **Outputs:** `InsideFilter`, `OutsideFilter` (same data, input order kept).
+- **Settings:** Rank Attribute (`@Data.SA_LotArea` by default), Order (Smallest First / Largest First), Share (0-1).
+- Keeps a share of its inputs ranked by one whole-input value: "the smallest tenth of the lots", "the largest 5% of the blocks". Unlike Filter Data By Attribute with a fixed number, the same share works on any map size.
+- Share is rounded up, so any share above 0 keeps at least one input; equal values keep their input order.
+- Filter out what can never qualify **first**, then rank what is left. On imported maps the smallest lots are often slivers between parallel roads - drop lots under a minimum `SA_LotWidth` / `SA_LotDepth` with Filter Data By Attribute before ranking.
+- Inputs without the attribute go to `OutsideFilter`, and the node warns once.
 
 ### SA Set Custom Piece
 

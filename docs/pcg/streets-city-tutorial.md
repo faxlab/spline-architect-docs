@@ -30,13 +30,13 @@ One Streets Network in, a city out: this tutorial wires lots to buildings and ro
 
 Confirm that intersection patches are closed and visible and that block interiors resolve as lots. If not, fix the authored graph before adding PCG.
 
-Choose **Default Lot Config → Elevation Mode** before building the PCG graph:
+Choose **Lots → Lot Elevation** on the Streets Network before building the PCG graph:
 
 - **Follow Elevation** preserves the road-derived boundary elevations;
 - **Flatten to Lowest Boundary** creates a flat lot at its lowest edge;
 - **Flatten to Highest Boundary** creates a flat lot at its highest edge.
 
-Use **Lot Overrides** when one block needs a different mode. The visible surface and the boundary read by PCG will stay aligned. Flattening does not create retaining walls or cut the terrain by itself; feed the lots to [SA Landscape Patch](/pcg/landscape-patch) when the ground should follow them.
+When one block needs a different mode, select it in Streets Mode and set its own elevation. The visible surface and the boundary read by PCG will stay aligned. Flattening does not create retaining walls or cut the terrain by itself; feed the lots to [SA Landscape Patch](/pcg/landscape-patch) when the ground should follow them.
 
 ## 2. Add semantic zones
 

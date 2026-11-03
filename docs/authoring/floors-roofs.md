@@ -45,7 +45,7 @@ A footprint with a narrow wing, a notch, or two nearly parallel walls gets a slo
 
 ## Lot Surface
 
-A Streets lot surface is built from a list of layers, each of which can produce a filled cap, a border skirt, and corner pads with their own materials. **Surface Edge Length** and **Surface Smoothing Iterations** behave exactly as they do for Floor and Roof surfaces here. See [lot surface layers](/core-actors/streets-network#lot-surface-layers) for the full set.
+A Streets lot surface is built from a list of layers, each of which can produce lot ground, a sidewalk, and corner pads with their own materials. **Surface Edge Length** and **Surface Smoothing** behave exactly as they do for Floor and Roof surfaces here. See [sidewalks and lot ground](/core-actors/streets-network#sidewalks-and-lot-ground) for the full set.
 
 PCG's SA Get Lots and SA Subdivide Lots can additionally emit a graded Ground Surface whose spacing and smoothing are configured on the node.
 

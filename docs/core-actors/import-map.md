@@ -16,7 +16,7 @@ The window prepares a preview after every change. Nothing in the level changes u
 | From | What happens |
 | --- | --- |
 | **SA > Create > Import Map…** in the main menu bar | Starts a new import. It lands centred on the world origin, with a new Streets Network. |
-| A Streets Network's **Details > Import Map…** | Imports into that network: the boundary centre lands on the network's location, and the import uses its Street Configs. The network must be unbaked and have at least one Street Config. |
+| A Streets Network's **Details > Import Map...** | Imports into that network: the boundary centre lands on the network's location, and the import uses its Street Configs. The network must be unbaked and have at least one Street Config. |
 | A Map Import Group's **Details > Reopen Import Workspace** | Reopens that import. See [Reopen an import](#reopen-an-import). |
 
 The window is titled **Import Map -** followed by the import it works on. It reopens at the size you last left it. A new import starts from the choices, map data, view and boundary you closed the last new import with; see [Remembered choices](#remembered-choices).
@@ -345,6 +345,10 @@ Hover a road or an area for a short summary, and click it to pin a card. A road'
 
 **Road assignments** chooses which Street Config each group of imported roads uses. Roads are grouped by road class, direction, lane count, and reported width. The Street Config supplies the look of the road; each road keeps its own imported width.
 
+:::tip Roads look too thin?
+Map data reports real-world widths, which often look narrow in a game city. Set **Minimum Road Width** on the Streets Network (for example `1600`, about four lanes) to widen every thinner road at once - no re-import needed. Roads you set by hand keep their width.
+:::
+
 When the button reads **Road assignments (3)**, three groups have no usable config - usually because a saved config was renamed or deleted. Assign them before you import. **Assign all … unresolved groups** gives every unresolved group the same config.
 
 ### Diagnostics
@@ -377,7 +381,7 @@ If the boundary has missing coverage, you are asked to confirm first. Only avail
 When the window was opened from an import group, the button reads **Replace Import Group** instead. Replacing rebuilds the group's Streets Network, Map Areas and Buildings from the current choices.
 
 :::caution Replacing discards hand edits
-**Replace Import Group** throws away every change made since the import: street edits, lot settings, reshaped Map Areas, and any change to the imported Buildings. The Buildings are deleted and built again fresh from the map. **Import Map…** on a Streets Network does the same to the streets already in it. One **Ctrl+Z** restores everything as it was. To keep an edited Map Area or Building, duplicate it on its own first - a copy made that way belongs to no group, so a replace never touches it.
+**Replace Import Group** throws away every change made since the import: street edits, lot settings, reshaped Map Areas, and any change to the imported Buildings. The Buildings are deleted and built again fresh from the map. **Import Map...** on a Streets Network does the same to the streets already in it. One **Ctrl+Z** restores everything as it was. To keep an edited Map Area or Building, duplicate it on its own first - a copy made that way belongs to no group, so a replace never touches it.
 :::
 
 Replacing brings back imported Buildings you deleted. A Building in a World Partition cell that is not loaded blocks the replace until you load that part of the level.
@@ -386,7 +390,7 @@ A baked Streets Network must be unbaked before it can be replaced.
 
 ## Reopen an import
 
-Select the **Map Import Group** and press **Reopen Import Workspace** in its Details. The window opens with the import's map data, boundary, rotation, road settings, area types and building choices, and the main button reads **Replace Import Group**. **Import Map…** on a Streets Network that came from an import reopens its group the same way.
+Select the **Map Import Group** and press **Reopen Import Workspace** in its Details. The window opens with the import's map data, boundary, rotation, road settings, area types and building choices, and the main button reads **Replace Import Group**. **Import Map...** on a Streets Network that came from an import reopens its group the same way.
 
 The group keeps a copy of the map data it imported: its roads, areas and buildings. You can reopen it and change any choice without the original source - on another computer, for example - as long as the boundary stays inside the area it already covers. To widen it, the window shows **Choose source**, which opens the **Map data** menu: pick map data that covers the larger area.
 
