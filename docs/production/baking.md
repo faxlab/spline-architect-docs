@@ -9,6 +9,8 @@ import LoopingClip from '@site/src/components/LoopingClip';
 
 Baking is reversible. It replaces generated preview/runtime output with persistent editor components or assets while the Spline Architect actor remains the source of truth.
 
+Bake and Rebake write each baked mesh once and check the baked-mesh registry once per bake instead of once per mesh, so large scenes bake faster. Projects that do not allow static lighting also skip lightmap UVs for the shapes Spline Architect builds; see [Lightmaps](#lightmaps). Baking no longer fills the Output Log with `RecomputeNormals: TargetMesh did not have normals to recompute` warnings.
+
 <AnnotatedShot
   alt="A baked Building with its Baking category open: the static mesh components it produced, and the Bake, Unbake, and Break actions"
   src="img/screens/baked-output.webp"
@@ -56,11 +58,28 @@ Bulk **Set Generation Mode**, **Set Bake Method**, and **Set Mobility** commands
 
 **Prebake Corners** generates reusable corner meshes for the current wall angles. **Corner Angle Increment** rounds nearby angles to reduce unique assets; `0` inherits the Project Settings value. Lower increments preserve exact architecture but increase asset count.
 
+## Nanite on baked meshes
+
+**Baked Mesh Nanite**, in **Project Settings → Plugins → Spline Architect Settings → Bake**, decides whether the shapes Spline Architect builds when you bake use Nanite. Those shapes are floors, roofs, streets, merged walls, and [Make Facade Kit](/authoring/facade-kit) planes. Nanite draws a large baked city in far fewer draw calls and keeps its shadows cheap with Virtual Shadow Maps, so on a desktop or console project it is usually the fastest choice.
+
+| Choice | What it does |
+| --- | --- |
+| **Match Project** (default) | Uses Nanite when the project has Nanite turned on. |
+| **Always** | Uses Nanite even when the project has it turned off. |
+| **Never** | Never uses Nanite. Pick it for mobile, VR and forward-rendering projects. |
+
+- Corner and skew pieces made from your own meshes always keep your mesh's Nanite setting, whichever choice you make. Turn Nanite off on those meshes too if you need no Nanite at all.
+- A mesh with a translucent material never uses Nanite.
+- Collision stays exactly as before.
+- Meshes already baked change only when you bake them again. After changing the setting, use **Rebake All** to apply it to the baked actors in the level.
+
 ## Lightmaps
 
 When **Generate Lightmap UVs on Bake** is enabled, Spline Architect creates lightmap UVs for baked mesh assets. Resolution derives from project or per-actor texel density, rounds to a power of two, and stays within the supported range. **Set Component Lightmap Resolution on Bake** applies the result to components.
 
-Use Lumen-only projects may disable generated lightmap UVs. Static/GPU Lightmass output should keep them enabled and use the [Lightmap Tool](/production/editor-tools#lightmap-tool) to repair source assets that need independent control.
+For the shapes Spline Architect builds - floors, roofs, streets, merged walls, and Make Facade Kit planes - the UVs are built only when the project also allows static lighting (**Project Settings → Rendering → Allow Static Lighting**). A Lumen or fully dynamic project skips them automatically, which makes baking faster. Corner and skew pieces made from your own meshes follow **Generate Lightmap UVs on Bake** alone. Turn that setting off to skip lightmap UVs everywhere.
+
+Static and GPU Lightmass projects should keep both on, and can use the [Lightmap Tool](/production/editor-tools#lightmap-tool) to repair source assets that need independent control. Meshes already baked change only when you bake them again.
 
 ## Diagnostics and baked asset registry
 

@@ -19,7 +19,7 @@ To start from a real place instead of drawing, [Import Map](/core-actors/import-
 | --- | --- |
 | **Edit** | Opens Streets Mode for graph drawing and editing. |
 | **Rebuild Network** | Forces complete road, intersection, lot, and surface regeneration. |
-| **Import OSM** | Opens [Import Map](/core-actors/import-map) to fill this network with real streets from OpenStreetMap. Replaces the streets already in it; one Undo restores them. |
+| **Import Map…** | Opens [Import Map](/core-actors/import-map) to fill this network with real streets from OpenStreetMap. Replaces the streets already in it; one Undo restores them. |
 | **Review Issues** | Lists the places the last generation flagged - left-out map sections, width conflicts, failed lots - and frames each one. See [Review Issues](/core-actors/import-map#review-issues). |
 | **Add Test Grid** | Creates a temporary validation grid. Use only for evaluation, not final authored roads. |
 | **Booleans to Use** | Explicit cutters for roads, intersections, and lot surfaces. |

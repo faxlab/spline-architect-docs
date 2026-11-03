@@ -63,6 +63,31 @@ SA Spawn Building (Generated)
 
 For complete generated outputs, use **Filter Data By Tag** with a top-level Building tag such as `Small`. Building actors carry only Building tags; their generated components carry Building tags plus the precise Wall tags that produced them.
 
+## Imported map buildings
+
+An import with **Footprints only** leaves the buildings as outlines with their map data and no style, so nothing generates in the level. A graph can build them instead, in a style you choose:
+
+```text
+SA Get Map Buildings (Footprints)
+  → SA Spawn Building (Use Input Style, Fit Input Height)
+      Generated → Static Mesh Spawner (By Attribute: SA_Mesh)
+      Dynamic Meshes → Spawn Dynamic Mesh
+```
+
+Each footprint arrives with its map height in `SA_TargetHeight`. **Fit Input Height** gives the style's repeating section the floors that fit that height, the way a [map import](/core-actors/import-map#the-repeating-section) does. **Use Input Style** builds a footprint in the style it carries. A footprint from a Footprints only import carries none, so it takes the node's preset. Set **Preset Source** to **Random From DataTable** to spread several styles across the buildings.
+
+A styled import has already built its Buildings in the level, so a graph that builds them again would double them. Use a Footprints only import for this recipe.
+
+To keep generated content off land that real buildings already cover, filter lots on the share they cover:
+
+```text
+SA Get Lots (Lot Boundaries)
+  → Filter Data By Attribute (SA_MapBuildingCoverage < 0.5, for example)
+  → SA Subdivide Lots
+```
+
+`SA_MapBuildingCoverage` runs from 0 to 1 on each lot. Overlapping buildings count once and holes are excluded. Choose the threshold that suits your map.
+
 ## Lamps along a road
 
 ```text

@@ -1,5 +1,27 @@
 [
   {
+    "version": "6.2.0",
+    "date": "2026-11",
+    "engines": "UE 5.8",
+    "summary": "Import real buildings from OpenStreetMap, make fast facade copies of your Building presets, build sloped roofs on irregular footprints, and choose whether baked meshes use Nanite.",
+    "highlights": [
+      "[Import Map](/core-actors/import-map#buildings) brings in the buildings of a real place. Each one becomes a Building in a style from your Building preset tables, with its floors fitted to its map height. Touching buildings, such as row houses, share one wall. Keep one actor per building, one per lot, or one for all, or import footprints only for PCG. Underground buildings are skipped, and **Skip buildings outside lots** leaves out buildings that stand on no street lot. Replacing an import builds its buildings again from the map and does not keep edits.",
+      "The Import Map window is organised into **Roads**, **Areas** and **Buildings** tabs, each with its own limit. The search box suggests places as you type and reads pasted coordinates and plus codes. **Recent** returns to places you visited with their boundaries, and one **Map data** menu holds downloads, files and cleanup. Map data your project already holds is used for you, and downloads and the first reading of a file can be cancelled.",
+      "A mapped area the import cannot use is skipped and listed in Diagnostics, instead of stopping the import.",
+      "Areas and building outlines are read for the place you are looking at and cached in small tiles. There is no multi-gigabyte index to wait for and no Prepare outlines step.",
+      "New PCG node [SA Get Map Buildings](/pcg/node-reference#sa-get-map-buildings) reads imported buildings with their height, style and kind. SA Spawn Building can build each input in its own style and fit its height, and SA Get Lots reports how much of each lot real buildings already cover.",
+      "[Make Facade Kit](/authoring/facade-kit) turns a Building preset into a fast copy made of flat textured planes, for big map imports. Repeated floors share one photo, a Parallax switch makes windows look set into the wall, and a batch can be cancelled.",
+      "Sloped roofs on footprints with narrow wings, notches and nearly parallel walls now get proper hips and valleys instead of a flat roof.",
+      "The new project setting [Baked Mesh Nanite](/production/baking#nanite-on-baked-meshes) (Match Project, Always or Never) decides whether the shapes Spline Architect builds when you bake use Nanite. Lightmap UVs for those shapes follow the project's static lighting setting, copies of your own meshes follow the source mesh's Nanite setting, and Bake and Rebake are faster.",
+      "AI assistants can include buildings when they import a map area."
+    ],
+    "notes": [
+      "Baked meshes now follow the project's Nanite setting on the next bake or rebake, and existing bakes stay as they are until then. Set **Baked Mesh Nanite** to **Never** to keep them as before.",
+      "Existing frozen bakes keep their old roofs until you rebake them.",
+      "Old map index files delete themselves. The large area index files that 6.1 kept under Saved/SplineArchitect/MapData are removed after the first successful read of a place, so that folder shrinks without any action from you."
+    ]
+  },
+  {
     "version": "6.1.0",
     "date": "2026-10",
     "engines": "UE 5.8",

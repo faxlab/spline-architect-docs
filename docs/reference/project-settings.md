@@ -1,6 +1,6 @@
 ---
 title: Project settings
-description: Complete reference for Spline Architect project-wide defaults, lightmaps, preset behavior, and performance controls.
+description: Complete reference for Spline Architect project-wide defaults, baking, lightmaps, preset behavior, and performance controls.
 ---
 
 **Edit → Project Settings → Plugins → Spline Architect Settings** holds the project-wide defaults. A value set on an actor always wins over these.
@@ -21,11 +21,19 @@ description: Complete reference for Spline Architect project-wide defaults, ligh
 The Pivot Tool's and Lightmap Tool's **Overwrite Existing**, the **Delete Original Actors** choices in the Convert, Collapse to Mesh, and Convert to Blueprint dialogs, the Preset Library's view mode, category tab, and favorites filter, the Streets Mode **Node Merge Radius** and Subdivide recipe, and the remembered destination folders are all editor preferences stored per user and per project. They are not part of Project Settings and are not checked in with the project.
 :::
 
+## Bake
+
+| Control | Default | What it does |
+| --- | --- | --- |
+| **Baked Mesh Nanite** | Match Project | Whether the shapes Spline Architect builds when you bake (floors, roofs, streets, merged walls, Facade Kit planes) use Nanite. **Match Project** uses Nanite whenever the project has Nanite turned on. **Always** uses it even when the project has it off. **Never** turns it off; pick it for mobile, VR and forward-rendering projects. Corner and skew pieces made from your own meshes always keep your mesh's Nanite setting, whichever you pick. A mesh with a translucent material never uses Nanite. Collision stays exactly as before. Meshes already baked change only when you rebake them. |
+
+See [Nanite on baked meshes](/production/baking#nanite-on-baked-meshes) for when to pick each choice.
+
 ## Lightmaps
 
 | Control | What it does |
 | --- | --- |
-| **Generate Lightmap UVs on Bake** | Creates a lightmap channel for baked static mesh assets. Disable only for a fully dynamic/Lumen workflow. |
+| **Generate Lightmap UVs on Bake** | Creates a lightmap channel for baked static mesh assets. For the shapes Spline Architect builds (floors, roofs, streets, merged walls, Facade Kit planes) it takes effect only when the project allows static lighting (**Project Settings → Rendering → Allow Static Lighting**); a Lumen or fully dynamic project skips them automatically, which makes baking faster. Corner and skew pieces made from your own meshes follow this setting alone. Disable it to skip lightmap UVs everywhere. Meshes already baked change only when you rebake them. |
 | **Lightmap Texel Density** | Global texels per meter. Resolution derives from surface area, rounds to a power of two, and clamps from 32 to 512. |
 | **Lightmap UV Padding** | Approximate texel gutter between generated islands. |
 | **Set Component Lightmap Resolution on Bake** | Applies the derived resolution to baked components; a per-actor density override takes priority. |

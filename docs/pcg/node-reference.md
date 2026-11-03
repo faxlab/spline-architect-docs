@@ -25,12 +25,24 @@ SA readers exclude actors managed by PCG spawn nodes to prevent generation feedi
 - **Settings:** Actor Selector; Actor Type Filter bitmask; optional Preset Table + Row filter; Write Semantic Attributes.
 - Reads effective generation paths—not just raw Spline Components—including borrowed/stacked splines, multi-spline polygon modes, inset/reversal, mirror expansion, and stack offsets.
 - Emits actor/path semantics listed in [metadata](/pcg/metadata-reference#effective-spline-attributes).
+- On a Building that holds [map footprints](/core-actors/building#several-footprints-on-one-building), each footprint is its own path with its own seed and, when it has one, its own style in `SA_Preset`. Those paths also carry `SA_Footprint` and `SA_TargetHeight`.
 
 ### SA Get Lots
 
 - **Input:** none. **Outputs:** `Lot Boundaries` (Spline), `Lot Surfaces` (Dynamic Mesh), `Ground Surface` (Surface).
 - **Settings:** Actor Selector, Include Empty Lots, Facet Angle, Emit Lot Surfaces, Ground Surface Spacing, Ground Surface Smoothing Iterations.
 - One closed boundary per Streets lot, optional resolved visible lot mesh, and a sampleable ground surface. All outputs use the effective default/per-lot Streets Elevation Mode.
+- Every lot carries `SA_MapBuildingCoverage`: the share of the lot, from 0 to 1, that imported [map buildings](#sa-get-map-buildings) already stand on. Overlaps count once and holes are excluded. Filter on it to keep generated buildings off land that real buildings cover.
+
+### SA Get Map Buildings
+
+- **Input:** none. **Outputs:** `Footprints` (Spline), `Footprint Polygons 2D` (Polygon 2D).
+- **Settings:** Actor Selector, Import Group, Kinds.
+- Reads the building footprints a [map import](/core-actors/import-map#buildings) brought into the level: one closed outline per footprint, at ground height, with its height, style, kind and name. Wire `Footprints` into SA Spawn Building to build them with PCG. Use `Footprint Polygons 2D` for polygon operations, such as keeping other content away from real buildings.
+- **Actor Selector** defaults to **By Tag** with the tag `SA_MapBuilding`, which every Building a map import owns carries. The node tracks only those tagged actors, never every Building, so a graph that also spawns Buildings does not keep re-running itself. A copy you make of an imported Building loses the tag and is not read.
+- **Import Group** limits the node to one import; leave it empty to read every import in the level. **Kinds** limits it to kinds such as House or Office; leave it empty to read every kind.
+- Both outputs carry the [map building attributes](/pcg/metadata-reference#map-buildings) on the Data domain: the height to fit, the style, the map id, name, kind, height source and tags. A footprint from a **Footprints only** import has a height but no style.
+- Footprints come out ordered by actor name, then footprint name, so the order is the same on every run.
 
 ### SA Get Intersections
 
@@ -69,6 +81,7 @@ SA readers exclude actors managed by PCG spawn nodes to prevent generation feedi
 - **Input:** none. **Output:** `Facade Frames` (Point).
 - **Settings:** Actor Selector; U Spacing; U Distribution (Per Segment/Whole Run); V Mode (By Spacing/Per Floor Row); V Spacing or Per Floor Height Fraction; Sides (Left/Right/Both/Exterior/Interior); U start/end and V bottom/top margins; Wall Width Override.
 - Points face outward through local +X and carry fitted cell bounds. Reads standalone Walls, connected stacks, and every Building Wall layer. Openings are not excluded.
+- On a Building that holds map footprints, each footprint's frames use that footprint's own style and fitted floors, and carry `SA_Footprint`. When no footprint has a style with walls, the node warns: give the Building or its footprints a style before sampling facades.
 
 ### SA Sample Floor/Roof
 
@@ -134,6 +147,8 @@ SA readers exclude actors managed by PCG spawn nodes to prevent generation feedi
 - **Filter Terms:** empty includes every Building row. Otherwise, each term matches an exact Building **Preset Tag** or—when **Include Row Names** is enabled (default)—a case-insensitive row-name substring.
 - **Term Match Mode:** **All** (default) requires every term; **Any** requires at least one. Referenced Wall Preset tags do not classify a Building row for this query.
 - Candidate rows are sorted by row name before deterministic selection, so DataTable insertion order does not change the result. An invalid/wrong-struct table or a filter with no matches warns once and produces no output.
+- **Use Input Style** (on by default): builds each footprint in the style it carries, when it carries one - the `SA_PresetRow` and `SA_PresetTable` attributes that [SA Get Map Buildings](#sa-get-map-buildings) writes, naming a Building preset row. An input's style wins over Single Preset and Random From DataTable alike. Footprints without a style use this node's preset. A style row that is not a Building preset warns, and those footprints use this node's preset too. Turn the setting off to give every footprint this node's preset.
+- **Fit Input Height** (on by default): fits each building's floors to the height its footprint carries, when it carries one - the `SA_TargetHeight` attribute, in centimetres, that SA Get Map Buildings writes. The style's repeating section, the wall with a floor range, gets as many floors as fit the height, the same way a [map import](/core-actors/import-map#the-repeating-section) fits them. Footprints without a height keep the style's own floors.
 - **Other settings:** Output; Attach Options for Actors mode.
 
 ### SA Spawn Wall / SA Spawn Curve
@@ -221,7 +236,7 @@ SA shapes and stock PCG **Polygon 2D** data are interchangeable in both directio
 
 **Taking Polygon 2D in.** Four pins accept it explicitly: SA Subdivide Lots' `Lot Boundaries`, SA Polygon Merge's and SA Polygon Offset's `Polygons`, and SA Landscape Patch's `Areas`. Pins typed **Curve** also accept it, even though the label does not say so - that covers SA Landscape Patch's `Paths`, SA Edge Placer's `Edges`, and the `Splines`/`Footprints` inputs of the three spawn nodes.
 
-**Giving Polygon 2D out.** Seven nodes carry an extra `... Polygons 2D` pin beside their spline output: SA Get Lots, SA Get Intersections, SA Get Network Boundary, SA Polygon Offset, SA Polygon Merge, SA Polygon From Points, and SA Subdivide Lots (twice, for sub-lots and gap outlines). Both pins are built from the same result, so they can never disagree. Wiring one of these pins takes effect immediately - there is no need to force the node to rebuild.
+**Giving Polygon 2D out.** Ten nodes carry an extra `... Polygons 2D` pin beside their spline output: SA Get Lots, SA Get Intersections, SA Get Network Boundary, SA Get Road Centerlines (`Road Footprint Polygons 2D`), SA Get Map Areas (`Area Polygons 2D`), SA Get Map Buildings (`Footprint Polygons 2D`), SA Polygon Offset, SA Polygon Merge, SA Polygon From Points, and SA Subdivide Lots (twice, for sub-lots and gap outlines). Both pins are built from the same result, so they can never disagree. Wiring one of these pins takes effect immediately - there is no need to force the node to rebuild.
 
 **Holes.** A Polygon 2D has real holes; a spline cannot, so on a spline pin a hole comes out as its own closed spline flagged `SA_IsHole`. Outlines are flagged `false` rather than left unflagged, so a **Filter Data By Attribute** on `SA_IsHole` always finds the attribute. What a hole *does* depends on the node:
 
@@ -247,6 +262,8 @@ SA shapes and stock PCG **Polygon 2D** data are interchangeable in both directio
 | A pitched roof disappears behind the top-floor filter | `SA_IsTopFloor` applies to floors. Use Include Roofs or `SA_SurfaceType == Roof` for generated roofs. |
 | Lots missing | Streets form closed blocks; Output Mode is Generate; empty lots are included while debugging; Facet Angle is not over-simplifying. |
 | Building node has points but no meshes | Static Mesh Spawner uses **By Attribute → `SA_Mesh`**; Dynamic Meshes is wired separately; preset row resolves to the correct struct. |
+| SA Get Map Buildings outputs nothing | The Buildings must come from a map import: they carry the `SA_MapBuilding` tag, and a copy you made of one does not. Check that Actor Selector is still **By Tag** with `SA_MapBuilding`, and that **Import Group** and **Kinds** are not filtering everything out. |
+| Map buildings spawn in the node's preset, or at the preset's own height | **Use Input Style** and **Fit Input Height** must be on, and the footprints must come from SA Get Map Buildings. A **Footprints only** import carries a height but no style. Fitting needs a style with a wall section that has a floor range. |
 | Random Building table produces nothing | Preset Source is Random From DataTable; the table uses the Building Preset row struct; every All-mode term matches; row-name matching is enabled when relying on row substrings. |
 | Preset tag filter finds nothing | Use the exact authored Name in `SA_PresetTags`; use Array Contains before Attribute Filter for individual pieces, or Filter Data By Tag for complete outputs. |
 | Prop pool warns or drops entries | Each entry defines exactly one Mesh or Actor Class and has positive weight. |
