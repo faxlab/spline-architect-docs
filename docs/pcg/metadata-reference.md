@@ -137,7 +137,7 @@ SA Get Map Areas writes these on the Data domain of all three outputs, and on ev
 | `SA_MapImportGroup` | String | Id of the Map Import Group that owns the area. Empty for an area outside any group. |
 | `SA_MapAreaPartIndex` | Int | Zero-based number of this shape among the parts of its area. |
 | `SA_MapAreaPartCount` | Int | How many separate parts the area has. `1` for an area in one piece. |
-| `SA_IsHole` | Bool | On vertices and spline points: this point is on a hole's outline. Unlike the nodes that flag whole hole splines, SA Get Map Areas writes `false` on the Data domain, so filter the points, not the splines. |
+| `SA_IsHole` | Bool | This shape is a hole's outline. Written on its vertices and spline points and on the Data domain, so you can filter either the points or the whole spline. |
 | `SA_IsCropEdge` | Bool | On vertices and spline points: the edge starting here was made by cutting the area off at the import boundary. It is not an edge on the map. |
 
 ## Polygon, prop, and spawn output

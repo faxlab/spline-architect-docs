@@ -332,7 +332,7 @@ They are stored per user and per project. A reopened import always uses its own 
 
 ## 4. Check the preview
 
-The line at the bottom of the window says where the preview stands - for example *Ready to import.* or *Waiting to prepare the latest selection…* The square beside it is green when the import is ready, amber with partial coverage or too many buildings, red when preparation failed or found nothing, blue while preparing, and grey while the window waits for map data or a boundary. While a preview is being prepared, **Cancel** stops it; after a failure or a pause, **Retry** prepares it again from the data already on disk.
+The line at the bottom of the window says where the preview stands - for example *Ready to import.* or *Waiting to prepare the latest selection…* It also counts the buildings that will be imported and, with **Skip buildings outside lots** on, how many it left out. The square beside it is green when the import is ready, amber with partial coverage or too many buildings, red when preparation failed or found nothing, blue while preparing, and grey while the window waits for map data or a boundary. While a preview is being prepared, **Cancel** stops it; after a failure or a pause, **Retry** prepares it again from the data already on disk.
 
 The map shows the prepared result on top of the source outlines. **Display** adds two optional overlays:
 
