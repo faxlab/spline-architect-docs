@@ -52,7 +52,7 @@ The depth of the source's recesses drives the **Parallax** switch in the kit's m
 | --- | --- | --- |
 | **Parallax** | On | The switch described above. |
 | **ParallaxDepth** | 100 | How much depth the parallax shows, in centimetres from the most raised to the deepest part. Make Facade Kit sets the range it baked. Lower it for flatter facades, or use `0` for none. |
-| **ParallaxCenter** | 0.5 | Where the flat plane sits in the depth, from 0 (at the most raised part) to 1 (at the deepest). Make Facade Kit sets where the source wall's line really is, so raised parts come forward and recesses go back. Change it only if the facade looks pushed in or out. |
+| **ParallaxCenter** | 0.5 | Where the flat plane sits in the depth, from 0 (at the most raised part) to 1 (at the deepest). Make Facade Kit puts each photo's main wall surface at 0.5, so raised parts come forward and recesses go back. Leave it as it is. |
 | **UVPerCm** | Set by the kit | How far one centimetre of wall moves across the texture. Leave it as it is. |
 
 ## From a script
