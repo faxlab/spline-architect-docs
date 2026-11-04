@@ -86,6 +86,6 @@ Used on the bottom wall, this slides a new base under an existing building: the 
 
 ## Production notes
 
-- **Random Fit** is deterministic for a resolved seed and cycles a shuffled, fit-aware bag; **Ordered Sequence** follows array order; **Best Fit** chooses the closest natural length that fits.
+- **Random Fit** is deterministic for a resolved seed and cycles a shuffled, fit-aware bag; **Ordered Sequence** follows array order; **Best Fit** chooses the closest natural length that fits; **Closest Length** gives each segment one piece, the closest in length.
 - Use **Use Parent** mirror mode on stacked child Walls so the hierarchy shares the root's symmetry.
 - For bulk operations, prefer the connected commands in [Baking](/production/baking) to pressing per-actor buttons repeatedly.

@@ -61,7 +61,7 @@ Stacked floors, roofs, and floor alignment all follow the same shared factor, so
 | --- | --- |
 | **Wall Meshes** | Standard Static Mesh pieces. |
 | **Custom Wall Meshes** | Static Mesh or Blueprint pieces with optional logical `Bounds Min XZ` / `Bounds Max XZ`. Blueprint entries generate Child Actor Components. |
-| **Wall Piece Selection** | **Best Fit** chooses the closest natural-length piece that fits; **Random Fit** uses a deterministic fit-aware shuffled bag; **Ordered Sequence** repeats array order. |
+| **Wall Piece Selection** | **Best Fit** chooses the closest natural-length piece that fits; **Random Fit** uses a deterministic fit-aware shuffled bag; **Ordered Sequence** repeats array order; **Closest Length** gives each segment one piece, the one whose length is closest to the segment's, stretched or squashed to fit it exactly. A segment far longer than the longest piece repeats that piece a few times instead of stretching it. Closest Length is made for long flat pieces such as [Make Facade Kit](/authoring/facade-kit) planes. |
 | **Filler Wall Meshes** | Small pieces for residual gaps. |
 | **Filler Placement** | Segment Sides, or Between/Ends Wall Meshes. Appears when valid fillers exist. |
 | **Min Filler Wall Length** | Minimum gap before a filler is emitted. |

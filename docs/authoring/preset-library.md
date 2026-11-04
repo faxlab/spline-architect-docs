@@ -44,6 +44,10 @@ The remaining actions - Start Drawing, Apply to Selected, Create from Preset, Sp
 
 Selecting a row exposes editable metadata: **Display Name**, **Description**, **Favorite**, and optional custom **Thumbnail**. If no custom texture is supplied, supported preset types can render a managed thumbnail or fall back to a representative mesh.
 
+### Make a fast copy of a Building preset
+
+Right-click a Building preset and choose **Make Facade Kit…** to make a fast, fixed-height copy of it, named `<Row>_Fast`, in a `<Table>_Fast` table. With several Building presets selected the entry reads **Make N Facade Kits…** and makes one copy of each. The new presets are selected when the work finishes. A window asks for the texture sharpness and floor counts first; see [Make Facade Kit](/authoring/facade-kit).
+
 ## Drag and drop
 
 <ClipAside

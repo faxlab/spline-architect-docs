@@ -41,6 +41,8 @@ Walls make the shell; these settings make everything the shell contains and wear
 
 Edge presets reuse the Wall generator, so orient their mesh length along X and use a small, stable profile. Inline rows are convenient for one-off roofs; DataTable rows keep trim consistent across a kit.
 
+A footprint with a narrow wing, a notch, or two nearly parallel walls gets a sloped roof with proper hips and valleys. Before 6.2 such a footprint could come out with a flat roof. If a footprint still cannot take a sloped roof, the roof is flat and the Output Log names the actor. A baked actor keeps the roof it was baked with until you rebake it.
+
 ## Lot Surface
 
 A Streets lot surface is built from a list of layers, each of which can produce lot ground, a sidewalk, and corner pads with their own materials. **Surface Edge Length** and **Surface Smoothing** behave exactly as they do for Floor and Roof surfaces here. See [sidewalks and lot ground](/core-actors/streets-network#sidewalks-and-lot-ground) for the full set.

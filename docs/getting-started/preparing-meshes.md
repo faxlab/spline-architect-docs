@@ -34,7 +34,7 @@ Use **Keep World Scale** when a piece must retain its authored proportions. Othe
 ## Materials, Nanite, collision, and lightmaps
 
 - Keep material slots stable across variants if they share preset material overrides.
-- Nanite is compatible with generated and baked static meshes, subject to the normal Unreal limitations of the output component type.
+- Nanite is compatible with generated and baked static meshes, subject to the normal Unreal limitations of the output component type. The **Baked Mesh Nanite** project setting decides whether the shapes Spline Architect builds when you bake use it; see [Nanite on baked meshes](/production/baking#nanite-on-baked-meshes).
 - Configure source collision for repeated static pieces. Newly collapsed static meshes should be checked after conversion.
 - For baked/static lighting, enable generated lightmap UVs in [Project Settings](/reference/project-settings) or use the [Lightmap Tool](/production/editor-tools#lightmap-tool).
 

@@ -22,7 +22,7 @@ There is nothing to set up in Spline Architect. When the Toolset Registry is pre
 | Toolset | What it covers |
 | --- | --- |
 | **SplineArchitectTools** | The guides and this manual; every actor type and setting with its tooltip; presets and shapes; spawning, shaping, stacking, presets, Spline Architect menu commands, baking, saving presets, converting; a summary of what an actor generated. |
-| **SplineArchitectStreetsTools** | Streets networks: draw streets (crossings become intersections, as in Streets Mode), change road profiles, move and round junctions, delete streets and junctions, read the lots. Import real streets and land areas from OpenStreetMap sources you have downloaded. |
+| **SplineArchitectStreetsTools** | Streets networks: draw streets (crossings become intersections, as in Streets Mode), change road profiles, move and round junctions, delete streets and junctions, read the lots. Import real streets, land areas and buildings from OpenStreetMap sources you have downloaded. |
 | **SplineArchitectPCGTools** | The SA PCG nodes: list them, read their pins and settings, add them to a graph. Epic's PCG tools then connect and configure them like any other node. |
 
 The assistant reads the same tooltips you see in the Details panel, so a clear tooltip helps both of you. It also gets three working guides - general, Streets, and PCG - written for agents: the preset-first workflow, units, and the traps that cost time, such as the actor selector that makes the editor lag.
@@ -34,6 +34,8 @@ The assistant reads the same tooltips you see in the Details panel, so a clear t
 - Saving a preset writes the preset table to disk immediately, exactly like the **Save Preset** button. Everything else waits for you to save (**File > Save All**).
 - Converting keeps the original actors unless you ask it to delete them.
 - An assistant can add an existing map file, inspect regional extract sizes, and start a download after you confirm the region and size. Once a source is ready, it can import areas by place name or coordinates and passes on the required OpenStreetMap attribution.
+- An import can include the map's buildings. Each becomes a [Building](/core-actors/building#buildings-from-a-map-import) in the style whose height fits best, with its floors fitted to the map height, and touching buildings share one wall. The assistant can keep one actor per building (the default), one per street lot, or one for all, or import footprints only, with no style. Its report counts the buildings and the Building actors it made.
+- A map import by an assistant uses the [Import Map](/core-actors/import-map) window's remembered choices: road types, widths, materials, building style tables, height fitting, filters, and the limits. An import over the Building limit (2,000 unless you changed it) is refused with the building count. Raise the limit in the window, import footprints only, or ask for a smaller area. When no style table is ticked in the window, the assistant uses your project's own Building preset tables; if there are none, a styled import is refused until you save a Building as a preset.
 - Baked SA actors stay frozen. The assistant must explicitly Unbake before changing their presets or spline geometry; it can still move the whole actor. Shared preset edits leave baked output intact until you choose Rebake.
 
 ## Getting good results

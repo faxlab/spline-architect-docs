@@ -28,6 +28,7 @@ const sidebars: SidebarsConfig = {
       'authoring/architect-mode',
       'authoring/ai-agents',
       'authoring/preset-library',
+      'authoring/facade-kit',
       'authoring/shapes-spline-tools',
       'production/editor-tools',
     ]},

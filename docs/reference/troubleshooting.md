@@ -59,6 +59,10 @@ Use Reset Transform or keep Auto Normalize Actor Scale enabled. Avoid leaving no
 
 Close the spline, fix self-intersections, reduce inset, and remove near-duplicate corners. A roof slope inset larger than the viable polygon can collapse the result.
 
+### A sloped roof came out flat
+
+Footprints with narrow wings, notches and nearly parallel walls get sloped roofs with proper hips and valleys from 6.2. A baked actor keeps the roof it was baked with until you rebake it. If a roof is still flat after it regenerates, the Output Log names the actor: *the sloped roof of ... left its footprint, so it was made flat instead*. Check that footprint for crossing edges and near-duplicate corners.
+
 ### Boolean has no effect
 
 Make the cutter overlap in 3D, increase Spline Extrude Distance, enable the correct Affect toggles, and confirm Target Actors is not overriding Auto Detect. Cull removes whole components; Boolean Subtract cuts their geometry.
@@ -77,9 +81,37 @@ Use Instanced or Hierarchical Instanced bake/output, consolidate compatible mesh
 
 Enable generated lightmap UVs, set an appropriate texel density, inspect the destination UV channel, and use the Lightmap Tool for source assets. Confirm Static mobility and rebuild lighting.
 
+Also check that **Project Settings → Rendering → Allow Static Lighting** is on. With it off, the shapes Spline Architect builds (floors, roofs, streets, merged walls, Facade Kit planes) get no lightmap UVs, whatever **Generate Lightmap UVs on Bake** says. Rebake after you change it.
+
+### Baked meshes use Nanite, or stopped using it
+
+Baked shapes follow **Baked Mesh Nanite** in Project Settings from their next bake or rebake. With the default, **Match Project**, they use Nanite whenever the project has Nanite turned on. Set it to **Never** to keep generated shapes non-Nanite, then run **Rebake All**. Corner and skew pieces made from your own meshes follow the source mesh's Nanite setting instead, and a mesh with a translucent material never uses Nanite. See [Nanite on baked meshes](/production/baking#nanite-on-baked-meshes).
+
 ### Conversion lost output
 
 Enable **Bake Spline Architect Actors Before Convert**, include attached actors where needed, and wire/realize Dynamic Mesh output before expecting non-static surface pieces in a PCG Data workflow. Keep originals until validation passes.
+
+## Import Map
+
+### A mapped area was skipped
+
+**Diagnostics** shows a **Review** entry such as *Skipped area 'Example Park' (way/123, Park): its outline could not be cut to the selection.* The import could not cut that one area to your boundary, or could not fill its shape safely. It leaves the area out and carries on with everything else, and the Output Log gets a warning with the same text. Click the entry to frame the spot. Only area types you ticked can be skipped. Unticking the type removes the entry, and also leaves out every other area of that type.
+
+### Create Import is unavailable and the status line names the building limit
+
+The selection holds more buildings than the **Building limit**, 2,000 by default. Streets and areas still preview. Raise the limit under **Heights and filters** on the Buildings tab (`0` means no limit), untick Buildings to import the rest, or draw a smaller boundary.
+
+### The Buildings tab says there is no style to choose from
+
+No Building preset table is ticked under **Styles**. Tables that ship inside the plugin, such as SA_Buildings, start unticked, so tick one, or save your own Building preset to a table in your project's Content. Or tick **Footprints only** to import outlines without a style.
+
+### Replace says buildings are in parts of the level that are not loaded
+
+A World Partition cell that holds buildings of the import is unloaded, and a replace would leave them behind. Load those parts of the level, then replace the import. Buildings you deleted do not block a replace; it brings them back.
+
+### The search box does not find a street address
+
+Street addresses are not searched. Type the town, or paste the address's coordinates or a plus code. See [Pasted locations](/core-actors/import-map#pasted-locations).
 
 ## PCG
 
@@ -90,8 +122,28 @@ See the [node failure table](/pcg/node-reference#common-graph-failures). Also co
 - Increase edit debounce if slider scrubbing triggers excessive work.
 - Lower the interactive task budget if viewport hitches matter more than completion time.
 - Increase the idle budget to drain queued generation faster after input stops.
+- Keep **Defer Generation While Dragging** and **Defer Dynamic Mesh Collision** on. Turning either off makes drags and rebuilds heavier.
+- Leave **Finish Generation In One Tick** off for city-scale work. It freezes the editor for the whole rebuild. All of these are in [Project settings](/reference/project-settings#performance).
 - Reduce surface density, smoothing iterations, roof resolution, and PCG sample counts before changing architecture.
 - Use Debug (Skeleton Only) while editing a large Streets graph.
+
+## Console variables
+
+Type these in the editor's console. Most are switches with a normal setting you rarely need to change.
+
+| Variable | Default | What it does |
+| --- | --- | --- |
+| `sa.PCGAutoRefresh` | `1` | PCG components whose graphs read Spline Architect data run again by themselves once a generation burst settles. `0` turns that off, so you regenerate PCG by hand. |
+| `sa.DeferGenerationWhileDragging` | The project setting | `1` waits until a drag ends before rebuilding. `0` rebuilds continuously during the drag. Once something sets it, it wins over [Project settings](/reference/project-settings#performance). |
+| `sa.DeferDynamicMeshCollision` | The project setting | `1` cooks collision for generated meshes once at the end of a rebuild. `0` cooks it after every edit. Once something sets it, it wins over Project settings. |
+| `sa.LandscapePatch.SettleLog` | `0` | `1` logs the settle and convergence details of every SA Landscape Patch run: the props anchored, moved or new, and the band tested for each prop that was not anchored. `0` logs only the one-line rebuild summary. |
+| `sa.Building.MoveGeneratedParts` | `1` | `1`: a Building takes over the parts its temporary walls generated. `0`: it duplicates them instead, as before 6.2, which is several times slower on big map imports. |
+| `sa.Wall.TreeBuildsStackOnce` | `1` | `1`: rebuilding a connected stack, as **Force Regenerate** does, builds every wall of the stack once, parents first. `0`: each wall also rebuilds the stacked walls above it, as before 6.2. The result is the same, built several times. |
+| `sa.FacadeKit.PhotographSourceGeometry` | `1` | `1`: Make Facade Kit photographs every Nanite piece as a temporary non-Nanite copy of its full source geometry. `0`: it photographs the pieces as Nanite draws them, which is often still coarse in a capture, with windows cut into triangles. |
+| `sa.GenerationSequenceLog` | `0` | `1` logs the generation queue, execution and dependency refresh sequence. |
+| `sa.Perf.Enabled` | `1` | Collects timing samples for Spline Architect work. |
+| `sa.Perf.Dump` | Command | Prints the collected timings. Add `csv` to also write `Saved/SplineArchitectPerf.csv`. |
+| `sa.Perf.Reset` | Command | Clears the collected timings. They accumulate from the last reset, so dump after the slow operation, not before. |
 
 ## Where is MultiBuilding or Prop Spawner?
 
