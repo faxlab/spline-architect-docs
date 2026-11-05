@@ -279,6 +279,15 @@ A graph made when SA Landscape Patch could still paint may hold a Patch with a *
 - **Settings:** Axis (+/-X, +/-Y, +/-Z), Yaw Only, Aim Away, Target Sample Spacing.
 - Changes rotation only, preserves other point data, and adds `SA_DistanceToSpline`. Yaw Only uses horizontal distance and keeps props upright.
 
+### SA Follow Ground
+
+- **Inputs:** `Points` (Point), `Ground` (Surface). **Output:** `Grounded Points` (Point).
+- **Settings:** Follow Slope, Max Tilt.
+- Stands props on sloped lot ground without traces. Connect `Ground` to the `Ground Surface` output of SA Get Lots and turn on its Emit Lot Surfaces.
+- Reads the ground height under the prop's four footprint corners, then sets its height and tilt. Facing and all other point data are kept. Connect the points after they have their mesh, because the corners come from their bounds.
+- Follow Slope off keeps a prop level at the lowest ground under its corners, which suits tall things such as billboards.
+- Only points sent through this node tilt, so lamps and trees can skip it and stay straight. Points outside every lot pass through unchanged.
+
 ### SA Filter Spline Edges
 
 - **Input:** `Splines` (Spline). **Outputs:** `Flagged` (Spline), `Unflagged` (Spline).
