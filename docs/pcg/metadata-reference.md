@@ -37,6 +37,7 @@ Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots
 | `SA_LotFrontageCount` | Int | How many streets the lot fronts onto. |
 | `SA_IsCornerLot` | Bool | Lot fronts two or more streets that meet at a corner. |
 | `SA_StreetFacing` | Bool | Per boundary point: this edge runs along a street. |
+| `SA_EdgeStep` | Float | Per boundary point: the largest height difference in cm between the lot and the street along the edge starting here, whatever flattened the lot. `0` where they meet flush. Compare it to a limit to skip parked cars or place railings on stepped edges. |
 | `SA_AtIntersection` | Bool | Per boundary point: this point sits at an intersection. |
 | `SA_TouchesBoundary` | Bool | Per point: the edge starting here lies on the source boundary. On Gap Outlines this marks an alley mouth; on alley sides it is false. |
 | `SA_CutGap` | Float | Alley width on Cut Lines and Gap Outlines. `0` when there is no gap. |
