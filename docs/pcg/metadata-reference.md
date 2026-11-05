@@ -18,6 +18,7 @@ Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots
 | `SA_LotSeed` | Int | Stable per-lot seed token. |
 | `SA_LotSurfaceMaterial` | Soft Object Path | Resolved visible/top lot material. |
 | `SA_LotZone` | Name | Lot Zone actor, per-lot override, or default lot zone tag. |
+| `SA_LotElevation` | Name | The lot's Lot Elevation setting: `Follow`, `Lowest` or `Highest`. Filter on it to find flattened lots, for example to build a wall around them. |
 | `SA_IsExterior` | Bool | Subdivided lot touches its source boundary. |
 | `SA_IntersectionNode` | Int | Graph node index owning an intersection. |
 | `SA_CorridorIndex` | Int | Resolved road corridor index. |
