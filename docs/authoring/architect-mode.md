@@ -89,31 +89,48 @@ If an actor has several splines and nothing says which, **it is skipped rather t
   }
 >
 
-Select a Streets Network and press **Edit**. The overlay switches between Draw and Select and lets you choose the active Street Config.
+Select a Streets Network and press **Edit**. Everything in Streets Mode sits in one bar at the bottom of the viewport; there is no side panel.
 
 Draw cuts new roads through the network; Select moves what is there. In the clip, a new road splits a block in two, and dragging one node onto another fuses them into a single intersection.
 
 </ClipAside>
 
+### The bar
+
+The bar has three rows, and every control stays in the same place whatever you select. On a narrow viewport the whole bar shrinks instead of hiding controls. Hover any control for what it does.
+
+| Row | What it holds |
+| --- | --- |
+| **Status line** | What just happened, on the left. A hint for what you are doing right now, on the right. |
+| **Selection row** | Three groups side by side. **Nodes**: count, **Corner** (Auto or Manual), **Radius**, **Merge**. **Streets**: count, **Name**, width, **Straighten**. **Lots**: count, **Zone**, **Empty**, **Subdivide**. A group is greyed out while nothing of its kind is selected. **More** opens a card above the bar with every other setting of the selection, such as a node's position, a street's own settings and a lot's surfaces. |
+| **Tool row** | Street type, **Select / Draw / Cut**, **Move / Rotate** and the axes they use, **Pick** (what clicks may select), **Grid** and its size in metres, the **Angle** step, **Help** and **Exit**. |
+
+The street type is the one new streets are drawn with. With streets selected it shows their type, and picking another type assigns it to them.
+
+While you draw a street, the selection row shows its length and turn angle with **Finish** and **Cancel**. During a Subdivide preview it shows the preview's controls (see [Subdivide lots](#subdivide-lots)).
+
 ### Draw
 
-- Left click adds road points and previews intersections.
-- **Ctrl** applies angle snap.
-- **G** toggles the Streets grid; **Alt** uses the fine grid.
-- **Enter** or right-click finishes the road; **Escape** rolls back the active stroke.
-- Newly created nodes inherit the selected Street Config's Auto or Manual fillet mode/radius.
+- With the **Draw** tool every click places a point. With **Select**, double-click starts a street. The Draw tool stays on after a street is finished, ready for the next one.
+- A new point joins the node or street under the cursor, or the one the grid puts it on. A green ring on a node, or a street drawn green, shows where it will join. The readout at the cursor says **Connect** or **New point**, with the length and the turn from the previous segment.
+- Ending a street on the middle of another street makes a T-junction. Crossing a street makes an intersection.
+- Hold **X** to place a free point: it ignores the grid and joins nothing.
+- **Ctrl** while drawing turns the street in steps of the **Angle** value. **Alt** uses the fine grid, one tenth of the grid size.
+- **Enter**, right-click or **Finish** ends the street. **Esc** or **Cancel** throws away the street in progress; streets finished earlier are kept.
+- New nodes take the street type's Auto or Manual corner and its radius.
 
 ### Select and edit
 
-- Click nodes, segments, or lots; Shift adds, Ctrl toggles, and drag creates a selection rectangle.
-- Drag the gizmo to move selected nodes. Click the center to cycle World, Actor, and Segment axis spaces.
-- Shift-drag a selected node to extrude a new street segment.
-- Ctrl-click a hovered edge to cut it with a new node.
-- Drag a selected degree-two corner's fillet ring to switch it to Manual and adjust radius.
+- Click nodes, streets or lots. Shift-click adds to the selection, and dragging draws a selection box. **Pick** limits clicks to nodes, streets or lots when they sit close together.
+- **W** and **E**, or **Move** and **Rotate**, switch the gizmo for the selected nodes. The axis menu next to them picks World, Actor or Street axes.
+- Shift-drag a selected node to extend a new street from it.
+- With the **Cut** tool, click a street to cut it with a new node at the blue marker. With **Select**, Ctrl-click does the same.
+- Drag the handle on a selected corner to round it by hand; the corner switches to **Manual**. **Corner** and **Radius** in the Nodes group set the same values by typing.
 - Deleting a **corner** - a node with exactly two streets - joins its two streets back into one instead of leaving a hole in the road. At a junction or a dead end the node is removed with its streets as before.
-- Select two or more nodes and press **Merge Nodes** in the **Selected Nodes** panel to fuse them into one intersection. The node you clicked **last** is the one that stays, keeping its position and its fillet; the others hand over their streets. One undo step.
-- Dragging a node onto another one merges them too, governed by **Node Merge Radius**. The node being dragged survives and keeps following the cursor. A ring is drawn around each dragged node at the merge radius so you can judge its reach; nodes travelling together in the same drag never eat each other. Slide the radius up and drag one node through a cluster to clean up near-identical intersections, which subdivision can leave a lot of. Set it to `0` to turn merging-on-drag off. The whole drag is one undo step.
-- Right-click segments to **Set Config**, **Make Street Straight**, **Delete Segment(s)**, or **Regenerate**. Selected segment details also expose its name/config; node details expose fillet mode and radius.
+- Select two or more nodes and press **Merge** in the Nodes group to fuse them into one intersection. The node you clicked **last** is the one that stays, keeping its position and its corner; the others hand over their streets. One undo step.
+- Dragging a node onto another merges them on release. A green ring marks the node it will join, and the grid counts: if the grid puts the node on a junction, it joins it. Moving a whole street, or several nodes at once, so that an end lands on a junction joins them too. A small nudge beside a close neighbour does not merge. Hold **X** while dragging to move without joining. The whole drag is one undo step.
+- **Straighten** in the Streets group straightens the selected streets. Right-click a street for **Set Config**, **Make Street Straight**, **Delete Segment(s)** or **Regenerate**.
+- **Esc** works backwards one step at a time: it cancels what is going on, goes back to Select, clears the selection, then leaves Streets Mode.
 
 <ClipAside
   media={
@@ -143,14 +160,14 @@ Corners are tuned per node. Dragging the fillet ring switches the corner to **Ma
 
 Subdivide cuts new streets through a lot you select, previewing them live before anything is written. It is how a drawn block becomes a neighbourhood, and it is the same mechanism for greenfield and infill: draw a closed road loop, select the lot it encloses, subdivide.
 
-The **Subdivide** button sits in the viewport bar and appears only in **Select** sub-mode with at least one lot selected. Press it and the button is replaced by **Apply**, **Reroll**, and **Cancel** while a **Subdivide Preview** panel appears in the mode panel.
+**Subdivide** is in the **Lots** group of the bar and needs at least one selected lot. Press it and the selection row turns into the preview's controls: a summary, **Seed**, **Reroll**, **Merge**, **Passes**, **Apply** and **Cancel**. The card above the bar opens with the passes and quality limits, and goes back to how it was when the preview ends.
 
 </ClipAside>
 
 1. Regenerate the network first, so its lots carry stable keys. If a lot cannot be read you are told to regenerate and reselect.
-2. Switch to **Select** and click the lot or lots to subdivide.
-3. Press **Subdivide**. Ghost streets appear immediately, one colour per pass.
-4. Adjust passes, guards, and seed. Every edit updates the preview at once. **Reroll** shuffles the layout.
+2. With the **Select** tool, click the lot or lots to subdivide.
+3. Press **Subdivide** in the Lots group. Ghost streets appear immediately, one colour per pass.
+4. Change **Seed** and **Merge** in the bar, and the passes and guards in the card. Every edit updates the preview at once. **Reroll** shuffles the layout.
 5. Press **Apply**, or Enter.
 
 ![A two-pass Subdivide preview: an 8-lane arterial pass and a finer default pass, their ghost streets in two colours over the selected lot, with Guards, Merge, Seed, and Apply beneath](/img/screens/subdivide-panel.webp)
@@ -191,7 +208,7 @@ If nothing subdivides, the status bar names the effective value that rejected ev
 Afterwards the lot selection clears, because the subdivided faces are new lots with new keys. To cut again inside a resulting block, let the network regenerate and reselect.
 
 :::caution One click dismisses the preview
-Any left click in the viewport, any Delete, and switching sub-mode all cancel the preview silently - it behaves like a popover. Esc and right-click cancel it with a message. Nothing was written, so cancelling reverts nothing, but the settings you were tuning go with it. **Apply before doing anything else.**
+Any left click in the viewport and any Delete cancel the preview silently - it behaves like a popover. Clicks on the bar and the card do not. Esc, right-click and **Cancel** cancel it with a message. Nothing was written, so cancelling reverts nothing, but the settings you were tuning go with it. **Apply before doing anything else.**
 :::
 
 Your passes, guards, merge, and seed are remembered between sessions, per user, from the **last applied** run. Cancelling saves nothing, and there is no named-preset mechanism for them.
@@ -204,7 +221,13 @@ The **Gap**, **Cut Lines**, and **Gap Outlines** features belong to the [SA Subd
 
 | Category | Controls |
 | --- | --- |
-| **Snapping** | Grid enabled, Grid Step, Angle Snap Degrees, and **Node Merge Radius** (how close a dragged node must come to another before they fuse; `0` disables it). |
-| **Selection** | Node/edge screen pick distances and drag-start distance. |
-| **Gizmo** | Axis Space, world axis length, axis/plane pick distances, and plane half extent. |
-| **Display** | Node radius, snap-ring radius, crossing radius, authored-line thickness, and ghost-line thickness. |
+These are remembered per user and per project. The bar edits all of them except the Subdivide recipe, which is saved from your last applied run.
+
+| Category | Controls |
+| --- | --- |
+| **Snapping** | Grid on or off, **Grid Step** (in world units, 100 = 1 m; the bar shows it in metres), and **Angle Snap Degrees** for Ctrl while drawing. |
+| **Selection** | **Selection Filter**: the **Pick** menu in the bar. |
+| **Gizmo** | **Axis Space**: World, Actor or Street axes for Move and Rotate. |
+| **Subdivide** | Passes, guards, merge and seed of the last applied Subdivide. |
+
+How close the mouse must come to join a node or a street, and the size of lines and handles, are fixed. They grow with the viewport's size and the screen's scaling, so there is nothing to tune.

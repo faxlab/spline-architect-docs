@@ -97,7 +97,7 @@ The Preset Library asset path, managed thumbnail root, and baked registry are co
 Two of these also have console variables: `sa.DeferGenerationWhileDragging` and `sa.DeferDynamicMeshCollision`, each set to `1` or `0`. Once something sets one - the console, an ini file, or `-dpcvars` - it wins over the project setting. Until then, the project setting decides.
 
 :::note Some settings are remembered per user, not here
-The Pivot Tool's and Lightmap Tool's **Overwrite Existing**, the **Delete Original Actors** choices in the Convert, Collapse to Mesh, and Convert to Blueprint dialogs, the Preset Library's view mode, category tab, and favorites filter, the Streets Mode **Node Merge Radius** and Subdivide recipe, and the remembered destination folders are all editor preferences stored per user and per project. They are not part of Project Settings and are not checked in with the project.
+The Pivot Tool's and Lightmap Tool's **Overwrite Existing**, the **Delete Original Actors** choices in the Convert, Collapse to Mesh, and Convert to Blueprint dialogs, the Preset Library's view mode, category tab, and favorites filter, the Streets Mode grid, angle step and Subdivide recipe, and the remembered destination folders are all editor preferences stored per user and per project. They are not part of Project Settings and are not checked in with the project.
 :::
 
 Architect Mode, Streets Mode, toolbar, selection, conversion, and Preset Library view preferences are editor-per-user settings. They are described on the relevant pages and should not be treated as shared project defaults.
