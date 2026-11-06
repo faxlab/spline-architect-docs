@@ -50,7 +50,7 @@ Settings are grouped the way you work: **Controls**, **Streets**, **Sidewalks & 
 
 ![One selected segment with Override This Segment ticked: its Segment Config gives it a greater width and a bridge-road material, and in the viewport the dark, wider segment runs up to the ordinary roads on either side](/img/screens/streets-segment-override.webp)
 
-A street type is shared by every segment using it. To give **one** segment its own width, material, or elevation ramp, select it in Streets Mode and tick **Override This Segment** in the **Selected Segments** panel, then edit **Segment Config** below it.
+A street type is shared by every segment using it. To give **one** segment its own width, material, or elevation ramp, select it in Streets Mode, press **More** in the bar, and tick **Override This Segment** in the card, then edit **Segment Config** below it.
 
 The override starts as a copy of the type the segment was already using, so ticking the box changes nothing until you edit a field - it never snaps the road to some unrelated default.
 
@@ -134,7 +134,7 @@ Flattening changes the lot surface only. It does not cut the terrain by itself; 
 
 ### Per-lot sidewalks
 
-Select a lot in Streets Mode and tick **Use Surface Override** in the **Selected Lots** panel to give it its own **Surface Layers** - lot ground, sidewalk and corner pads - instead of the network's Sidewalks & Lot Ground layers. **Clear Override** returns it to the network's layers.
+Select a lot in Streets Mode, press **More** in the bar, and tick **Use Surface Override** in the card to give it its own **Surface Layers** - lot ground, sidewalk and corner pads - instead of the network's Sidewalks & Lot Ground layers. **Clear Override** returns it to the network's layers.
 
 Per-lot Zone, tags, and surface overrides survive ordinary street editing - adding a point to a road no longer drops the settings on the lots either side of it.
 
