@@ -102,10 +102,10 @@ The bar has three rows, and every control stays in the same place whatever you s
 | Row | What it holds |
 | --- | --- |
 | **Status line** | What just happened, on the left. A hint for what you are doing right now, on the right. |
-| **Selection row** | Three groups side by side. **Nodes**: count, **Corner** (Auto or Manual), **Radius**, **Merge**. **Streets**: count, **Name**, width, **Straighten**. **Lots**: count, **Zone**, **Empty**, **Subdivide**. A group is greyed out while nothing of its kind is selected. **More** opens a card above the bar with every other setting of the selection, such as a node's position, a street's own settings and a lot's surfaces. |
-| **Tool row** | Street type, **Select / Draw / Cut**, **Move / Rotate** and the axes they use, **Pick** (what clicks may select), **Grid** and its size in metres, the **Angle** step, **Help** and **Exit**. |
+| **Selection row** | Actions, in groups that stay visible and grey out when that kind is not selected. **Nodes**: **Connect**, **Fuse**, **Dissolve**, **Level**. **Streets**: **Whole street**, **Straighten**, **Add node**, **Flip**. **Lots**: **Subdivide**. **Delete** sits at the end. Selecting anything opens the card above the bar: one section per kind (`STREETS · 3`), with the values. The card closes when the selection is empty. |
+| **Tool row** | **New streets** (the type used for drawing and for Connect), **Select / Draw / Cut**, **Move / Rotate** and the axes they use, **Pick** (what clicks may select), **Grid** and its size in metres, **Angle** snap and its step, **Frame**, **Help** and **Exit**. |
 
-The street type is the one new streets are drawn with. With streets selected it shows their type, and picking another type assigns it to them.
+**New streets** is only the type for streets you are about to draw, and for **Connect**. Changing a street that is already there is **Type** in the card. Type and Width apply from junction to junction.
 
 While you draw a street, the selection row shows its length and turn angle with **Finish** and **Cancel**. During a Subdivide preview it shows the preview's controls (see [Subdivide lots](#subdivide-lots)).
 
@@ -115,7 +115,7 @@ While you draw a street, the selection row shows its length and turn angle with 
 - A new point joins the node or street under the cursor, or the one the grid puts it on. A green ring on a node, or a street drawn green, shows where it will join. The readout at the cursor says **Connect** or **New point**, with the length and the turn from the previous segment.
 - Ending a street on the middle of another street makes a T-junction. Crossing a street makes an intersection.
 - Hold **X** to place a free point: it ignores the grid and joins nothing.
-- **Ctrl** while drawing turns the street in steps of the **Angle** value. **Alt** uses the fine grid, one tenth of the grid size.
+- **Angle** snap turns new streets in steps of the angle value. Holding **Ctrl** snaps one stroke even when Angle snap is off. **Alt** uses the fine grid, one tenth of the grid size.
 - **Enter**, right-click or **Finish** ends the street. **Esc** or **Cancel** throws away the street in progress; streets finished earlier are kept.
 - New nodes take the street type's Auto or Manual corner and its radius.
 
@@ -125,9 +125,11 @@ While you draw a street, the selection row shows its length and turn angle with 
 - **W** and **E**, or **Move** and **Rotate**, switch the gizmo for the selected nodes. The axis menu next to them picks World, Actor or Street axes.
 - Shift-drag a selected node to extend a new street from it.
 - With the **Cut** tool, click a street to cut it with a new node at the blue marker. With **Select**, Ctrl-click does the same.
-- Drag the handle on a selected corner to round it by hand; the corner switches to **Manual**. **Corner** and **Radius** in the Nodes group set the same values by typing.
-- Deleting a **corner** - a node with exactly two streets - joins its two streets back into one instead of leaving a hole in the road. At a junction or a dead end the node is removed with its streets as before.
-- Select two or more nodes and press **Merge** in the Nodes group to fuse them into one intersection. The node you clicked **last** is the one that stays, keeping its position and its corner; the others hand over their streets. One undo step.
+- Clicking a street selects that street only. The gizmo still moves its ends. **Whole street** extends the selection from junction to junction.
+- Drag the handle on a selected corner to round it by hand; the corner switches to **Manual**. **Corner** and **Radius** in the card set the same values by typing. **Reset** on the nodes section puts them back to Auto.
+- Deleting a **corner** - a node with exactly two streets - joins its two streets back into one instead of leaving a hole in the road. **Dissolve** does that without deleting the streets' other ends. At a junction or a dead end, Delete removes the node with its streets as before.
+- **Connect** draws a street between exactly two selected nodes, using the New streets type, and splits anything it crosses.
+- Select two or more nodes and press **Fuse** to fuse them into one intersection. The node you clicked **last** is the one that stays, keeping its position and its corner; the others hand over their streets. **Level** sets the selected nodes to that same node's height. One undo step each.
 - Dragging a node onto another merges them on release. A green ring marks the node it will join, and the grid counts: if the grid puts the node on a junction, it joins it. Moving a whole street, or several nodes at once, so that an end lands on a junction joins them too. A small nudge beside a close neighbour does not merge. Hold **X** while dragging to move without joining. The whole drag is one undo step.
 - **Straighten** in the Streets group straightens the selected streets. Right-click a street for **Set Config**, **Make Street Straight**, **Delete Segment(s)** or **Regenerate**.
 - **Esc** works backwards one step at a time: it cancels what is going on, goes back to Select, clears the selection, then leaves Streets Mode.
@@ -160,7 +162,7 @@ Corners are tuned per node. Dragging the fillet ring switches the corner to **Ma
 
 Subdivide cuts new streets through a lot you select, previewing them live before anything is written. It is how a drawn block becomes a neighbourhood, and it is the same mechanism for greenfield and infill: draw a closed road loop, select the lot it encloses, subdivide.
 
-**Subdivide** is in the **Lots** group of the bar and needs at least one selected lot. Press it and the selection row turns into the preview's controls: a summary, **Seed**, **Reroll**, **Merge**, **Passes**, **Apply** and **Cancel**. The card above the bar opens with the passes and quality limits, and goes back to how it was when the preview ends.
+**Subdivide** is in the **Lots** group of the bar and needs at least one selected lot. Press it and the selection row turns into the preview's controls: **Seed**, **Reroll**, **Merge**, **Apply** and **Cancel**. The card above the bar shows the passes and quality limits until you apply or cancel.
 
 </ClipAside>
 

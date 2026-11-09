@@ -402,7 +402,7 @@ The group keeps a copy of the map data it imported: its roads, areas and buildin
 
 The imported network is an ordinary [Streets Network](/core-actors/streets-network). Edit it in [Streets Mode](/authoring/architect-mode#streets-mode), tag its lots with [Lot Zones](/core-actors/lot-zone), and fill it with [PCG](/pcg/overview).
 
-Each imported segment also carries its own road data. Select it in Streets Mode, press **More** in the bar, and open **Imported road** in the card:
+Each imported segment also carries its own road data. Select it in Streets Mode and the card shows it as ordinary street fields. **Width from** says whether the width came from the street type, the map, or a width you typed. **One-way** and **Lane markings** are the map's one-way flag and centre-line style. **Flip** in the bar reverses a one-way street. **Extra material data** stays under Advanced. The map's own width and category remain on the segment for the network's Details panel:
 
 | Setting | What it does |
 | --- | --- |
