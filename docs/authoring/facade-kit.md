@@ -5,11 +5,11 @@ description: Turn a Building preset into a fast copy made of flat textured plane
 
 A Building preset builds every wall piece, window and cornice. That is the right cost for a building the player walks past, and a heavy one for hundreds of imported buildings. Make Facade Kit trades the detail for speed: it photographs the straight walls of a Building preset from the front, then builds a copy of the preset from flat planes that wear those photos.
 
-The copy is an ordinary Building preset. Pick it as a style in [Import Map](core-actors/import-map#styles), or place it like any other preset.
+The copy is an ordinary Building preset. Pick it as a style in [Import Map](/core-actors/import-map#styles), or place it like any other preset.
 
 ## Make a kit
 
-1. Open the [Preset Library](authoring/preset-library) and select one or more Building presets. Kits can be made from Building presets only.
+1. Open the [Preset Library](/authoring/preset-library) and select one or more Building presets. Kits can be made from Building presets only.
 2. Right-click and choose **Make Facade Kit…**. With several presets selected the entry reads **Make N Facade Kits…**.
 3. Choose the settings in the **Make Facade Kit** window and press **Make**. The window remembers them for next time.
 4. A progress dialog follows the work. **Cancel** stops after the step in progress and keeps the kits already made.
