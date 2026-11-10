@@ -50,7 +50,7 @@ Settings are grouped the way you work: **Controls**, **Streets**, **Sidewalks & 
 
 ![One selected segment with Override This Segment ticked: its Segment Config gives it a greater width and a bridge-road material, and in the viewport the dark, wider segment runs up to the ordinary roads on either side](/img/screens/streets-segment-override.webp)
 
-A street type is shared by every segment using it. To give **one** segment its own width, material, or elevation ramp, select it in Streets Mode, press **More** in the bar, and tick **Override This Segment** in the card, then edit **Segment Config** below it.
+A street type is shared by every street using it. In Streets Mode the card opens as soon as you select a street. **Type** and **Width** apply from junction to junction. The reset arrow on Width hands the street back to the type's width. To give one piece its own material or elevation easing, open **Advanced** and turn on **Own settings**.
 
 The override starts as a copy of the type the segment was already using, so ticking the box changes nothing until you edit a field - it never snaps the road to some unrelated default.
 
@@ -60,7 +60,7 @@ Only **Width**, **Material**, and the **Z Ramp** controls change an existing seg
 It does not blend into the road it sits in: it keeps its own width and material right up to the segments on either side. That is what makes a single wider segment possible, and also what makes a subtle width change look like a seam. Override a whole road by giving it its own street type instead.
 :::
 
-**Clear Override** hands every selected segment back to the shared type, in one undo step. Overrides live on the segment itself, so splitting, joining, or merging streets carries them along.
+**Reset** on the streets section hands every selected street back to the shared type, in one undo step. Own settings live on the street itself, so splitting, joining, or merging streets carries them along.
 
 For PCG, `SA_RoadWidth` on crossings reflects an override; `SA_ConfigIndex` keeps meaning the shared type's index.
 
@@ -134,7 +134,7 @@ Flattening changes the lot surface only. It does not cut the terrain by itself; 
 
 ### Per-lot sidewalks
 
-Select a lot in Streets Mode, press **More** in the bar, and tick **Use Surface Override** in the card to give it its own **Surface Layers** - lot ground, sidewalk and corner pads - instead of the network's Sidewalks & Lot Ground layers. **Clear Override** returns it to the network's layers.
+Select a lot in Streets Mode and the card opens on it. **Curb height**, **Curb lean** and **Curb bevel** edit the first surface layer; each has a reset arrow back to the network's value. Turning on **Own surface layers** in Advanced, or editing a curb, copies the network's layers onto the lot first, so the lot is never left bare. **Reset** on the lots section hands the lot back to the network.
 
 Per-lot Zone, tags, and surface overrides survive ordinary street editing - adding a point to a road no longer drops the settings on the lots either side of it.
 
