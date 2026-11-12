@@ -16,10 +16,12 @@ Walls make the shell; these settings make everything the shell contains and wear
 | **Thickness** | Extrudes the floor. |
 | **Bends Resolution** | Arc sample spacing at bent corners; lower is smoother/denser. |
 | **UV Scale** | `1` maps one 0–1 tile per 15 m; larger values repeat more densely. |
-| **Fill Color / Edges Color** | Interior and boundary vertex colors. |
+| **Fill Color / Edges Color** | Interior and boundary vertex colors. If your material ignores vertex color, set Edges Color to the same color as Fill Color, so a flat floor stays a light mesh. |
 | **Color Blur Iterations** | Smooths the transition between fill and edge colors. |
-| **Surface Edge Length** | Interior triangle target size; smaller is denser. Point count is capped. |
+| **Surface Edge Length** | Interior triangle target size in centimetres; smaller is denser. Used only where it changes something: a floor whose outline is not flat, or whose Edges Color differs from its Fill Color. Point count is capped. |
 | **Surface Smoothing Iterations** | Smooths interior elevation while pinning the boundary. |
+
+A flat floor in one color is just its outline, triangulated the way roofs are - the lightest mesh it can be. Interior points are added only where they change the result. Facade Kit `_Fast` caps are white on white, so they get this lighter floor without any change to the kit. A baked actor keeps its old floor mesh until you rebake it.
 
 ## Roof Surface
 
@@ -45,7 +47,7 @@ A footprint with a narrow wing, a notch, or two nearly parallel walls gets a slo
 
 ## Lot Surface
 
-A Streets lot surface is built from a list of layers, each of which can produce lot ground, a sidewalk, and corner pads with their own materials. **Surface Edge Length** and **Surface Smoothing** behave exactly as they do for Floor and Roof surfaces here. See [sidewalks and lot ground](/core-actors/streets-network#sidewalks-and-lot-ground) for the full set.
+A Streets lot surface is built from a list of layers, each of which can produce lot ground, a sidewalk, and corner pads with their own materials. **Surface Edge Length** and **Surface Smoothing** behave exactly as they do for Floor and Roof surfaces here, so flat lot ground in one color is just its outline too. See [sidewalks and lot ground](/core-actors/streets-network#sidewalks-and-lot-ground) for the full set.
 
 PCG's SA Get Lots can additionally emit a Ground Surface that is the top of the lot mesh itself, so it follows these settings. SA Subdivide Lots emits its own graded Ground Surface, whose spacing and smoothing are configured on that node.
 
@@ -54,6 +56,6 @@ PCG's SA Get Lots can additionally emit a Ground Surface that is the top of the 
 - Close the source spline and remove self-intersections.
 - Increase point-collapse/merge distance for near-duplicate corners.
 - Reduce excessive inset or roof slope inset if the polygon collapses.
-- Increase Surface Edge Length or reduce smoothing if generation is too dense.
+- Increase Surface Edge Length or reduce smoothing if generation is too dense. On a flat surface, matching Edges Color to Fill Color removes the interior points altogether.
 - Confirm Booleans are tall enough and affect the intended surface types.
 - For static lighting, inspect generated lightmap UVs and the per-actor/project texel density.

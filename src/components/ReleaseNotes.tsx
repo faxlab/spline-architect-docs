@@ -13,15 +13,17 @@ type Release = {
 
 /**
  * Turns the small subset of Markdown used in releases.json into React:
- * **bold** and [label](/doc/path) links. Anything else stays plain text.
+ * **bold**, `code` and [label](/doc/path) links. Anything else stays plain text.
  */
 function Inline({text}: {text: string}) {
-  const parts = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\))/g);
   return (
     <>
       {parts.map((part, i) => {
         const bold = part.match(/^\*\*([^*]+)\*\*$/);
         if (bold) return <strong key={i}>{bold[1]}</strong>;
+        const code = part.match(/^`([^`]+)`$/);
+        if (code) return <code key={i}>{code[1]}</code>;
         const link = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
         if (link) return <Link key={i} to={link[2]}>{link[1]}</Link>;
         return part;

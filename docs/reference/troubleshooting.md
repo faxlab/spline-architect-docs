@@ -117,6 +117,12 @@ Street addresses are not searched. Type the town, or paste the address's coordin
 
 See the [node failure table](/pcg/node-reference#common-graph-failures). Also confirm `sa.PCGAutoRefresh` remains at its default `1`; setting it to `0` intentionally requires manual PCG regeneration after SA edits.
 
+### PCG output is out of date after opening a level
+
+Opening a level rebuilds its Runtime Spline Architect actors. That rebuild no longer asks you to save the level, and no longer re-runs the level's PCG graphs: they keep the output saved with the level. If a preset, mesh or the plugin changed since the level was last saved, press **Generate** on the PCG volume.
+
+Anything you change while the rebuild runs still counts as unsaved. `sa.KeepLevelCleanAfterLoad 0` brings back the old behavior, where the rebuild marks the level unsaved and PCG runs again.
+
 ## Performance
 
 - Increase edit debounce if slider scrubbing triggers excessive work.
@@ -134,6 +140,7 @@ Type these in the editor's console. Most are switches with a normal setting you 
 | Variable | Default | What it does |
 | --- | --- | --- |
 | `sa.PCGAutoRefresh` | `1` | PCG components whose graphs read Spline Architect data run again by themselves once a generation burst settles. `0` turns that off, so you regenerate PCG by hand. |
+| `sa.KeepLevelCleanAfterLoad` | `1` | `1`: rebuilding a just-opened level's Runtime actors leaves the level saved, unless something else changed it meanwhile, and does not re-run its PCG graphs. `0`: the rebuild marks every rebuilt actor as unsaved and PCG runs again, as before 6.2.1. |
 | `sa.DeferGenerationWhileDragging` | The project setting | `1` waits until a drag ends before rebuilding. `0` rebuilds continuously during the drag. Once something sets it, it wins over [Project settings](/reference/project-settings#performance). |
 | `sa.DeferDynamicMeshCollision` | The project setting | `1` cooks collision for generated meshes once at the end of a rebuild. `0` cooks it after every edit. Once something sets it, it wins over Project settings. |
 | `sa.LandscapePatch.SettleLog` | `0` | `1` logs the settle and convergence details of every SA Landscape Patch run: the props anchored, moved or new, and the band tested for each prop that was not anchored. `0` logs only the one-line rebuild summary. |

@@ -30,13 +30,13 @@ One Streets Network in, a city out: this tutorial wires lots to buildings and ro
 
 Confirm that intersection patches are closed and visible and that block interiors resolve as lots. If not, fix the authored graph before adding PCG.
 
-Choose **Lots → Lot Elevation** on the Streets Network before building the PCG graph:
+Choose **Lots → Lot Height** on the Streets Network before building the PCG graph:
 
-- **Follow Elevation** preserves the road-derived boundary elevations;
-- **Flatten to Lowest Boundary** creates a flat lot at its lowest edge;
-- **Flatten to Highest Boundary** creates a flat lot at its highest edge.
+- **Auto** (new networks) follows gentle slopes and levels lots steeper than **Auto Slope Limit**;
+- **Follow Slope** keeps the heights of the streets around each lot;
+- **Level at Main Street**, **Level at High Side** and **Level at Low Side** make each lot flat at its main street, highest edge or lowest edge.
 
-When one block needs a different mode, select it in Streets Mode and set its own elevation. The visible surface and the boundary read by PCG will stay aligned. Flattening does not create retaining walls or cut the terrain by itself; feed the lots to [SA Landscape Patch](/pcg/landscape-patch) when the ground should follow them.
+When one block needs a different choice, select it in Streets Mode and set its own **Lot height**. The visible surface and the boundary read by PCG will stay aligned. **Step Walls** under Sidewalks & Lot Ground closes the gap between a levelled lot and its streets; switch it off if your graph builds those walls itself. Levelling does not cut the terrain by itself; feed the lots to [SA Landscape Patch](/pcg/landscape-patch) when the ground should follow them.
 
 ## 2. Add semantic zones
 
@@ -66,10 +66,10 @@ Subdivision shapes the city's fabric - block sizes, alleys, parcel rhythm - and 
 - Gap: a small firebreak/alley width;
 - Knockout: `0` while validating;
 - Boundary Filter: All;
-- Elevation Mode: Follow Elevation;
+- Elevation Mode: Follow Slope;
 - fixed Seed.
 
-Follow Elevation preserves each reconstructed child boundary. Lowest/Highest first reconstruct the terrain Z, then flatten every child independently to its own extreme boundary elevation. In all modes, each child's boundary spline, Dynamic Mesh, and Ground Surface agree. Use `SA_IsExterior` downstream if perimeter and interior lots need different rules.
+Follow Slope preserves each reconstructed child boundary. Level at Low Side and Level at High Side first reconstruct the terrain Z, then level every child independently at its own lowest or highest boundary point. In all modes, each child's boundary spline, Dynamic Mesh, and Ground Surface agree. Use `SA_IsExterior` downstream if perimeter and interior lots need different rules.
 
 ## 5. A setback, for the lots you will generate on
 
