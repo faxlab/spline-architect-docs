@@ -80,6 +80,7 @@ Every source you download or open is copied into the project, so the project car
 - **`<Project>/MapSources`** holds the copied map file. Your original file is never moved or deleted.
 - **`Content/MapSources`** holds a small **Map Source** asset per source. Delete that asset in the Content Browser to remove the source and its files.
 - **`<Project>/Saved/SplineArchitect/MapData`** holds the road index of each source and the map tiles of the places you have read. They are rebuilt when missing, so they never need to go into version control.
+- **`<Project>/Saved/SplineArchitect/Elevation`** holds the height data that [Ground heights](#ground-heights) downloaded. It is downloaded again when missing.
 
 Spline Architect 6.1 also built a whole-region area index in that folder (`areas-v1-…` files), and it could grow to gigabytes. 6.2 reads areas and buildings per place and builds no such index. It deletes the old files by itself after the first successful read of a place.
 
@@ -135,6 +136,18 @@ The Roads and Areas tabs list their types. Each row has a colour swatch, the typ
 The eye and the tick box in the header switch a whole column on or off. Hover a type's name to highlight it on the map, and click it to frame it. The search box above the list filters the types without changing what is imported.
 
 **Reset to defaults**, under the tabs, puts every choice on all three tabs back to the built-in one. The map data, boundary and map view stay.
+
+### Ground heights
+
+**Ground heights**, the tick box under the tabs, sets roads, map areas and buildings on the real ground of the place - its hills, slopes and valleys - instead of one flat plane. It is off by default, and existing imports keep their flat heights.
+
+- Heights are metres above sea level, with sea level at the import's own height. Imports of neighbouring places, placed side by side, line up.
+- Bridges and tunnels run straight between their ends, so a bridge spans its valley instead of following the ground under it.
+- Each building stands on the lowest ground under its outline, so on a slope it stands into the hill rather than floating above its low side.
+- The height data is free, from Terrain Tiles. The first import of a place downloads it, which needs the internet, behind a progress dialog you can cancel. It is then kept in the project's Saved folder for every later import there. Tick the box again to retry a cancelled or failed download.
+- Without the data the import stays flat and says so: the status line reads **Flat: ground heights unavailable** and Diagnostics gives the reason. When it works, the status line ends with **On ground heights** and the data's credit.
+
+An import made with Ground heights carries an extra credit line; see [Credit the height data](#credit-the-height-data).
 
 ### Road categories
 
@@ -459,3 +472,11 @@ Map data from OpenStreetMap is © OpenStreetMap contributors and licensed under 
 > © OpenStreetMap contributors
 
 Link to [openstreetmap.org/copyright](https://www.openstreetmap.org/copyright) where a link is possible. That page also explains the extra share-alike terms that apply if you publish the map data itself rather than a game made with it. The credit text is stored with every Map Source and every import, so you can look it up later.
+
+## Credit the height data
+
+An import made with [Ground heights](#ground-heights) also uses Terrain Tiles height data: USGS 3DEP in the United States, SRTM elsewhere. Wherever you show or ship such an import, carry this credit line next to the OpenStreetMap one:
+
+> Terrain Tiles, accessed from https://registry.opendata.aws/terrain-tiles
+
+The import's stored credit text includes it, and the plugin's `Resources/MapData/NOTICE.txt` lists it too.

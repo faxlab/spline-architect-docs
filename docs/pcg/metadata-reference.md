@@ -18,7 +18,7 @@ Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots
 | `SA_LotSeed` | Int | Stable per-lot seed token. |
 | `SA_LotSurfaceMaterial` | Soft Object Path | Resolved visible/top lot material. |
 | `SA_LotZone` | Name | Lot Zone actor, per-lot override, or default lot zone tag. |
-| `SA_LotElevation` | Name | The lot's Lot Elevation setting: `Follow`, `Lowest` or `Highest`. Filter on it to find flattened lots, for example to build a wall around them. |
+| `SA_LotElevation` | Name | How the lot sits on the slope, from its **Lot Height**: `Follow`, `Lowest`, `Highest` or `MainStreet`. An Auto lot reports what it got. Filter on it to find levelled lots, for example to build a wall around them. A `MainStreet` lot is above the street on part of its edge and below it on the rest: split its outline with `SA_EdgeRaised`. |
 | `SA_IsExterior` | Bool | Subdivided lot touches its source boundary. |
 | `SA_IntersectionNode` | Int | Graph node index owning an intersection. |
 | `SA_CorridorIndex` | Int | Resolved road corridor index. |
@@ -38,6 +38,7 @@ Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots
 | `SA_IsCornerLot` | Bool | Lot fronts two or more streets that meet at a corner. |
 | `SA_StreetFacing` | Bool | Per boundary point: this edge runs along a street. |
 | `SA_EdgeStep` | Float | Per boundary point: the largest height difference in cm between the lot and the street along the edge starting here, whatever flattened the lot. `0` where they meet flush. Compare it to a limit to skip parked cars or place railings on stepped edges. |
+| `SA_EdgeRaised` | Bool | Per boundary point: the lot stands above the street along the edge starting here, so a wall hangs down from the lot. `false` where it sits below the street or flush. Where a lot's edge changes from below to above the street, the outline gets a point there, so [SA Filter Spline Edges](/pcg/node-reference#sa-filter-spline-edges) on this flag splits it into raised and sunken runs. |
 | `SA_AtIntersection` | Bool | Per boundary point: this point sits at an intersection. |
 | `SA_TouchesBoundary` | Bool | Per point: the edge starting here lies on the source boundary. On Gap Outlines this marks an alley mouth; on alley sides it is false. |
 | `SA_CutGap` | Float | Alley width on Cut Lines and Gap Outlines. `0` when there is no gap. |

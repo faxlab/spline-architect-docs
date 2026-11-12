@@ -44,7 +44,15 @@ Settings are grouped the way you work: **Controls**, **Streets**, **Sidewalks & 
 | --- | --- |
 | **Name / Width / Material** | Identifies the type and sets the full road width plus an optional road material. |
 | **Default Fillet Mode / Default Fillet Radius** | Stamps Auto, Manual, or Disabled corner rounding onto newly drawn junctions. Radius appears for Manual. |
-| **Z Ramp / Z Ramp Mode / Z Ramp Control** | Smooths height changes so roads meet junctions tangentially. Auto fully eases; Manual exposes a 0–1 control. |
+| **Z Ramp / Z Ramp Mode / Z Ramp Control** | Smooths the road's height, so a street on a hill climbs in one even curve instead of kinking at every point. Auto draws one smooth curve through all the street's points: steady slopes stay steady and hilltops stay level. Manual blends back toward straight lines with a 0–1 control. |
+
+### Crossings on slopes
+
+On a slope, each crossing tilts as one flat plane fitted to the streets that run through it. A street climbing a hill then runs straight through the crossing, with no flat shelf or hump at each junction. The streets meet the crossing at its tilt and their edges lean into it.
+
+Some crossings stay level: on hilltops, in valleys, on flat networks, and next to raised bridges. A side street that climbs into a main road leans over its last few metres to meet it, so it never banks the main road.
+
+Each junction stores a **Crossing Tilt** choice. **Auto** (default) tilts it as described. **Level** keeps it flat even on a slope, for a plaza or a crossing that must stay flat; the streets flatten out as they enter it. Streets Mode's card does not show Crossing Tilt yet, so every junction stays on Auto unless a script changes it.
 
 ### Per-segment overrides
 
@@ -76,7 +84,7 @@ The wireframe shows what one layer builds. Each lot has ground made of evenly si
 | --- | --- |
 | **Lot Ground** | **Generate Lot Ground**, **Lot Ground Material**, **Curb Height** (raises lot ground and sidewalk together into a raised block with a curb), **Curb Lean**, **Curb Bevel**. |
 | **Sidewalk** | **Generate Sidewalk**, **Sidewalk Width**, **Sidewalk Slope** (Follow Surface, Level Across, Minimum, Maximum), **Sidewalk Material**, **Sidewalk Texture Repeat**, **Flip Sidewalk Texture**. Also works for curbs, verges and planted borders. |
-| **Corner Pads** | **Generate Corner Pads**, **Corner Radius**, **Corner Pad Material**. |
+| **Corner Pads** | **Generate Corner Pads**, **Corner Radius**, **Corner Segment Length** (length of each straight piece along a rounded corner, in centimetres; `0` sets the detail automatically), **Corner Pad Material**. |
 | **Vertex Colors** (folded) | Fill and edge colors and how softly they blend, for materials that read vertex color. |
 | **Advanced** (folded) | **Surface Edge Length** and **Surface Smoothing** (as on Wall and Curve floors), **Lot Ground Texture Scale**, **Sidewalk Texture Aspect Ratio**. |
 
@@ -94,12 +102,31 @@ A lot too narrow for its **Sidewalk Width** is built as plain ground with no sid
 
 Corner rounding changes only how the lot *looks*. The footprint PCG reads is the original outline, so **SA Get Lots** returns the same boundary whether corner pads are on or off.
 
+On big map imports, keep the lot meshes light:
+
+- **Corner Segment Length** sets how long each straight piece of a rounded corner is. Raise it for fewer pieces; a length longer than the whole corner cuts it with one straight edge. At `0` the detail is automatic: one piece for about every 11 degrees of turn, 8 for a right-angle corner, whatever the radius. It also shapes the edge of the lot ground and the sidewalk at the corner.
+- **Flat lot ground in one color is just its outline**, the lightest mesh. **Surface Edge Length** adds points inside only where they change something: ground that slopes between streets at different heights, or an **Edges Color** that differs from the **Fill Color**. If your material ignores vertex color, set Edges Color to the same color as Fill Color.
+
+### Step walls
+
+Where a lot stands above or below the street beside it, a wall closes the gap. It runs from the lot's edge down or up to the street's edge, only where the two are not flush, and splits where lot and street cross. The settings sit under **Sidewalks & Lot Ground**, after the layers:
+
+| Control | What it does |
+| --- | --- |
+| **Step Walls** | Builds the walls. On for new networks; saved networks keep it off. Switch it off when your own PCG graph builds those walls, for example from `SA_EdgeStep` or `SA_EdgeRaised` on [SA Get Lots](/pcg/node-reference#sa-get-lots). |
+| **Step Wall Material** | Material of the walls. Empty uses the sidewalk material, or the lot ground's when there is no sidewalk. |
+| **Step Wall Texture Height** | How tall one copy of the wall texture is, in centimetres (300 = 3 m). Taller walls repeat it; its width follows the texture's own proportions, so it never stretches. |
+
+The texture lines up with the lot's edge and its rows stay level. Where the lot is above the street, the texture's top hangs from the lot edge, which suits drips and leaks. Where the lot is below the street, the texture's bottom stands on the lot edge, which suits grime. The sloping street edge cuts the texture wherever it ends. Lots left empty get no step walls.
+
 ## Lots
 
 | Control | What it does |
 | --- | --- |
 | **Lot Seed** | Seed for everything placed on lots. Change it to get a different city on the same streets; `-1` picks a new random result every regeneration. |
-| **Lot Elevation** | How lots meet sloped streets - see below. |
+| **Lot Height** | How lots sit on sloping streets - see below. |
+| **Auto Slope Limit** | Shown for Auto only. Lots sloping less than this follow the streets; steeper lots are levelled. In percent of rise per distance: the default `4` % is 4 m up over 100 m, a gentle street. |
+| **Steeper Than the Limit** | Shown for Auto only. How a lot steeper than the limit is levelled: **Level at Main Street** (default), **Level at High Side** or **Level at Low Side**. |
 | **Leave Lots Empty** | Builds nothing on lots: no ground, sidewalks or spawned content, just the streets. Lots you change in Streets Mode keep their own setting. |
 | **Default Zone** | Zone name every lot gets for PCG filtering (`SA_LotZone`), such as Residential or Park. A [Lot Zone](/core-actors/lot-zone) actor or a lot's own zone takes priority. |
 
@@ -107,17 +134,19 @@ To give **one** lot its own zone, leave it empty, give it its own sidewalks, or 
 
 If a network made in an older version still has a hidden default-lot surface override switched on, a yellow warning appears here: lots then ignore the Sidewalks & Lot Ground layers (and are built bare when that list is empty). **Use Sidewalks & Lot Ground** fixes it in one click.
 
-### Lot elevation modes
+### Lot Height choices
 
-| Mode | Result |
+| Choice | Result |
 | --- | --- |
-| **Follow Elevation** | Default. Preserves the heights inherited from the surrounding roads. |
-| **Flatten to Lowest Boundary** | Moves the complete lot boundary and surface to its lowest boundary height. |
-| **Flatten to Highest Boundary** | Moves the complete lot boundary and surface to its highest boundary height. |
+| **Auto** | Lots on gentle ground follow the slope. A lot steeper than **Auto Slope Limit** is levelled the way **Steeper Than the Limit** says, at its main street unless you change it. New networks start on Auto. |
+| **Follow Slope** | The lot follows the heights of the streets around it and slopes with them. Saved networks from before 6.2.1 keep this choice. |
+| **Level at Main Street** | The whole lot is level with the middle of its main street side - the street a building on it faces. On a slope it sits below the street uphill and above it downhill, like a building with a level ground floor. |
+| **Level at High Side** | The whole lot is level with its highest edge. On a slope it sits above the street on the downhill side. |
+| **Level at Low Side** | The whole lot is level with its lowest edge. On a slope it sits below the street on the uphill side. |
 
-The mode is resolved per lot before its surface is built, so the viewport surface, the extracted boundary, baked or broken lot output and **SA Get Lots** all use the same height. A lot's own setting in Streets Mode wins over Lot Elevation.
+The choice is resolved per lot before its surface is built, so the viewport surface, the extracted boundary, baked or broken lot output and **SA Get Lots** all use the same height. A lot's own **Lot height** in Streets Mode wins over the network's. **Reset to Streets Defaults** puts a network on Auto with Step Walls on.
 
-Flattening changes the lot surface only. It does not cut the terrain by itself; Curb Height still applies. To make the terrain follow a lot, use [SA Landscape Patch](/pcg/landscape-patch).
+Levelling a lot does not cut the terrain. [Step walls](#step-walls) close the gaps to the streets, and Curb Height still applies. To make the terrain follow a lot, use [SA Landscape Patch](/pcg/landscape-patch).
 
 ## Output, baking and advanced settings
 

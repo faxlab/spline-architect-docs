@@ -1,5 +1,30 @@
 [
   {
+    "version": "6.2.1",
+    "date": "2026-11",
+    "engines": "UE 5.8",
+    "summary": "Streets that climb hills: crossings that tilt, lots that level themselves with step walls, and map imports on real ground heights. Also lighter corners and floors, and levels that open without asking to be saved.",
+    "highlights": [
+      "[Crossings on sloped streets](/core-actors/streets-network#crossings-on-slopes) tilt with the hill, so a climbing street no longer has a flat shelf at each crossing. Hilltops, valleys and flat networks stay level, a side street never banks the main road, and a junction's Crossing Tilt set to Level keeps it flat.",
+      "[Lot Height](/core-actors/streets-network#lot-height-choices) has two new choices: **Level at Main Street**, and **Auto**, which follows gentle slopes up to **Auto Slope Limit** (4 %) and uses **Steeper Than the Limit** above it. New networks start on Auto; saved networks keep Follow Slope.",
+      "[Step Walls](/core-actors/streets-network#step-walls) (under Sidewalks): wherever a lot stands above or below the street beside it, a wall now closes the gap, with its texture kept level along the lot edge. Pick **Step Wall Material** and **Step Wall Texture Height**, or switch it off when your own PCG graph builds those walls. On for new networks, off for saved ones.",
+      "[Import Map](/core-actors/import-map#ground-heights) has a **Ground heights** option (off by default): roads, map areas and buildings are set on real terrain heights, downloaded once per place. Bridges and tunnels span between their ends, and each building stands on the lowest ground under it.",
+      "[SA Get Lots](/pcg/node-reference#sa-get-lots) flags each lot edge that stands above its street (SA_EdgeRaised), and SA_LotElevation reports MainStreet for lots levelled at their main street. SA Filter Spline Edges on SA_EdgeRaised splits a lot outline into raised and sunken runs, for walls and railings.",
+      "**Corner Segment Length** on each Streets lot layer ([Corner Pads](/core-actors/streets-network#sidewalks-and-lot-ground)) sets how long each straight piece of a rounded street corner is. Raise it for lighter meshes on big map imports; 0 keeps today's automatic detail.",
+      "[Flat floors](/authoring/floors-roofs#floor-surface) and flat lot ground in one color are now just their outline, the same clean polygons roofs get. Extra points inside are added only where they change something: an outline that isn't flat, or an Edges Color that differs from the Fill Color. Facade Kit `_Fast` caps get lighter automatically; for other floors and lot layers whose material ignores vertex color, set Edges Color to the Fill Color.",
+      "Opening a level no longer asks you to save it just because its Runtime Spline Architect actors were rebuilt. The rebuild also no longer re-runs the level's PCG graphs, which keep the output saved with the level; press **Generate** on a PCG volume if its presets or meshes changed since the level was last saved. Anything you change while the rebuild runs still counts as unsaved. `sa.KeepLevelCleanAfterLoad 0` brings back the old behavior.",
+      "Opening the same level again in one editor session always rebuilds its Runtime actors; an unrelated update still in progress could skip it before.",
+      "A baked Building's preset source stays locked even when it was empty: assigning a preset table through Python or paste is now put back like every other edit to a baked actor."
+    ],
+    "notes": [
+      "Saved Streets networks keep Follow Slope and have Step Walls off, so their lots look the same after the update. Only new networks start on Auto with Step Walls on. **Reset to Streets Defaults** switches a network to both.",
+      "Sloped streets change in saved networks too: their crossings tilt, and with Z Ramp on Auto a street climbs in one smooth curve instead of levelling out at every point. Flat streets are unchanged.",
+      "Existing imports keep their flat heights. Ground heights applies to imports made with it ticked. Its height data comes from Terrain Tiles, which needs a [credit line](/core-actors/import-map#credit-the-height-data) wherever you show or ship such an import.",
+      "Floors and lot ground rebuild with the lighter outline-only mesh the next time an actor generates; baked output keeps its old mesh until you rebake.",
+      "The 6.2.1 example project reads SA_EdgeRaised and the new Lot Height and Step Walls settings, so it needs this plugin version."
+    ]
+  },
+  {
     "version": "6.2.0",
     "date": "2026-11",
     "engines": "UE 5.8",
