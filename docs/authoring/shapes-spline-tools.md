@@ -26,10 +26,10 @@ Multi-loop shapes are valid for actor-level application and can drive Multi Spli
 | **Spline to Selected** | Copies or assigns a selected spline source to a compatible actor. |
 | **Merge Spline Actors** | Combines selected compatible paths into one actor with multiple spline components. |
 | **Break to Spline** | Creates ordinary spline actor data from generated/selected Spline Architect paths. |
-| **Mirror X / Mirror Y** | Commits a geometric mirror to authored points. |
-| **Flatten** | Sets points to a common elevation. |
-| **Reverse** | Reverses point order and winding. |
-| **Gridify** | Snaps points to the actor's Grid Size. |
+| **Mirror X / Mirror Y** | Mirrors the spline points themselves, once. |
+| **Flatten** | Sets every spline point to the height of the first point. |
+| **Reverse** | Reverses the spline's direction, which turns a wall's pieces to face the other side. |
+| **Gridify** | Snaps the spline points to the actor's Grid Size, once. |
 | **Reset Transform / Center Transform** | Normalizes or recenters actor transforms while preserving world-space path geometry. |
 | **Clean Invalid / Delete Invalid** | Finds and removes invalid plugin actors or connections after review. |
 | **Select Roots / Filter Roots / Select Connected** | Navigates connected Wall/Building hierarchies. |

@@ -41,15 +41,15 @@ Select Static Mesh assets, then open **Spline Architect → Lightmap Tool**.
 | Control | What it does |
 | --- | --- |
 | **Unwrap Method** | Fresh Unwrap (PatchBuilder), Fresh Unwrap (XAtlas), or cheap Repack Existing UVs. Repack requires a clean, non-overlapping source channel. |
-| **Source Channel** | Existing UV channel for Repack. |
-| **Initial Patch Count / Merging Angle Threshold** | PatchBuilder density and island merging. |
-| **XAtlas Max Iterations** | Quality/time control for XAtlas. |
+| **Source Channel** | Repack only: the existing UV channel to repack. Default `0`. |
+| **Initial Patch Count / Merging Angle Threshold** | PatchBuilder only. Initial Patch Count (default `100`) is how many patches the unwrap starts from; raise it for large meshes so their islands do not come out big and stretched. Merging Angle Threshold (default `45`) is the angle, in degrees, that decides when islands merge. |
+| **XAtlas Max Iterations** | XAtlas only. More passes (default `2`) are slower but can reduce stretch. |
 | **Channel Mode** | Override a specific channel (never UV0) or append the next free channel. Unreal supports up to eight channels. |
 | **Target Channel** | Destination for Override Specific Channel. Existing data there is replaced. |
 | **Use Texel Density / Texel Density** | Computes resolution from mesh size and texels per meter. |
-| **Explicit Resolution** | Forced power-of-two resolution when density is off. |
-| **UV Padding** | Texel gutter between islands. |
-| **Overwrite Existing / Suffix** | Repairs in place or writes copies such as `_lm`. |
+| **Explicit Resolution** | The lightmap resolution used when Use Texel Density is off, rounded up to a power of two. Default `128`. |
+| **UV Padding** | Empty space between UV islands, in texels. Default `4`. |
+| **Overwrite Existing / Suffix** | On: repairs the original asset, which changes its lightmap for every actor that uses the mesh. Off (default): writes a copy with the suffix, such as `_lm`, and leaves the original alone. |
 
 PatchBuilder is the safest default for broken source UVs. XAtlas can reduce stretch on some meshes. Repack is fast but cannot repair overlapping UV topology.
 
