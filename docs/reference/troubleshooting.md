@@ -3,6 +3,8 @@ title: Troubleshooting and FAQ
 description: Fix installation, generation, corners, surfaces, baking, PCG, conversion, lighting, and performance problems.
 ---
 
+Look up what you see - a plugin that will not load, a wall that will not fit, a roof that came out flat, a PCG graph that does not update - and the fix is underneath. The headings follow the work, from installing to baking, PCG and performance.
+
 ## Installation and startup
 
 ### Plugin was built for a different engine version
@@ -61,7 +63,7 @@ Close the spline, fix self-intersections, reduce inset, and remove near-duplicat
 
 ### A sloped roof came out flat
 
-Footprints with narrow wings, notches and nearly parallel walls get sloped roofs with proper hips and valleys from 6.2. A baked actor keeps the roof it was baked with until you rebake it. If a roof is still flat after it regenerates, the Output Log names the actor: *the sloped roof of ... left its footprint, so it was made flat instead*. Check that footprint for crossing edges and near-duplicate corners.
+Footprints with narrow wings, notches and nearly parallel walls get sloped roofs with proper hips and valleys. A baked actor keeps the roof it was baked with until you rebake it. If a roof is still flat after it regenerates, the Output Log names the actor: *the sloped roof of ... left its footprint, so it was made flat instead*. Check that footprint for crossing edges and near-duplicate corners.
 
 ### Boolean has no effect
 
@@ -123,9 +125,9 @@ See the [node failure table](/pcg/node-reference#common-graph-failures). Also co
 
 ### PCG output is out of date after opening a level
 
-Opening a level rebuilds its Runtime Spline Architect actors. That rebuild no longer asks you to save the level, and no longer re-runs the level's PCG graphs: they keep the output saved with the level. If a preset, mesh or the plugin changed since the level was last saved, press **Generate** on the PCG volume.
+Opening a level rebuilds its Runtime Spline Architect actors. That rebuild does not ask you to save the level and does not re-run the level's PCG graphs: they keep the output saved with the level. If a preset, mesh or the plugin changed since the level was last saved, press **Generate** on the PCG volume.
 
-Anything you change while the rebuild runs still counts as unsaved. `sa.KeepLevelCleanAfterLoad 0` brings back the old behavior, where the rebuild marks the level unsaved and PCG runs again.
+Anything you change while the rebuild runs still counts as unsaved. With `sa.KeepLevelCleanAfterLoad 0`, the rebuild marks the level unsaved and PCG runs again.
 
 ## Performance
 
@@ -144,12 +146,12 @@ Type these in the editor's console. Most are switches with a normal setting you 
 | Variable | Default | What it does |
 | --- | --- | --- |
 | `sa.PCGAutoRefresh` | `1` | PCG components whose graphs read Spline Architect data run again by themselves once a generation burst settles. `0` turns that off, so you regenerate PCG by hand. |
-| `sa.KeepLevelCleanAfterLoad` | `1` | `1`: rebuilding a just-opened level's Runtime actors leaves the level saved, unless something else changed it meanwhile, and does not re-run its PCG graphs. `0`: the rebuild marks every rebuilt actor as unsaved and PCG runs again, as before 6.2.1. |
+| `sa.KeepLevelCleanAfterLoad` | `1` | `1`: rebuilding a just-opened level's Runtime actors leaves the level saved, unless something else changed it meanwhile, and does not re-run its PCG graphs. `0`: the rebuild marks every rebuilt actor as unsaved and PCG runs again. |
 | `sa.DeferGenerationWhileDragging` | The project setting | `1` waits until a drag ends before rebuilding. `0` rebuilds continuously during the drag. Once something sets it, it wins over [Project settings](/reference/project-settings#performance). |
 | `sa.DeferDynamicMeshCollision` | The project setting | `1` cooks collision for generated meshes once at the end of a rebuild. `0` cooks it after every edit. Once something sets it, it wins over Project settings. |
 | `sa.LandscapePatch.SettleLog` | `0` | `1` logs the settle and convergence details of every SA Landscape Patch run: the props anchored, moved or new, and the band tested for each prop that was not anchored. `0` logs only the one-line rebuild summary. |
-| `sa.Building.MoveGeneratedParts` | `1` | `1`: a Building takes over the parts its temporary walls generated. `0`: it duplicates them instead, as before 6.2, which is several times slower on big map imports. |
-| `sa.Wall.TreeBuildsStackOnce` | `1` | `1`: rebuilding a connected stack, as **Force Regenerate** does, builds every wall of the stack once, parents first. `0`: each wall also rebuilds the stacked walls above it, as before 6.2. The result is the same, built several times. |
+| `sa.Building.MoveGeneratedParts` | `1` | `1`: a Building takes over the parts its temporary walls generated. `0`: it duplicates them instead, which is several times slower on big map imports. |
+| `sa.Wall.TreeBuildsStackOnce` | `1` | `1`: rebuilding a connected stack, as **Force Regenerate** does, builds every wall of the stack once, parents first. `0`: each wall also rebuilds the stacked walls above it. The result is the same, built several times. |
 | `sa.FacadeKit.PhotographSourceGeometry` | `1` | `1`: Make Facade Kit photographs every Nanite piece as a temporary non-Nanite copy of its full source geometry. `0`: it photographs the pieces as Nanite draws them, which is often still coarse in a capture, with windows cut into triangles. |
 | `sa.GenerationSequenceLog` | `0` | `1` logs the generation queue, execution and dependency refresh sequence. |
 | `sa.Perf.Enabled` | `1` | Collects timing samples for Spline Architect work. |

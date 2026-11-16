@@ -24,11 +24,11 @@ Quick commands **Convert Selected/Each to Mesh** and **Convert Selected/Each to 
 
 ## Convert to Building
 
-A Wall stack that has grown into a whole building can become a single **Building** actor. Select the topmost wall of the stack and press **Convert to Building** in its **Preset** category.
+A Wall stack that has grown into a whole building can become a single **Building** actor. Select any wall of the stack and press **Convert to Building** in its **Preset** category; the whole stack converts, starting from its root wall.
 
 The Building carries the stack's settings as its **own inline preset** - nothing is written to a DataTable and there is no save prompt. Meshes, materials, floors, roofs, attached custom pieces, the spline, the seed, the resolved mirror mode, and the actor's Outliner folder and attach parent all come along. It is one undo step, and works across a multi-selection.
 
-Save a Building **preset** to a DataTable separately when you want to reuse the design elsewhere; converting collapses one authored stack into one actor. It is also the return leg of the **Break** round-trip: break a Building, art-direct its walls, convert back - the result carries the changes inline while the shared row stays as it was.
+To reuse the design elsewhere, press **Save Preset** on the new Building to save it to a DataTable; converting collapses one authored stack into one actor. It is also the return leg of the **Break** round-trip: break a Building, art-direct its walls, convert back - the result carries the changes inline while the shared row stays as it was.
 
 :::note Baked presets are read-only
 Explicitly Unbake before assigning, changing, or clearing a preset source. Conversion can still capture existing frozen output.

@@ -1,15 +1,13 @@
 ---
 title: Baking and rebaking
-description: Production lifecycle, connected commands, bake methods, mobility, corners, lightmaps, and diagnostics.
+description: Turn the live preview into meshes saved with the level, unbake to change it again, and choose bake method, mobility, Nanite and lightmaps.
 ---
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
-Baking is reversible. It replaces generated preview/runtime output with persistent editor components or assets while the Spline Architect actor remains the source of truth.
-
-Bake and Rebake write each baked mesh once and check the baked-mesh registry once per bake instead of once per mesh, so large scenes bake faster. Projects that do not allow static lighting also skip lightmap UVs for the shapes Spline Architect builds; see [Lightmaps](#lightmaps). Baking no longer fills the Output Log with `RecomputeNormals: TargetMesh did not have normals to recompute` warnings.
+Bake when a design is ready: the live preview becomes meshes saved with the level, and stays exactly as it is until you unbake it. Baking is reversible. **Unbake** brings the editable preview back, because the Spline Architect actor remains the source of the design.
 
 <AnnotatedShot
   alt="A baked Building with its Baking category open: the static mesh components it produced, and the Bake, Unbake, and Break actions"
@@ -36,7 +34,19 @@ Bake and Rebake write each baked mesh once and check the baked-mesh registry onc
 
 ## Frozen snapshots and explicit Unbake
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="A baked Building is unbaked from its Baking category, changed, and baked again"
+      poster="img/clips/unbake-rebake.webp"
+      src="img/clips/unbake-rebake.mp4"
+    />
+  }
+>
+
 Baked actors keep their geometry until you explicitly unbake or rebake them. Their preset and spline geometry are read-only; the Details panel says **Baked - click Unbake to edit** and provides the Unbake action. Moving or rotating the whole actor remains allowed.
+
+</ClipAside>
 
 Use **Unbake Connected**, edit the preview, then **Bake/Rebake Connected**. Editing a borrowed source spline or a shared preset never discards another actor's baked geometry.
 
@@ -46,9 +56,9 @@ When a shared preset changes, baked actors show **Preset changed since bake**. *
 
 | Setting | Guidance |
 | --- | --- |
-| **Components** | Choose when each piece must remain an individual StaticMeshComponent. |
-| **Instanced** | Default balance for repeated assets; groups identical meshes and supports instance custom data. |
-| **Hierarchical Instanced** | Choose for large repeated sets that benefit from per-instance LOD/culling. |
+| **Components** | Choose when each piece must stay its own component, so you can move or edit it after baking. |
+| **Instanced** | The default for repeated pieces: groups identical meshes into instances and passes [instance custom data](/authoring/wall-presets#materials-and-instance-custom-data) to their materials. |
+| **Hierarchical Instanced** | Choose for large repeated sets that gain from per-instance detail levels and culling. |
 | **Static mobility** | Best default for environment output and baked lighting. |
 | **Stationary / Movable** | Use only when later transforms or gameplay require them. |
 
@@ -76,7 +86,7 @@ Meshes that belong to a level go to a `<LevelName>_Baked` folder next to the lev
 
 - Corner and skew pieces made from your own meshes always keep your mesh's Nanite setting, whichever choice you make. Turn Nanite off on those meshes too if you need no Nanite at all.
 - A mesh with a translucent material never uses Nanite.
-- Collision stays exactly as before.
+- Collision does not change with this setting.
 - Meshes already baked change only when you bake them again. After changing the setting, use **Rebake All** to apply it to the baked actors in the level.
 
 ## Lightmaps

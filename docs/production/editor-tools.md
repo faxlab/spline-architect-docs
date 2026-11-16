@@ -1,11 +1,13 @@
 ---
 title: Diagnostics, pivot, and lightmap tools
-description: Production utilities for actor inspection, seed control, mesh pivots, lightmap UVs, and toolbar customization.
+description: See every actor and baked asset in one window, reroll seeds, and fix mesh pivots and lightmap UVs before meshes go into a kit.
 ---
+
+Small tools for the work around generation: check every Spline Architect actor and baked asset in one window, give a whole level new seeds, fix a mesh's pivot or lightmap UVs before it goes into a kit, and pin the commands you use every day.
 
 ## Diagnostics
 
-Use [Diagnostics and the baked registry](/production/baking#diagnostics-and-baked-asset-registry) before large rebakes, cleanup, or conversion. It is the authoritative view of current actor/bake state and tracked baked assets.
+Use [Diagnostics and the baked registry](/production/baking#diagnostics-and-baked-asset-registry) before large rebakes, cleanup, or conversion. It shows the current state of every actor and every tracked baked asset.
 
 ## Randomize Seeds
 
