@@ -1,22 +1,24 @@
 ---
 title: Lot Zone
-description: Assign semantic zone tags to Streets Network lots for PCG filtering.
+description: Label the lots in part of a city, such as Residential or Park, so a PCG graph can build different things in each.
 ---
+
+Draw a loop over part of your city and name it Residential. Every lot inside gets that label, so a PCG graph can put houses there and shops elsewhere.
 
 :::info UE 5.8 only
 Lot Zone exists to tag Streets lots, so it ships with Streets in the UE 5.8 package only. See [compatibility](/reference/compatibility).
 :::
 
-Lot Zone is a lightweight semantic actor. Its closed spline stamps a `Name` value onto every Streets lot whose centroid falls inside it. SA Get Lots emits that value as `SA_LotZone` for PCG filters and branching.
+A Streets lot counts as inside when its centre falls inside the loop. SA Get Lots passes the label on as `SA_LotZone`, for PCG filters and branches.
 
 | Control | What it does |
 | --- | --- |
-| **Zone Spline** | Closed boundary. Edit its points with Architect Mode or the normal spline tools. |
-| **Zone** | Name written to matching lots, such as `Residential`, `Commercial`, `Park`, or `Industrial`. |
+| **Zone Spline** | The closed loop that marks the zone. Edit its points with Architect Mode or the normal spline tools. |
+| **Zone** | The label every lot inside gets, such as `Residential`, `Commercial`, `Park`, or `Industrial`. |
 
 When zones overlap, the smallest-area matching Lot Zone wins. A Lot Zone overrides a per-lot Streets setting; if neither supplies a value, the Streets Network's **Lots → Default Zone** is used.
 
-After moving or editing a Lot Zone, rebuild the Streets Network and regenerate dependent PCG graphs. Lot Zones are metadata only: they do not directly create or remove road geometry.
+After moving or editing a Lot Zone, rebuild the Streets Network and regenerate the PCG graphs that read it. A Lot Zone only labels lots: it builds and removes nothing by itself.
 
 ### PCG example
 

@@ -53,7 +53,7 @@ Each shape gets its own deterministic noise variation from its `SA_LotSeed`, so 
 
 **Painting a layer:** this node only shapes the ground. [SA Landscape Paint](/pcg/node-reference#sa-landscape-paint) paints a material layer on the same three pins, with its own Edge Fade, so wire the same shapes into both to flatten and grass a park.
 
-A graph saved when this node could still paint may keep a **Paint Layer** on it. The node no longer paints. It warns once per run, naming the layer, and nothing is painted until you add an SA Landscape Paint node, set its **Paint Layer** to that name, and wire the same shapes into its `Areas`, `Paths` and `Props` pins.
+SA Landscape Patch does not paint. A graph saved with an older version may still have a **Paint Layer** set on it: the node then warns once per run, naming the layer, and nothing is painted until you add an SA Landscape Paint node, set its **Paint Layer** to that name, and wire the same shapes into its `Areas`, `Paths` and `Props` pins.
 
 ## Scope the selectors upstream
 

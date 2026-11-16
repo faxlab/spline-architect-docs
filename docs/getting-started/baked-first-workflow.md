@@ -16,7 +16,7 @@ Spline Architect assumes your production output is baked geometry, and that you 
 4. When you need another change, run **Unbake Connected** first. Baked presets and spline geometry stay locked until you do; whole-actor movement remains allowed.
 5. Edit the preview, inspect it, then run **Bake/Rebake Connected**.
 
-Shared preset edits keep existing baked output frozen. The Details panel reports **Preset changed since bake**; use **Rebake out-of-date actors** to update affected snapshots deliberately. Older untracked bakes require one explicit rebake.
+Shared preset edits keep existing baked output frozen. The Details panel reports **Preset changed since bake**; use **Rebake out-of-date actors** to update the affected actors when you choose to.
 
 ## Choose a bake method
 

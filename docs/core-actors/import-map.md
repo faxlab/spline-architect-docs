@@ -3,11 +3,11 @@ title: Import Map
 description: Import real streets, land areas and buildings from OpenStreetMap into a Streets Network, Map Area actors and Buildings, grouped under a reopenable Map Import Group.
 ---
 
+Pick a real place, draw a boundary around it, and Import Map builds a [Streets Network](/core-actors/streets-network) from the roads inside it, with every enclosed block as a lot. It can also bring in land areas - parks, water, squares, and so on - as editable **Map Area** actors, and the buildings as [Buildings](/core-actors/building) fitted to their real height. Everything one import creates sits under a **Map Import Group**, so you can reopen the import later and redo it with different choices.
+
 :::info UE 5.8 only
 Import Map builds a Streets Network, so it ships only in the UE 5.8 package with the rest of Streets. See [compatibility](/reference/compatibility).
 :::
-
-Pick a real place, draw a boundary around it, and Import Map builds a [Streets Network](/core-actors/streets-network) from the roads inside it, with every enclosed block as a lot. It can also bring in land areas - parks, water, squares, and so on - as editable **Map Area** actors, and the buildings as [Buildings](/core-actors/building) fitted to their real height. Everything one import creates sits under a **Map Import Group**, so you can reopen the import later and redo it with different choices.
 
 The window prepares a preview after every change. Nothing in the level changes until you press **Create Import**.
 

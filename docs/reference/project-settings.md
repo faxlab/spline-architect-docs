@@ -1,9 +1,9 @@
 ---
 title: Project settings
-description: Complete reference for Spline Architect project-wide defaults - what new actors start with, baking, the generated mesh folder, Streets materials, lightmaps, and performance controls.
+description: Set once for the whole project what new actors start with, where baked meshes go, the Streets materials, lightmaps and editing performance.
 ---
 
-**Edit → Project Settings → Plugins → Spline Architect Settings** holds the project-wide defaults. A value set on an actor always wins over these.
+Set once, for the whole project, what new actors start with, where baked meshes go and how baking and editing behave. The settings are in **Edit → Project Settings → Plugins → Spline Architect Settings**. A value set on an actor always wins over these.
 
 The panel groups its controls into five categories: **Settings**, **Bake**, **Lightmaps**, **Preset Library**, and **Performance**. This page splits the long **Settings** category by topic.
 

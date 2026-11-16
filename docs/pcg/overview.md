@@ -1,6 +1,6 @@
 ---
 title: UE 5.8 PCG integration
-description: Use Spline Architect actors as semantic inputs and generation kernels in Unreal Engine 5.8 PCG graphs.
+description: Let PCG graphs read your streets, lots, walls and footprints and build buildings and props on them, rebuilt whenever you edit.
 ---
 
 The SA nodes turn what you authored - streets, lots, walls, footprints - into data a PCG graph can read, reshape, and build from. You draw the city's skeleton by hand; the graph fills in the buildings, props, and details, and refills them every time the skeleton changes.

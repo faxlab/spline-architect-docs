@@ -38,7 +38,9 @@
       "[Make Facade Kit](/authoring/facade-kit) turns a Building preset into a fast copy made of flat textured planes, for big map imports. Repeated floors share one photo, a Parallax switch makes windows look set into the wall, and a batch can be cancelled.",
       "Sloped roofs on footprints with narrow wings, notches and nearly parallel walls now get proper hips and valleys instead of a flat roof.",
       "The new project setting [Baked Mesh Nanite](/production/baking#nanite-on-baked-meshes) (Match Project, Always or Never) decides whether the shapes Spline Architect builds when you bake use Nanite. Lightmap UVs for those shapes follow the project's static lighting setting, copies of your own meshes follow the source mesh's Nanite setting, and Bake and Rebake are faster.",
-      "AI assistants can include buildings when they import a map area."
+      "AI assistants can include buildings when they import a map area.",
+      "Imported Buildings generate several times faster with the same result: a Building takes over the parts its temporary walls generate instead of copying them, and rebuilding a connected stack builds each wall once. The console variables `sa.Building.MoveGeneratedParts` and `sa.Wall.TreeBuildsStackOnce` switch back to the slower path.",
+      "Baking no longer fills the Output Log with `RecomputeNormals: TargetMesh did not have normals to recompute` warnings."
     ],
     "notes": [
       "Baked meshes now follow the project's Nanite setting on the next bake or rebake, and existing bakes stay as they are until then. Set **Baked Mesh Nanite** to **Never** to keep them as before.",

@@ -23,9 +23,9 @@ One Streets Network in, a city out: this tutorial wires lots to buildings and ro
 ## 1. Author the street graph
 
 1. Place a **Spline Architect Streets Network**.
-2. Add at least one Street Config with a width and material.
-3. Press **Edit**, choose Draw, and create connected roads that enclose one or more blocks.
-4. Press Enter to finish each stroke. In Select mode, straighten intended spans and adjust fillet rings.
+2. Check that **Streets → Street Types** has at least one type with a width and material.
+3. Press **Edit Streets** in the Details panel, choose **Draw** in the bar's Select / Draw / Cut tools, and draw connected roads that enclose one or more blocks.
+4. Press Enter to finish each street. With **Select**, straighten streets with **Straighten** and drag the corner handles to round the corners.
 5. Set **Output Mode = Generate** and press **Rebuild Network**.
 
 Confirm that intersection patches are closed and visible and that block interiors resolve as lots. If not, fix the authored graph before adding PCG.

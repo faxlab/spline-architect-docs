@@ -3,7 +3,9 @@ title: SA PCG node reference
 description: Pins, settings, outputs, attributes, and spawn modes for every Spline Architect PCG node in UE 5.8.
 ---
 
-All SA nodes require the UE 5.8 Spline Architect package. Actor-reading nodes evaluate live level state and are intentionally refreshed rather than serving stale cached geometry.
+Look up any SA PCG node here: its pins, its settings and the attributes it writes. For how the nodes fit together, start with [PCG integration](/pcg/overview); for whole graphs, see the [recipes](/pcg/recipes).
+
+All SA nodes require the UE 5.8 Spline Architect package. Nodes that read actors always read the level as it is now; they refresh rather than serve old cached geometry.
 
 ## Baked sources
 
