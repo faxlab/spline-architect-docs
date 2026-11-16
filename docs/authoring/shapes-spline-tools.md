@@ -1,6 +1,6 @@
 ---
 title: Shapes and spline utilities
-description: Apply, save, import, merge, mirror, gridify, flatten, reverse, and repair Spline Architect paths.
+description: Draw a footprint you use often in one click, and mirror, flatten, merge or repair the paths you have drawn.
 ---
 
 Footprints repeat: the L, the U, the rectangle with a notch. The Shape Library stores them once so drawing one is a click, and the spline commands handle the rest of the everyday path surgery - mirroring, flattening, merging, repairing.
@@ -17,7 +17,7 @@ Use the Spline Architect menu to:
 
 Multi-loop shapes are valid for actor-level application and can drive Multi Spline polygon operations.
 
-**Import Shape From Mesh...** extracts the boundary loops of a Static Mesh and saves them as a shape. Selecting **several** meshes imports them all in one pass: names come from the source meshes with no prompt, meshes already imported are skipped, genuine name collisions are suffixed, and one notification summarises what was imported, skipped, and had no usable outline. A single-file import still prompts for a name as before.
+**Import Shape From Mesh...** extracts the boundary loops of a Static Mesh and saves them as a shape. Selecting **several** meshes imports them all in one pass: names come from the source meshes with no prompt, meshes already imported are skipped, genuine name collisions are suffixed, and one notification summarises what was imported, skipped, and had no usable outline. Importing a single mesh asks for a name.
 
 ## Spline menu commands
 

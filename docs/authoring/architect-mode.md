@@ -1,10 +1,12 @@
 ---
 title: Architect Mode and Streets Mode
-description: Complete viewport-control and settings reference for Spline Architect path editing.
+description: Look up the keys, bar controls and settings for drawing Wall, Building and Curve paths in Architect Mode and roads in Streets Mode.
 ---
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+
+You draw in the viewport, in one of two modes. **Architect Mode** draws and edits the paths of Walls, Buildings and Curves. **Streets Mode** draws the roads, junctions and lots of a Streets Network. Come here to look up a key, a bar control or a setting while you draw; [Draw and edit paths](/getting-started/architect-mode-fundamentals) walks through the basics first.
 
 ## Architect Mode
 
@@ -28,7 +30,7 @@ Architect Mode creates and edits Wall, Building, and Curve paths directly in the
 | Input | Action |
 | --- | --- |
 | Left click point or segment | Select; points can be dragged directly. |
-| Ctrl+left click segment | Insert a point at the ray-correct world location. |
+| Ctrl+left click segment | Insert a point exactly where you clicked on the segment. |
 | Shift-drag | Marquee-select. |
 | Ctrl+A / Ctrl+I | Select all / invert selection. |
 | Delete | Remove selected points or segments. Deleting a complete component removes that spline component. |
@@ -40,7 +42,7 @@ Architect Mode creates and edits Wall, Building, and Curve paths directly in the
 | Alt+left click actor | Pick a different Spline Architect actor for editing. |
 | Escape | Cancel the current interaction, clear selection, or exit in successive presses. |
 
-The branch operation can create another spline within the actor or a connected actor stack, depending on context. Segment deletion and splitting preserve valid spline components and invalidate stale point/segment selections automatically.
+Branch adds another spline to the actor, or to a connected stack of actors, depending on what you clicked. Deleting or splitting segments keeps the remaining splines intact and clears any selection that pointed at what was removed.
 
 ### The grid
 
@@ -72,7 +74,7 @@ If an actor has several splines and nothing says which, **it is skipped rather t
 | --- | --- |
 | **Mode** | **Placement Profile**: Planar Locked fixes Z from the first click; Planar From Hit uses the first hit plane; Surface Projected follows each hit surface. **Auto Track Selection in Edit Mode** follows Outliner selection. |
 | **Preset (advanced)** | **Preset Source**, plus Wall, Building, and Curve DataTable handles. The visual picker normally manages these. **Recent Preset History Size** controls remembered items. |
-| **Path Creation** | **Grid Step** in world units. |
+| **Path Creation** | **Grid Step**, the distance between grid lines in world units, and **Grid Space** (World or Actor Local). |
 | **Snapping** | **Grid Snap Enabled**, **Angle Snap Degrees**, endpoint/point/segment screen pick radii, **Surface Offset from Hit**, and **Ignore Selected Actor When Projecting**. |
 | **Gizmo** | **Enable Translate Gizmo**, **Axis Space** (World, Actor, Spline Segment), axis selection radius/length, **Show Preview Grid**, and **Preview Grid Half Cells**. |
 | **Display** | Debug line thickness, arrow size, marker size, **Show Viewport Help**, and **Show Point Indices**. |
@@ -89,7 +91,7 @@ If an actor has several splines and nothing says which, **it is skipped rather t
   }
 >
 
-Select a Streets Network and press **Edit**. Everything in Streets Mode sits in one bar at the bottom of the viewport; there is no side panel.
+Select a Streets Network and press **Edit Streets** in its Details panel. Everything in Streets Mode sits in one bar at the bottom of the viewport, with a card above it for what you have selected; there is no side panel.
 
 Draw cuts new roads through the network; Select moves what is there. In the clip, a new road splits a block in two, and dragging one node onto another fuses them into a single intersection.
 
@@ -127,7 +129,7 @@ While you draw a street, the selection row shows its length and turn angle with 
 - With the **Cut** tool, click a street to cut it with a new node at the blue marker. With **Select**, Ctrl-click does the same.
 - Clicking a street selects that street only. The gizmo still moves its ends. **Whole street** extends the selection from junction to junction.
 - Drag the handle on a selected corner to round it by hand; the corner switches to **Manual**. **Corner** and **Radius** in the card set the same values by typing. **Reset** on the nodes section puts them back to Auto.
-- Deleting a **corner** - a node with exactly two streets - joins its two streets back into one instead of leaving a hole in the road. **Dissolve** does that without deleting the streets' other ends. At a junction or a dead end, Delete removes the node with its streets as before.
+- Deleting a **corner** - a node with exactly two streets - joins its two streets back into one instead of leaving a hole in the road. **Dissolve** does that without deleting the streets' other ends. At a junction or a dead end, Delete removes the node and its streets.
 - **Connect** draws a street between exactly two selected nodes, using the New streets type, and splits anything it crosses.
 - Select two or more nodes and press **Fuse** to fuse them into one intersection. The node you clicked **last** is the one that stays, keeping its position and its corner; the others hand over their streets. **Level** sets the selected nodes to that same node's height. One undo step each.
 - Dragging a node onto another merges them on release. A green ring marks the node it will join, and the grid counts: if the grid puts the node on a junction, it joins it. Moving a whole street, or several nodes at once, so that an end lands on a junction joins them too. A small nudge beside a close neighbour does not merge. Hold **X** while dragging to move without joining. The whole drag is one undo step.
@@ -221,8 +223,6 @@ The **Gap**, **Cut Lines**, and **Gap Outlines** features belong to the [SA Subd
 
 ### Streets Mode settings
 
-| Category | Controls |
-| --- | --- |
 These are remembered per user and per project. The bar edits all of them except the Subdivide recipe, which is saved from your last applied run.
 
 | Category | Controls |
