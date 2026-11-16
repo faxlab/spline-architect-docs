@@ -6,7 +6,7 @@ description: Look up the keys, bar controls and settings for drawing Wall, Build
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
-You draw in the viewport, in one of two modes. **Architect Mode** draws and edits the paths of Walls, Buildings and Curves. **Streets Mode** draws the roads, junctions and lots of a Streets Network. Come here to look up a key, a bar control or a setting while you draw; [Draw and edit paths](/getting-started/architect-mode-fundamentals) walks through the basics first.
+You draw in the viewport, in one of two modes. **Architect Mode** draws and edits the paths of Walls, Buildings and Curves. **Streets Mode** draws the roads, junctions and lots of a Streets Network. Come here to look up a key, a bar control or a setting while you draw; [Architect Mode fundamentals](/getting-started/architect-mode-fundamentals) walks through the basics first.
 
 ## Architect Mode
 
