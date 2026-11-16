@@ -1,7 +1,9 @@
 ---
 title: PCG facade and prop recipes
-description: Practical UE 5.8 recipes for facade grids, road-edge props, crossings, rooftops, and footprint-aware scattering.
+description: Node chains for common city jobs in UE 5.8 - buildings along streets, facade attachments, road-edge props, crossings, alleys and rooftops.
 ---
+
+Ready-made PCG graphs for the jobs a city keeps asking for: buildings along a street, signs on facades, lamps along roads, signals at crossings, props in alleys and on rooftops. Each recipe gives the node chain first, then the settings that matter. Build it in your graph and tune from there; the [node reference](/pcg/node-reference) has every pin and setting.
 
 ## A street of buildings
 
@@ -124,6 +126,8 @@ SA Subdivide Lots (Gap > 0) → Gap Outlines → SA Filter Spline Edges → SA E
 ```
 
 Give SA Subdivide Lots a **Gap** and each cut becomes an alley instead of a shared boundary. **Gap Outlines** emits the whole alley network as one closed shape whose points carry `SA_TouchesBoundary`: `true` where the alley opens onto the lot edge, `false` along its sides.
+
+![An alley between brick buildings seen from the street: bollards and a planter with benches across its mouth, lamps along both sides](/img/screens/alley-result.webp)
 
 Feed that into SA Filter Spline Edges, which splits it into two sets of splines:
 

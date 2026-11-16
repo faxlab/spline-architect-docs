@@ -3,6 +3,8 @@ title: SA PCG metadata reference
 description: Attribute names, types, meaning, domains, and downstream usage for Spline Architect PCG data.
 ---
 
+Look up what an `SA_` attribute on PCG data means and what type it is, before you filter or branch on it.
+
 Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots and element filters after sampling for individual points. PCG data tags are separate from metadata attributes; use **Filter Data By Tag** for them.
 
 ## Streets and lots
