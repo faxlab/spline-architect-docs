@@ -18,10 +18,10 @@ Draw any footprint, and a Building puts a saved stack of walls on it: the same s
 | **Seed** | The number behind the random floor counts and the walls' random choices. A fixed number gives the same building every time; `-1` (default) picks a new random seed every regeneration. |
 | **Grid Size / Auto Gridify** | Defines local spline snap cells and optional automatic snapping after edits. |
 | **Booleans to Use** | [Boolean](/core-actors/boolean) actors that cut holes in this Building's floors, roofs and walls. |
-| **Reset Transform / Center Transform** | Moves the actor's pivot to the first spline point (and sets its scale back to 1), or to the middle of the footprint. Nothing moves in the level. |
+| **Reset Transform / Center Transform** | Moves the actor's pivot to the first spline point, turns it to face the first segment and sets its scale back to 1 (Reset), or moves it to the middle of the footprint (Center). Nothing moves in the level. |
 | **Force Regenerate** | Rebuilds every wall layer of the Building now. |
 | **Split Footprints** | Gives each footprint of a Building that holds several its own actor. See [Several footprints on one Building](#several-footprints-on-one-building). |
-| **Break** | Turns the Building back into connected Wall actors you can edit one by one, and removes the Building actor. A Building with several footprints must be split first. |
+| **Break** | Turns the Building back into connected Wall and Prop Generator actors you can edit one by one, and removes the Building actor. A Building with several footprints must be split first. |
 
 ### Preset Tags
 
@@ -50,7 +50,7 @@ Every Wall entry exposes:
 
 ## Spline and baking
 
-The Building shares the Wall's **Multi Spline Mode**, **Union Z Mode**, **Mirror Mode**, **Invert Mirror**, and **Apply Mirror to Spline** controls. Baking holds **Baked**, **Generation Mode**, **Bake Method**, **Baked Mobility**, **Corner Angle Increment**, **Bake**, **Unbake**, **Prebake Corners**, **Force Regenerate** and **Break**, and they work as on a [Wall](/core-actors/wall#baking).
+The Building shares the Wall's **Multi Spline Mode**, **Union Z Mode**, **Mirror Mode**, **Invert Mirror**, and **Apply Mirror to Spline** controls. Baking holds **Baked**, **Generation Mode**, **Bake Method**, **Baked Mobility**, **Corner Angle Increment**, **Bake**, **Unbake**, **Prebake Corners**, and **Force Regenerate**, and they work as on a [Wall](/core-actors/wall#baking). **Break** exists only on the Building: it turns the Building into editable Wall and Prop Generator actors and removes the Building actor.
 
 Use Baked mode for placed environments. **Unbake** is the reversible operation that keeps the Building actor. **Break** goes further - back to individual Walls - and pairs with **Convert to Building** as the art-direction round-trip: break, adjust the walls one by one, collapse back into a Building whose inline preset carries the changes. The shared preset row never notices.
 

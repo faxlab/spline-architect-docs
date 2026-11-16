@@ -18,7 +18,7 @@ Curve repeats one mesh along a path: curbs, rails, pipes, trims, cables. Where W
 
 | Control | Options and effect |
 | --- | --- |
-| **Curve Meshes** | The meshes repeated along the spline. With more than one, **Mesh Selection Policy** picks among them using the actor's **Seed**. |
+| **Curve Meshes** | The meshes repeated along the spline. With more than one, **Mesh Selection Policy** picks among them; only **Random Compatible** uses the actor's **Seed**. |
 | **Mesh Selection Policy** | **Minimum Pieces** (default) prefers the longer meshes, so the path takes as few pieces as possible. **Random Compatible** picks fitting meshes at random, the same way for the same seed, for less repetition. |
 | **Profile Orientation** | **Z Up** (default) keeps the profile upright, for architectural pieces; **Transported** lets it roll through 3D bends. |
 | **Default Tangent Mode** | How the path rounds its points. **Auto Fillet** (default) rounds each corner as much as the path's geometry allows. **Fixed Fillet** rounds every corner with Fillet Radius. **Fillet** takes a radius per point from the handles in the viewport. **Manual** leaves the spline's own tangents alone. |

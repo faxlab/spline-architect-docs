@@ -32,7 +32,7 @@ Do not read "wall" too literally. The same actor makes shopfronts, fences, and r
 | **Use Parameter Overrides** | Lets this one Wall change chosen values of its DataTable row without editing the row. Available when a row is picked. |
 | **Parameter Overrides** | Toggles and values for Height, Corner Size, Z Handling, Inset, Num Floors, Treat Spline Reversed, nearby-point collapse, offsets, floor surfaces, posts, material parameters, and instance custom data. |
 | **Save Preset** | Saves this Wall's current settings as a row in a Wall Preset DataTable, ready to reuse. |
-| **Convert to Building** | Replaces this Wall and the walls stacked on it with one Building actor that builds the same result. Meshes, materials, floors, roofs, attached custom pieces and the seed come along; the settings become the Building's own preset, and nothing is written to a DataTable. Undo brings the walls back. To reuse the design, press **Save Preset** on the new Building. |
+| **Convert to Building** | Replaces this Wall and the whole stack it belongs to, including walls below it, with one Building actor that builds the same result. Meshes, materials, floors, roofs, attached custom pieces and the seed come along; the settings become the Building's own preset, and nothing is written to a DataTable. Undo brings the walls back. To reuse the design, press **Save Preset** on the new Building. |
 
 ## Controls
 

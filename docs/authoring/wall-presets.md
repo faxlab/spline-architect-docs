@@ -35,7 +35,7 @@ When you change a Wall's preset, the tags Spline Architect added for the old pre
 
 | Control | Options and effect |
 | --- | --- |
-| **Wall Z Handling** | What the wall does where the spline climbs. **Keep Z** (default) starts each segment at its own point's height, so a slope becomes steps. **Keep Flat** builds the whole wall at the height of the first point. **Follow Spline** tilts each piece with the slope, for ramps and walls along terrain. **Skew** shears the pieces: the bottom stays level and the top follows the height change. |
+| **Wall Z Handling** | What the wall does where the spline climbs. **Keep Z** (default) starts each segment at its own point's height, so a slope becomes steps. **Keep Flat** builds the whole wall at the height of the lowest point. **Follow Spline** tilts each piece with the slope, for ramps and walls along terrain. **Skew** shears the pieces: the bottom stays level and the top follows the height change. |
 | **Skip Pieces** | Leaves pieces out of sloped segments (**Angled**) or level ones (**Flat**), for step-like walls. **None** (default) builds on every segment. |
 | **Inset** | Moves the wall sideways off the spline: positive values move it outward, negative inward. |
 | **Overlap Pieces By** | Lengthens each piece into its neighbours by this much. Mesh sides are rarely perfectly flat, so a small overlap closes the thin seams between pieces. Default `5`. |
@@ -89,7 +89,7 @@ How a turn is built is one choice: give it a dedicated **Corner Mesh**, or let *
 
 | Control | What it does |
 | --- | --- |
-| **Corner Mesh** | A dedicated piece for turns, such as a pilaster. Leave it empty and **Corner Type** shapes the wall pieces instead. |
+| **Corner Mesh** | A dedicated piece for turns, such as a pilaster. Leave it empty and turns get no corner piece; **Corner Type** only decides how a Corner Mesh is cut or bent. |
 | **Corner Type** | How a turn is built. **Straight** (default) cuts and mirrors the piece on the corner's diagonal, for a sharp mitre. **Bend** bends the pieces around the corner, for curved walls. **Chamfer** puts one flat diagonal across the corner. **Pipe** bends like Bend, for pieces whose pivot is in their middle, such as pipes and railings. |
 | **Corner Size Mode** | Bend and Pipe only: what Corner Length measures. **Leg Length** (default): every corner reaches the same distance along its walls, so sharp corners curve much tighter than open ones. **Radius**: every corner gets the same curve whatever its angle - pick it when a shape with different corner angles should look evenly rounded. |
 | **Overlap Corners By** | Pushes each corner this far into the pieces beside it, to close gaps at the turn. Default `0`. |
@@ -101,7 +101,7 @@ How a turn is built is one choice: give it a dedicated **Corner Mesh**, or let *
 - **Floor Surfaces** and **Roof Surfaces** are fully listed in [Floors and roofs](/authoring/floors-roofs).
 - **Post Configurations** adds extra meshes at chosen places on the wall: On Corners (default), On Spline Points, Between Segments, On Custom Pieces, Periodically (every **Period Distance**, default `100`) or Start and End. Each entry has its own mesh, offset, rotation, scale and mirror switches. A post grows with the wall height unless you turn that off, stands upright unless you let it follow the spline's slope, and can skip sloped or level segments. Start and End can give each end post its own mesh and transform.
 - **Randomisation Settings → Random Transform** moves, turns and scales every placed piece by a random amount within the ranges you set. Keep the location range small, or pieces start to flicker through each other. With uniform scale on (default), the X range is used for all three axes, so pieces keep their proportions.
-- **Random Meshes** swaps a **Key Mesh** for a weighted random pick from a list of alternatives; the Key Mesh stays in the draw. **Keep Scale** (default) keeps the replacement's own size, which can leave gaps or overlaps; **Match Scale** fits it to the original's size. **Knockout** removes that share of the pieces at random: `0` keeps all, `1` removes all. Two switches turn pieces at random about the up axis, by 90° steps or by 180°.
+- **Random Meshes** swaps a **Key Mesh** for a weighted random pick from a list of alternatives; the Key Mesh stays in the draw. **Keep Scale** (default) keeps the replacement's own size, which can leave gaps or overlaps; **Match Scale** fits it to the original's size. **Knockout** removes that share of the pieces that use the Key Mesh, at random: `0` keeps all, `1` removes all. Two switches turn pieces at random about the up axis, by 90° steps or by 180°.
 
 ## Materials and instance custom data
 
