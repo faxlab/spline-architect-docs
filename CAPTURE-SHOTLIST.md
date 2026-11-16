@@ -1,6 +1,8 @@
 # Capture list
 
-## Outstanding — none
+## Outstanding
+
+The pictures still to make are planned in `PICTURE-PLAN.md`.
 
 The two PCG graph shots were dropped by decision on 2026-08-24. Both recipes already print
 their node chain as a text diagram, which stays correct when pins are renamed; a screenshot
