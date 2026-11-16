@@ -1,13 +1,13 @@
 ---
 title: Streets Network
-description: Complete user-facing reference for roads, intersections, lots, surfaces, Streets Mode, baking, and PCG data.
+description: Draw a city's roads and get the junctions, sidewalks and lots between them, ready for buildings and PCG.
 ---
+
+Draw the roads of a city, and Streets Network builds the rest: road surfaces, junctions, sidewalks, and a lot for every block the roads enclose. Use it to lay out a town or a district, then fill the lots with buildings and props by hand or with the SA PCG nodes.
 
 :::info UE 5.8 only
 Streets Network, Streets Mode, and Lot Zone ship only in the UE 5.8 package. See [compatibility](/reference/compatibility).
 :::
-
-You draw the roads; Streets Network builds everything they imply. From a graph of nodes and edges it generates the road ribbons and intersections, extracts every enclosed block as a lot with its own surface, and hands the whole structure - roads, junctions, lots, zones - to the SA PCG nodes to build on.
 
 To start from a real place instead of drawing, [Import Map](/core-actors/import-map) builds the network from OpenStreetMap roads.
 
@@ -43,7 +43,7 @@ Settings are grouped the way you work: **Controls**, **Streets**, **Sidewalks & 
 | Control | What it does |
 | --- | --- |
 | **Name / Width / Material** | Identifies the type and sets the full road width plus an optional road material. |
-| **Default Fillet Mode / Default Fillet Radius** | Stamps Auto, Manual, or Disabled corner rounding onto newly drawn junctions. Radius appears for Manual. |
+| **Default Fillet Mode / Default Fillet Radius** | How junctions you draw with this type round their corners. **Auto** gives the largest rounding the streets allow without overlapping; **Manual** uses Default Fillet Radius. Applies only to junctions drawn from now on. |
 | **Z Ramp / Z Ramp Mode / Z Ramp Control** | Smooths the road's height, so a street on a hill climbs in one even curve instead of kinking at every point. Auto draws one smooth curve through all the street's points: steady slopes stay steady and hilltops stay level. Manual blends back toward straight lines with a 0–1 control. |
 
 ### Crossings on slopes
@@ -51,8 +51,6 @@ Settings are grouped the way you work: **Controls**, **Streets**, **Sidewalks & 
 On a slope, each crossing tilts as one flat plane fitted to the streets that run through it. A street climbing a hill then runs straight through the crossing, with no flat shelf or hump at each junction. The streets meet the crossing at its tilt and their edges lean into it.
 
 Some crossings stay level: on hilltops, in valleys, on flat networks, and next to raised bridges. A side street that climbs into a main road leans over its last few metres to meet it, so it never banks the main road.
-
-Each junction stores a **Crossing Tilt** choice. **Auto** (default) tilts it as described. **Level** keeps it flat even on a slope, for a plaza or a crossing that must stay flat; the streets flatten out as they enter it. Streets Mode's card does not show Crossing Tilt yet, so every junction stays on Auto unless a script changes it.
 
 ### Per-segment overrides
 
@@ -152,35 +150,35 @@ Levelling a lot does not cut the terrain. [Step walls](#step-walls) close the ga
 
 | Control | What it does |
 | --- | --- |
-| **Output Mode** | **Generate** builds full geometry; **Debug (Skeleton Only)** shows the graph without generated surfaces. |
-| **Booleans to Use** | Explicit cutters for roads, junctions and lot surfaces. |
-| **Advanced → Snap Radius** | Maximum endpoint distance for merging roads into one junction. |
-| **Advanced → Miter Limit** | Limits how far junctions push road cuts outward. |
+| **Output Mode** | **Generate** builds everything: roads, junctions, lots and what spawns on them. **Debug (Skeleton Only)** shows only the street graph. |
+| **Booleans to Use** | [Boolean](/core-actors/boolean) actors that cut holes in the road, junction and lot surfaces. |
+| **Advanced → Snap Radius** | Road ends closer than this join into one junction, in world units. Default `1000` (10 m). |
+| **Advanced → Miter Limit** | How far a junction may push the road ends back to keep the roads coming into it apart. Higher values allow bigger junctions. Default `2`. |
 | **Advanced → Road Detail Mode / Curve Detail / Detail Sample Distance** | Geometry detail for roads: Adaptive keeps straight roads light; smaller values give smoother, denser curves and ramps. |
-| **Advanced → Facet Angle** | Removes nearly straight lot boundary points; `0` disables. |
-| **Advanced → Lot Point Merge Distance** | Merges near-coincident points before generating lot actors; `0` disables. |
+| **Advanced → Facet Angle** | Removes lot outline points where the outline turns by less than this many degrees, so lot edges come out as clean straight lines. Used for spawning on lots, Break and baked lots. Default `1`; `0` turns it off. |
+| **Advanced → Lot Point Merge Distance** | Merges lot outline points closer than this, in world units, so lot actor splines do not overshoot at their corners. Does not change the lot surface meshes. Default `150`; `0` turns it off. |
 | **Advanced → Show Import Guides / Owning Map Import Group** | Reference splines for bridges, tunnels and ramps from map imports, and the import group that owns this network. |
 
 ### Per-lot sidewalks
 
 Select a lot in Streets Mode and the card opens on it. **Curb height**, **Curb lean** and **Curb bevel** edit the first surface layer; each has a reset arrow back to the network's value. Turning on **Own surface layers** in Advanced, or editing a curb, copies the network's layers onto the lot first, so the lot is never left bare. **Reset** on the lots section hands the lot back to the network.
 
-Per-lot Zone, tags, and surface overrides survive ordinary street editing - adding a point to a road no longer drops the settings on the lots either side of it.
+Per-lot Zone, tags, and surface overrides survive ordinary street editing: adding a point to a road keeps the settings on the lots either side of it.
 
 ## Baking
 
 | Control | What it does |
 | --- | --- |
 | **Baked / Generation Mode** | State and editor-vs-runtime intent. A newly placed Streets Network starts in the project's [Default Generation Mode](/reference/project-settings#new-actors), Baked unless you changed it. Set Baked for production output. |
-| **Bake Method** | Components, Instanced, or Hierarchical Instanced. |
-| **Baked Mobility / Lightmap Texel Density Override** | Component mobility and optional per-actor lightmap density. |
+| **Bake Method** | **Instanced** (default) groups identical meshes into instances, which draws faster. **Hierarchical Instanced** also handles detail and culling per instance, for large scenes with many instances. **Components** makes every mesh its own component, so each can be moved after baking. |
+| **Baked Mobility / Lightmap Texel Density Override** | **Static** mobility lets the baked roads take baked lighting; **Movable** lets them move at runtime. The lightmap density, in texels per metre, replaces the Project Settings value for this network; `0` keeps the Project Settings value. |
 | **Bake / Unbake** | Produces persistent road output and independent lot actors, or restores generated editing. |
 
 ## Editing the network
 
 Beyond drawing, Streets Mode can cut a selected lot into blocks with new streets - see [Subdivide lots](/authoring/architect-mode#subdivide-lots) - fuse nodes into one intersection, and join a corner's two streets when its node is deleted.
 
-Two behaviours changed with how selection and transforms work:
+Two behaviours to know when you select and transform a network:
 
 - **Marquee selection** catches a segment that spans the box, not only one that starts and ends inside it, and a box dropped inside a large block selects that block.
 - **Scaling a Streets Network** bakes the scale into the graph and returns the actor to scale 1, like every other Spline Architect actor. Node positions and manual fillet radii scale with it; road **widths do not**, because street types are shared.

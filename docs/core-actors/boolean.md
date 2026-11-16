@@ -1,27 +1,28 @@
 ---
 title: Boolean
-description: Complete user-facing reference for Spline Architect Boolean cutters and target control.
+description: Cut openings through generated walls, floors and roofs, or remove the pieces inside a volume.
 ---
 
-Boolean combines child Static Mesh and Spline shapes into one cutter. It can subtract intersecting geometry or cull complete overlapping components.
+Cut a hole where the generator would otherwise build: an opening through a facade, a gap in a floor or roof. A Boolean is a cutter made from the Static Mesh and Spline shapes you add to it. It either cuts the shape out of what it overlaps, or removes the overlapping pieces whole.
 
 ## Shape
 
 | Control | What it does |
 | --- | --- |
-| **Boolean UV Scale** | UV tiling for the preview dynamic mesh. |
+| **Boolean UV Scale** | How often the texture repeats on the cutter's own preview mesh. It does not change what is cut. |
 | **Spline Extrude Distance** | Distance a spline cutter extrudes along its up direction. Make it tall enough to pass through every target. |
 | **Materials** | Read-only materials gathered from child meshes for preview. |
-| **Boolean Mesh Component** | Read-only combined dynamic cutter generated from child Static Mesh and Spline components. |
+| **Borrow Spline From Parent** | Also cuts with the spline of the Wall or Building the Boolean is attached to, as if that shape were drawn on the Boolean. Off (default): a Boolean attached to an actor only to move with it cuts with its own shapes only. |
+| **Boolean Mesh Component** | The cutter's combined shape, built from the Static Mesh and Spline components you add. Read-only. |
 
 ## Targets
 
 | Control | What it does |
 | --- | --- |
-| **Auto Detect Targets** | Finds overlapping Spline Architect actors by bounds. It is bypassed while Target Actors is non-empty. |
-| **Target Actors** | Explicit target list; when populated, only these actors are affected. |
-| **Affect Floors / Affect Roofs / Affect Walls** | Selects which generated systems participate. Walls includes wall pieces, Custom Pieces, and posts. |
-| **Wall Mode** | **Boolean Subtract** cuts intersecting mesh volume; **Cull** removes overlapping generated components entirely. |
+| **Auto Detect Targets** | Cuts every Spline Architect actor whose bounds overlap the Boolean. Ignored while Target Actors has entries. |
+| **Target Actors** | Only these actors are cut. Leave it empty to let Auto Detect Targets find them. |
+| **Affect Floors / Affect Roofs / Affect Walls** | Which parts are cut: floors, roofs, and walls - wall pieces, Custom Pieces and posts. |
+| **Wall Mode** | **Boolean Subtract** cuts the Boolean's shape out of what it overlaps. **Cull** removes every overlapping piece whole. |
 
 ![A Boolean's extruded spline cutter, shown in red, carving a rounded bite out of a tower's facade](/img/screens/boolean-cut.webp)
 

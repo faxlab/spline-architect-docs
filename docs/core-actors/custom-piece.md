@@ -1,6 +1,6 @@
 ---
 title: Custom Piece
-description: Complete user-facing reference for inserted and overlapping Wall pieces.
+description: Put a door, an arch, a gap or a special corner at one spot in a wall, and the wall builds around it.
 ---
 
 import ClipAside from '@site/src/components/ClipAside';
@@ -26,10 +26,11 @@ In the clip: a doorway **inserted** among the ground-floor shutters - it cuts it
 
 | Control | What it does |
 | --- | --- |
-| **Custom Piece Preset** | Full placement and asset configuration described below. |
-| **Location Locked** | Read-only state showing whether manual movement is constrained. |
-| **Locked Location** | World position restored when the actor is locked and moved. |
-| **Lock Position / Unlock Position** | Captures the current location or allows movement again. |
+| **Data Table Preset** | A row from a custom piece preset table, such as the starter kit's `SA_CustomPieces`. The row then drives the piece and the Custom Piece Preset below turns read-only; clear it to set the piece up by hand. Picking a preset never moves the piece along its wall. |
+| **Custom Piece Preset** | The piece's own settings, described below. |
+| **Location Locked** | Shows whether the piece is pinned in place. Read-only: use Lock Position and Unlock Position. |
+| **Locked Location** | Where the piece is pinned. Set by Lock Position, and kept up to date as its wall moves or shifts up the stack. |
+| **Lock Position / Unlock Position** | Pins the piece where it is now, or lets the wall place it along the spline again. |
 
 Locking pins a piece against the generator sliding it along the spline. It does **not** pin it in the world: the piece travels with its wall when the wall moves, and stays put when the wall's pivot is reset or centred.
 
@@ -39,21 +40,21 @@ Custom pieces can also be placed from a PCG graph. Mark scattered points with [S
 
 | Control | What it does |
 | --- | --- |
-| **Custom Piece Type** | **Segment** replaces/overlaps a straight span; **Corner** replaces a corner. |
-| **Corner Type** | Straight, Bend, Chamfer, or Pipe behavior for a Corner piece. |
-| **Custom Piece Mesh** | Mesh to generate; leave empty to create a gap of Custom Piece Length. |
-| **Input Key on Spline** | Position along the spline in point-index space. |
-| **Floors** | Segment floor selection such as `1,2,6-8`; empty means all floors. |
-| **Num Meshes** | Repetition count inside the custom span. |
-| **Fill Segment** | Repeats across the complete owning segment and scales oversized pieces to cover it. |
-| **Override Length / Custom Piece Length** | Uses a logical span instead of mesh X bounds. |
-| **Overlap By** | Extends into adjacent wall output to hide seams. |
-| **Add to Scale** | Additive per-axis scale for Segment pieces. |
-| **Reverse Orientation** | Flips a Segment piece. |
-| **Ignore Post Generation** | Suppresses posts at locations covered by the piece. |
-| **Keep World Scale / World Scale** | Keeps authored proportions and exposes an explicit scale. |
-| **Add Transform** | Local location, rotation, and scale offset. |
-| **Insert Type** | **Insert** cuts a slot; **Overlap** places the piece over normal wall generation. |
-| **Child Actor Class / Scale / Offset** | Spawns a Blueprint/Actor child and adjusts its scale and position. |
+| **Custom Piece Type** | **Segment** (default) replaces or overlaps part of a straight run; **Corner** replaces the corner at a spline point. |
+| **Corner Type** | How a Corner piece builds the turn: Straight, Bend, Chamfer or Pipe, as in the [Wall Preset](/authoring/wall-presets#corner-and-placement). |
+| **Custom Piece Mesh** | The mesh the piece places. Leave it empty to make a gap as long as Custom Piece Length. |
+| **Input Key on Spline** | Where the piece sits along the spline, counted in spline points: `0` is the first point, and `1.5` lies between the second and third. |
+| **Floors** | Which floors the piece appears on, such as `1,2,6-8`; empty means every floor. On a Wall the numbers count that Wall's own floors; on a Building they count the floors of the whole stack. |
+| **Num Meshes** | How many copies of the mesh sit side by side in the piece's span. Default `1`. |
+| **Fill Segment** | Repeats the mesh along the whole segment the piece sits on, scaling pieces that are too big so they cover it. |
+| **Override Length / Custom Piece Length** | How much of the wall the piece takes up. It comes from the mesh unless Override Length is on or there is no mesh; then Custom Piece Length (default `100`) sets it. |
+| **Overlap By** | Pushes the piece this far into the wall pieces beside it, to close gaps - useful on corners. |
+| **Add to Scale** | Added to a Segment piece's scale on each axis. `0` (default) leaves it as fitted. |
+| **Reverse Orientation** | Turns a Segment piece to face the other way. |
+| **Ignore Post Generation** | Leaves out the wall's posts where the piece is, for example so no post stands in a doorway. |
+| **Keep World Scale / World Scale** | Keeps the piece at exactly this scale instead of scaling it to the wall height. |
+| **Add Transform** | Moves, turns and scales each copy of the piece in its own space. |
+| **Insert Type** | **Insert** (default) cuts the piece into the wall, replacing the wall there. **Overlap** places it on top of the wall without cutting. |
+| **Child Actor Class / Scale / Offset** | A Blueprint or actor spawned with a Segment piece, with its own scale and its offset from the piece's mesh. |
 
 Use **Insert** for doors and gaps, **Overlap** for signs and facade attachments. If a piece should appear through PCG rather than belong to one Wall, use the [PCG prop recipes](/pcg/recipes).
