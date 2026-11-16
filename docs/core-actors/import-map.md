@@ -143,7 +143,7 @@ The eye and the tick box in the header switch a whole column on or off. Hover a 
 
 - Heights are metres above sea level, with sea level at the import's own height. Imports of neighbouring places, placed side by side, line up.
 - Bridges and tunnels run straight between their ends, so a bridge spans its valley instead of following the ground under it.
-- Each building stands on the lowest ground under its outline, so on a slope it stands into the hill rather than floating above its low side.
+- Each building stands on the highest ground under its outline, so on a slope its entrance never sinks into the hill. Its low side stands above the ground, where the wall below the base of the building covers the gap.
 - The height data is free, from Terrain Tiles. The first import of a place downloads it, which needs the internet, behind a progress dialog you can cancel. It is then kept in the project's Saved folder for every later import there. Tick the box again to retry a cancelled or failed download.
 - Without the data the import stays flat and says so: the status line reads **Flat: ground heights unavailable** and Diagnostics gives the reason. When it works, the status line ends with **On ground heights** and the data's credit.
 
