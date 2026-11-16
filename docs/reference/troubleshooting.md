@@ -93,6 +93,10 @@ Enable **Bake Spline Architect Actors Before Convert**, include attached actors 
 
 ## Import Map
 
+### The first preview after a download seems stuck
+
+It is still working. The first preview of a newly downloaded region can take about 30 minutes while the data is read; the progress card at the bottom of the map shows it. This happens once per region. Later previews of the same region are fast.
+
 ### A mapped area was skipped
 
 **Diagnostics** shows a **Review** entry such as *Skipped area 'Example Park' (way/123, Park): its outline could not be cut to the selection.* The import could not cut that one area to your boundary, or could not fill its shape safely. It leaves the area out and carries on with everything else, and the Output Log gets a warning with the same text. Click the entry to frame the spot. Only area types you ticked can be skipped. Unticking the type removes the entry, and also leaves out every other area of that type.
