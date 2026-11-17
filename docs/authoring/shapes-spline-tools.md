@@ -15,6 +15,8 @@ Use the Spline Architect menu to:
 - **Save Shape** from selected spline actors for later reuse.
 - **Import Shapes** from compatible Static Mesh boundary data.
 
+The Apply Shape menu lists **Open Paths** first - Straight 5 m, 10 m and 30 m, L Path 10 m, U Path 10 m, Zig-Zag 20 m, and a Stair Path (flat, 3 m rise, flat) to use with [Steps](/authoring/wall-presets#stairs-with-steps) - then **Rectangles**, **Buildings**, **Curves** and **Plugin Basic Shapes**, and your own saved shapes last. Before 6.3 the Rectangles group was called Basic; built-in shapes keep their Shape IDs, so saved references still work.
+
 Multi-loop shapes are valid for actor-level application and can drive Multi Spline polygon operations.
 
 **Import Shape From Mesh...** extracts the boundary loops of a Static Mesh and saves them as a shape. Selecting **several** meshes imports them all in one pass: names come from the source meshes with no prompt, meshes already imported are skipped, genuine name collisions are suffixed, and one notification summarises what was imported, skipped, and had no usable outline. Importing a single mesh asks for a name.
