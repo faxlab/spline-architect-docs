@@ -25,7 +25,7 @@ When you change a Wall's preset, the tags Spline Architect added for the old pre
 | Control | What it does |
 | --- | --- |
 | **Wall Height / Height Override** | The height of one floor of wall. Without **Height Override** it is taken from the tallest wall piece. In Fit Height every piece is stretched to exactly this height; in Uniform Scale it is the height the pieces reach on average. |
-| **Height Mode** | How meshes are resized to reach Wall Height. **Fit Height** stretches each mesh to exactly Wall Height, and sideways to fill its slot: a flat top, but modular facade pieces get distorted. **Uniform Scale** multiplies every mesh by one shared factor on all three axes, so proportions are never distorted. |
+| **Height Mode** | How meshes are resized to reach Wall Height. **Fit Height** stretches each mesh to exactly Wall Height, and sideways to fill its slot: a flat top, but modular facade pieces get distorted. **Fit Height (Keep Depth)** does the same but leaves each mesh as deep as it was modelled, for steel frames, railings and fences. **Uniform Scale** multiplies every mesh by one shared factor on all three axes, so proportions are never distorted. |
 | **Wall Length / Length Override** | The length of the slots the spline is divided into; one wall piece fills each slot. Without **Length Override** it is the length of the longest wall piece at Wall Height. An override is never shorter than `10`. |
 | **Corner Length / Corner Length Override** | How big a corner is. For Chamfer, the width of the diagonal cut. For Bend and Pipe, how far the curve reaches along each wall, or its radius - **Corner Size Mode** decides. For Straight, how much is cut from each wall leg. Without the override it is taken from the Corner Mesh. Corners resize with the wall pieces when Wall Height resizes them. |
 | **Corner Height Add** | For a corner mesh with something sticking out of its body, such as an ornament on top that makes it taller than the wall. Enter that extra height, and the corner is sized by its body so it lines up with the wall. |
@@ -35,12 +35,15 @@ When you change a Wall's preset, the tags Spline Architect added for the old pre
 
 | Control | Options and effect |
 | --- | --- |
-| **Wall Z Handling** | What the wall does where the spline climbs. **Keep Z** (default) starts each segment at its own point's height, so a slope becomes steps. **Keep Flat** builds the whole wall at the height of the lowest point. **Follow Spline** tilts each piece with the slope, for ramps and walls along terrain. **Skew** shears the pieces: the bottom stays level and the top follows the height change. |
+| **Wall Z Handling** | What the wall does where the spline climbs. **Keep Z** (default) keeps every piece level and sets each one at the height **Keep Z Height From** picks, so a slope becomes a row of level pieces. **Keep Flat** builds the whole wall at the height of the lowest point. **Follow Spline** tilts each piece with the slope, for ramps and walls along terrain. **Skew** shears the pieces: the bottom stays level and the top follows the height change. **Steps** turns every slope into a staircase - see [Stairs with Steps](#stairs-with-steps). |
+| **Keep Z Height From** | Keep Z only: which height a level piece on a slope sits at. **Lowest** (default) takes its lower end, so a fence panel or slab sinks into the hill at its uphill end and never floats at the downhill end. **Centre** is how Keep Z worked before 6.3. **Highest** takes the higher end, so each step piece lands at the height it climbs to, as in the shipped Stairs preset. |
+| **Max Step Height** | Steps only: the highest one step may rise, in cm. Default `20`. A 300 cm rise with `20` gives 15 steps of exactly 20 cm. |
 | **Skip Pieces** | Leaves pieces out of sloped segments (**Angled**) or level ones (**Flat**), for step-like walls. **None** (default) builds on every segment. |
 | **Inset** | Moves the wall sideways off the spline: positive values move it outward, negative inward. |
 | **Overlap Pieces By** | Lengthens each piece into its neighbours by this much. Mesh sides are rarely perfectly flat, so a small overlap closes the thin seams between pieces. Default `5`. |
 | **Num Floors** | Vertically repeats the preset. Floors sit **Wall Height** apart in Fit Height mode, and the height of the tallest generated piece apart in Uniform Scale mode. |
 | **Treat Spline Reversed** | Builds as if the spline ran the other way, which turns every piece to face the other side. Tick it when a wall's pieces face the wrong way. |
+| **Follow Parent Segments** | Stacked walls only. Off (default): the wall divides its own path. On: it takes the joints and corners of the wall it is stacked on, puts one of its own pieces into each of the parent's bays, stretched to fit, and its posts follow the same joints. Joints are carried straight across to a wall set sideways with **Inset**, so catwalk legs, deck and rails line up on any path. Custom Piece gaps are not copied. |
 | **Collapse Nearby Spline Point Distance** | Neighbouring spline points closer than this are merged into one before the corners are built, so an accidental double point does not make a tiny broken corner. Default `10`; `0` turns it off. |
 
 ### Fit Height or Uniform Scale
@@ -56,6 +59,14 @@ When you change a Wall's preset, the tags Spline Architect added for the old pre
 - **Leftover space is filled by Filler Wall Meshes**, and fillers still stretch. A kit used in Uniform Scale wants a filler.
 
 Stacked floors, roofs, and floor alignment all follow the same shared factor, so layers of mixed-height meshes never interpenetrate.
+
+**Fit Height (Keep Depth)** stretches like Fit Height, in height and along the wall, but keeps each mesh as deep as it was modelled. Plain Fit Height makes a 100 cm tall piece fitted to 275 cm also 2.75 times as deep; Keep Depth leaves it at its own depth. Pieces are counted by their modelled length, so the number of pieces does not change when you change Wall Height. Corner meshes and custom pieces still scale as in Fit Height.
+
+### Stairs with Steps
+
+With **Wall Z Handling** set to **Steps**, every sloped part between two spline points is cut into equal steps no higher than **Max Step Height**. Each step is one wall piece, lying level at the height of its uphill end, so every riser is the same height and the top step is flush with the flat part after it. Flat parts are left as they are and work as landings. **Apply Shape > Stair Path** draws a flat, a 3 m rise and a flat to start from.
+
+On slopes the steps ignore **Randomize Segments By**, so they stay equal. Periodically posts still measure along the whole slope.
 
 ## Wall Meshes and fitting
 
@@ -94,12 +105,22 @@ How a turn is built is one choice: give it a dedicated **Corner Mesh**, or let *
 | **Corner Size Mode** | Bend and Pipe only: what Corner Length measures. **Leg Length** (default): every corner reaches the same distance along its walls, so sharp corners curve much tighter than open ones. **Radius**: every corner gets the same curve whatever its angle - pick it when a shape with different corner angles should look evenly rounded. |
 | **Overlap Corners By** | Pushes each corner this far into the pieces beside it, to close gaps at the turn. Default `0`. |
 | **Offset By** | Moves everything the wall generates, stacked floors included, by this offset - for example to sink or raise the whole wall. |
-| **Offset Stacked By** | Shifts each stacked floor by this much more than the floor below it, for walls with parts that stick out. |
+| **Offset Every Floor** | Extra shift in cm added between every floor copy of this wall (**Num Floors**), and carried up to every wall stacked on top of it. To move only the wall on top, leave this at `0` and use **Offset By** on that wall instead. Called Offset Stacked By before 6.3. |
 
 ## Floors, roofs, posts, and variation
 
 - **Floor Surfaces** and **Roof Surfaces** are fully listed in [Floors and roofs](/authoring/floors-roofs).
-- **Post Configurations** adds extra meshes at chosen places on the wall: On Corners (default), On Spline Points, Between Segments, On Custom Pieces, Periodically (every **Period Distance**, default `100`) or Start and End. Each entry has its own mesh, offset, rotation, scale and mirror switches. A post grows with the wall height unless you turn that off, stands upright unless you let it follow the spline's slope, and can skip sloped or level segments. Start and End can give each end post its own mesh and transform.
+- **Post Configurations** adds extra meshes at chosen places on the wall. Each entry has its own mesh, offset, rotation, scale and mirror switches. **Generation Method** says where they go:
+  - **Corner Ends** (default; called On Corners before 6.3): two posts at every corner, one at each end of the corner zone, where the corner meets the straight wall on either side.
+  - **Corner Points**: one post exactly on each corner point, turned halfway between the two walls. The first and last point of an open path are not corners; add Start and End for those.
+  - **Between Segments**: a post at every joint between two wall pieces inside a straight run. Corners and the ends of the wall get none; add Corner Ends, Corner Points or Start and End for those.
+  - **On Spline Points**, **On Custom Pieces**, **Periodically** (every **Period Distance**, default `100`) and **Start and End**, which can give each end post its own mesh and transform.
+
+  When two entries with the same mesh would put a post on the same spot (within 1 cm, same floor), only the first entry in the list places it.
+
+  A post grows with the wall height (**Scale To Wall Height**) unless you turn that off. By default it grows evenly in all directions, so a tall wall also makes it thicker; tick **Height Only** to stretch it upwards only, for steel legs and columns. A post stands upright unless you let it follow the spline's slope, and can skip sloped or level segments.
+
+  **Down To Ground** lets each post reach down to the ground below it, for legs under a deck or a pier. **Off** (default) keeps the normal post. **Stretch** hangs the post from where it is placed, Post Offset included, straight down to the ground, stretched in height only, each post with its own length. **Stack** repeats the post mesh at its normal size downwards until it reaches the ground, for meshes whose texture looks wrong stretched; **Gap** (cm) is the space between copies, negative overlaps, and the last copy may sink into the ground but is never cut. The ground is anything with collision straight below within 100 m, such as landscape or meshes, never the wall's own pieces or the walls stacked with it. Where nothing is found, the normal post is kept.
 - **Randomisation Settings → Random Transform** moves, turns and scales every placed piece by a random amount within the ranges you set. Keep the location range small, or pieces start to flicker through each other. With uniform scale on (default), the X range is used for all three axes, so pieces keep their proportions.
 - **Random Meshes** swaps a **Key Mesh** for a weighted random pick from a list of alternatives; the Key Mesh stays in the draw. **Keep Scale** (default) keeps the replacement's own size, which can leave gaps or overlaps; **Match Scale** fits it to the original's size. **Knockout** removes that share of the pieces that use the Key Mesh, at random: `0` keeps all, `1` removes all. Two switches turn pieces at random about the up axis, by 90° steps or by 180°.
 

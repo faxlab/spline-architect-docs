@@ -47,7 +47,7 @@ Do not read "wall" too literally. The same actor makes shopfronts, fences, and r
 
 ## Stacked walls
 
-**Add Wall to Selected** connects a new Wall to the selected one as a child. The child follows its parent's effective footprint and sits on top of it, raised by the parent's height; **Offset Stacked By** in the preset shifts a layer beyond that.
+**Add Wall to Selected** connects a new Wall to the selected one as a child. The child follows its parent's effective footprint and sits on top of it, raised by the parent's height; **Offset Every Floor** in the preset shifts a layer beyond that, and **Offset By** moves only that layer. Turn on **Follow Parent Segments** in the child's preset when its pieces and posts should sit at the parent's joints, as the deck, rails and legs of a catwalk do - see [Wall Configuration](/authoring/wall-presets#wall-configuration).
 
 Storeys are the obvious use, but a layer can be anything: a trim band between floors, a railing on a plinth, an inset upper ring - the clip at the top of this page is all stacks. Each layer keeps its own preset, materials, and seed, so a stack composes structures no single preset could describe - and saving the stack as a preset is how a [Building](/getting-started/first-building) is born.
 

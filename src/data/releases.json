@@ -1,5 +1,46 @@
 [
   {
+    "version": "6.3.0",
+    "date": "2026-11",
+    "engines": "UE 5.8",
+    "summary": "The wall layout update: steel frames, catwalks, stairs and fences on hills without workarounds. Posts that reach the ground, a Steps mode for stairs, stacked walls that follow the joints of the wall below, and level pieces on slopes that sit at their lowest point.",
+    "highlights": [
+      "**Keep Z Height From** (Lowest, Centre, Highest): Keep Z walls on slopes now sit at their lowest point, so a fence panel or slab sinks into the hill at its uphill end instead of floating at the downhill end. Centre is the old behaviour. The shipped Stairs preset now uses Highest, so its first step stands on the ground and its top step is flush with the level above. See [Wall Configuration](/authoring/wall-presets#wall-configuration).",
+      "New Wall Z Handling **Steps**, with **Max Step Height**: every slope becomes a staircase of equal steps, one piece per step, the top step flush with the flat part after it. A 300 cm rise with Max Step Height 20 gives 15 steps of 20 cm. See [Stairs with Steps](/authoring/wall-presets#stairs-with-steps).",
+      "Posts: **Down To Ground**. Stretch hangs each post from where it is placed down to the ground below it, each with its own length; Stack repeats the post mesh downwards until it reaches the ground, with a **Gap** setting (negative overlaps). A post never lands on its own wall or the walls stacked with it. See [posts](/authoring/wall-presets#floors-roofs-posts-and-variation).",
+      "Posts: **Height Only** (under Scale To Wall Height) stretches a post to the wall height without making it thicker.",
+      "Posts: On Corners is now called **Corner Ends** (posts at both ends of the corner zone), and the new **Corner Points** places one post exactly on each corner point. Two posts with the same mesh on the same spot are no longer both placed.",
+      "New Height Mode **Fit Height (Keep Depth)**: pieces stretch to Wall Height and to their slot but keep their modelled depth, and are counted by their modelled length.",
+      "Stacked walls: **Follow Parent Segments**. A stacked wall takes the joints and corners of the wall below it, one piece per bay, and its posts follow the same joints, also when it is set sideways with Inset. Catwalk legs, deck and rails line up on any path.",
+      "Offset Stacked By is now called **Offset Every Floor**, and its tooltip points to Offset By for moving only the wall on top.",
+      "Building layers re-measure their pieces: with Height Override and Length Override off, a preset row uses its tallest and longest piece as they are now, not numbers stored earlier.",
+      "[Apply Shape](/authoring/shapes-spline-tools#shape-library) lists open paths first, then rectangles, buildings and curves. New starter paths: Straight 5 m and 30 m, Zig-Zag 20 m, and a Stair Path to use with Steps."
+    ],
+    "notes": [
+      "Saved data keeps loading; no setting was removed. Corner Ends and Offset Every Floor are new display names only.",
+      "Keep Z walls on sloped splines move down to their lowest end. To get the old height back, set Keep Z Height From to Centre. Flat walls are unchanged.",
+      "Where two post entries with the same mesh placed two identical posts on one spot, only the first entry places one now.",
+      "Built-in Apply Shape entries keep their Shape IDs; their names changed, and the Basic group is now called Rectangles."
+    ]
+  },
+  {
+    "version": "6.2.2",
+    "date": "2026-11",
+    "engines": "UE 5.8",
+    "summary": "A small fix release: baked pieces with short names so deep mesh folders still package, Import Map previews on sloped ground, and corrected tooltips.",
+    "highlights": [
+      "Baked pieces get short names, so meshes in deep folders with long names still package. New setting **Project Settings > Spline Architect > Bake > Baked Mesh Naming**: Source Name In Folder And Piece (default) or Source Name In Folder Only (shortest paths).",
+      "Baking a piece that would still be too long shows a warning pointing at the settings. **Diagnostics > Baked Assets** shows too-long pieces in red and has a Too Long To Package filter.",
+      "Sloped straight wall corners no longer re-bake on every rebuild.",
+      "[Import Map](/core-actors/import-map): the preview of streets and map areas follows sloped ground, the Import button is no longer greyed out, and with Ground heights each building stands on the highest ground under its outline, so entrances no longer sink into a slope.",
+      "Corrected tooltips: Wall Height and Wall Length use the tallest and longest wall piece, Keep Flat levels the wall at the lowest point, and Wall Booleans also cut wall meshes."
+    ],
+    "notes": [
+      "Pieces baked by an earlier version keep working. An old piece with a path too long to package is baked again under the short name on the next rebuild of its actor; Delete Unused removes the old file.",
+      "Floor, roof and street meshes baked in the level cap the actor label at 32 characters in their names, so actors with longer labels get new mesh names."
+    ]
+  },
+  {
     "version": "6.2.1",
     "date": "2026-11",
     "engines": "UE 5.8",
