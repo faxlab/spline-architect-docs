@@ -21,7 +21,7 @@ There is nothing to set up in Spline Architect. When the Toolset Registry is pre
 
 | Toolset | What it covers |
 | --- | --- |
-| **SplineArchitectTools** | The guides and this manual; every actor type and setting with its tooltip; presets and shapes; spawning, shaping, stacking, presets, Spline Architect menu commands, baking, saving presets, converting; a summary of what an actor generated. |
+| **SplineArchitectTools** | The guides and this manual; every actor type and setting with its tooltip; presets and shapes; spawning, shaping, stacking, presets, Spline Architect menu commands, baking, saving presets, converting; fixing Static Mesh pivots and lightmap UVs; a summary of what an actor generated. |
 | **SplineArchitectStreetsTools** | Streets networks: draw streets (crossings become intersections, as in Streets Mode), change road profiles, move and round junctions, delete streets and junctions, read the lots. Import real streets, land areas and buildings from OpenStreetMap sources you have downloaded. |
 | **SplineArchitectPCGTools** | The SA PCG nodes: list them, read their pins and settings, add them to a graph. Epic's PCG tools then connect and configure them like any other node. |
 
@@ -30,9 +30,10 @@ The assistant reads the same tooltips you see in the Details panel, so a clear t
 ## What it does and does not do
 
 - Authored actor and street edits are undoable. **Ctrl+Z** undoes the assistant's last action like your own.
-- Commands that open a dialog are not available to it - it cannot click one, and an open dialog would block the editor. Save Preset and Convert have dialog-free versions instead.
+- Commands that open a dialog are not available to it - it cannot click one, and an open dialog would block the editor. Save Preset, Convert, the [Pivot Tool](/production/editor-tools#pivot-tool) and the [Lightmap Tool](/production/editor-tools#lightmap-tool) have dialog-free versions instead.
 - Saving a preset writes the preset table to disk immediately, exactly like the **Save Preset** button. Everything else waits for you to save (**File > Save All**).
 - Converting keeps the original actors unless you ask it to delete them.
+- The assistant can check and fix the pivots of a set of meshes before it builds presets from them. Like the Pivot Tool, it makes re-pivoted copies next to the originals unless you ask it to change the meshes themselves.
 - An assistant can add an existing map file, inspect regional extract sizes, and start a download after you confirm the region and size. Once a source is ready, it can import areas by place name or coordinates and passes on the required OpenStreetMap attribution.
 - An import can include the map's buildings. Each becomes a [Building](/core-actors/building#buildings-from-a-map-import) in the style whose height fits best, with its floors fitted to the map height, and touching buildings share one wall. The assistant can keep one actor per building (the default), one per street lot, or one for all, or import footprints only, with no style. Its report counts the buildings and the Building actors it made.
 - A map import by an assistant uses the [Import Map](/core-actors/import-map) window's remembered choices: road types, widths, materials, building style tables, height fitting, filters, and the limits. [Ground heights](/core-actors/import-map#ground-heights) is the exception: the window's choice does not carry over, so the assistant asks for it on each import, and its report then carries the Terrain Tiles credit. An import over the Building limit (2,000 unless you changed it) is refused with the building count. Raise the limit in the window, import footprints only, or ask for a smaller area. When no style table is ticked in the window, the assistant uses your project's own Building preset tables; if there are none, a styled import is refused until you save a Building as a preset.
