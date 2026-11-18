@@ -14,6 +14,7 @@ Conversion is the exit: it turns Spline Architect output into plain Unreal actor
 | **Grouping** | Combined, Per Actor, Per Root Stack, or Per Mesh Type. |
 | **Output Mode** | Components, Instanced, or Hierarchical Instanced components. |
 | **Mobility** | Preserve Source, Static, Stationary, or Movable. |
+| **Pivot Height** | **Lowest Point** (default) puts the pivot at the very bottom of the output. **Source Actor** keeps the source actor's pivot height - for a Building, street level, with its Under Base hanging below - so a converted building drops onto a lot at the right height. The pivot is always centred on the geometry from above. |
 | **Include Attached Actors** | Captures attached actor hierarchies in the conversion scope. |
 | **Bake Spline Architect Actors Before Convert** | Temporarily bakes sources so generated surfaces are captured. Keep enabled unless you intentionally want current component state only. |
 | **Include Splines** | Copies Spline Components into Blueprint output. |
