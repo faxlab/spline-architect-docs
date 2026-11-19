@@ -6,6 +6,7 @@ description: Fit modular pieces along a path for facades, fences, railings and k
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 import Layers from '@site/src/components/Layers';
+import Compare from '@site/src/components/Compare';
 
 <ClipAside
   media={
@@ -66,6 +67,18 @@ Storeys are the obvious use, but a layer can be anything: a trim band between fl
 Used on the bottom wall, this slides a new base under an existing building: the new wall becomes the footprint and takes over the spline, curves and all, along with the mirror settings that the footprint defines for the whole stack. The old bottom wall keeps its custom pieces and becomes the floor above.
 
 ## Spline
+
+<Compare
+  caption="Seen from above: a path drawn only in one corner, with Mirror Mode set to None, X, Y and XY. The red line is the mirror axis."
+  panels={[
+    {src: 'img/screens/mirror-mode-none.webp', label: 'None', detail: 'Mirror Mode'},
+    {src: 'img/screens/mirror-mode-x.webp', label: 'X', detail: 'Mirror Mode'},
+    {src: 'img/screens/mirror-mode-y.webp', label: 'Y', detail: 'Mirror Mode'},
+    {src: 'img/screens/mirror-mode-xy.webp', label: 'XY', detail: 'Mirror Mode'},
+  ]}
+  ratio="800 / 760"
+  labelsBelow
+/>
 
 | Control | Options and effect |
 | --- | --- |

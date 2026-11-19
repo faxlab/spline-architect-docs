@@ -146,6 +146,18 @@ How a turn is built is one choice: give it a dedicated **Corner Mesh**, or let *
 
 ## Floors, roofs, posts, and variation
 
+<Compare
+  caption="One fence on a zig-zag path, with one post mesh. Only the post entry's Generation Method changes."
+  panels={[
+    {src: 'img/screens/wall-posts-corners.webp', label: 'Corner Ends', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-corner-points.webp', label: 'Corner Points', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-between-segments.webp', label: 'Between Segments', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-spline-points.webp', label: 'On Spline Points', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-start-end.webp', label: 'Start and End', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-periodically.webp', label: 'Periodically', detail: 'Period Distance 100'},
+  ]}
+/>
+
 - **Floor Surfaces** and **Roof Surfaces** are fully listed in [Floors and roofs](/authoring/floors-roofs).
 - **Post Configurations** adds extra meshes at chosen places on the wall. Each entry has its own mesh, offset, rotation, scale and mirror switches. **Generation Method** says where they go:
   - **Corner Ends** (default; called On Corners before 6.3): two posts at every corner, one at each end of the corner zone, where the corner meets the straight wall on either side.
