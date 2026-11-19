@@ -10,7 +10,7 @@ Draw any footprint, and a Building puts a saved stack of walls on it: the same s
 
 ![Three buildings from one Building Preset on three different footprint splines](/img/screens/building-two-footprints.webp)
 
-Keep the preset and change nothing but the row, and the same footprint builds a different building.
+Pick a different preset row and the same footprint builds a different building.
 
 ![One footprint spline with three Building presets: a brick tower with fire escapes, a green-grey office block with a ground-floor colonnade, and a cream stone building with a pitched roof](/img/screens/building-three-presets.webp)
 

@@ -16,7 +16,7 @@ The window prepares a preview after every change. Nothing in the level changes u
 
 ![The Import Map window on Lower Manhattan: the search box, the map with a drawn boundary, and the roads, building footprints and land areas the import would read, coloured by type](/img/screens/import-map-window.webp)
 
-Map data (c) OpenStreetMap contributors.
+Map data © OpenStreetMap contributors.
 
 ## Open the window
 
@@ -109,10 +109,10 @@ The map pans with a left, right, or middle drag, and zooms with the mouse wheel.
 
 Choosing a place puts a 1000 × 1000 m boundary on the map. To draw your own, open **Draw**:
 
-</ClipAside>
-
 - **Rectangle** - drag on the map. **Shift**+drag draws a new rectangle at any time.
 - **Polygon** - click corners. Click the first corner, double-click, or press **Enter** to finish; **Backspace** removes the latest corner and **Escape** cancels. A polygon can have up to 512 corners, and one that crosses itself must be fixed before it is used.
+
+</ClipAside>
 
 To change the boundary you have:
 
