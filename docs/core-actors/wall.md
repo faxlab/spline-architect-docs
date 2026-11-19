@@ -5,6 +5,8 @@ description: Fit modular pieces along a path for facades, fences, railings and k
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Layers from '@site/src/components/Layers';
+import Compare from '@site/src/components/Compare';
 
 <ClipAside
   media={
@@ -47,6 +49,15 @@ Do not read "wall" too literally. The same actor makes shopfronts, fences, and r
 
 ## Stacked walls
 
+<Layers
+  label="A stack of three Walls, top layer first"
+  layers={[
+    {name: 'Upper Wall', text: 'A child. Follows the footprint below and sits on top of it.'},
+    {name: 'Trim band', text: 'A child too, with its own preset, materials and seed.'},
+    {name: 'Root Wall', text: 'The bottom Wall. It owns the spline that every layer follows.'},
+  ]}
+/>
+
 **Add Wall to Selected** connects a new Wall to the selected one as a child. The child follows its parent's effective footprint and sits on top of it, raised by the parent's height; **Offset Every Floor** in the preset shifts a layer beyond that, and **Offset By** moves only that layer. Turn on **Follow Parent Segments** in the child's preset when its pieces and posts should sit at the parent's joints, as the deck, rails and legs of a catwalk do - see [Wall Configuration](/authoring/wall-presets#wall-configuration).
 
 Storeys are the obvious use, but a layer can be anything: a trim band between floors, a railing on a plinth, an inset upper ring - the clip at the top of this page is all stacks. Each layer keeps its own preset, materials, and seed, so a stack composes structures no single preset could describe - and saving the stack as a preset is how a [Building](/getting-started/first-building) is born.
@@ -56,6 +67,18 @@ Storeys are the obvious use, but a layer can be anything: a trim band between fl
 Used on the bottom wall, this slides a new base under an existing building: the new wall becomes the footprint and takes over the spline, curves and all, along with the mirror settings that the footprint defines for the whole stack. The old bottom wall keeps its custom pieces and becomes the floor above.
 
 ## Spline
+
+<Compare
+  caption="Seen from above: a path drawn only in one corner, with Mirror Mode set to None, X, Y and XY. The red line is the mirror axis."
+  panels={[
+    {src: 'img/screens/mirror-mode-none.webp', label: 'None', detail: 'Mirror Mode'},
+    {src: 'img/screens/mirror-mode-x.webp', label: 'X', detail: 'Mirror Mode'},
+    {src: 'img/screens/mirror-mode-y.webp', label: 'Y', detail: 'Mirror Mode'},
+    {src: 'img/screens/mirror-mode-xy.webp', label: 'XY', detail: 'Mirror Mode'},
+  ]}
+  ratio="800 / 760"
+  labelsBelow
+/>
 
 | Control | Options and effect |
 | --- | --- |

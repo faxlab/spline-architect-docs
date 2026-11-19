@@ -3,11 +3,25 @@ title: AI agents (MCP)
 description: Let an AI assistant build and edit Spline Architect content through Unreal Engine 5.8's built-in MCP server.
 ---
 
-An AI assistant connected to Unreal through MCP can place Walls, Buildings and Curves, shape their paths, lay out streets, add SA PCG nodes, save presets and convert results - through the same code paths the editor's own buttons use, and with one undo step per change. You stay in the editor and can undo, adjust or take over at any point.
+import Flow from '@site/src/components/Flow';
+
+Connect an AI assistant to Unreal through MCP and it can build with Spline Architect for you: place Walls, Buildings and Curves, shape their paths, lay out streets, add SA PCG nodes, save presets and convert results.
+
+It uses the same code as the editor's own buttons, with one undo step per change. You stay in the editor and can undo, adjust or take over at any point.
 
 :::info UE 5.8 only
 The MCP server ships with Unreal Engine 5.8 as an Experimental plugin. Spline Architect's agent tools need it and are not available on 5.5-5.7. See [compatibility](/reference/compatibility).
 :::
+
+<Flow
+  label="How an assistant reaches Spline Architect"
+  steps={[
+    {title: 'Your assistant', text: 'Any MCP client.'},
+    {title: 'Unreal MCP server', text: 'http://localhost:8963/mcp'},
+    {title: 'Spline Architect tools', text: 'Registered by the plugin.'},
+    {title: 'The editor', text: 'Same code as the buttons. One undo step per action.'},
+  ]}
+/>
 
 ## Connect an assistant
 

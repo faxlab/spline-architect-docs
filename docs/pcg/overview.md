@@ -3,8 +3,11 @@ title: UE 5.8 PCG integration
 description: Let PCG graphs read your streets, lots, walls and footprints and build buildings and props on them, rebuilt whenever you edit.
 ---
 
+import NodeChain from '@site/src/components/NodeChain';
+
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Flow from '@site/src/components/Flow';
 
 <ClipAside
   media={
@@ -24,6 +27,15 @@ The SA nodes turn what you authored - streets, lots, walls, footprints - into da
 
 SA PCG nodes separate authored meaning from spawned output:
 
+<Flow
+  label="Read, transform, generate"
+  steps={[
+    {title: 'Read', text: 'SA Get Lots, SA Get Road Edges, SA Get Spline and the other readers pull live Spline Architect data.'},
+    {title: 'Transform', text: 'SA Subdivide Lots, SA Polygon Offset, SA Prune Footprints reshape it.'},
+    {title: 'Generate', text: 'SA Spawn Building and SA Spawn Wall build pieces; SA Edge Placer and the normal PCG spawners place props.'},
+  ]}
+/>
+
 1. **Read** live Spline Architect actors: lots, road edges, crossings, intersections, facades, surfaces, imported map buildings and land areas, or effective generation splines.
 2. **Transform** boundaries and points: subdivide, offset, merge, sample, orient, choose assets, and prune footprints.
 3. **Generate** Wall, Curve, or Building data—or feed normal PCG spawners.
@@ -40,24 +52,11 @@ For anything at city scale, author a few buildings, [convert them to static mesh
 
 For a hero block - a handful of buildings, generated in full - use:
 
-```text
-SA Get Lots (Lot Boundaries)
-  → Filter Data By Attribute (SA_LotEmpty == false)
-  → SA Subdivide Lots
-  → SA Polygon Offset (negative setback)
-  → SA Spawn Building (Data)
-      Generated → Static Mesh Spawner (By Attribute: SA_Mesh)
-      Dynamic Meshes → Spawn Dynamic Mesh
-```
+<NodeChain nodes={[{"name": "SA Get Lots", "notes": ["Lot Boundaries"]}, {"name": "Filter Data By Attribute", "notes": ["SA_LotEmpty == false"]}, {"name": "SA Subdivide Lots"}, {"name": "SA Polygon Offset", "notes": ["negative setback"]}, {"name": "SA Spawn Building", "notes": ["Data"], "branches": [{"label": "Generated", "to": "Static Mesh Spawner (By Attribute: SA_Mesh)"}, {"label": "Dynamic Meshes", "to": "Spawn Dynamic Mesh"}]}]} />
 
 For road props:
 
-```text
-SA Get Road Edges
-  → SA Edge Placer
-  → SA Prune Footprints
-  → Static Mesh Spawner (By Attribute: SA_Mesh)
-```
+<NodeChain nodes={[{"name": "SA Get Road Edges"}, {"name": "SA Edge Placer"}, {"name": "SA Prune Footprints"}, {"name": "Static Mesh Spawner", "notes": ["By Attribute: SA_Mesh"]}]} />
 
 ## Data domains and filtering
 

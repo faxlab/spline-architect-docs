@@ -7,6 +7,17 @@ Look up what an `SA_` attribute on PCG data means and what type it is, before yo
 
 Attribute names are case-sensitive. Use Data-domain filters for whole paths/lots and element filters after sampling for individual points. PCG data tags are separate from metadata attributes; use **Filter Data By Tag** for them.
 
+<div className="card-grid">
+  <a href="#streets-and-lots"><strong>Streets and lots</strong>SA_LotZone, SA_LotArea, SA_RoadWidth and the rest.</a>
+  <a href="#effective-spline-attributes"><strong>Splines</strong>What SA Get Spline writes on each path.</a>
+  <a href="#facade-frames"><strong>Facade frames</strong>Points for attaching things to walls.</a>
+  <a href="#floor-and-roof-samples"><strong>Floors and roofs</strong>Samples for rooftop scatter.</a>
+  <a href="#map-buildings"><strong>Map buildings</strong>Footprints, heights and styles from an import.</a>
+  <a href="#map-areas"><strong>Map areas</strong>Parks, water and other land areas.</a>
+  <a href="#polygon-prop-and-spawn-output"><strong>Polygon, prop and spawn output</strong>What the generating nodes write.</a>
+  <a href="#preset-tags-and-filtering"><strong>Preset tags</strong>Filtering buildings and pieces by tag.</a>
+</div>
+
 ## Streets and lots
 
 | Attribute | Type | Meaning |

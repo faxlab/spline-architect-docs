@@ -7,6 +7,7 @@ hide_title: true
 ---
 
 import LatestVersion from '@site/src/components/LatestVersion';
+import Flow from '@site/src/components/Flow';
 
 <div className="hero-shot">
   <img className="hero-shot__bg" src="/spline-architect-docs/img/screens/overview-sacity.webp" alt="A street in the SACity example, built with Spline Architect" />
@@ -18,6 +19,25 @@ import LatestVersion from '@site/src/components/LatestVersion';
   <span className="hero-shot__version"><LatestVersion /></span>
 </div>
 
+You draw paths in the Unreal viewport, and Spline Architect builds walls, buildings, curves and whole city streets along them. Change the path, the preset or a number and the result rebuilds.
+
+![Lower Manhattan imported from OpenStreetMap: roads, blocks and every building in one level](/img/screens/overview-imported-city.webp)
+
+![A hand-drawn city seen from above: streets and a dense mix of brick and glass buildings, drawn as splines](/img/screens/overview-hand-drawn-city.webp)
+
+<Flow
+  label="The Spline Architect workflow"
+  steps={[
+    {title: 'Draw', text: 'Click a path in the viewport.'},
+    {title: 'Build', text: 'Pieces fit along it as you go.'},
+    {title: 'Save a preset', text: 'Reuse the setup anywhere.'},
+    {title: 'Bake', text: 'Freeze it as meshes.'},
+    {title: 'Fill the city', text: 'Streets and PCG add the rest.'},
+  ]}
+/>
+
+## The actors
+
 | Actor | Use it for |
 | --- | --- |
 | [Wall](/core-actors/wall) | Modular pieces along one or more splines, including floors, roofs, posts, and stacked walls. |
@@ -27,10 +47,6 @@ import LatestVersion from '@site/src/components/LatestVersion';
 | [Lot Zone](/core-actors/lot-zone) | **UE 5.8.** A closed area that tags Streets lots for PCG filtering. |
 | [Custom Piece](/core-actors/custom-piece) | A door, arch, corner, gap, or child actor placed into a Wall. |
 | [Boolean](/core-actors/boolean) | Subtract or cull overlapping generated output. |
-
-![Lower Manhattan imported from OpenStreetMap: roads, blocks and every building in one level](/img/screens/overview-imported-city.webp)
-
-![A hand-drawn city seen from above: streets and a dense mix of brick and glass buildings, drawn as splines](/img/screens/overview-hand-drawn-city.webp)
 
 ## How the workflow fits together
 

@@ -3,7 +3,11 @@ title: Lot Zone
 description: Label the lots in part of a city, such as Residential or Park, so a PCG graph can build different things in each.
 ---
 
+import LotZoneDiagram from '@site/src/components/LotZoneDiagram';
+
 Draw a loop over part of your city and name it Residential. Every lot inside gets that label, so a PCG graph can put houses there and shops elsewhere.
+
+<LotZoneDiagram />
 
 :::info UE 5.8 only
 Lot Zone exists to tag Streets lots, so it ships with Streets in the UE 5.8 package only. See [compatibility](/reference/compatibility).

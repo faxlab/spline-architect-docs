@@ -5,10 +5,20 @@ description: Choose the pieces a wall is made of and how they fit the path, shap
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Compare from '@site/src/components/Compare';
 
 These settings decide how a wall is put together: which pieces it uses, how they fit the path, what happens at the corners and what varies from piece to piece. Open them when a wall looks stretched, gappy or too regular.
 
 The same settings appear in a Wall actor, in each wall layer of a Building and in SA Spawn Wall, and they work the same in a shared DataTable row or inline on one actor. Everything on this page applies in all of those places.
+
+<div className="card-grid">
+  <a href="#core-dimensions"><strong>Core Dimensions</strong>Wall height, wall length, corner length and how meshes are resized.</a>
+  <a href="#wall-configuration"><strong>Wall Configuration</strong>Slopes, inset, overlap, stacking, Fit Height and Stairs with Steps.</a>
+  <a href="#wall-meshes-and-fitting"><strong>Wall Meshes and fitting</strong>Which pieces a wall uses and how they fill the path.</a>
+  <a href="#corner-and-placement"><strong>Corner and placement</strong>Corner shapes and where pieces and fillers go.</a>
+  <a href="#floors-roofs-posts-and-variation"><strong>Floors, roofs, posts</strong>Posts, and the random variation between pieces.</a>
+  <a href="#materials-and-instance-custom-data"><strong>Materials</strong>Per-wall material parameters and instance custom data.</a>
+</div>
 
 ## Preset metadata
 
@@ -33,9 +43,19 @@ When you change a Wall's preset, the tags Spline Architect added for the old pre
 
 ## Wall Configuration
 
+<Compare
+  caption="One 20 m wall that climbs 3 m, built from one repeated piece and seen side-on. Only Wall Z Handling changes."
+  panels={[
+    {src: 'img/screens/wall-zhandling-keep-z.webp', label: 'Keep Z', detail: 'Wall Z Handling'},
+    {src: 'img/screens/wall-zhandling-keep-flat.webp', label: 'Keep Flat', detail: 'Wall Z Handling'},
+    {src: 'img/screens/wall-zhandling-follow-spline.webp', label: 'Follow Spline', detail: 'Wall Z Handling'},
+    {src: 'img/screens/wall-zhandling-skew.webp', label: 'Skew', detail: 'Wall Z Handling'},
+  ]}
+/>
+
 | Control | Options and effect |
 | --- | --- |
-| **Wall Z Handling** | What the wall does where the spline climbs. **Keep Z** (default) keeps every piece level and sets each one at the height **Keep Z Height From** picks, so a slope becomes a row of level pieces. **Keep Flat** builds the whole wall at the height of the lowest point. **Follow Spline** tilts each piece with the slope, for ramps and walls along terrain. **Skew** shears the pieces: the bottom stays level and the top follows the height change. **Steps** turns every slope into a staircase - see [Stairs with Steps](#stairs-with-steps). |
+| **Wall Z Handling** | What the wall does where the spline climbs. **Keep Z** (default) keeps every piece level and sets each one at the height **Keep Z Height From** picks, so a slope becomes a row of level pieces. **Keep Flat** builds the whole wall at the height of the lowest point. **Follow Spline** tilts each piece with the slope, for ramps and walls along terrain. **Skew** shears each piece upright: its bottom and top both follow the height change, and its vertical edges stay vertical instead of tilting. **Steps** turns every slope into a staircase - see [Stairs with Steps](#stairs-with-steps). |
 | **Keep Z Height From** | Keep Z only: which height a level piece on a slope sits at. **Lowest** (default) takes its lower end, so a fence panel or slab sinks into the hill at its uphill end and never floats at the downhill end. **Centre** is how Keep Z worked before 6.3. **Highest** takes the higher end, so each step piece lands at the height it climbs to, as in the shipped Stairs preset. |
 | **Max Step Height** | Steps only: the highest one step may rise, in cm. Default `20`. A 300 cm rise with `20` gives 15 steps of exactly 20 cm. |
 | **Max Step Depth** | Steps only: the deepest one step may be, in cm, measured flat. Default `0` = no limit. Set it to about `30` so a long, gentle slope gets extra, lower steps instead of a few stretched ones: a 100 cm rise over 600 cm gives 5 steps 120 cm deep without it, and 20 steps 30 cm deep with `30`. |
@@ -77,6 +97,16 @@ On slopes the steps ignore **Randomize Segments By**, so they stay equal. Period
 
 ## Wall Meshes and fitting
 
+<Compare
+  caption="One 20 m wall built from the same three pieces: yellow, grey and a long red one. Seed is 3. Only Wall Piece Selection changes."
+  panels={[
+    {src: 'img/screens/wall-selection-best-fit.webp', label: 'Best Fit', detail: 'Wall Piece Selection'},
+    {src: 'img/screens/wall-selection-random-fit.webp', label: 'Random Fit', detail: 'Wall Piece Selection'},
+    {src: 'img/screens/wall-selection-ordered-sequence.webp', label: 'Ordered Sequence', detail: 'Wall Piece Selection'},
+    {src: 'img/screens/wall-selection-closest-length.webp', label: 'Closest Length', detail: 'Wall Piece Selection'},
+  ]}
+/>
+
 | Control | What it does |
 | --- | --- |
 | **Wall Meshes** | The main pieces the wall is made of. Each slot gets one, chosen the way **Wall Piece Selection** says. |
@@ -115,6 +145,18 @@ How a turn is built is one choice: give it a dedicated **Corner Mesh**, or let *
 | **Offset Every Floor** | Extra shift in cm added between every floor copy of this wall (**Num Floors**), and carried up to every wall stacked on top of it. To move only the wall on top, leave this at `0` and use **Offset By** on that wall instead. Called Offset Stacked By before 6.3. |
 
 ## Floors, roofs, posts, and variation
+
+<Compare
+  caption="One fence on a zig-zag path, with one post mesh. Only the post entry's Generation Method changes."
+  panels={[
+    {src: 'img/screens/wall-posts-corners.webp', label: 'Corner Ends', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-corner-points.webp', label: 'Corner Points', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-between-segments.webp', label: 'Between Segments', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-spline-points.webp', label: 'On Spline Points', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-start-end.webp', label: 'Start and End', detail: 'Generation Method'},
+    {src: 'img/screens/wall-posts-periodically.webp', label: 'Periodically', detail: 'Period Distance 100'},
+  ]}
+/>
 
 - **Floor Surfaces** and **Roof Surfaces** are fully listed in [Floors and roofs](/authoring/floors-roofs).
 - **Post Configurations** adds extra meshes at chosen places on the wall. Each entry has its own mesh, offset, rotation, scale and mirror switches. **Generation Method** says where they go:

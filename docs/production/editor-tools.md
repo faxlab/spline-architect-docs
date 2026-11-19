@@ -5,9 +5,19 @@ description: See every actor and baked asset in one window, reroll seeds, and fi
 
 Small tools for the work around generation: check every Spline Architect actor and baked asset in one window, give a whole level new seeds, fix a mesh's pivot or lightmap UVs before it goes into a kit, and pin the commands you use every day.
 
+<div className="card-grid">
+  <a href="#diagnostics"><strong>Diagnostics</strong>Every actor and baked asset in one window.</a>
+  <a href="#randomize-seeds"><strong>Randomize Seeds</strong>New seeds for the whole level.</a>
+  <a href="#pivot-tool"><strong>Pivot Tool</strong>Move a mesh's pivot to its bottom center, or anywhere on its bounds.</a>
+  <a href="#lightmap-tool"><strong>Lightmap Tool</strong>Fix lightmap UVs before the mesh goes into a kit.</a>
+  <a href="#pinned-toolbar"><strong>Pinned toolbar</strong>Pin the commands you use every day.</a>
+</div>
+
 ## Diagnostics
 
 Use [Diagnostics and the baked registry](/production/baking#diagnostics-and-baked-asset-registry) before large rebakes, cleanup, or conversion. It shows the current state of every actor and every tracked baked asset.
+
+![The Diagnostics window listing every Spline Architect actor with its type, state, preset, seed, component and triangle counts](/img/screens/diagnostics-window.webp)
 
 ## Randomize Seeds
 

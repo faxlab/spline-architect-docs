@@ -3,7 +3,13 @@ title: Prepare modular meshes
 description: Prepare pivots, axes, bounds, materials, UVs, and dimensions for predictable Spline Architect generation.
 ---
 
-You can learn the whole plugin on the example content - come back here when you bring your own kit. Spline Architect compensates for imperfect meshes, but a consistent kit means cleaner corners, fewer overrides, and less time spent wondering why one piece sits wrong.
+import AxesDiagram from '@site/src/components/AxesDiagram';
+
+A mesh fits a wall or curve best when its length runs along X, its height along Z, and its pivot sits at a bottom corner or bottom center. Spline Architect compensates for imperfect meshes, but a consistent kit means cleaner corners and fewer overrides.
+
+<AxesDiagram />
+
+You can learn the whole plugin on the example content - come back here when you bring your own kit.
 
 ## Coordinate contract
 

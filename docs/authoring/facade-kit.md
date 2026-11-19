@@ -3,9 +3,31 @@ title: Make Facade Kit
 description: Turn a Building preset into a fast copy made of flat textured planes, for big map imports and distant city blocks.
 ---
 
+import Compare from '@site/src/components/Compare';
+import Flow from '@site/src/components/Flow';
+
 A Building preset builds every wall piece, window and cornice. That is the right cost for a building the player walks past, and a heavy one for hundreds of imported buildings. Make Facade Kit trades the detail for speed: it photographs the straight walls of a Building preset from the front, then builds a copy of the preset from flat planes that wear those photos.
 
 The copy is an ordinary Building preset. Pick it as a style in [Import Map](/core-actors/import-map#styles), or place it like any other preset.
+
+<Flow
+  label="What Make Facade Kit does"
+  steps={[
+    {title: 'Building preset', text: 'Full detail: every piece, window and cornice.'},
+    {title: 'Make Facade Kit', text: 'Photographs its straight walls in the open level.'},
+    {title: '_Fast copy', text: 'An ordinary Building preset made of flat textured planes.'},
+  ]}
+/>
+
+<Compare
+  caption="The same footprint and seed with SmallBuilding_3 and its kit SmallBuilding_3_Fast. From 150 m the two look alike; up close the photographed planes show. Triangle counts are the static mesh triangles of the whole building."
+  panels={[
+    {src: 'img/screens/facade-kit-far-source.webp', label: 'Source preset, 150 m away', detail: '62,978 triangles'},
+    {src: 'img/screens/facade-kit-far-fast.webp', label: '_Fast kit, 150 m away', detail: '242 triangles'},
+    {src: 'img/screens/facade-kit-near-source.webp', label: 'Source preset, 5 m away', detail: 'real cornice and shopfront pieces'},
+    {src: 'img/screens/facade-kit-near-fast.webp', label: '_Fast kit, 5 m away', detail: 'flat planes wearing photos'},
+  ]}
+/>
 
 ## Make a kit
 

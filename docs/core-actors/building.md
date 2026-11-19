@@ -5,6 +5,8 @@ description: Put a saved stack of walls on any footprint you draw, and set the s
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Layers from '@site/src/components/Layers';
+import Compare from '@site/src/components/Compare';
 
 Draw any footprint, and a Building puts a saved stack of walls on it: the same storeys, trims and roof, fitted to the new shape. Edit the preset once and every placement follows; edit one placement's overrides and only it changes.
 
@@ -13,6 +15,20 @@ Draw any footprint, and a Building puts a saved stack of walls on it: the same s
 Pick a different preset row and the same footprint builds a different building.
 
 ![One footprint spline with three Building presets: a brick tower with fire escapes, a green-grey office block with a ground-floor colonnade, and a cream stone building with a pitched roof](/img/screens/building-three-presets.webp)
+
+<Compare
+  caption="One footprint and one preset. The repeating section runs from 3 to 9 floors, and only the Building Seed changes."
+  columns={5}
+  panels={[
+    {src: 'img/screens/building-seeds-1.webp', label: 'Seed 4', detail: '3 repeats'},
+    {src: 'img/screens/building-seeds-2.webp', label: 'Seed 6', detail: '4 repeats'},
+    {src: 'img/screens/building-seeds-3.webp', label: 'Seed 10', detail: '5 repeats'},
+    {src: 'img/screens/building-seeds-4.webp', label: 'Seed 26', detail: '7 repeats'},
+    {src: 'img/screens/building-seeds-5.webp', label: 'Seed 2', detail: '9 repeats'},
+  ]}
+  ratio="480 / 804"
+  labelsBelow
+/>
 
 ## Preset and controls
 
@@ -41,6 +57,15 @@ When you change the preset, the tags Spline Architect added for the old one are 
 Tags also drive filtered Building pools and generated-piece filtering in [SA PCG](/pcg/node-reference#sa-spawn-building).
 
 ## Building Preset → Walls
+
+<Layers
+  label="A Building Preset as a list of wall layers, top first"
+  layers={[
+    {name: 'Roof layer', text: 'Parent Wall ID names the floors it stands on.'},
+    {name: 'Floors', repeats: true, text: 'Min Floors to Max Floors, chosen from the Building seed.'},
+    {name: 'Ground layer', text: 'Parent Wall ID is None, so it sits on the footprint.'},
+  ]}
+/>
 
 Every Wall entry exposes:
 

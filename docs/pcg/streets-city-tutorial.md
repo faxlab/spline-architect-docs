@@ -3,6 +3,8 @@ title: Tutorial — Streets to a PCG city
 description: Generate subdivided lots, buildings, road props, and zone variation from a Streets Network in UE 5.8.
 ---
 
+import NodeChain from '@site/src/components/NodeChain';
+
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
@@ -96,9 +98,7 @@ Author a handful of buildings first, the normal way: draw them, stack the walls,
 
 To line them along the streets:
 
-```text
-SA Get Road Edges → SA Edge Placer → Static Mesh Spawner (By Attribute: SA_Mesh)
-```
+<NodeChain nodes={[{"name": "SA Get Road Edges"}, {"name": "SA Edge Placer"}, {"name": "Static Mesh Spawner", "notes": ["By Attribute: SA_Mesh"]}]} />
 
 Put your building meshes in the **Mesh Pool** with weights, set **Fill = Packed** so each one advances by its own true width, and **Facing = Away From Edge** so they front the street. Packed fitting means a pool of differently sized buildings lines up without gaps or overlaps - the same behavior that packs [mixed-size barriers](/pcg/recipes#mixed-size-barriers), applied to whole buildings.
 

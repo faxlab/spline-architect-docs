@@ -3,7 +3,19 @@ title: Install and enable Spline Architect
 description: Install Spline Architect from Fab or a packaged plugin and enable its Unreal Engine dependencies.
 ---
 
+import Flow from '@site/src/components/Flow';
+
 Install the package that matches your project's engine version exactly - a 5.8 build in a 5.8 project. Mixed versions are the single most common install problem.
+
+<Flow
+  label="Installing Spline Architect"
+  steps={[
+    {title: 'Get it', text: 'Add it to your library on Fab.'},
+    {title: 'Install', text: 'To the matching engine version.'},
+    {title: 'Enable', text: 'Edit > Plugins > Spline Architect.'},
+    {title: 'Restart', text: 'The editor asks for it.'},
+  ]}
+/>
 
 Current releases target **UE 5.8 on Windows**. UE 5.5-5.7 downloads remain available as legacy versions and receive no further updates. The older installation notes below apply to those archived packages.
 

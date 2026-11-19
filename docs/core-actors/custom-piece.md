@@ -5,6 +5,7 @@ description: Put a door, an arch, a gap or a special corner at one spot in a wal
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Compare from '@site/src/components/Compare';
 
 <ClipAside
   media={
@@ -21,6 +22,16 @@ A Custom Piece is the exception in a wall: the door, the arch, the gap, the one 
 In the clip: a doorway **inserted** among the ground-floor shutters - it cuts its slot - then shop signs **overlaid** on top of the generated wall, and a vertical piece assigned to a range of **Floors** so it runs up the facade.
 
 </ClipAside>
+
+<Compare
+  caption="The same 20 m wall, the same spot (Input Key on Spline 0.5). Only the piece and its Insert Type change."
+  panels={[
+    {src: 'img/screens/custom-piece-modes-insert.webp', label: 'Insert', detail: 'a door; the wall is cut around it'},
+    {src: 'img/screens/custom-piece-modes-overlap.webp', label: 'Overlap', detail: 'a sign; the wall stays whole'},
+    {src: 'img/screens/custom-piece-modes-gap.webp', label: 'Gap', detail: 'Insert with no mesh'},
+  ]}
+  ratio="16 / 9"
+/>
 
 ## Actor controls
 

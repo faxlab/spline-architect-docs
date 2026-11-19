@@ -7,6 +7,17 @@ Set once, for the whole project, what new actors start with, where baked meshes 
 
 The panel groups its controls into five categories: **Settings**, **Bake**, **Lightmaps**, **Preset Library**, and **Performance**. This page splits the long **Settings** category by topic.
 
+<div className="card-grid">
+  <a href="#new-actors"><strong>New actors</strong>What a placed actor starts with.</a>
+  <a href="#corners-bends-scale-and-level-save"><strong>Corners, scale, level save</strong>Corner angle steps, bend resolution, scale and what saving the level does.</a>
+  <a href="#generated-mesh-folder"><strong>Generated mesh folder</strong>Where baked meshes go.</a>
+  <a href="#streets-materials"><strong>Streets materials</strong>Default road, junction, lot ground and sidewalk materials.</a>
+  <a href="#bake"><strong>Bake</strong>Nanite on baked meshes and other bake options.</a>
+  <a href="#lightmaps"><strong>Lightmaps</strong>Lightmap UVs, texel density and padding for baked meshes.</a>
+  <a href="#preset-library"><strong>Preset Library</strong>How the library behaves when you select an actor.</a>
+  <a href="#performance"><strong>Performance</strong>Instanced preview generation and other editing-speed options.</a>
+</div>
+
 ## New actors
 
 These controls decide what an actor starts with when you place it. They never change an actor that already exists.

@@ -5,6 +5,7 @@ description: Turn the live preview into meshes saved with the level, unbake to c
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import ClipAside from '@site/src/components/ClipAside';
+import Compare from '@site/src/components/Compare';
 import LoopingClip from '@site/src/components/LoopingClip';
 
 Bake when a design is ready: the live preview becomes meshes saved with the level, and stays exactly as it is until you unbake it. Baking is reversible. **Unbake** brings the editable preview back, because the Spline Architect actor remains the source of the design.
@@ -53,6 +54,16 @@ Use **Unbake Connected**, edit the preview, then **Bake/Rebake Connected**. Edit
 When a shared preset changes, baked actors show **Preset changed since bake**. **Rebake out-of-date actors** updates affected snapshots in the current level in one action. Older bakes without preset tracking are included until they have been explicitly rebaked once.
 
 ## Method and mobility
+
+<Compare
+  caption="One Building baked three ways. The pictures are the same on purpose: the bake method changes how the pieces are stored, not how they look."
+  columns={3}
+  panels={[
+    {src: 'img/screens/bake-methods-components.webp', label: 'Components', detail: '194 static mesh components'},
+    {src: 'img/screens/bake-methods-instanced.webp', label: 'Instanced', detail: '8 components + 25 ISM, 186 instances'},
+    {src: 'img/screens/bake-methods-hierarchical-instanced.webp', label: 'Hierarchical Instanced', detail: '8 components + 25 HISM, 186 instances'},
+  ]}
+/>
 
 | Setting | Guidance |
 | --- | --- |
