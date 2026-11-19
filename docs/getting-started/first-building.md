@@ -48,7 +48,19 @@ To slide a new storey in **underneath** an existing stack, select the bottom wal
 
 ## 3. Save it as a Building Preset
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Convert to Building and Save Preset on a stacked wall: the Save Building Preset dialog lists the stack's layers and takes a DataTable and row name, then the preset is written"
+      poster="img/clips/first-building-save.webp"
+      src="img/clips/first-building-save.mp4"
+    />
+  }
+>
+
 Select the root Wall and press **Convert to Building** in its **Preset** category. The stack becomes one Building actor that builds the same result. On that Building, press **Save Preset** in the **Preset** category, and choose or create a Building Preset DataTable and a row name.
+
+</ClipAside>
 
 The row records the whole hierarchy: each layer's identity and parent, whether it uses a Wall DataTable row or carries its settings inline, its parameter overrides, and any random floor ranges. That is the entire building, as data - which is why the next step works.
 

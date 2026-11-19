@@ -3,9 +3,16 @@ title: Building
 description: Put a saved stack of walls on any footprint you draw, and set the style and height of buildings imported from a map.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
 Draw any footprint, and a Building puts a saved stack of walls on it: the same storeys, trims and roof, fitted to the new shape. Edit the preset once and every placement follows; edit one placement's overrides and only it changes.
 
 ![Three buildings from one Building Preset on three different footprint splines](/img/screens/building-two-footprints.webp)
+
+Keep the preset and change nothing but the row, and the same footprint builds a different building.
+
+![One footprint spline with three Building presets: a brick tower with fire escapes, a green-grey office block with a ground-floor colonnade, and a cream stone building with a pitched roof](/img/screens/building-three-presets.webp)
 
 ## Preset and controls
 
@@ -47,6 +54,20 @@ Every Wall entry exposes:
 | **Use Random Floor Range** | Chooses a repeat count between **Min Floors** and **Max Floors** from the Building seed. Map imports also use this range to fit each building to its real height, so it marks the section that repeats. |
 | **Min Floors / Max Floors** | Inclusive range for randomized stacking. **Min Floors** can be `0`: the section may then be left out entirely, and the sections above it sit on the section below. Map imports never go below **Min Floors**, so keep `1` or more on a section that must always be there, such as a tower's shaft. |
 | **Inline Wall Preset** | Full Wall setup used when Source Type is Inline. |
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Changing the floor counts in a Building's preset: the tower regrows from about eight storeys to eleven while its ground floor and top trim stay in place"
+      poster="img/clips/building-floors.webp"
+      src="img/clips/building-floors.mp4"
+    />
+  }
+>
+
+A section that repeats grows or shrinks with its floor count, and the trim above it moves with it.
+
+</ClipAside>
 
 ## Spline and baking
 
