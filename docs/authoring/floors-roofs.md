@@ -3,9 +3,20 @@ title: Floors, roofs, posts, and lot surfaces
 description: Set up the floor inside a footprint, the roof on top and the ground of a Streets lot, with one set of controls for Wall, Building, Curve and Streets.
 ---
 
+import Compare from '@site/src/components/Compare';
+
 import FloorAlignDiagram from '@site/src/components/FloorAlignDiagram';
 
 Walls make the shell; these settings make everything the shell contains and wears - the floor slab inside a footprint, the pitched or flat roof on top, and the ground surface of a Streets lot. The same controls appear wherever a surface can exist, so learning them once covers Wall, Building, Curve, and Streets.
+
+<Compare
+  caption="One L-shaped, two-storey Wall with a roof. Only Slope Angle changes."
+  panels={[
+    {src: 'img/screens/roof-grid-angle-0.webp', label: '0 degrees', detail: 'Slope Angle'},
+    {src: 'img/screens/roof-grid-angle-20.webp', label: '20 degrees', detail: 'Slope Angle'},
+    {src: 'img/screens/roof-grid-angle-45.webp', label: '45 degrees', detail: 'Slope Angle (default)'},
+  ]}
+/>
 
 ## Floor Surface
 
@@ -28,6 +39,17 @@ Walls make the shell; these settings make everything the shell contains and wear
 A flat floor in one color is just its outline, triangulated the way roofs are - the lightest mesh it can be. Interior points are added only where they change the result. Facade Kit `_Fast` caps are white on white, so they get this lighter floor without any change to the kit. A baked actor keeps the floor mesh it was baked with until you rebake it.
 
 ## Roof Surface
+
+<Compare
+  caption="The same roof at 45 degrees. A larger Slope Inset leaves a smaller flat top. A negative Base Inset pushes the roof out past the wall."
+  panels={[
+    {src: 'img/screens/roof-grid-slope-inset-small.webp', label: 'Slope Inset 100', detail: 'large flat top'},
+    {src: 'img/screens/roof-grid-angle-45.webp', label: 'Slope Inset 250', detail: 'default'},
+    {src: 'img/screens/roof-grid-slope-inset-large.webp', label: 'Slope Inset 600', detail: 'no flat top left'},
+    {src: 'img/screens/roof-grid-base-inset-negative.webp', label: 'Base Inset -100', detail: 'overhang'},
+  ]}
+  columns={2}
+/>
 
 | Control | What it does |
 | --- | --- |
