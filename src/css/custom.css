@@ -912,3 +912,13 @@
   font-size: 13px;
   font-weight: 600;
 }
+
+/* Labels under the picture, for narrow tall panels. */
+.compare--below .compare__label {
+  position: static;
+  max-width: none;
+  border-left: 0;
+  border-top: 3px solid var(--sa-accent);
+  border-radius: 0;
+  padding: 0.35rem 0.5rem;
+}

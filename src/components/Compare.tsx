@@ -20,16 +20,18 @@ type CompareProps = {
   ratio?: string;
   /** One line under the grid: what changes between panels. */
   caption?: string;
+  /** Put each label under its picture instead of on it. For narrow, tall panels. */
+  labelsBelow?: boolean;
 };
 
 /**
  * Same subject, one setting changed: a grid of panels, each with its name on it.
  * Labels are real text, so they match the site's colours in light and dark.
  */
-export default function Compare({panels, columns, ratio = '16 / 9', caption}: CompareProps) {
+export default function Compare({panels, columns, ratio = '16 / 9', caption, labelsBelow}: CompareProps) {
   const cols = columns ?? (panels.length === 2 || panels.length === 4 ? 2 : 3);
   return (
-    <figure className="compare">
+    <figure className={`compare${labelsBelow ? ' compare--below' : ''}`}>
       <div className="compare__grid" style={{['--compare-cols' as string]: cols}}>
         {panels.map((panel) => (
           <PanelView key={panel.src} panel={panel} ratio={ratio} />
