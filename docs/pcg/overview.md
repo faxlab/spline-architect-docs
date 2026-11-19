@@ -3,7 +3,22 @@ title: UE 5.8 PCG integration
 description: Let PCG graphs read your streets, lots, walls and footprints and build buildings and props on them, rebuilt whenever you edit.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="A new loop of streets is drawn around a built block in Streets Mode; the graph then fills the new lots with buildings and the city grows to the new outline"
+      poster="img/clips/streets-extend.webp"
+      src="img/clips/streets-extend.mp4"
+    />
+  }
+>
+
 The SA nodes turn what you authored - streets, lots, walls, footprints - into data a PCG graph can read, reshape, and build from. You draw the city's skeleton by hand; the graph fills in the buildings, props, and details, and refills them every time the skeleton changes.
+
+</ClipAside>
 
 ## How the nodes divide the work
 

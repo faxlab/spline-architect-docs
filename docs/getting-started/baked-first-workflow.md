@@ -3,10 +3,27 @@ title: Adopt the baked-first workflow
 description: Author a preview, freeze it with Bake, and explicitly Unbake before further edits.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
 Spline Architect assumes your production output is baked geometry, and that you get there by editing a live preview - not by committing early and hoping. One habit makes the whole plugin behave predictably: **treat baking as a checkpoint, not a finish line.**
 
 
 
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="A baked Building is unbaked from its Baking category, changed, and baked again"
+      poster="img/clips/unbake-rebake.webp"
+      src="img/clips/unbake-rebake.mp4"
+    />
+  }
+>
+
+The loop is short: unbake, change, rebake. The clip shows the whole round trip on one Building.
+
+</ClipAside>
 
 ## The loop
 
