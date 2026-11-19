@@ -5,6 +5,7 @@ description: Fit modular pieces along a path for facades, fences, railings and k
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Layers from '@site/src/components/Layers';
 
 <ClipAside
   media={
@@ -46,6 +47,15 @@ Do not read "wall" too literally. The same actor makes shopfronts, fences, and r
 | **Force Regenerate** | Rebuilds this Wall and every wall connected to it. |
 
 ## Stacked walls
+
+<Layers
+  label="A stack of three Walls, top layer first"
+  layers={[
+    {name: 'Upper Wall', text: 'A child. Follows the footprint below and sits on top of it.'},
+    {name: 'Trim band', text: 'A child too, with its own preset, materials and seed.'},
+    {name: 'Root Wall', text: 'The bottom Wall. It owns the spline that every layer follows.'},
+  ]}
+/>
 
 **Add Wall to Selected** connects a new Wall to the selected one as a child. The child follows its parent's effective footprint and sits on top of it, raised by the parent's height; **Offset Every Floor** in the preset shifts a layer beyond that, and **Offset By** moves only that layer. Turn on **Follow Parent Segments** in the child's preset when its pieces and posts should sit at the parent's joints, as the deck, rails and legs of a catwalk do - see [Wall Configuration](/authoring/wall-presets#wall-configuration).
 

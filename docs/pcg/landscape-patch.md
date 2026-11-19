@@ -3,6 +3,8 @@ title: SA Landscape Patch
 description: Shape the landscape from PCG - flatten lots, cut walkways, and press level pads under props, with edge fade and noise.
 ---
 
+import TerrainDiagram from '@site/src/components/TerrainDiagram';
+
 SA Landscape Patch makes the terrain conform to shapes built in the graph. Flatten a park lot so its ground meets the lot surface exactly, cut a walkway ribbon along a path, or press a level pad under a placed prop so it does not float or sink.
 
 It **changes the world** rather than only producing data, as does its sibling [SA Landscape Paint](/pcg/node-reference#sa-landscape-paint), which paints a material layer instead of moving the ground. That makes two of its rules unusually important: the [tracking hazard](#scope-the-selectors-upstream) and [Settle Props](#settle-props-and-regenerating-forever).
@@ -11,7 +13,7 @@ It **changes the world** rather than only producing data, as does its sibling [S
 This node ships in the UE 5.8 package and needs Epic's **Landscape Patch** plugin, which the package enables for you. It works in the **editor only** - during PIE, at runtime, and in a cooked build it passes its inputs through and changes nothing.
 :::
 
-<!-- CAPTURE S16 still: landscape-patch-result.png -->
+<TerrainDiagram />
 
 ## Pins
 

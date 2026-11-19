@@ -3,13 +3,13 @@ title: PCG facade and prop recipes
 description: Node chains for common city jobs in UE 5.8 - buildings along streets, facade attachments, road-edge props, crossings, alleys and rooftops.
 ---
 
+import NodeChain from '@site/src/components/NodeChain';
+
 Ready-made PCG graphs for the jobs a city keeps asking for: buildings along a street, signs on facades, lamps along roads, signals at crossings, props in alleys and on rooftops. Each recipe gives the node chain first, then the settings that matter. Build it in your graph and tune from there; the [node reference](/pcg/node-reference) has every pin and setting.
 
 ## A street of buildings
 
-```text
-SA Get Road Edges → SA Edge Placer → Static Mesh Spawner (By Attribute: SA_Mesh)
-```
+<NodeChain nodes={[{"name": "SA Get Road Edges"}, {"name": "SA Edge Placer"}, {"name": "Static Mesh Spawner", "notes": ["By Attribute: SA_Mesh"]}]} />
 
 The scalable way to fill a city. Author a few buildings with Spline Architect, [convert each to a static mesh](/production/conversion-export), and put those meshes in the Edge Placer's **Mesh Pool** with weights.
 
@@ -19,13 +19,7 @@ Branch on `SA_LotZone` first to give each district its own pool. Keep [SA Spawn 
 
 ## Facade attachments
 
-```text
-SA Get Facade Frames
-  → Filter Attribute Elements
-  → Transform Points / Extents Modifier
-  → SA Pick From Pool
-  → Static Mesh Spawner (By Attribute: SA_Mesh)
-```
+<NodeChain nodes={[{"name": "SA Get Facade Frames"}, {"name": "Filter Attribute Elements"}, {"name": "Transform Points / Extents Modifier"}, {"name": "SA Pick From Pool"}, {"name": "Static Mesh Spawner", "notes": ["By Attribute: SA_Mesh"]}]} />
 
 Use **Per Segment** U distribution to prevent a cell crossing a corner. **By Spacing** creates fitted vertical cells; **Per Floor Row** creates one row at a selected fraction of each floor. Exterior/Interior follows final closed-path winding; open paths fall back to Both.
 
@@ -44,24 +38,13 @@ Baked SA Walls and Buildings still provide facade frames through their retained 
 
 Author broad classification on Building Presets (`Small`, `Residential`, `Industrial`) and layer-specific classification on Wall Presets (`BaseFloor`, `Facade`, `Trim`).
 
-```text
-Lot Footprints
-  → SA Spawn Building
-      Preset Source: Random From DataTable
-      Filter Terms: Residential, Small
-      Term Match Mode: All
-```
+<NodeChain nodes={[{"name": "Lot Footprints"}, {"name": "SA Spawn Building", "notes": ["Preset Source: Random From DataTable", "Filter Terms: Residential, Small", "Term Match Mode: All"]}]} />
 
 The node chooses uniformly from the matching Building rows and repeats for fixed graph/footprint seeds. Leave Filter Terms empty for the complete table; switch to **Any** for a broader union. Row-name substring matching is controlled separately by **Include Row Names**.
 
 For individual generated pieces:
 
-```text
-SA Spawn Building (Generated)
-  → Array Contains (SA_PresetTags contains BaseFloor)
-  → Attribute Filter
-  → Static Mesh Spawner
-```
+<NodeChain nodes={[{"name": "SA Spawn Building", "notes": ["Generated"]}, {"name": "Array Contains", "notes": ["SA_PresetTags contains BaseFloor"]}, {"name": "Attribute Filter"}, {"name": "Static Mesh Spawner"}]} />
 
 For complete generated outputs, use **Filter Data By Tag** with a top-level Building tag such as `Small`. Building actors carry only Building tags; their generated components carry Building tags plus the precise Wall tags that produced them.
 
@@ -69,12 +52,7 @@ For complete generated outputs, use **Filter Data By Tag** with a top-level Buil
 
 An import with **Footprints only** leaves the buildings as outlines with their map data and no style, so nothing generates in the level. A graph can build them instead, in a style you choose:
 
-```text
-SA Get Map Buildings (Footprints)
-  → SA Spawn Building (Use Input Style, Fit Input Height)
-      Generated → Static Mesh Spawner (By Attribute: SA_Mesh)
-      Dynamic Meshes → Spawn Dynamic Mesh
-```
+<NodeChain nodes={[{"name": "SA Get Map Buildings", "notes": ["Footprints"]}, {"name": "SA Spawn Building", "notes": ["Use Input Style, Fit Input Height"], "branches": [{"label": "Generated", "to": "Static Mesh Spawner (By Attribute: SA_Mesh)"}, {"label": "Dynamic Meshes", "to": "Spawn Dynamic Mesh"}]}]} />
 
 Each footprint arrives with its map height in `SA_TargetHeight`. **Fit Input Height** gives the style's repeating section the floors that fit that height, the way a [map import](/core-actors/import-map#the-repeating-section) does. **Use Input Style** builds a footprint in the style it carries. A footprint from a Footprints only import carries none, so it takes the node's preset. Set **Preset Source** to **Random From DataTable** to spread several styles across the buildings.
 
@@ -82,19 +60,13 @@ A styled import has already built its Buildings in the level, so a graph that bu
 
 To keep generated content off land that real buildings already cover, filter lots on the share they cover:
 
-```text
-SA Get Lots (Lot Boundaries)
-  → Filter Data By Attribute (SA_MapBuildingCoverage < 0.5, for example)
-  → SA Subdivide Lots
-```
+<NodeChain nodes={[{"name": "SA Get Lots", "notes": ["Lot Boundaries"]}, {"name": "Filter Data By Attribute", "notes": ["SA_MapBuildingCoverage < 0.5, for example"]}, {"name": "SA Subdivide Lots"}]} />
 
 `SA_MapBuildingCoverage` runs from 0 to 1 on each lot. Overlapping buildings count once and holes are excluded. Choose the threshold that suits your map.
 
 ## Lamps along a road
 
-```text
-SA Get Road Edges → SA Edge Placer → Static Mesh Spawner
-```
+<NodeChain nodes={[{"name": "SA Get Road Edges"}, {"name": "SA Edge Placer"}, {"name": "Static Mesh Spawner"}]} />
 
 Set Edge Placer to Right or Left, **Facing = Away From Edge**, **Fill = Fixed Spacing**, and enter lamp spacing in centimeters. The node uses exact mesh or collision bounds, including off-center pivots, so the prop's bounds face sits flush to the edge.
 
@@ -104,26 +76,19 @@ Use **Fill = Packed** and a weighted Mesh Pool. Placement advances by each chose
 
 ## Crosswalk stripes
 
-```text
-SA Get Road Crossings → SA Edge Placer → Static Mesh Spawner
-```
+<NodeChain nodes={[{"name": "SA Get Road Crossings"}, {"name": "SA Edge Placer"}, {"name": "Static Mesh Spawner"}]} />
 
 Each crossing is a short two-point spline across a road mouth and carries `SA_RoadWidth` and `SA_ConfigIndex`. Use those attributes to select stripe dimensions or materials by street type.
 
 ## Traffic lights at intersections
 
-```text
-SA Get Road Crossings → Filter Data By Attribute (@Data.SA_NodeDegree >= 3) → Spline Sampler (Subdivision, 0, Unbounded)
-  → Filter Elements By Index (0) → Transform Points (back from the curb, yaw 180) → SA Pick From Pool → Static Mesh Spawner
-```
+<NodeChain nodes={[{"name": "SA Get Road Crossings"}, {"name": "Filter Data By Attribute", "notes": ["@Data.SA_NodeDegree >= 3"]}, {"name": "Spline Sampler", "notes": ["Subdivision, 0, Unbounded"]}, {"name": "Filter Elements By Index", "notes": ["0"]}, {"name": "Transform Points", "notes": ["back from the curb, yaw 180"]}, {"name": "SA Pick From Pool"}, {"name": "Static Mesh Spawner"}]} />
 
 Crossings also exist at dead ends and where a road simply continues, so filter on `SA_NodeDegree` first. The two sampled points are the crossing's ends at the curb: index `0` takes the signal pole, the other end can take a pedestrian signal. Turn on **Unbounded** on the Spline Sampler - a freshly dropped PCG Volume is small, and the sampler otherwise only samples inside it. To keep poles off the road on large imported junctions, subtract SA Get Intersections `Intersection Polygons 2D` and SA Get Road Centerlines `Road Footprint Polygons 2D` with a Difference node before picking the mesh.
 
 ## Alleys between sub-lots
 
-```text
-SA Subdivide Lots (Gap > 0) → Gap Outlines → SA Filter Spline Edges → SA Edge Placer
-```
+<NodeChain nodes={[{"name": "SA Subdivide Lots", "notes": ["Gap > 0"]}, {"name": "Gap Outlines"}, {"name": "SA Filter Spline Edges"}, {"name": "SA Edge Placer"}]} />
 
 Give SA Subdivide Lots a **Gap** and each cut becomes an alley instead of a shared boundary. **Gap Outlines** emits the whole alley network as one closed shape whose points carry `SA_TouchesBoundary`: `true` where the alley opens onto the lot edge, `false` along its sides.
 
@@ -140,9 +105,7 @@ Wire **Cut Lines** to SA Landscape Patch's `Paths` in the same graph to sink the
 
 ## Curb ramps at every junction
 
-```text
-SA Get Intersections (Intersection Centers) → SA Set Custom Piece (Apply To All In Range) → SA Spawn Wall (Custom Pieces)
-```
+<NodeChain nodes={[{"name": "SA Get Intersections", "notes": ["Intersection Centers"]}, {"name": "SA Set Custom Piece", "notes": ["Apply To All In Range"]}, {"name": "SA Spawn Wall", "notes": ["Custom Pieces"]}]} />
 
 Tick **Emit Intersection Points** on SA Get Intersections and wire its `Intersection Centers` pin. Those points already carry their own footprint, so turn **Apply Radius** off and let the intersection's real shape be the reach. Turn **Apply To All In Range** on: a junction should give a ramp to *every* sidewalk running through it, not just the nearest one.
 
@@ -152,13 +115,7 @@ Leave Apply To All In Range off for pieces that must be unique in place, such as
 
 For a **flat roof authored as a floor**, tag the intended Building or final Wall in a connected stack, select it with **Actor Selector → By Tag**, and enable **Include Floors**:
 
-```text
-SA Sample Floor/Roof
-  → Filter Attribute Elements (SA_IsTopFloor == true)
-  → SA Pick From Pool
-  → SA Prune Footprints
-  → Static Mesh Spawner / Spawn Actor
-```
+<NodeChain nodes={[{"name": "SA Sample Floor/Roof"}, {"name": "Filter Attribute Elements", "notes": ["SA_IsTopFloor == true"]}, {"name": "SA Pick From Pool"}, {"name": "SA Prune Footprints"}, {"name": "Static Mesh Spawner / Spawn Actor"}]} />
 
 This works on live surfaces and baked **Components**, **Instanced**, or **Hierarchical Instanced** output. Older bakes need one rebake. Keep the SA actor as the source; for [plain converted meshes](/production/conversion-export), use stock PCG geometry sampling instead.
 

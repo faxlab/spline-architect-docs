@@ -5,8 +5,20 @@ description: Author a preview, freeze it with Bake, and explicitly Unbake before
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Flow from '@site/src/components/Flow';
 
 Spline Architect assumes your production output is baked geometry, and that you get there by editing a live preview - not by committing early and hoping. One habit makes the whole plugin behave predictably: **treat baking as a checkpoint, not a finish line.**
+
+<Flow
+  label="The bake loop"
+  loop
+  steps={[
+    {title: 'Bake', text: 'Freeze the preview as meshes.'},
+    {title: 'Unbake', text: 'Bring the editable preview back.'},
+    {title: 'Change', text: 'Edit the spline, preset or seed.'},
+    {title: 'Rebake', text: 'Freeze it again.'},
+  ]}
+/>
 
 
 

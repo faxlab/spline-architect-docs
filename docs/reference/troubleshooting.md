@@ -5,6 +5,16 @@ description: Fix installation, generation, corners, surfaces, baking, PCG, conve
 
 Look up what you see - a plugin that will not load, a wall that will not fit, a roof that came out flat, a PCG graph that does not update - and the fix is underneath. The headings follow the work, from installing to baking, PCG and performance.
 
+<div className="card-grid">
+  <a href="#installation-and-startup"><strong>Installation and startup</strong>The plugin will not load, or the menus are missing.</a>
+  <a href="#actor-generation"><strong>Actor generation</strong>A wall is empty, corners spike, the result changes every rebuild.</a>
+  <a href="#floors-roofs-and-booleans"><strong>Floors, roofs, Booleans</strong>A roof came out flat, a cut does nothing.</a>
+  <a href="#baking-and-output"><strong>Baking and output</strong>Unexpected unbakes, draw calls, lighting, Nanite.</a>
+  <a href="#import-map"><strong>Import Map</strong>Stuck previews, skipped areas, unavailable Create Import.</a>
+  <a href="#pcg"><strong>PCG</strong>Output out of date.</a>
+  <a href="#performance"><strong>Performance</strong>Slow editing and console variables.</a>
+</div>
+
 ## Installation and startup
 
 ### Plugin was built for a different engine version

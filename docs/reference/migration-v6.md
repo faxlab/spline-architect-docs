@@ -3,7 +3,20 @@ title: Migrate from v5 to v6
 description: Upgrade a copy, learn what replaced your v5 workflow, and retire the old branch only after checks pass.
 ---
 
+import Flow from '@site/src/components/Flow';
+
 v6 changes how you author, not just what version number the plugin reports. Upgrade **a copy** of the project - or a source-controlled branch - and keep the v5 build openable until your maps have passed the checks at the bottom of this page.
+
+<Flow
+  label="Upgrading a project to v6"
+  steps={[
+    {title: 'Back up', text: 'The project and the old plugin package.'},
+    {title: 'Work on a copy', text: 'Or a source-controlled branch.'},
+    {title: 'Install v6', text: 'The package for your engine.'},
+    {title: 'Check content', text: 'Presets, seeds and maps.'},
+    {title: 'Retire v5', text: 'Only after the checks pass.'},
+  ]}
+/>
 
 ## Before opening in v6
 

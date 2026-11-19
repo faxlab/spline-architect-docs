@@ -5,8 +5,22 @@ description: Draw a Wall stack, save it as a Building Preset, and place the same
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Flow from '@site/src/components/Flow';
 
 A Building is a Wall stack you taught the plugin to rebuild anywhere. This page builds one the long way once - draw the stack, save it, place it - so you know exactly what the preset contains.
+
+![The same Building Preset placed on three different footprint splines](/img/screens/building-two-footprints.webp)
+
+<Flow
+  label="The steps on this page"
+  steps={[
+    {title: 'Draw', text: 'A closed footprint with a Wall preset.'},
+    {title: 'Stack', text: 'Add a layer for each part of the building.'},
+    {title: 'Save', text: 'Convert to Building, then Save Preset.'},
+    {title: 'Place', text: 'Draw any footprint with that preset.'},
+    {title: 'Bake', text: 'Freeze the result as meshes.'},
+  ]}
+/>
 
 ## 0. Start with a Wall preset {#0-get-something-to-build-with}
 

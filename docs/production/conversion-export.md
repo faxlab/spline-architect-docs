@@ -3,7 +3,18 @@ title: Convert, collapse, proxy LOD, and export
 description: Turn Spline Architect sources into independent actors, meshes, Blueprints, or a standalone level.
 ---
 
+import Flow from '@site/src/components/Flow';
+
 Conversion is the exit: it turns Spline Architect output into plain Unreal actors, meshes, or Blueprints that no longer need the plugin. It is one-way - which is why every dialog here ships with **Delete Original Actors** off, and why you leave it off until you have looked at the result.
+
+<Flow
+  label="Converting a Spline Architect source"
+  steps={[
+    {title: 'Source', text: 'A Spline Architect root actor.'},
+    {title: 'Convert', text: 'To Actor, Static Mesh or Blueprint.'},
+    {title: 'Plain Unreal assets', text: 'No Spline Architect needed. One-way.'},
+  ]}
+/>
 
 ## Unified Convert dialog
 

@@ -3,6 +3,9 @@ title: Streets Network
 description: Draw a city's roads and get the junctions, sidewalks and lots between them, ready for buildings and PCG.
 ---
 
+import Flow from '@site/src/components/Flow';
+import StreetSection from '@site/src/components/StreetSection';
+
 Draw the roads of a city, and Streets Network builds the rest: road surfaces, junctions, sidewalks, and a lot for every block the roads enclose. Use it to lay out a town or a district, then fill the lots with buildings and props by hand or with the SA PCG nodes.
 
 :::info UE 5.8 only
@@ -12,6 +15,17 @@ Streets Network, Streets Mode, and Lot Zone ship only in the UE 5.8 package. See
 To start from a real place instead of drawing, [Import Map](/core-actors/import-map) builds the network from OpenStreetMap roads.
 
 ![A generated Streets Network on an island: road ribbons with filleted junctions, every enclosed block extracted as a lot, and the authored node graph over the top](/img/screens/streets-network-hero.webp)
+
+<Flow
+  label="What a Streets Network builds from the roads you draw"
+  steps={[
+    {title: 'Roads', text: 'You draw them in Streets Mode.'},
+    {title: 'Junctions', text: 'Crossings become intersections.'},
+    {title: 'Sidewalks', text: 'A band along each lot edge.'},
+    {title: 'Lots', text: 'One for every enclosed block.'},
+    {title: 'Buildings', text: 'By hand or with SA PCG.'},
+  ]}
+/>
 
 ## The Details panel
 
@@ -75,6 +89,8 @@ For PCG, `SA_RoadWidth` on crossings reflects an override; `SA_ConfigIndex` keep
 ![Wireframe view of generated Streets geometry: road ribbons with their curb edge, the triangle fans of the intersection patches, and each lot's ground ringed by a denser sidewalk band that follows the boundary and fans into pads at the corners](/img/screens/lot-surface-layers.webp)
 
 The wireframe shows what one layer builds. Each lot has ground made of evenly sized triangles, a tighter band just inside its edge - the sidewalk - and a fan of triangles at every street corner where a corner pad sits. Roads and junctions are separate meshes with their own curb edge.
+
+<StreetSection />
 
 **Sidewalks & Lot Ground → Layers** is a list. Each layer is built in order and can contribute three separate meshes, each with its own switch and material. A layer's header sums it up, for example *Lot ground · Sidewalk 5 m · Corner pads 3 m*. Inside, settings are grouped by the mesh they build:
 

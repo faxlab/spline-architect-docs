@@ -390,3 +390,422 @@
   .annotated-shot figcaption {grid-template-columns: 1fr;}
   .clip-aside {grid-template-columns: 1fr;}
 }
+
+/* Same subject, one setting changed. Labels are text so they follow the theme. */
+.compare {
+  margin: 1.4rem 0 2rem;
+}
+
+.compare__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--compare-cols, 2), minmax(0, 1fr));
+  gap: 0.6rem;
+}
+
+.compare__panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--sa-border);
+  border-radius: 12px;
+  background: var(--sa-panel);
+}
+
+.compare__panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  object-fit: cover;
+}
+
+.compare__label {
+  position: absolute;
+  left: 0.5rem;
+  bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  max-width: calc(100% - 1rem);
+  padding: 0.3rem 0.65rem;
+  border-left: 3px solid var(--sa-accent);
+  border-radius: 6px;
+  background: rgba(10, 22, 36, 0.82);
+  color: #fff;
+  font-size: 0.8rem;
+  line-height: 1.25;
+}
+
+.compare__label strong {
+  font-size: 0.86rem;
+}
+
+.compare__label span {
+  color: #bfe9fa;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.74rem;
+}
+
+.compare__caption {
+  margin-top: 0.5rem;
+  color: var(--sa-muted);
+  font-size: 0.86rem;
+}
+
+/* A row of numbered steps joined by arrows. */
+.flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 2.1rem;
+  margin: 1.4rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+
+.flow__step {
+  position: relative;
+  display: flex;
+  flex: 1 1 9rem;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin: 0;
+  padding: 0.8rem 0.9rem;
+  border: 1px solid var(--sa-border);
+  border-radius: 12px;
+  background: var(--sa-panel);
+  color: var(--sa-muted);
+  font-size: 0.86rem;
+  line-height: 1.35;
+}
+
+.flow__step strong {
+  color: var(--ifm-font-color-base);
+  font-size: 0.95rem;
+}
+
+.flow__num {
+  display: grid;
+  width: 1.5rem;
+  height: 1.5rem;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+[data-theme='dark'] .flow__num {
+  color: #04121f;
+}
+
+/* The arrow between two steps: a chevron in the gap on the right. */
+.flow__step:not(:last-child)::after,
+.flow--loop .flow__step:last-child::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -1.55rem;
+  width: 0.7rem;
+  height: 0.7rem;
+  transform: translateY(-50%) rotate(45deg);
+  border-top: 3px solid var(--sa-accent);
+  border-right: 3px solid var(--sa-accent);
+}
+
+.flow--loop .flow__step:last-child::after {
+  opacity: 0.55;
+}
+
+/* A stack of bars, top layer first. */
+.layers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 42rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.layers__row {
+  display: grid;
+  grid-template-columns: 11rem minmax(0, 1fr);
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.layers__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--ifm-color-primary) 14%, var(--sa-panel));
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.layers__bar--repeat {
+  border-style: dashed;
+  background: color-mix(in srgb, var(--sa-accent) 28%, var(--sa-panel));
+}
+
+.layers__bar em {
+  color: var(--sa-muted);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 600;
+}
+
+.layers__text {
+  color: var(--sa-muted);
+  font-size: 0.86rem;
+}
+
+@media (max-width: 620px) {
+  .compare__grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
+  .flow__step:not(:last-child)::after,
+  .flow--loop .flow__step:last-child::after {display: none;}
+  .layers__row {grid-template-columns: 1fr; gap: 0.2rem;}
+}
+
+/* Axis diagram for modular pieces. */
+.axes-diagram {
+  max-width: 34rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.axes-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.axes-diagram__face {
+  fill: color-mix(in srgb, var(--ifm-color-primary) 14%, var(--sa-panel));
+  stroke: var(--ifm-color-primary);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.axes-diagram__face--top {
+  fill: color-mix(in srgb, var(--ifm-color-primary) 26%, var(--sa-panel));
+}
+
+.axes-diagram__face--side {
+  fill: color-mix(in srgb, var(--ifm-color-primary) 8%, var(--sa-panel));
+}
+
+.axes-diagram__axis {
+  stroke: var(--sa-accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+
+.axes-diagram__head {
+  fill: var(--sa-accent);
+}
+
+.axes-diagram__pivot {
+  fill: var(--ifm-font-color-base);
+  stroke: var(--sa-panel);
+  stroke-width: 3;
+}
+
+.axes-diagram__text {
+  fill: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-base);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.axes-diagram__text--pivot {
+  fill: var(--sa-muted);
+  font-weight: 600;
+}
+
+/* Cross-section of a street layer. */
+.street-section {
+  max-width: 42rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.street-section svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.street-section__road {
+  fill: color-mix(in srgb, var(--sa-muted) 40%, var(--sa-panel));
+  stroke: var(--sa-muted);
+  stroke-width: 2;
+}
+
+.street-section__block {
+  fill: color-mix(in srgb, var(--ifm-color-primary) 12%, var(--sa-panel));
+  stroke: var(--ifm-color-primary);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.street-section__sidewalk {
+  fill: color-mix(in srgb, var(--sa-accent) 42%, var(--sa-panel));
+  stroke: var(--ifm-color-primary);
+  stroke-width: 2;
+}
+
+.street-section__curb {
+  stroke: var(--sa-accent);
+  stroke-width: 4;
+}
+
+.street-section__level {
+  stroke: var(--sa-muted);
+  stroke-dasharray: 5 4;
+  stroke-width: 1.5;
+}
+
+.street-section__dim {
+  stroke: var(--ifm-font-color-base);
+  stroke-width: 2;
+}
+
+.street-section__leader {
+  stroke: var(--ifm-font-color-base);
+  stroke-width: 1.5;
+}
+
+.street-section__text,
+.street-section__label,
+.street-section__note {
+  fill: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-base);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.street-section__label--on {
+  font-size: 12px;
+}
+
+.street-section__note {
+  fill: var(--sa-muted);
+  font-weight: 600;
+}
+
+/* A PCG node chain: boxes joined by arrows, left to right. */
+.node-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 0.7rem 2rem;
+  margin: 1rem 0 1.4rem;
+}
+
+.node-chain__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.node-chain__item:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 1.1rem;
+  left: -1.4rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  transform: rotate(45deg);
+  border-top: 3px solid var(--sa-accent);
+  border-right: 3px solid var(--sa-accent);
+}
+
+.node-chain__node {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--ifm-color-primary);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, var(--sa-panel));
+  font-size: 0.86rem;
+  line-height: 1.3;
+}
+
+.node-chain__node code {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--sa-muted);
+  font-size: 0.76rem;
+}
+
+.node-chain__branches {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--sa-accent);
+}
+
+.node-chain__branch {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.node-chain__pin {
+  color: var(--sa-muted);
+  font-size: 0.74rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 620px) {
+  .node-chain {flex-direction: column; gap: 1.1rem;}
+  .node-chain__item:not(:first-child)::before {
+    top: -0.85rem;
+    left: 1rem;
+    transform: rotate(135deg);
+  }
+}
+
+/* SA Landscape Patch before/after cross-section. */
+.terrain-diagram {
+  max-width: 46rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.terrain-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.terrain-diagram__ground {
+  fill: color-mix(in srgb, var(--sa-muted) 32%, var(--sa-panel));
+  stroke: var(--sa-muted);
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.terrain-diagram__lot {
+  fill: var(--sa-accent);
+  stroke: var(--ifm-color-primary);
+  stroke-width: 2;
+}
+
+.terrain-diagram__title {
+  fill: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-base);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.terrain-diagram__small {
+  fill: var(--ifm-font-color-base);
+  font-family: var(--ifm-font-family-base);
+  font-size: 12px;
+  font-weight: 600;
+}
