@@ -47,6 +47,10 @@ When you change a Wall's preset, the tags Spline Architect added for the old pre
 | **Follow Parent Segments** | Stacked walls only. Off (default): the wall divides its own path. On: it takes the joints and corners of the wall it is stacked on, puts one of its own pieces into each of the parent's bays, stretched to fit, and its posts follow the same joints. Joints are carried straight across to a wall set sideways with **Inset**, so catwalk legs, deck and rails line up on any path. Custom Piece gaps are not copied. |
 | **Collapse Nearby Spline Point Distance** | Neighbouring spline points closer than this are merged into one before the corners are built, so an accidental double point does not make a tiny broken corner. Default `10`; `0` turns it off. |
 
+Keep Z on a slope: every piece stays level, so the hillside becomes a row of level steps.
+
+![A row of level stone bench pieces stepping down a paved slope: each piece sits at one height instead of tilting with the ground](/img/screens/wall-keep-z-slope.webp)
+
 ### Fit Height or Uniform Scale
 
 ![The same gateway wall in Fit Height, with a flat top and the portico stretched to match the walls, and in Uniform Scale, where the portico keeps its proportions and its crown steps above the walls](/img/screens/height-mode-compare.webp)
@@ -68,6 +72,8 @@ Stacked floors, roofs, and floor alignment all follow the same shared factor, so
 With **Wall Z Handling** set to **Steps**, every sloped part between two spline points is cut into equal steps no higher than **Max Step Height** and, when **Max Step Depth** is set, no deeper than it. Each step is one wall piece, lying level at the height of its uphill end, so every riser is the same height and the top step is flush with the flat part after it. Flat parts are left as they are and work as landings. **Apply Shape > Stair Path** draws a flat, a 3 m rise and a flat to start from.
 
 On slopes the steps ignore **Randomize Segments By**, so they stay equal. Periodically posts still measure along the whole slope.
+
+![Three flights of stone steps with railings cut into a long retaining wall, each step one wall piece at the same rise](/img/screens/wall-steps.webp)
 
 ## Wall Meshes and fitting
 
@@ -124,6 +130,10 @@ How a turn is built is one choice: give it a dedicated **Corner Mesh**, or let *
   **Down To Ground** lets each post reach down to the ground below it, for legs under a deck or a pier. **Off** (default) keeps the normal post. **Stretch** hangs the post from where it is placed, Post Offset included, straight down to the ground, stretched in height only, each post with its own length. **Stack** repeats the post mesh at its normal size downwards until it reaches the ground, for meshes whose texture looks wrong stretched; **Gap** (cm) is the space between copies, negative overlaps, and the last copy may sink into the ground but is never cut. **Place On Ground** keeps the post at its normal size and drops it straight down until its bottom sits on the ground, for footings and base plates under legs set to **Stretch**. The ground is anything with collision straight below within 100 m, such as landscape or meshes, never the wall's own pieces or the walls stacked with it. Where nothing is found, the normal post is kept.
 - **Randomisation Settings → Random Transform** moves, turns and scales every placed piece by a random amount within the ranges you set. Keep the location range small, or pieces start to flicker through each other. With uniform scale on (default), the X range is used for all three axes, so pieces keep their proportions.
 - **Random Meshes** swaps a **Key Mesh** for a weighted random pick from a list of alternatives; the Key Mesh stays in the draw. **Keep Scale** (default) keeps the replacement's own size, which can leave gaps or overlaps; **Match Scale** fits it to the original's size. **Knockout** removes that share of the pieces that use the Key Mesh, at random: `0` keeps all, `1` removes all. Two switches turn pieces at random about the up axis, by 90° steps or by 180°.
+
+Down To Ground on the posts of a raised walkway: Stretch (left) gives each post its own length down to the ground, Stack (right) repeats the post mesh at its own size.
+
+![A raised walkway on tall square posts, shown twice: on the left each post is one stretched mesh reaching the ground, on the right each post is a column of repeated full-size meshes](/img/screens/wall-posts-down-to-ground.webp)
 
 ## Materials and instance custom data
 

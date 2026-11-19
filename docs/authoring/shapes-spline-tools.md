@@ -3,7 +3,22 @@ title: Shapes and spline utilities
 description: Draw a footprint you use often in one click, and mirror, flatten, merge or repair the paths you have drawn.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="The Apply Shape list, with a thumbnail for each footprint; choosing the H shape replaces a tower's footprint and the building regrows on it"
+      poster="img/clips/shapes-footprint.webp"
+      src="img/clips/shapes-footprint.mp4"
+    />
+  }
+>
+
 Footprints repeat: the L, the U, the rectangle with a notch. The Shape Library stores them once so drawing one is a click, and the spline commands handle the rest of the everyday path surgery - mirroring, flattening, merging, repairing.
+
+</ClipAside>
 
 ## Shape Library
 

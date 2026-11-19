@@ -3,6 +3,9 @@ title: Import Map
 description: Import real streets, land areas and buildings from OpenStreetMap into a Streets Network, Map Area actors and Buildings, grouped under a reopenable Map Import Group.
 ---
 
+import ClipAside from '@site/src/components/ClipAside';
+import LoopingClip from '@site/src/components/LoopingClip';
+
 Pick a real place, draw a boundary around it, and Import Map builds a [Streets Network](/core-actors/streets-network) from the roads inside it, with every enclosed block as a lot. It can also bring in land areas - parks, water, squares, and so on - as editable **Map Area** actors, and the buildings as [Buildings](/core-actors/building) fitted to their real height. Everything one import creates sits under a **Map Import Group**, so you can reopen the import later and redo it with different choices.
 
 :::info UE 5.8 only
@@ -10,6 +13,10 @@ Import Map builds a Streets Network, so it ships only in the UE 5.8 package with
 :::
 
 The window prepares a preview after every change. Nothing in the level changes until you press **Create Import**.
+
+![The Import Map window on Lower Manhattan: the search box, the map with a drawn boundary, and the roads, building footprints and land areas the import would read, coloured by type](/img/screens/import-map-window.webp)
+
+Map data © OpenStreetMap contributors.
 
 ## Open the window
 
@@ -90,10 +97,22 @@ Keep `MapSources` with the project. A teammate needs it to start a new import or
 
 The map pans with a left, right, or middle drag, and zooms with the mouse wheel. The **?** button lists every map and boundary shortcut.
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Typing a place name, drawing a boundary on the map, then reshaping it by dragging corners; the preview redraws roads and building footprints for each new outline"
+      poster="img/clips/import-boundary.webp"
+      src="img/clips/import-boundary.mp4"
+    />
+  }
+>
+
 Choosing a place puts a 1000 × 1000 m boundary on the map. To draw your own, open **Draw**:
 
 - **Rectangle** - drag on the map. **Shift**+drag draws a new rectangle at any time.
 - **Polygon** - click corners. Click the first corner, double-click, or press **Enter** to finish; **Backspace** removes the latest corner and **Escape** cancels. A polygon can have up to 512 corners, and one that crosses itself must be fixed before it is used.
+
+</ClipAside>
 
 To change the boundary you have:
 
@@ -380,12 +399,24 @@ Only the types you ticked can produce a skipped area. Unticked types are counted
 
 ## 5. Create or replace
 
+<ClipAside
+  media={
+    <LoopingClip
+      alt="After Create Import the level fills with the imported city: roads first, then the buildings appear block by block until the whole area is built"
+      poster="img/clips/import-city-builds.webp"
+      src="img/clips/import-city-builds.mp4"
+    />
+  }
+>
+
 **Create Import** builds the result in the level as one undo step:
 
 - a new **Map Import Group**,
 - a **Streets Network** holding the imported roads, if Roads is on,
 - one **Map Area** actor per imported area,
 - the **Buildings**, if Buildings is on.
+
+</ClipAside>
 
 It stays unavailable while the preview is out of date, while there is nothing to import, and while the selection is over the Building limit.
 

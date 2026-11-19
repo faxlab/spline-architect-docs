@@ -28,6 +28,10 @@ import LatestVersion from '@site/src/components/LatestVersion';
 | [Custom Piece](/core-actors/custom-piece) | A door, arch, corner, gap, or child actor placed into a Wall. |
 | [Boolean](/core-actors/boolean) | Subtract or cull overlapping generated output. |
 
+![Lower Manhattan imported from OpenStreetMap: roads, blocks and every building in one level](/img/screens/overview-imported-city.webp)
+
+![A hand-drawn city seen from above: streets and a dense mix of brick and glass buildings, drawn as splines](/img/screens/overview-hand-drawn-city.webp)
+
 ## How the workflow fits together
 
 1. Draw and edit paths in [Architect Mode](/getting-started/architect-mode-fundamentals); use Streets Mode for road networks.
