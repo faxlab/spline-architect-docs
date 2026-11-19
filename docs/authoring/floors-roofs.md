@@ -5,8 +5,6 @@ description: Set up the floor inside a footprint, the roof on top and the ground
 
 import Compare from '@site/src/components/Compare';
 
-import FloorAlignDiagram from '@site/src/components/FloorAlignDiagram';
-
 Walls make the shell; these settings make everything the shell contains and wears - the floor slab inside a footprint, the pitched or flat roof on top, and the ground surface of a Streets lot. The same controls appear wherever a surface can exist, so learning them once covers Wall, Building, Curve, and Streets.
 
 <Compare
@@ -20,7 +18,15 @@ Walls make the shell; these settings make everything the shell contains and wear
 
 ## Floor Surface
 
-<FloorAlignDiagram />
+<Compare
+  caption="One closed wall, one floor entry (Thickness 40, Inset -250, so the slab reaches past the wall and reads from the side). Only Align To changes."
+  columns={3}
+  panels={[
+    {src: 'img/screens/floor-align-bottom.webp', label: 'Bottom', detail: 'Align To (default)'},
+    {src: 'img/screens/floor-align-center.webp', label: 'Center', detail: 'Align To'},
+    {src: 'img/screens/floor-align-top.webp', label: 'Top', detail: 'Align To'},
+  ]}
+/>
 
 | Control | What it does |
 | --- | --- |

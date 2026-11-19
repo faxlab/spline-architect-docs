@@ -3,6 +3,7 @@ title: Convert, collapse, proxy LOD, and export
 description: Turn Spline Architect sources into independent actors, meshes, Blueprints, or a standalone level.
 ---
 
+import Compare from '@site/src/components/Compare';
 import Flow from '@site/src/components/Flow';
 
 Conversion is the exit: it turns Spline Architect output into plain Unreal actors, meshes, or Blueprints that no longer need the plugin. It is one-way - which is why every dialog here ships with **Delete Original Actors** off, and why you leave it off until you have looked at the result.
@@ -49,6 +50,16 @@ Explicitly Unbake before assigning, changing, or clearing a preset source. Conve
 ## Building Proxy LOD
 
 For **Convert to Static Mesh**, enable **Generate Building Proxy LOD** to add a welded footprint-and-roof proxy as LOD1 for eligible Building output. It uses the traditional non-Nanite LOD path and forces a source bake before capture.
+
+<Compare
+  caption="One Building converted with Convert to Static Mesh, Grouping Combined, Generate Building Proxy LOD on, Proxy LOD Screen Size 0.1. The proxy is a welded box that wears textures baked from the facade."
+  columns={3}
+  panels={[
+    {src: 'img/screens/conversion-proxy-source.webp', label: 'Source Building', detail: 'Spline Architect actor'},
+    {src: 'img/screens/conversion-proxy-collapsed-lod0.webp', label: 'Static Mesh LOD0', detail: '82,556 triangles'},
+    {src: 'img/screens/conversion-proxy-proxy-lod1.webp', label: 'Proxy LOD1', detail: '12 triangles'},
+  ]}
+/>
 
 | Control | What it does |
 | --- | --- |
