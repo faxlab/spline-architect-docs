@@ -5,10 +5,20 @@ description: Choose the pieces a wall is made of and how they fit the path, shap
 
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
+import Compare from '@site/src/components/Compare';
 
 These settings decide how a wall is put together: which pieces it uses, how they fit the path, what happens at the corners and what varies from piece to piece. Open them when a wall looks stretched, gappy or too regular.
 
 The same settings appear in a Wall actor, in each wall layer of a Building and in SA Spawn Wall, and they work the same in a shared DataTable row or inline on one actor. Everything on this page applies in all of those places.
+
+<div className="card-grid">
+  <a href="#core-dimensions"><strong>Core Dimensions</strong>Wall height, wall length, corner length and how meshes are resized.</a>
+  <a href="#wall-configuration"><strong>Wall Configuration</strong>Slopes, inset, overlap, stacking, Fit Height and Stairs with Steps.</a>
+  <a href="#wall-meshes-and-fitting"><strong>Wall Meshes and fitting</strong>Which pieces a wall uses and how they fill the path.</a>
+  <a href="#corner-and-placement"><strong>Corner and placement</strong>Corner shapes and where pieces and fillers go.</a>
+  <a href="#floors-roofs-posts-and-variation"><strong>Floors, roofs, posts</strong>Posts, and the random variation between pieces.</a>
+  <a href="#materials-and-instance-custom-data"><strong>Materials</strong>Per-wall material parameters and instance custom data.</a>
+</div>
 
 ## Preset metadata
 
@@ -32,6 +42,16 @@ When you change a Wall's preset, the tags Spline Architect added for the old pre
 | **Randomize Segments By** | Best Fit only. Adds random variation to the slot lengths, so the pieces do not repeat in a perfectly even rhythm. `0` (default) keeps every slot the same. |
 
 ## Wall Configuration
+
+<Compare
+  caption="One 20 m wall that climbs 3 m, built from one repeated piece and seen side-on. Only Wall Z Handling changes."
+  panels={[
+    {src: 'img/screens/wall-zhandling-keep-z.webp', label: 'Keep Z', detail: 'Wall Z Handling'},
+    {src: 'img/screens/wall-zhandling-keep-flat.webp', label: 'Keep Flat', detail: 'Wall Z Handling'},
+    {src: 'img/screens/wall-zhandling-follow-spline.webp', label: 'Follow Spline', detail: 'Wall Z Handling'},
+    {src: 'img/screens/wall-zhandling-skew.webp', label: 'Skew', detail: 'Wall Z Handling'},
+  ]}
+/>
 
 | Control | Options and effect |
 | --- | --- |
@@ -76,6 +96,16 @@ On slopes the steps ignore **Randomize Segments By**, so they stay equal. Period
 ![Three flights of stone steps with railings cut into a long retaining wall, each step one wall piece at the same rise](/img/screens/wall-steps.webp)
 
 ## Wall Meshes and fitting
+
+<Compare
+  caption="One 20 m wall built from the same three pieces: yellow, grey and a long red one. Seed is 3. Only Wall Piece Selection changes."
+  panels={[
+    {src: 'img/screens/wall-selection-best-fit.webp', label: 'Best Fit', detail: 'Wall Piece Selection'},
+    {src: 'img/screens/wall-selection-random-fit.webp', label: 'Random Fit', detail: 'Wall Piece Selection'},
+    {src: 'img/screens/wall-selection-ordered-sequence.webp', label: 'Ordered Sequence', detail: 'Wall Piece Selection'},
+    {src: 'img/screens/wall-selection-closest-length.webp', label: 'Closest Length', detail: 'Wall Piece Selection'},
+  ]}
+/>
 
 | Control | What it does |
 | --- | --- |
