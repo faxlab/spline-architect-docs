@@ -5,7 +5,7 @@ description: Prepare pivots, axes, bounds, materials, UVs, and dimensions for pr
 
 import AxesDiagram from '@site/src/components/AxesDiagram';
 
-A mesh fits a wall or curve best when its length runs along X, its height along Z, and its pivot is a bottom corner. Spline Architect compensates for imperfect meshes, but a consistent kit means cleaner corners and fewer overrides.
+A mesh fits a wall or curve best when its length runs along X, its height along Z, and its pivot sits at a bottom corner or bottom center. Spline Architect compensates for imperfect meshes, but a consistent kit means cleaner corners and fewer overrides.
 
 <AxesDiagram />
 
