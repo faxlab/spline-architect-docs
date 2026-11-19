@@ -7,6 +7,15 @@ Look up any SA PCG node here: its pins, its settings and the attributes it write
 
 All SA nodes require the UE 5.8 Spline Architect package. Nodes that read actors always read the level as it is now; they refresh rather than serve old cached geometry.
 
+<div className="card-grid">
+  <a href="#actor-and-streets-readers"><strong>Read</strong>SA Get Spline, SA Get Lots, SA Get Map Buildings, SA Get Road Edges, SA Get Facade Frames and more.</a>
+  <a href="#polygon-and-lot-transforms"><strong>Transform polygons</strong>SA Subdivide Lots, SA Polygon Offset, SA Polygon Merge.</a>
+  <a href="#sa-generation-nodes"><strong>Generate</strong>SA Spawn Building, SA Spawn Wall, SA Spawn Curve, SA Landscape Patch.</a>
+  <a href="#prop-and-point-tools"><strong>Place props</strong>SA Edge Placer, SA Pick From Pool, SA Prune Footprints, SA Follow Ground.</a>
+  <a href="#polygon-2d-interop"><strong>Polygon 2D</strong>Moving shapes between SA nodes and Epic's Polygon 2D data.</a>
+  <a href="#common-graph-failures"><strong>When a graph misbehaves</strong>The common failures and their fixes.</a>
+</div>
+
 ## Baked sources
 
 Keep the SA source actor when PCG needs its floor/roof identity, Streets graph, or facade recipe. Baking that actor preserves those workflows. [Converting to independent output](/production/conversion-export) creates plain actors, meshes, or Blueprints; use stock PCG geometry sampling for those outputs. SA readers require the retained SA actor and do not reconstruct its authoring identity from a converted mesh.

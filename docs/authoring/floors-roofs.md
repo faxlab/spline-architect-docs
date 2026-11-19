@@ -3,9 +3,13 @@ title: Floors, roofs, posts, and lot surfaces
 description: Set up the floor inside a footprint, the roof on top and the ground of a Streets lot, with one set of controls for Wall, Building, Curve and Streets.
 ---
 
+import FloorAlignDiagram from '@site/src/components/FloorAlignDiagram';
+
 Walls make the shell; these settings make everything the shell contains and wears - the floor slab inside a footprint, the pitched or flat roof on top, and the ground surface of a Streets lot. The same controls appear wherever a surface can exist, so learning them once covers Wall, Building, Curve, and Streets.
 
 ## Floor Surface
+
+<FloorAlignDiagram />
 
 | Control | What it does |
 | --- | --- |

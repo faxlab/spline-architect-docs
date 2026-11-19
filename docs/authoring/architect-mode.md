@@ -3,6 +3,7 @@ title: Architect Mode and Streets Mode
 description: Look up the keys, bar controls and settings for drawing Wall, Building and Curve paths in Architect Mode and roads in Streets Mode.
 ---
 
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
@@ -100,6 +101,16 @@ Draw cuts new roads through the network; Select moves what is there. In the clip
 ### The bar
 
 The bar has three rows, and every control stays in the same place whatever you select. On a narrow viewport the whole bar shrinks instead of hiding controls. Hover any control for what it does.
+
+<AnnotatedShot
+  alt="The Streets Mode bar: a status line on top, a selection row with greyed-out Nodes, Streets and Lots groups, and a tool row with Select, Draw, Cut, Move, Rotate, Grid, Angle, Help and Exit"
+  src="img/screens/streets-mode-bar.webp"
+  callouts={[
+    {label: 'Status line: what just happened, and a hint for what you are doing', x: 2.5, y: 24},
+    {label: 'Selection row: actions that grey out when that kind is not selected', x: 2.5, y: 47},
+    {label: 'Tool row: street type, tools, Pick, Grid, Angle, Help, Exit', x: 2.5, y: 75},
+  ]}
+/>
 
 | Row | What it holds |
 | --- | --- |

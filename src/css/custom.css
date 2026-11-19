@@ -809,3 +809,106 @@
   font-size: 12px;
   font-weight: 600;
 }
+
+/* Floor Align To cross-sections. */
+.floor-align {
+  max-width: 40rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.floor-align svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.floor-align__wall {
+  fill: color-mix(in srgb, var(--ifm-color-primary) 14%, var(--sa-panel));
+  stroke: var(--ifm-color-primary);
+  stroke-width: 2;
+}
+
+.floor-align__slab {
+  fill: var(--sa-accent);
+  stroke: var(--ifm-color-primary);
+  stroke-width: 2;
+}
+
+.floor-align__title {
+  fill: var(--sa-muted);
+  font-family: var(--ifm-font-family-base);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.floor-align__title--value {
+  fill: var(--ifm-font-color-base);
+  font-weight: 700;
+}
+
+/* Lot Zone: lots take the zone whose loop holds their centre. */
+.lot-zone-diagram {
+  max-width: 44rem;
+  margin: 1.4rem 0 2rem;
+}
+
+.lot-zone-diagram svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.lot-zone-diagram__lot {
+  fill: color-mix(in srgb, var(--sa-muted) 14%, var(--sa-panel));
+  stroke: var(--sa-muted);
+  stroke-width: 1.5;
+}
+
+.lot-zone-diagram__lot--res {
+  fill: color-mix(in srgb, var(--sa-accent) 38%, var(--sa-panel));
+  stroke: var(--sa-accent);
+}
+
+.lot-zone-diagram__lot--com {
+  fill: color-mix(in srgb, #e0902b 40%, var(--sa-panel));
+  stroke: #e0902b;
+}
+
+.lot-zone-diagram__centre {
+  fill: var(--ifm-font-color-base);
+}
+
+.lot-zone-diagram__loop {
+  fill: none;
+  stroke-dasharray: 8 5;
+  stroke-width: 3;
+}
+
+.lot-zone-diagram__loop--res {
+  stroke: var(--sa-accent);
+}
+
+.lot-zone-diagram__loop--com {
+  stroke: #e0902b;
+}
+
+.lot-zone-diagram__text {
+  font-family: var(--ifm-font-family-base);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.lot-zone-diagram__text--res {
+  fill: var(--sa-accent);
+}
+
+.lot-zone-diagram__text--com {
+  fill: #e0902b;
+}
+
+.lot-zone-diagram__note {
+  fill: var(--sa-muted);
+  font-family: var(--ifm-font-family-base);
+  font-size: 13px;
+  font-weight: 600;
+}

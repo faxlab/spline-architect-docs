@@ -3,6 +3,8 @@ title: Import Map
 description: Import real streets, land areas and buildings from OpenStreetMap into a Streets Network, Map Area actors and Buildings, grouped under a reopenable Map Import Group.
 ---
 
+import Flow from '@site/src/components/Flow';
+
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
@@ -17,6 +19,17 @@ The window prepares a preview after every change. Nothing in the level changes u
 ![The Import Map window on Lower Manhattan: the search box, the map with a drawn boundary, and the roads, building footprints and land areas the import would read, coloured by type](/img/screens/import-map-window.webp)
 
 Map data © OpenStreetMap contributors.
+
+<Flow
+  label="The five steps of an import"
+  steps={[
+    {title: '1. Find a place', text: 'Search, and load its map data.'},
+    {title: '2. Draw the boundary', text: 'Around the area you want.'},
+    {title: '3. Choose what to import', text: 'Roads, areas and buildings.'},
+    {title: '4. Check the preview', text: 'Nothing changes in the level yet.'},
+    {title: '5. Create or replace', text: 'Press Create Import.'},
+  ]}
+/>
 
 ## Open the window
 

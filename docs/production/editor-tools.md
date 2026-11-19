@@ -17,6 +17,8 @@ Small tools for the work around generation: check every Spline Architect actor a
 
 Use [Diagnostics and the baked registry](/production/baking#diagnostics-and-baked-asset-registry) before large rebakes, cleanup, or conversion. It shows the current state of every actor and every tracked baked asset.
 
+![The Diagnostics window listing every Spline Architect actor with its type, state, preset, seed, component and triangle counts](/img/screens/diagnostics-window.webp)
+
 ## Randomize Seeds
 
 Assigns new seeds to every actor in the level - unbaked and Runtime actors regenerate, baked output stays put. It is scene-wide, so record the seeds you care about first.

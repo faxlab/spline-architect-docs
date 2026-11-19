@@ -92,6 +92,8 @@ The wireframe shows what one layer builds. Each lot has ground made of evenly si
 
 <StreetSection />
 
+![A street-level view of a generated sidewalk: a wide paved band between red shopfronts and the road, with a planter, a lamp post and a parked car](/img/screens/streets-sidewalk.webp)
+
 **Sidewalks & Lot Ground → Layers** is a list. Each layer is built in order and can contribute three separate meshes, each with its own switch and material. A layer's header sums it up, for example *Lot ground · Sidewalk 5 m · Corner pads 3 m*. Inside, settings are grouped by the mesh they build:
 
 | Group | Settings |
