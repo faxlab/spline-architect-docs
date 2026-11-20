@@ -7,6 +7,7 @@ import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 import Layers from '@site/src/components/Layers';
 import Compare from '@site/src/components/Compare';
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 
 <ClipAside
   media={
@@ -25,6 +26,26 @@ Do not read "wall" too literally. The same actor makes shopfronts, fences, and r
 </ClipAside>
 
 ## Preset
+
+<ClipAside
+  media={
+    <AnnotatedShot
+      native
+      src="img/screens/wall-details-categories.webp"
+      alt="The Details panel of a selected Wall: the Preset, Controls, Baking and Spline categories with their buttons and settings"
+      callouts={[
+        {label: 'Preset', x: 16, y: 2},
+        {label: 'Controls', x: 18, y: 30},
+        {label: 'Baking', x: 16, y: 55},
+        {label: 'Spline', x: 15, y: 89},
+      ]}
+    />
+  }
+>
+
+Select a Wall and its settings appear in the **Details** panel, grouped in these categories. The sections on this page follow the same order. **Force Regenerate** sits in the **Baking** category, next to **Prebake Corners**.
+
+</ClipAside>
 
 | Control | What it does |
 | --- | --- |
