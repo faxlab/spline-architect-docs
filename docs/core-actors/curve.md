@@ -4,10 +4,32 @@ description: Repeat one mesh along a path for kerbs, rails, pipes, cables and tr
 ---
 
 import Compare from '@site/src/components/Compare';
+import ClipAside from '@site/src/components/ClipAside';
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 
 Curve repeats one mesh along a path: curbs, rails, pipes, trims, cables. Where Wall thinks in storeys and corners, Curve thinks in profile and flow - its one big decision is whether the profile stays upright through slopes (**Z Up**, for roads and curbs) or rolls with the path (**Transported**, for pipes and cables).
 
 ## Actor controls
+
+<ClipAside
+  media={
+    <AnnotatedShot
+      native
+      src="img/screens/curve-details-categories.webp"
+      alt="The Details panel of a selected Curve: the Preset, Controls, Baking and Spline categories with their buttons and settings"
+      callouts={[
+        {label: 'Preset', x: 60, y: 2.7},
+        {label: 'Controls', x: 60, y: 28.4},
+        {label: 'Baking', x: 60, y: 55.4},
+        {label: 'Spline', x: 60, y: 78.6},
+      ]}
+    />
+  }
+>
+
+Select a Curve and its settings appear in the **Details** panel, in the four categories the table below lists.
+
+</ClipAside>
 
 | Category | Controls |
 | --- | --- |
