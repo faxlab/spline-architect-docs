@@ -68,7 +68,7 @@ The line at the bottom of the window shows where the preview is. Wait until the 
 <ClipAside
   media={
     <LoopingClip
-      alt="After Create Import the level fills with the imported city: roads first, then the buildings appear block by block until the whole area is built"
+      alt="Create Import is clicked in the Import Map window; then the imported area is seen from above, its roads in place, while the buildings appear block by block until the whole area is built"
       poster="img/clips/import-city-builds.webp"
       src="img/clips/import-city-builds.mp4"
     />
