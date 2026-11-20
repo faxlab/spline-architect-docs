@@ -3,6 +3,7 @@ title: Adopt the baked-first workflow
 description: Author a preview, freeze it with Bake, and explicitly Unbake before further edits.
 ---
 
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 import Flow from '@site/src/components/Flow';
@@ -39,14 +40,48 @@ The loop is short: unbake, change, rebake. The clip shows the whole round trip o
 
 ## The loop
 
-1. Leave Wall, Building, Curve, and Streets actors in **Baked** generation mode while you author. This does not bake anything by itself - it declares what the output is *for*.
+1. Leave Wall, Building, Curve, and Streets actors in **Baked** generation mode while you author. This does not bake anything by itself - it declares what the output is *for*. The setting is **Generation Mode**, in the **Baking** category of the Details panel.
+
+<AnnotatedShot
+  alt="The Baking category of the Details panel, with the Generation Mode row set to Baked and outlined"
+  src="img/screens/baking-generation-mode.webp"
+  callouts={[
+    {label: 'Generation Mode: Baked or Runtime', x: 83, y: 50},
+  ]}
+/>
+
 2. Edit splines, presets, custom pieces, Booleans, and seeds. The actor regenerates a live preview after every change.
-3. When a design is ready, select any part of the connected stack and run **Bake Connected**. The preview becomes persistent components.
-4. When you need another change, run **Unbake Connected** first. Baked presets and spline geometry stay locked until you do; whole-actor movement remains allowed.
-5. Edit the preview, inspect it, then run **Bake/Rebake Connected**.
+3. When a design is ready, select any part of the connected stack, open the **SA** menu, and choose **Bake > Bake/Rebake Connected**. The preview becomes persistent components.
 
-Shared preset edits keep existing baked output frozen. The Details panel reports **Preset changed since bake**; use **Rebake out-of-date actors** to update the affected actors when you choose to.
+<AnnotatedShot
+  alt="The SA menu in the editor menu bar, open, with the Bake entry outlined"
+  src="img/screens/baking-sa-menu.webp"
+  callouts={[
+    {label: 'SA menu > Bake: Bake/Rebake Connected, Unbake Connected, and Rebake out-of-date actors', x: 83, y: 51},
+  ]}
+/>
 
+4. When you need another change, run **Unbake Connected** first (**SA > Bake**). Baked presets and spline geometry stay locked until you do; whole-actor movement remains allowed. A baked actor also shows an **Unbake** button at the top of its Details panel, in the **Baked output** category.
+
+<AnnotatedShot
+  alt="The Baked output category at the top of the Details panel of a baked Building, with the Unbake button outlined"
+  src="img/screens/baking-baked-output-unbake.webp"
+  callouts={[
+    {label: 'Unbake, in the Baked output category', x: 20, y: 72},
+  ]}
+/>
+
+5. Edit the preview, inspect it, then run **Bake/Rebake Connected** again.
+
+Shared preset edits keep existing baked output frozen. The Baked output category then reports **Preset changed since bake**. Use **Rebake out-of-date actors** - the button next to it, or **SA > Bake** - to update the affected actors when you choose to.
+
+<AnnotatedShot
+  alt="The Baked output category after the shared preset was edited, showing the Preset changed since bake message and the Rebake out-of-date actors button, outlined"
+  src="img/screens/baking-preset-changed.webp"
+  callouts={[
+    {label: 'The message, and the button that rebakes every out-of-date actor in the level', x: 95, y: 26},
+  ]}
+/>
 ## Choose a bake method
 
 | Method | Pick it when | The cost |
