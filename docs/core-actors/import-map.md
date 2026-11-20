@@ -15,6 +15,17 @@ Pick a real place, draw a boundary around it, and Import Map builds a [Streets N
 Import Map builds a Streets Network, so it ships only in the UE 5.8 package with the rest of Streets. See [compatibility](/reference/compatibility).
 :::
 
+:::caution Known issue: Download fails for parts of a country (fixed in 6.3.1)
+In Spline Architect 6.1 to 6.3.0, **Download** *region* does nothing for a region that is part of a country: a US state, a Canadian province, or a region of Germany, France, the UK and other large countries. The server that hosts the map files moved them. Regions that are a whole country still download.
+
+Until 6.3.1 is on Fab, get the file yourself:
+
+1. Open [download.geofabrik.de](https://download.geofabrik.de/) in your browser, click through to your region and download its `.osm.pbf` file.
+2. In the Import Map window, click **Map data**, then **Open OSM file…**, and pick that file.
+
+Everything else works as described on this page, including the one-time wait while a new region is read.
+:::
+
 **First import?** Follow the [six-step tutorial](/core-actors/import-map-tutorial) - it imports a city with the default settings. This page is the full reference.
 
 The window prepares a preview after every change. Nothing in the level changes until you press **Create Import**.
