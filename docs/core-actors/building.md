@@ -7,6 +7,7 @@ import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 import Layers from '@site/src/components/Layers';
 import Compare from '@site/src/components/Compare';
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 
 Draw any footprint, and a Building puts a saved stack of walls on it: the same storeys, trims and roof, fitted to the new shape. Edit the preset once and every placement follows; edit one placement's overrides and only it changes.
 
@@ -31,6 +32,26 @@ Pick a different preset row and the same footprint builds a different building.
 />
 
 ## Preset and controls
+
+<ClipAside
+  media={
+    <AnnotatedShot
+      native
+      src="img/screens/building-details-categories.webp"
+      alt="The Details panel of a selected Building: the Preset, Controls, Baking, Spline and Actor categories with their buttons and settings"
+      callouts={[
+        {label: 'Preset', x: 60, y: 2.3},
+        {label: 'Controls', x: 60, y: 20.6},
+        {label: 'Baking', x: 60, y: 40.4},
+        {label: 'Spline', x: 60, y: 66.3},
+      ]}
+    />
+  }
+>
+
+Select a Building and its settings appear in the **Details** panel, grouped in these categories. **Force Regenerate** and **Break** sit in **Baking**; **Split Footprints** sits in **Spline**.
+
+</ClipAside>
 
 | Control | What it does |
 | --- | --- |

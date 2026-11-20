@@ -4,6 +4,7 @@ description: Draw, select, edit, extend, branch, snap, and finish Spline Archite
 ---
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
+import Compare from '@site/src/components/Compare';
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
@@ -36,10 +37,19 @@ Architect Mode is where you draw. Pick a preset, click out a path in the viewpor
 
 ## Draw a path
 
-1. Enter **Architect Mode** from the Modes panel or the Spline Architect menu.
+1. Enter **Architect Mode** from the Modes panel or **SA → Enter Architect Mode**.
 2. **Browse Presets** and pick a Wall, Building, or Curve preset. The plugin includes starter presets; try **Wall** from **SA_Walls** for your first path. If the library appears empty, check the [preset filters and installation](/reference/troubleshooting#the-preset-library-is-empty).
 3. Click in the viewport to add points.
 4. Click the first point to close the loop - the right move for a building footprint - or click the last point or press **Enter** to finish an open run like a fence.
+
+<Compare
+  ratio="1000 / 703"
+  caption="The same four points with the starter Wall preset. Closing the loop adds the last side and a corner."
+  panels={[
+    {src: 'img/screens/architect-closed-loop.webp', label: 'Closed loop', detail: 'click the first point', alt: 'A square of teal walls with all four sides closed, selected in the editor'},
+    {src: 'img/screens/architect-open-path.webp', label: 'Open path', detail: 'click the last point or press Enter', alt: 'The same teal walls with one side missing, ending in two free ends'},
+  ]}
+/>
 
 While drawing:
 
@@ -72,3 +82,13 @@ Select a Spline Architect actor and enter Architect Mode. Click points or segmen
 | Alt+click an actor | Pick a different Spline Architect actor under the cursor. |
 
 **Placement Profile** decides where clicks land: **Planar Locked** keeps a footprint flat, which is what architecture usually wants; **Surface Projected** follows terrain, which is what paths and fences usually want. Everything else - branching, snapping, shapes, the grid - is in the [Architect Mode reference](/authoring/architect-mode).
+
+<Compare
+  ratio="4 / 1"
+  columns={1}
+  caption="The same fence clicked across a ramp. Planar Locked keeps every point at the first point's height; Surface Projected puts each point on the ramp."
+  panels={[
+    {src: 'img/screens/architect-planar-locked.webp', label: 'Planar Locked', detail: 'stays flat and runs into the ramp', alt: 'A railing fence that stays at ground height and passes through a sloped ramp'},
+    {src: 'img/screens/architect-surface-projected.webp', label: 'Surface Projected', detail: 'climbs the ramp', alt: 'The same railing fence following the ramp up its slope'},
+  ]}
+/>

@@ -100,6 +100,21 @@
   margin: 0;
 }
 
+/* Editor-panel crops: show at 100%, so the text in them is as sharp as in the editor. */
+.annotated-shot--native {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.annotated-shot--native .annotated-shot__image img {
+  width: auto;
+  max-width: 100%;
+}
+
+.annotated-shot--native figcaption {
+  grid-template-columns: 1fr;
+}
+
 .annotated-shot__pin {
   position: absolute;
   display: grid;
@@ -280,24 +295,32 @@
   .card-grid {grid-template-columns: repeat(2, minmax(0, 1fr));}
 }
 
-/* A silent looping capture with no chrome. Compact by default; click to expand. */
+/* A silent looping capture with a slim control bar under it. Compact by default;
+   click the clip to expand. */
 .looping-clip {
   position: relative;
   display: block;
   margin: 0;
   overflow: hidden;
+  border: 1px solid var(--sa-border);
   border-radius: 12px;
   background: var(--sa-panel);
+}
+
+.looping-clip__stage {
+  position: relative;
   cursor: zoom-in;
 }
 
-.looping-clip--expanded {
+.looping-clip--expanded .looping-clip__stage {
   cursor: zoom-out;
 }
 
-.looping-clip:focus-visible {
+.looping-clip__stage:focus-visible,
+.looping-clip__button:focus-visible,
+.looping-clip__seek:focus-visible {
   outline: 2px solid var(--ifm-color-primary);
-  outline-offset: 2px;
+  outline-offset: -2px;
 }
 
 .looping-clip__media {
@@ -322,11 +345,67 @@
   transition: opacity 150ms ease;
 }
 
-.looping-clip:hover .looping-clip__hint,
-.looping-clip:focus-visible .looping-clip__hint {
+.looping-clip__stage:hover .looping-clip__hint,
+.looping-clip__stage:focus-visible .looping-clip__hint {
   opacity: 1;
 }
 
+.looping-clip__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem 0.6rem 0.2rem 0.3rem;
+  border-top: 1px solid var(--sa-border);
+}
+
+.looping-clip__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--sa-muted);
+  cursor: pointer;
+}
+
+.looping-clip__button:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+  color: var(--ifm-color-primary);
+}
+
+/* Seek bar: played part in the accent colour, the rest in the border colour. */
+.looping-clip__seek {
+  flex: 1;
+  min-width: 0;
+  height: 4px;
+  margin: 0 0 0 0.4rem;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--sa-accent) var(--looping-clip-progress, 0%), var(--sa-border) var(--looping-clip-progress, 0%));
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.looping-clip__seek::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--sa-accent);
+  -webkit-appearance: none;
+}
+
+.looping-clip__seek::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--sa-accent);
+}
 /* Text beside a clip. The clip column is the narrower one, so the paragraph reads
    first; expanding the clip lets it take the whole row. */
 .clip-aside {

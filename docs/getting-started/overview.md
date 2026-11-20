@@ -52,8 +52,8 @@ You draw paths in the Unreal viewport, and Spline Architect builds walls, buildi
 
 1. Draw and edit paths in [Architect Mode](/getting-started/architect-mode-fundamentals); use Streets Mode for road networks.
 2. Save the setups you want to reuse as presets, and browse them in the [Preset Library](/authoring/preset-library).
-3. While you edit, the actor shows a live generated preview. When a design is ready, **Bake Connected** turns it into persistent geometry.
-4. For later spline, preset, or seed changes, explicitly **Unbake Connected** first. Edit the preview, inspect it, then **Rebake Connected**. Shared preset edits keep other baked snapshots frozen until you deliberately rebake them.
+3. While you edit, the actor shows a live generated preview. When a design is ready, **SA → Bake → Bake/Rebake Connected** turns it into persistent geometry.
+4. For later spline, preset, or seed changes, explicitly **Unbake Connected** first. Edit the preview, inspect it, then **Bake/Rebake Connected** again. Shared preset edits keep other baked snapshots frozen until you deliberately rebake them.
 5. When you no longer need Spline Architect editing at all, [convert or export](/production/conversion-export) the result to plain Unreal assets.
 
 Step 4 is the one habit to learn: baking is a checkpoint you set deliberately, not a one-way door. The [baked-first workflow](/getting-started/baked-first-workflow) page walks through it.

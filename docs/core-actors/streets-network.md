@@ -5,6 +5,8 @@ description: Draw a city's roads and get the junctions, sidewalks and lots betwe
 
 import Flow from '@site/src/components/Flow';
 import StreetSection from '@site/src/components/StreetSection';
+import ClipAside from '@site/src/components/ClipAside';
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 
 Draw the roads of a city, and Streets Network builds the rest: road surfaces, junctions, sidewalks, and a lot for every block the roads enclose. Use it to lay out a town or a district, then fill the lots with buildings and props by hand or with the SA PCG nodes.
 
@@ -29,8 +31,26 @@ To start from a real place instead of drawing, [Import Map](/core-actors/import-
 
 ## The Details panel
 
+<ClipAside
+  media={
+    <AnnotatedShot
+      native
+      src="img/screens/streets-details-categories.webp"
+      alt="The Details panel of a selected Streets Network: the Controls buttons, then the Streets, Sidewalks and Lot Ground, Lots and Output and Baking categories"
+      callouts={[
+        {label: 'Controls', x: 60, y: 2.7},
+        {label: 'Streets', x: 60, y: 13.2},
+        {label: 'Sidewalks & Lot Ground', x: 60, y: 48.8},
+        {label: 'Lots', x: 60, y: 70.1},
+        {label: 'Output & Baking', x: 60, y: 96.2},
+      ]}
+    />
+  }
+>
+
 Settings are grouped the way you work: **Controls**, **Streets**, **Sidewalks & Lot Ground**, **Lots**, **Output & Baking**, and a folded **Advanced** section for fine-tuning. Every setting has a tooltip.
 
+</ClipAside>
 ### Controls
 
 | Control | What it does |
@@ -92,7 +112,7 @@ The wireframe shows what one layer builds. Each lot has ground made of evenly si
 
 <StreetSection />
 
-![A street-level view of a generated sidewalk: a wide paved band between red shopfronts and the road, with a planter, a lamp post and a parked car](/img/screens/streets-sidewalk.webp)
+![A hand-drawn Streets city from a few storeys up: sidewalks run along every block and wrap the corners of a junction with traffic lights, between brick buildings and the road](/img/screens/streets-sidewalk.webp)
 
 **Sidewalks & Lot Ground → Layers** is a list. Each layer is built in order and can contribute three separate meshes, each with its own switch and material. A layer's header sums it up, for example *Lot ground · Sidewalk 5 m · Corner pads 3 m*. Inside, settings are grouped by the mesh they build:
 

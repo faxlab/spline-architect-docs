@@ -50,7 +50,7 @@ For a first run that behaves the same every time: set **Seed** to something fixe
   }
 >
 
-Select the root Wall and choose **Spline Architect → Add Wall to Selected**, then pick an upper-floor or roof-line preset. The new Wall connects to its parent, follows the same footprint, and stacks by its own height.
+Select the root Wall and choose **SA → Create → Add Wall**, then pick an upper-floor or roof-line preset. The new Wall connects to its parent, follows the same footprint, and stacks by its own height.
 
 With the starter kit, reuse the **Wall** preset for another storey. You can choose a different design once you have learned how the layers connect.
 
@@ -58,7 +58,7 @@ Repeat per layer, giving each one job: ground floor, repeated upper floor, parap
 
 </ClipAside>
 
-To slide a new storey in **underneath** an existing stack, select the bottom wall and choose **Insert Wall**. The new wall takes over the footprint and everything above it moves up, custom pieces included.
+To slide a new storey in **underneath** an existing stack, select the bottom wall and choose **SA → Create → Insert Wall**. The new wall takes over the footprint and everything above it moves up, custom pieces included.
 
 ## 3. Save it as a Building Preset
 
@@ -90,7 +90,7 @@ This is the point of a Building over a copied wall stack: one preset, any footpr
 
 ## 5. Bake the connected result
 
-Run **Bake Connected** from the Spline Architect menu - it bakes the root and every connected layer together. For later changes, explicitly **Unbake Connected**, edit and inspect the preview, then **Rebake Connected**. That loop is the [baked-first workflow](/getting-started/baked-first-workflow).
+Run **SA → Bake → Bake/Rebake Connected** - it bakes the root and every connected layer together. For later changes, explicitly **Unbake Connected** (same menu), edit and inspect the preview, then **Bake/Rebake Connected** again. That loop is the [baked-first workflow](/getting-started/baked-first-workflow).
 
 :::note The Break round-trip
 A placed Building is hard to art-direct as one actor - it is many walls. **Break** turns it back into editable connected Walls; adjust them individually, then press **Convert to Building** to collapse the result into a Building again, carrying your changes as its own inline preset. The original preset row is untouched, so every other placement keeps following it.

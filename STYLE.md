@@ -27,3 +27,21 @@ The rules, with the tooltip that models each:
    still get the page.
 10. **Warnings earn their box.** `:::caution` only when ignoring it loses work or hangs
     the editor; everything else is a plain sentence.
+
+## Pictures
+
+Agreed with Kajus on 2026-11-20. Real editor captures only, never mock-ups.
+
+- **Subject teal**, linear RGB (0.10, 0.55, 0.52): the actor or mesh the picture is about.
+  Teal keeps Unreal's orange selection outline visible.
+- **Markers orange**, linear RGB (0.95, 0.35, 0.02): pivots, points and anything the
+  caption asks you to look at.
+- **Context light grey** (0.78, 0.78, 0.76) for props the subject sits on, such as a ramp.
+- **Floor plain grey** (0.32, 0.33, 0.34), no checker texture.
+- All four are `/Engine/BasicShapes/BasicShapeMaterial` instances with `Color` set.
+- Keep editor UI (selection outline, panels) where it helps the reader find things.
+  Move light and sky actors out of frame so their icons don't sit in the shot.
+- Show a picture at its own size (`AnnotatedShot native`, `Compare`), crop tight to the
+  subject, at most 1000 px wide, WebP quality 90. One short caption and real alt text.
+- Use the example content's real materials when the picture is about how something looks,
+  not about where a part is.

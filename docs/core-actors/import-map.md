@@ -5,6 +5,7 @@ description: Import real streets, land areas and buildings from OpenStreetMap in
 
 import Flow from '@site/src/components/Flow';
 
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
@@ -14,9 +15,25 @@ Pick a real place, draw a boundary around it, and Import Map builds a [Streets N
 Import Map builds a Streets Network, so it ships only in the UE 5.8 package with the rest of Streets. See [compatibility](/reference/compatibility).
 :::
 
+**First import?** Follow the [six-step tutorial](/core-actors/import-map-tutorial) - it imports a city with the default settings. This page is the full reference.
+
 The window prepares a preview after every change. Nothing in the level changes until you press **Create Import**.
 
-![The Import Map window on Lower Manhattan: the search box, the map with a drawn boundary, and the roads, building footprints and land areas the import would read, coloured by type](/img/screens/import-map-window.webp)
+<AnnotatedShot
+  native
+  src="img/screens/import-map-window-full.webp"
+  alt="The Import Map window on Lower Manhattan: the place search, Recent and Map data at the top, the Draw, Fit and Display buttons over the map, the blue boundary around the preview, the Roads, Areas and Buildings tabs and their options on the right, and the status line with Create Import at the bottom"
+  callouts={[
+    {label: 'Find a place', x: 41.4, y: 5.3},
+    {label: 'Recent places and Map data', x: 88.7, y: 5.4},
+    {label: 'Draw, Fit and Display', x: 15.7, y: 8.7},
+    {label: 'Boundary', x: 15.6, y: 35.3},
+    {label: 'Roads, Areas and Buildings', x: 79.2, y: 8.4},
+    {label: 'Options for the chosen tab', x: 82.7, y: 37.6},
+    {label: 'Status line', x: 11.8, y: 96.9},
+    {label: 'Create Import', x: 96, y: 96.9},
+  ]}
+/>
 
 Map data © OpenStreetMap contributors.
 
@@ -113,7 +130,7 @@ The map pans with a left, right, or middle drag, and zooms with the mouse wheel.
 <ClipAside
   media={
     <LoopingClip
-      alt="Typing a place name, drawing a boundary on the map, then reshaping it by dragging corners; the preview redraws roads and building footprints for each new outline"
+      alt="A square boundary over Lower Manhattan is reshaped into a polygon by dragging its corners and adding points; once the outline settles, the preview draws the roads and building footprints inside it"
       poster="img/clips/import-boundary.webp"
       src="img/clips/import-boundary.mp4"
     />
@@ -147,6 +164,14 @@ Real street grids rarely run north-south. Turning the map turns the import with 
 - Type an angle in **Rotation (°)**.
 - **Align > North up**, or a click on the compass, puts north back at the top. Dragging the compass points north somewhere else.
 
+<AnnotatedShot
+  native
+  src="img/screens/import-map-align-menu.webp"
+  alt="The menu that opens on a right-click on a street: Inspect street, Align map to this street with its Horizontal and Vertical choices, Fit selection, Clear boundary and Reset map rotation"
+  callouts={[
+    {label: 'Align map to this street', x: 37, y: 37},
+  ]}
+/>
 ### Missing coverage
 
 A red-hatched part of the boundary is outside the map data. **Show missing coverage** frames it. You can still import: **Create Import** asks to confirm, and only the covered part is imported. To fill the gap, download or choose map data that covers it.
@@ -415,7 +440,7 @@ Only the types you ticked can produce a skipped area. Unticked types are counted
 <ClipAside
   media={
     <LoopingClip
-      alt="After Create Import the level fills with the imported city: roads first, then the buildings appear block by block until the whole area is built"
+      alt="Create Import is clicked in the Import Map window; then the imported area is seen from above, its roads in place, while the buildings appear block by block until the whole area is built"
       poster="img/clips/import-city-builds.webp"
       src="img/clips/import-city-builds.mp4"
     />

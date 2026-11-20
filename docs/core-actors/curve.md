@@ -3,9 +3,33 @@ title: Curve
 description: Repeat one mesh along a path for kerbs, rails, pipes, cables and trims, upright or rolling with the path.
 ---
 
+import Compare from '@site/src/components/Compare';
+import ClipAside from '@site/src/components/ClipAside';
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
+
 Curve repeats one mesh along a path: curbs, rails, pipes, trims, cables. Where Wall thinks in storeys and corners, Curve thinks in profile and flow - its one big decision is whether the profile stays upright through slopes (**Z Up**, for roads and curbs) or rolls with the path (**Transported**, for pipes and cables).
 
 ## Actor controls
+
+<ClipAside
+  media={
+    <AnnotatedShot
+      native
+      src="img/screens/curve-details-categories.webp"
+      alt="The Details panel of a selected Curve: the Preset, Controls, Baking and Spline categories with their buttons and settings"
+      callouts={[
+        {label: 'Preset', x: 60, y: 2.7},
+        {label: 'Controls', x: 60, y: 28.4},
+        {label: 'Baking', x: 60, y: 55.4},
+        {label: 'Spline', x: 60, y: 78.6},
+      ]}
+    />
+  }
+>
+
+Select a Curve and its settings appear in the **Details** panel, in the four categories the table below lists.
+
+</ClipAside>
 
 | Category | Controls |
 | --- | --- |
@@ -35,6 +59,17 @@ Curve repeats one mesh along a path: curbs, rails, pipes, trims, cables. Where W
 | **Floor Surfaces** | Same surface controls described in [Floors and roofs](/authoring/floors-roofs). Open curves close with a straight end cap. |
 | **Post Configurations** | Meshes placed at points, spans, starts/ends, corners, or intervals. |
 | **Material Parameters** | Include/exclude filters and scalar/vector values applied to generated materials. |
+
+<Compare
+  ratio="800 / 211"
+  columns={1}
+  caption="The same five points with the starter Pipe preset and three Default Tangent Modes."
+  panels={[
+    {src: 'img/screens/curve-tangent-manual.webp', label: 'Manual', detail: 'the spline as drawn: sharp corners here', alt: 'A teal pipe in a zig-zag with sharp corners'},
+    {src: 'img/screens/curve-tangent-auto-fillet.webp', label: 'Auto Fillet', detail: 'each corner as round as it can be', alt: 'The same pipe as a smooth wave'},
+    {src: 'img/screens/curve-tangent-fixed-fillet.webp', label: 'Fixed Fillet', detail: 'Fillet Radius 150 on every corner', alt: 'The same pipe with straight runs and small rounded corners'},
+  ]}
+/>
 
 ## Production notes
 
