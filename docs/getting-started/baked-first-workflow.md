@@ -52,18 +52,18 @@ The loop is short: unbake, change, rebake. The clip shows the whole round trip o
 />
 
 2. Edit splines, presets, custom pieces, Booleans, and seeds. The actor regenerates a live preview after every change.
-3. When a design is ready, select any part of the connected stack, open the **SA** menu, and choose **Bake > Bake/Rebake Connected**. The preview becomes persistent components.
+3. When a design is ready, select any part of the connected stack, open the **SA** menu, and choose **Bake → Bake/Rebake Connected**. The preview becomes persistent components.
 
 <AnnotatedShot
   alt="The SA menu in the editor menu bar, open, with the Bake entry outlined"
   src="img/screens/baking-sa-menu.webp"
   native
   callouts={[
-    {label: 'SA menu > Bake: Bake/Rebake Connected, Unbake Connected, and Rebake out-of-date actors', x: 83, y: 51},
+    {label: 'SA menu → Bake: Bake/Rebake Connected, Unbake Connected, and Rebake out-of-date actors', x: 83, y: 51},
   ]}
 />
 
-4. When you need another change, run **Unbake Connected** first (**SA > Bake**). Baked presets and spline geometry stay locked until you do; whole-actor movement remains allowed. A baked actor also shows an **Unbake** button at the top of its Details panel, in the **Baked output** category.
+4. When you need another change, run **Unbake Connected** first (**SA → Bake**). Baked presets and spline geometry stay locked until you do; whole-actor movement remains allowed. A baked actor also shows an **Unbake** button at the top of its Details panel, in the **Baked output** category.
 
 <AnnotatedShot
   alt="The Baked output category at the top of the Details panel of a baked Building, with the Unbake button outlined"
@@ -76,7 +76,7 @@ The loop is short: unbake, change, rebake. The clip shows the whole round trip o
 
 5. Edit the preview, inspect it, then run **Bake/Rebake Connected** again.
 
-Shared preset edits keep existing baked output frozen. The Baked output category then reports **Preset changed since bake**. Use **Rebake out-of-date actors** - the button next to it, or **SA > Bake** - to update the affected actors when you choose to.
+Shared preset edits keep existing baked output frozen. The Baked output category then reports **Preset changed since bake**. Use **Rebake out-of-date actors** - the button next to it, or **SA → Bake** - to update the affected actors when you choose to.
 
 <AnnotatedShot
   alt="The Baked output category after the shared preset was edited, showing the Preset changed since bake message and the Rebake out-of-date actors button, outlined"

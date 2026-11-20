@@ -3,6 +3,7 @@ title: Prepare modular meshes
 description: Prepare pivots, axes, bounds, materials, UVs, and dimensions for predictable Spline Architect generation.
 ---
 
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import AxesDiagram from '@site/src/components/AxesDiagram';
 
 A mesh fits a wall or curve best when its length runs along X, its height along Z, and its pivot sits at a bottom corner or bottom center. Spline Architect compensates for imperfect meshes, but a consistent kit means cleaner corners and fewer overrides.
@@ -31,6 +32,22 @@ Place the pivot at a repeatable connection point. For a wall piece, a bottom cor
 - Post meshes for corners, spline points, starts/ends, or periodic placement.
 - Materials that expose consistent scalar/vector parameters if presets will randomize them.
 
+The included starter kit follows these rules. The orange dot on each piece marks its pivot: every piece has it at the bottom centre, and every piece's length runs along X.
+
+<AnnotatedShot
+  native
+  src="img/screens/meshes-starter-kit-pivots.webp"
+  alt="The six starter-kit meshes in a row on a plain floor, tinted teal, with an orange dot at each pivot: wall, short wall, filler, door wall, column and railing post"
+  callouts={[
+    {label: 'SM_Wall: 241 cm long, 300 cm high', x: 9.6, y: 15},
+    {label: 'SM_ShortWall: 241 cm long, 73 cm high', x: 26.5, y: 54},
+    {label: 'SM_WallFiller: 66 cm wide, for small gaps', x: 45.3, y: 19},
+    {label: 'SM_WallDoor: same size as SM_Wall, with an opening', x: 57.4, y: 20},
+    {label: 'SM_Column: a post for corners and spline points', x: 81.5, y: 5},
+    {label: 'SM_RailingPost: a small post for fences', x: 95.5, y: 66},
+  ]}
+/>
+
 ## Scale and dimensions
 
 Author at Unreal scale: 1 Unreal Unit = 1 centimeter. When **Wall Length**, **Wall Height**, or **Corner Length** overrides are off, Spline Architect derives them from mesh bounds. Turn an override on only when logical dimensions should differ from the raw asset.
@@ -52,4 +69,4 @@ For a Blueprint prop, every visible component counts: static and skeletal meshes
 
 ## Fix a pivot without leaving Unreal
 
-Select one or more Static Mesh assets and open **Spline Architect → Pivot Tool**. Choose Min, Center, Max, or Keep per axis, decide whether to overwrite or create suffixed assets, then apply. See [Pivot Tool](/production/editor-tools#pivot-tool) for every option.
+Select one or more Static Mesh assets and open **SA → Tools → Pivot Tool**. Choose Min, Center, Max, or Keep per axis, decide whether to overwrite or create suffixed assets, then apply. See [Pivot Tool](/production/editor-tools#pivot-tool) for every option.
