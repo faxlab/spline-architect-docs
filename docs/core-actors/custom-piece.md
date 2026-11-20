@@ -59,6 +59,7 @@ Custom pieces can also be placed from a PCG graph. Mark scattered points with [S
 | **Num Meshes** | How many copies of the mesh sit side by side in the piece's span. Default `1`. |
 | **Fill Segment** | Repeats the mesh along the whole segment the piece sits on, scaling pieces that are too big so they cover it. |
 | **Override Length / Custom Piece Length** | How much of the wall the piece takes up. It comes from the mesh unless Override Length is on or there is no mesh; then Custom Piece Length (default `100`) sets it. |
+| **Override Height / Custom Piece Height** | Segment pieces only. Makes the piece exactly Custom Piece Height tall, in centimetres (default `100`), whatever the wall's own height is. The mesh is stretched or squeezed up and down only, around its pivot, so a piece with its pivot at the bottom keeps its bottom where it was; its length and depth do not change. Off, the piece follows the wall height. It has no effect while Keep World Scale is on, because that already sets the exact size. |
 | **Overlap By** | Pushes the piece this far into the wall pieces beside it, to close gaps - useful on corners. |
 | **Add to Scale** | Added to a Segment piece's scale on each axis. `0` (default) leaves it as fitted. |
 | **Reverse Orientation** | Turns a Segment piece to face the other way. |
