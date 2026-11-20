@@ -16,11 +16,17 @@ Import Map builds a Streets Network, so it ships only in the UE 5.8 package with
 
 **First import?** Follow the [six-step tutorial](/core-actors/import-map-tutorial) - it imports a city with the default settings. This page is the full reference.
 
+<ClipAside
+  image="img/screens/import-map-window.webp"
+  alt="The Import Map preview on Lower Manhattan: a drawn boundary and the roads, building footprints and land areas the import would read, coloured by type"
+  scale={0.4}
+>
+
 The window prepares a preview after every change. Nothing in the level changes until you press **Create Import**.
 
-![The Import Map window on Lower Manhattan: the search box, the map with a drawn boundary, and the roads, building footprints and land areas the import would read, coloured by type](/img/screens/import-map-window.webp)
-
 Map data © OpenStreetMap contributors.
+
+</ClipAside>
 
 <Flow
   label="The five steps of an import"
