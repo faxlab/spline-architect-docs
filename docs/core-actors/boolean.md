@@ -3,6 +3,8 @@ title: Boolean
 description: Cut openings through generated walls, floors and roofs, or remove the pieces inside a volume.
 ---
 
+import Compare from '@site/src/components/Compare';
+
 Cut a hole where the generator would otherwise build: an opening through a facade, a gap in a floor or roof. A Boolean is a cutter made from the Static Mesh and Spline shapes you add to it. It either cuts the shape out of what it overlaps, or removes the overlapping pieces whole.
 
 ![A Boolean's extruded spline cutter, shown in red, carving a rounded bite out of a tower's facade](/img/screens/boolean-cut.webp)
@@ -25,6 +27,15 @@ Cut a hole where the generator would otherwise build: an opening through a facad
 | **Target Actors** | Only these actors are cut. Leave it empty to let Auto Detect Targets find them. |
 | **Affect Floors / Affect Roofs / Affect Walls** | Which parts are cut: floors, roofs, and walls - wall pieces, Custom Pieces and posts. |
 | **Wall Mode** | **Boolean Subtract** cuts the Boolean's shape out of what it overlaps. **Cull** removes every overlapping piece whole. |
+
+<Compare
+  ratio="800 / 485"
+  caption="One box-shaped Boolean, selected and shown in red, on one side of a starter Wall."
+  panels={[
+    {src: 'img/screens/boolean-subtract.webp', label: 'Boolean Subtract', detail: 'cuts the box shape out of the wall', alt: 'A teal walled square with a door-shaped hole cut through one side where the red box overlaps it'},
+    {src: 'img/screens/boolean-cull.webp', label: 'Cull', detail: 'removes every piece the box touches', alt: 'The same walled square with the whole overlapped side removed'},
+  ]}
+/>
 
 ## Build a cutter
 
