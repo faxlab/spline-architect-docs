@@ -5,6 +5,8 @@ type Callout = {
   label: string;
   x: number;
   y: number;
+  /** Number shown on the pin, when it should match something else on the page (a step). Defaults to its place in the list. */
+  n?: number;
 };
 
 type AnnotatedShotProps = {
@@ -27,14 +29,14 @@ export default function AnnotatedShot({alt, callouts, src, native}: AnnotatedSho
             key={callout.label}
             style={{left: `${callout.x}%`, top: `${callout.y}%`}}
           >
-            {index + 1}
+            {callout.n ?? index + 1}
           </span>
         ))}
       </div>
       <figcaption>
         {callouts.map((callout, index) => (
           <span key={callout.label}>
-            <strong>{index + 1}</strong> {callout.label}
+            <strong>{callout.n ?? index + 1}</strong> {callout.label}
           </span>
         ))}
       </figcaption>

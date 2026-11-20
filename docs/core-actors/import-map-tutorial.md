@@ -4,6 +4,7 @@ sidebar_label: Tutorial — Import a city
 description: Six steps from an empty level to a real city from OpenStreetMap - roads, blocks and buildings - with the default settings.
 ---
 
+import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import ClipAside from '@site/src/components/ClipAside';
 import LoopingClip from '@site/src/components/LoopingClip';
 
@@ -15,21 +16,26 @@ Import Map ships with Streets in the UE 5.8 package only.
 
 ## 1. Open the window
 
-In the editor menu bar, choose **SA → Create → Import Map…**. The Import Map window opens. Nothing in your level changes until the last step.
+In the editor menu bar, choose **SA → Create → Import Map…**. The Import Map window opens. Nothing in your level changes until the last step. The numbers on the picture match the steps below.
 
-## 2. Find your place
-
-<ClipAside
-  image="img/screens/import-map-window.webp"
-  alt="The Import Map preview on Lower Manhattan: the boundary and the roads, building footprints and land areas inside it"
-  scale={0.4}
->
-
-Type a town or city into **Find a place** at the top left and pick it from the list. The map jumps there and draws a 1000 × 1000 m square around it.
+<AnnotatedShot
+  native
+  src="img/screens/import-map-window-full.webp"
+  alt="The Import Map window on Lower Manhattan: the place search at the top, the map with the blue boundary and the preview of roads and buildings, the import options on the right, and the status line with Create Import at the bottom"
+  callouts={[
+    {n: 2, label: 'Find a place', x: 41.4, y: 5.3},
+    {n: 3, label: 'Map data for this region', x: 88.7, y: 5.4},
+    {n: 4, label: 'The boundary - drag its corners', x: 15.6, y: 35.3},
+    {n: 5, label: 'Status line', x: 11.8, y: 96.9},
+    {n: 6, label: 'Create Import', x: 96, y: 96.9},
+  ]}
+/>
 
 Map data © OpenStreetMap contributors.
 
-</ClipAside>
+## 2. Find your place
+
+Type a town or city into **Find a place** at the top left and pick it from the list. The map jumps there and draws a 1000 × 1000 m square around it.
 
 ## 3. Get the map data, once per region
 
@@ -42,7 +48,7 @@ After the download, the first preview of that region takes a while - up to about
 <ClipAside
   media={
     <LoopingClip
-      alt="Typing a place name, drawing a boundary on the map, then reshaping it by dragging corners; the preview redraws roads and building footprints for each new outline"
+      alt="A square boundary over Lower Manhattan is reshaped into a polygon by dragging its corners and adding points; once the outline settles, the preview draws the roads and building footprints inside it"
       poster="img/clips/import-boundary.webp"
       src="img/clips/import-boundary.mp4"
     />
