@@ -100,6 +100,21 @@
   margin: 0;
 }
 
+/* Editor-panel crops: show at 100%, so the text in them is as sharp as in the editor. */
+.annotated-shot--native {
+  width: fit-content;
+  max-width: 100%;
+}
+
+.annotated-shot--native .annotated-shot__image img {
+  width: auto;
+  max-width: 100%;
+}
+
+.annotated-shot--native figcaption {
+  grid-template-columns: 1fr;
+}
+
 .annotated-shot__pin {
   position: absolute;
   display: grid;

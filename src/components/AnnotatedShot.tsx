@@ -11,11 +11,13 @@ type AnnotatedShotProps = {
   alt: string;
   callouts: Callout[];
   src: string;
+  /** Show the picture at its own pixel size (never wider than the page) instead of stretching it to the column. */
+  native?: boolean;
 };
 
-export default function AnnotatedShot({alt, callouts, src}: AnnotatedShotProps) {
+export default function AnnotatedShot({alt, callouts, src, native}: AnnotatedShotProps) {
   return (
-    <figure className="annotated-shot">
+    <figure className={native ? 'annotated-shot annotated-shot--native' : 'annotated-shot'}>
       <div className="annotated-shot__image">
         <img src={useBaseUrl(src)} alt={alt} />
         {callouts.map((callout, index) => (

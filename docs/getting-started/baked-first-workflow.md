@@ -45,6 +45,7 @@ The loop is short: unbake, change, rebake. The clip shows the whole round trip o
 <AnnotatedShot
   alt="The Baking category of the Details panel, with the Generation Mode row set to Baked and outlined"
   src="img/screens/baking-generation-mode.webp"
+  native
   callouts={[
     {label: 'Generation Mode: Baked or Runtime', x: 83, y: 50},
   ]}
@@ -56,6 +57,7 @@ The loop is short: unbake, change, rebake. The clip shows the whole round trip o
 <AnnotatedShot
   alt="The SA menu in the editor menu bar, open, with the Bake entry outlined"
   src="img/screens/baking-sa-menu.webp"
+  native
   callouts={[
     {label: 'SA menu > Bake: Bake/Rebake Connected, Unbake Connected, and Rebake out-of-date actors', x: 83, y: 51},
   ]}
@@ -66,6 +68,7 @@ The loop is short: unbake, change, rebake. The clip shows the whole round trip o
 <AnnotatedShot
   alt="The Baked output category at the top of the Details panel of a baked Building, with the Unbake button outlined"
   src="img/screens/baking-baked-output-unbake.webp"
+  native
   callouts={[
     {label: 'Unbake, in the Baked output category', x: 20, y: 72},
   ]}
@@ -78,6 +81,7 @@ Shared preset edits keep existing baked output frozen. The Baked output category
 <AnnotatedShot
   alt="The Baked output category after the shared preset was edited, showing the Preset changed since bake message and the Rebake out-of-date actors button, outlined"
   src="img/screens/baking-preset-changed.webp"
+  native
   callouts={[
     {label: 'The message, and the button that rebakes every out-of-date actor in the level', x: 95, y: 26},
   ]}
