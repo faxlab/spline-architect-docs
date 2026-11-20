@@ -69,6 +69,17 @@ While drawing:
 
 Select a Spline Architect actor and enter Architect Mode. Click points or segments, Shift-drag a marquee, or press **Ctrl+A** for everything. Points drag directly; the gizmo adds axis and plane handles when you want a constrained move.
 
+![A four-point wall path drawn on a rooftop in Architect Mode. The selected corner point carries the gizmo with its axis and plane handles; the orange Architect grid lies over the scene.](/img/screens/architect-edit-gizmo.webp)
+
+<ClipAside
+  image="img/screens/architect-right-click-menu.webp"
+  alt="The right-click menu on a path point. Path Point: Delete Point, Branch In Same Actor, Branch As Actor Copy. Path: Select All Points, Reverse Direction, Flatten To First Point Z, Apply Shape, Regenerate."
+>
+
+**Right-click a point** for the actions on that point and on its whole path: delete it, start a branch from it, reverse the path, flatten every point to the first point's height, or apply a shape.
+
+</ClipAside>
+
 | Input | Result |
 | --- | --- |
 | Ctrl+click a segment | Insert a point. |
@@ -81,7 +92,20 @@ Select a Spline Architect actor and enter Architect Mode. Click points or segmen
 | Right-click | Open context actions, including branching. |
 | Alt+click an actor | Pick a different Spline Architect actor under the cursor. |
 
-**Placement Profile** decides where clicks land: **Planar Locked** keeps a footprint flat, which is what architecture usually wants; **Surface Projected** follows terrain, which is what paths and fences usually want. Everything else - branching, snapping, shapes, the grid - is in the [Architect Mode reference](/authoring/architect-mode).
+<ClipAside
+  image="img/screens/architect-placement-profile.webp"
+  alt="The Architect Mode panel: the wall preset with Browse Presets, and under Mode the Placement Profile list open on Planar Locked, Planar From Hit and Surface Projected"
+>
+
+**Placement Profile**, under **Mode** in the Architect Mode panel, decides where clicks land:
+
+- **Planar Locked** keeps a footprint flat at the height of the first click, which is what architecture usually wants.
+- **Planar From Hit** takes its plane from the first surface you click, for slopes and angled surfaces.
+- **Surface Projected** puts each point on the surface under the cursor, which is what paths and fences usually want.
+
+</ClipAside>
+
+Everything else - branching, snapping, shapes, the grid - is in the [Architect Mode reference](/authoring/architect-mode).
 
 <Compare
   ratio="4 / 1"

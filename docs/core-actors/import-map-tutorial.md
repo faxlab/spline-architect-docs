@@ -6,6 +6,7 @@ description: Six steps from an empty level to a real city from OpenStreetMap - r
 
 import AnnotatedShot from '@site/src/components/AnnotatedShot';
 import ClipAside from '@site/src/components/ClipAside';
+import Compare from '@site/src/components/Compare';
 import LoopingClip from '@site/src/components/LoopingClip';
 
 This page imports about one square kilometre of a real city with the default settings. When you want to change what gets imported, the full [Import Map](/core-actors/import-map) page explains every control.
@@ -27,7 +28,19 @@ Everything else works as described on this page, including the one-time wait whi
 
 ## 1. Open the window
 
-In the editor menu bar, choose **SA → Create → Import Map…**. The Import Map window opens. Nothing in your level changes until the last step. The numbers on the picture match the steps below.
+<ClipAside
+  image="img/screens/import-map-create-menu.webp"
+  scale={1}
+  alt="The Spline Architect create button on the toolbar, open: Add Wall, Add Building, Add Custom Piece, the Boolean entries, Import Map…, Add Streets Network and Add Curve"
+>
+
+In the editor menu bar, choose **SA → Create → Import Map…**. The same entry is in the Spline Architect create button on the toolbar.
+
+The Import Map window opens. Nothing in your level changes until the last step.
+
+</ClipAside>
+
+The numbers on the picture match the steps below.
 
 <AnnotatedShot
   native
@@ -50,9 +63,25 @@ Type a town or city into **Find a place** at the top left and pick it from the l
 
 ## 3. Get the map data, once per region
 
-The first time you import from a country or region, a card on the map says **This place needs map data**. Click **Download** on it. The button shows the size first, often a few hundred megabytes.
+The first time you import from a country or region, a card on the map says the place needs map data. On your very first import it reads **This place needs map data**; when you already have map data for somewhere else, it names that data and says it *does not reach this place*.
 
-After the download, the first preview of that region takes a while - up to about 30 minutes - while the data is read. A bar at the bottom of the map shows the progress. This happens once per region; every later import there opens straight away.
+![The card on the map: "us/new-york does not reach this place", with the buttons Download Liechtenstein (3.4 MB) and Open OSM file…](/img/screens/import-map-download-card.webp)
+
+<ClipAside
+  media={
+    <LoopingClip
+      alt="Download is clicked on the map card; a bar at the bottom of the map shows the download and the first reading of the region, then the roads and buildings of the place draw on the map"
+      poster="img/clips/import-download.webp"
+      src="img/clips/import-download.mp4"
+    />
+  }
+>
+
+Click **Download** on the card. The button names the region and its size, often a few hundred megabytes for a large country.
+
+After the download, the first preview of that region takes a while - up to about 30 minutes for a large region - while the data is read. A bar at the bottom of the map shows the progress. This happens once per region; every later import there opens straight away.
+
+</ClipAside>
 
 ## 4. Move or resize the square
 
@@ -72,7 +101,11 @@ Drag the cross in the middle to move the square, and drag a corner to resize it.
 
 ## 5. Wait for the green square
 
-The line at the bottom of the window shows where the preview is. Wait until the small square beside it turns green and the line reads *Ready to import.* Leave every option on its default for your first import.
+The line at the bottom of the window shows where the preview is. Wait until the small square at its start turns green and the line counts what the import will make: street segments, areas and buildings.
+
+![The status line when the preview is ready: a green square, then 2011 street segments, 1942 street points, 0 areas, 1156 buildings and 26 straight stretches](/img/screens/import-map-status-ready.webp)
+
+Leave every option on its default for your first import.
 
 ## 6. Create the import
 
@@ -93,6 +126,14 @@ Everything the import made sits under one **Map Import Group** in the Outliner. 
 </ClipAside>
 
 Roads from map data often look narrow in a game city. Select the new Streets Network and set **Minimum Road Width** to `1600` (about four lanes) to widen the thin roads at once.
+
+<Compare
+  caption="The same imported blocks before and after. The thin roads widen to about four lanes; the buildings stay where they are."
+  panels={[
+    {src: 'img/screens/import-road-width-before.webp', label: 'As imported', alt: 'Imported blocks of brick buildings with narrow two-lane roads between them'},
+    {src: 'img/screens/import-road-width-after.webp', label: 'Widened', detail: 'Minimum Road Width 1600', alt: 'The same blocks after Minimum Road Width 1600: the roads between them are about twice as wide, with centre lines'},
+  ]}
+/>
 
 ## Next
 

@@ -105,7 +105,9 @@ Regional extracts come from [Geofabrik](https://download.geofabrik.de/). A regio
 
 When you pick a place, the window first checks the map data this project already holds. If some of it covers the place, the window switches to it for you, downloaded regions first. It never offers to download a region this project already holds.
 
-If the data in use does not reach the place at all, a card on the map says **This place needs map data**. It offers **Download** *region* (or **Use** *region* when the project already holds it) and **Open OSM file…**. When no ready-made download covers the place, only **Open OSM file…** is offered. Data that covers just part of your boundary needs no card: it prepares what is there. See [Missing coverage](#missing-coverage).
+If the data in use does not reach the place at all, a card on the map says so: *(the data's name)* **does not reach this place**, or **This place needs map data** when the project has none yet. It offers **Download** *region* (or **Use** *region* when the project already holds it) and **Open OSM file…**. When no ready-made download covers the place, only **Open OSM file…** is offered. Data that covers just part of your boundary needs no card: it prepares what is there. See [Missing coverage](#missing-coverage).
+
+![The card on the map: "us/new-york does not reach this place", with the buttons Download Liechtenstein (3.4 MB) and Open OSM file…](/img/screens/import-map-download-card.webp)
 
 After you download a new region, the first preview can take about 30 minutes while the data is read. This happens once per region; after that it opens straight away. The progress card at the bottom of the map shows downloads and that first reading, with a bar and a percentage. **Cancel** on it stops the work. A cancelled download picks up where it stopped when you download the same region again. Cancelling the first reading of a file keeps nothing from that pass, so opening the file again starts the reading over.
 

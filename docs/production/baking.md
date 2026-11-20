@@ -23,6 +23,15 @@ Bake when a design is ready: the live preview becomes meshes saved with the leve
 
 ## Commands
 
+<ClipAside
+  image="img/screens/sa-menu-bake.webp"
+  alt="The SA menu in the editor menu bar with Bake open: Unbake Connected, Bake/Rebake Connected, Rebake out-of-date actors, Unbake All, Rebake All and Bake Unbaked"
+>
+
+The bake commands are in the editor menu bar under **SA → Bake**. They work on the selection and everything connected to it, or on the whole level.
+
+</ClipAside>
+
 | Command | Scope |
 | --- | --- |
 | **Bake/Rebake Connected** | Refreshes selected roots and connected Wall stacks. This is the normal production command. |
@@ -72,6 +81,15 @@ When a shared preset changes, baked actors show **Preset changed since bake**. *
 | **Hierarchical Instanced** | Choose for large repeated sets that gain from per-instance detail levels and culling. |
 | **Static mobility** | Best default for environment output and baked lighting. |
 | **Stationary / Movable** | Use only when later transforms or gameplay require them. |
+
+<ClipAside
+  image="img/screens/baking-bake-method.webp"
+  alt="The Baking category of the Details panel with the Bake Method list open: Components, Instanced and Hierarchical Instanced"
+>
+
+Each actor's **Bake Method** and **Baked Mobility** sit in the **Baking** category of its Details panel, next to **Generation Mode**: **Baked** keeps the output in the level as meshes, **Runtime** builds it when the game starts and saves nothing.
+
+</ClipAside>
 
 Bulk **Set Generation Mode**, **Set Bake Method**, and **Set Mobility** commands apply a consistent configuration to the current selection. Mixed selections show an indeterminate state rather than guessing.
 
