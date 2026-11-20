@@ -172,6 +172,8 @@ If a network made in an older version still has a hidden default-lot surface ove
 
 ### Lot Height choices
 
+![The Lots category of a Streets Network with the Lot Height list open: Follow Slope, Level at Low Side, Level at High Side, Level at Main Street and Auto](/img/screens/streets-lot-height.webp)
+
 | Choice | Result |
 | --- | --- |
 | **Auto** | Lots on gentle ground follow the slope. A lot steeper than **Auto Slope Limit** is levelled the way **Steeper Than the Limit** says, at its main street unless you change it. New networks start on Auto. |
@@ -213,6 +215,10 @@ Per-lot Zone, tags, and surface overrides survive ordinary street editing: addin
 | **Bake / Unbake** | Produces persistent road output and independent lot actors, or restores generated editing. |
 
 ## Editing the network
+
+Press **Edit Streets** in the network's Details panel to enter Streets Mode. Its controls sit in one bar at the bottom of the viewport:
+
+![The Streets Mode bar at the bottom of the viewport: a hint line, the Nodes, Streets and Lots action groups, and the tools Select, Draw, Cut, Move, Rotate, Pick, Grid, Angle, Help and Exit](/img/screens/streets-edit-bar.webp)
 
 Beyond drawing, Streets Mode can cut a selected lot into blocks with new streets - see [Subdivide lots](/authoring/architect-mode#subdivide-lots) - fuse nodes into one intersection, and join a corner's two streets when its node is deleted.
 

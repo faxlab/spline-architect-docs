@@ -25,7 +25,9 @@ Assigns new seeds to every actor in the level - unbaked and Runtime actors regen
 
 ## Pivot Tool
 
-Select Static Mesh assets in the Content Browser, then choose **Spline Architect → Pivot Tool**.
+Select Static Mesh assets in the Content Browser, right-click them and choose **Pivot Tool**. It is also in the editor menu bar under **SA → Tools**.
+
+![The Content Browser right-click menu of a Static Mesh: Pivot Tool and Lightmap Tool among the Static Mesh actions, with the Pivot Tool tooltip "Adjust the pivot of selected Static Mesh assets."](/img/screens/mesh-context-menu.webp)
 
 | Control | What it does |
 | --- | --- |
@@ -46,7 +48,7 @@ A **locked** custom piece is pinned against the generator sliding it along its s
 
 ## Lightmap Tool
 
-Select Static Mesh assets, then open **Spline Architect → Lightmap Tool**.
+Select Static Mesh assets in the Content Browser, right-click them and choose **Lightmap Tool**, or use **SA → Tools → Lightmap Tool**.
 
 | Control | What it does |
 | --- | --- |
