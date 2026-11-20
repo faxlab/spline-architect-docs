@@ -4,6 +4,7 @@ description: Draw a footprint you use often in one click, and mirror, flatten, m
 ---
 
 import ClipAside from '@site/src/components/ClipAside';
+import Compare from '@site/src/components/Compare';
 import LoopingClip from '@site/src/components/LoopingClip';
 
 <ClipAside
@@ -27,8 +28,8 @@ Each shape entry has a stable **Shape ID**, **Display Name**, **Description**, *
 Use the Spline Architect menu to:
 
 - **Apply Shape** to replace an active actor/path. Architect Mode applies only single-loop entries to the active path.
-- **Save Shape** from selected spline actors for later reuse.
-- **Import Shapes** from compatible Static Mesh boundary data.
+- **Save Shape From Selection...** from selected spline actors for later reuse.
+- **Import Shape From Mesh...** from compatible Static Mesh boundary data.
 
 The Apply Shape menu lists **Open Paths** first - Straight 5 m, 10 m and 30 m, L Path 10 m, U Path 10 m, Zig-Zag 20 m, and a Stair Path (flat, 3 m rise, flat) to use with [Steps](/authoring/wall-presets#stairs-with-steps) - then **Rectangles**, **Buildings**, **Curves** and **Plugin Basic Shapes**, and your own saved shapes last. Before 6.3 the Rectangles group was called Basic; built-in shapes keep their Shape IDs, so saved references still work.
 
@@ -40,7 +41,7 @@ Multi-loop shapes are valid for actor-level application and can drive Multi Spli
 
 | Command | Result |
 | --- | --- |
-| **Spline to Selected** | Copies or assigns a selected spline source to a compatible actor. |
+| **Add Spline to Selected** | Copies or assigns a selected spline source to a compatible actor. |
 | **Merge Spline Actors** | Combines selected compatible paths into one actor with multiple spline components. |
 | **Break to Spline** | Creates ordinary spline actor data from generated/selected Spline Architect paths. |
 | **Mirror X / Mirror Y** | Mirrors the spline points themselves, once. |
@@ -48,8 +49,17 @@ Multi-loop shapes are valid for actor-level application and can drive Multi Spli
 | **Reverse** | Reverses the spline's direction, which turns a wall's pieces to face the other side. |
 | **Gridify** | Snaps the spline points to the actor's Grid Size, once. |
 | **Reset Transform / Center Transform** | Normalizes or recenters actor transforms while preserving world-space path geometry. |
-| **Clean Invalid / Delete Invalid** | Finds and removes invalid plugin actors or connections after review. |
+| **Clean Selected / Delete Invalid** | Finds and removes invalid plugin actors or connections after review. |
 | **Select Roots / Filter Roots / Select Connected** | Navigates connected Wall/Building hierarchies. |
+
+<Compare
+  ratio="1000 / 326"
+  caption="Flatten on a wall drawn over uneven points: every point moves to the first point's height."
+  panels={[
+    {src: 'img/screens/spline-flatten-before.webp', label: 'Before', detail: 'points at different heights', alt: 'A teal wall zig-zagging up and down over points at different heights'},
+    {src: 'img/screens/spline-flatten-after.webp', label: 'After Flatten', detail: 'every point at the first point height', alt: 'The same wall after Flatten, standing level on the ground'},
+  ]}
+/>
 
 ## Multi-spline polygon operations
 

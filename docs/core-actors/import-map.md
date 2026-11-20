@@ -14,6 +14,8 @@ Pick a real place, draw a boundary around it, and Import Map builds a [Streets N
 Import Map builds a Streets Network, so it ships only in the UE 5.8 package with the rest of Streets. See [compatibility](/reference/compatibility).
 :::
 
+**First import?** Follow the [six-step tutorial](/core-actors/import-map-tutorial) - it imports a city with the default settings. This page is the full reference.
+
 The window prepares a preview after every change. Nothing in the level changes until you press **Create Import**.
 
 ![The Import Map window on Lower Manhattan: the search box, the map with a drawn boundary, and the roads, building footprints and land areas the import would read, coloured by type](/img/screens/import-map-window.webp)
