@@ -171,3 +171,7 @@ Type these in the editor's console. Most are switches with a normal setting you 
 ## Where is MultiBuilding or Prop Spawner?
 
 They were removed from the v6 authoring surface. Their scalable replacement is the UE 5.8 PCG workflow: Streets lots + SA Subdivide Lots + SA Spawn Building for city parcels, and Edge Placer / Surface Sampler + Pick From Pool for props. See [migration](/reference/migration-v6).
+
+## Questions and bug reports
+
+Ask in the comments on the [Spline Architect listing on Fab](https://www.fab.com/listings/356b1d13-5080-4418-893d-5a39546bc276). For a bug, add your engine version, the plugin version shown in **Edit > Plugins**, and the lines the Output Log printed when it happened.
