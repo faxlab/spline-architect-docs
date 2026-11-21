@@ -36,7 +36,7 @@ Do not share one mutable plugin `Binaries` directory between engines. An “Entr
 
 ## Moving a UE 5.8 project down to 5.5–5.7
 
-A level that contains Streets Networks, Lot Zones, or SA PCG nodes cannot be opened intact on an older engine — those classes are not in the older packages, so the actors load as missing and the nodes disappear from the graph. Bake or convert that output to ordinary Unreal content first, then move the project.
+A level that contains Streets Networks, Lot Zones, or SA PCG nodes cannot be opened intact on an older engine — those classes are not in the older packages, so the actors load as missing and the nodes disappear from the graph. Convert that output to ordinary Unreal content first, with [Convert or Export Standalone Level](/production/conversion-export), then move the project. Baking is not enough: a baked Streets Network is still a Streets Network actor.
 
 ## Streets and PCG on older projects
 

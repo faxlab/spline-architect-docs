@@ -40,7 +40,7 @@ The same rule as above: never copy binaries between engine versions. Each engine
 
 Spline Architect enables Epic's **Geometry Scripting** plugin on every engine version.
 
-The UE 5.8 package additionally ships the `SplineArchitectPCG` module and enables three more Epic plugins:
+The UE 5.8 package additionally ships the `SplineArchitectPCG` module and enables five more Epic plugins:
 
 | Plugin | Needed for |
 | --- | --- |
@@ -48,6 +48,8 @@ The UE 5.8 package additionally ships the `SplineArchitectPCG` module and enable
 | **PCG** | The SA PCG nodes. |
 | **PCG Geometry Script Interop** | Passing generated meshes between SA nodes and PCG. |
 | **Landscape Patch** | SA Landscape Patch. Without it that node cannot change the terrain. |
+| **Mesh Modeling Toolset** | Make Facade Kit, which photographs your pieces to make their flat versions. |
+| **SQLite Core** | Import Map, which stores what it reads from map files in a local database. Editor only. |
 
 The UE 5.5–5.7 packages declare only Geometry Scripting. If Unreal asks to enable a dependency or to restart, accept and restart.
 
