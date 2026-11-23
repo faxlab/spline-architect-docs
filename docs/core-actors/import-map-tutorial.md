@@ -15,17 +15,6 @@ This page imports about one square kilometre of a real city with the default set
 Import Map ships with Streets in the UE 5.8 package only.
 :::
 
-:::caution Known issue: Download fails for parts of a country (fixed in 6.3.1)
-In Spline Architect 6.1 to 6.3.0, **Download** *region* does nothing for a region that is part of a country: a US state, a Canadian province, or a region of Germany, France, the UK and other large countries. The server that hosts the map files moved them. Regions that are a whole country still download.
-
-Until 6.3.1 is on Fab, get the file yourself:
-
-1. Open [download.geofabrik.de](https://download.geofabrik.de/) in your browser, click through to your region and download its `.osm.pbf` file.
-2. In the Import Map window, click **Map data**, then **Open OSM file…**, and pick that file.
-
-Everything else works as described on this page, including the one-time wait while a new region is read.
-:::
-
 ## 1. Open the window
 
 <ClipAside
