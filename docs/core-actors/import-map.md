@@ -223,7 +223,13 @@ Every road type except **Paths / reference only** is imported by default. The wi
 | **Service / access** | **Driveways**, **Parking aisles**, **Alleys**, and **Other access roads**. Click **Show access-road types** to choose them one by one. | 4 m |
 | **Paths / reference only** | Walking, cycling, and other ways that are not roads. Outlines only - they are never generated. | - |
 
-Under the list, four folds hold the settings that shape the streets. **Bridges, tunnels and ramps** starts open; the others start folded. Every change prepares the preview again. **Include reference guides in level** and the **Street segment limit** sit below the folds.
+Under the list, **Streets preset** picks the look of the imported streets. Below it, four folds hold the settings that shape the streets. **Bridges, tunnels and ramps** starts open; the others start folded. Every change prepares the preview again. **Include reference guides in level** and the **Street segment limit** sit below the folds.
+
+### Streets preset
+
+**None**, the default, imports with the network's current look. Pick a row from the [Preset Library](/authoring/preset-library#streets-presets) to give the imported streets its road and junction materials, Road Surface, lot Layers, detail settings and Preset Tags. The map still decides the street types and widths.
+
+The preset is applied as part of the import, so one Undo removes both. A new import starts from the last choice you made. A reopened import starts at **None**, so **Replace Import Group** keeps the network's current look unless you pick a preset.
 
 ### Street shape
 
@@ -274,7 +280,7 @@ These widths are artistic estimates, not survey measurements, and they exclude s
 
 ### Materials
 
-**Road material** is used by every road without a category material. Open **Per road type** to give a road category its own material; **Service / access parent** covers all four access-road kinds at once. A category material changes the road surface only - never its width or markings. Clear the asset to go back to **Inherited**.
+**Road material** is used by every road without a category material. Open **Per road type** to give a road category its own material; **Service / access parent** covers all four access-road kinds at once. A category material changes the road surface only - never its width or markings. A material set here wins over the Streets preset's road material. Clear the asset to go back to **Inherited**, which names the material the road will get.
 
 **Include reference guides in level** (off by default) adds orange, editor-only splines for road sections the import leaves out, such as tunnels you chose to leave out. They never become roads or lots and never appear in the game.
 

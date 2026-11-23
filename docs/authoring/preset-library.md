@@ -29,7 +29,7 @@ It docks like any editor tab. The top half is the browser - category tabs, a Dat
 | **Favorites only / Favorite** | Star the presets you use most, then show only those. Starring does not change the DataTable. |
 | **View** | Columns, Columns + Thumbnails, Small Icons, Medium Icons, or Large Icons. |
 | **Reload** | Reads the preset DataTables again, for example after you added rows in the DataTable editor. |
-| **Save selected actor as new preset** | Makes a new row from the selected Wall, Building, Curve or Custom Piece. |
+| **Save selected actor as new preset** | Makes a new row from the selected Wall, Building, Curve, Custom Piece or Streets Network. |
 | **Update Thumbnail** | Renders a new thumbnail for the selected preset and keeps it with the library. |
 | **Delete** | Removes selected rows after confirmation; multi-selection can span DataTables. |
 | **Open Source DataTable** | Opens the selected row's table in Unreal's DataTable editor. |
@@ -80,15 +80,19 @@ In the Content Browser choose **Add → Miscellaneous → Data Table**, then sel
 | Building | `BuildingPreset` |
 | Curve | `CurvePreset` |
 | Custom Piece | `SplineArchitectCustomPiecePresetRow` |
+| Streets | `StreetsPreset` |
 
 Use separate tables for coherent asset kits or teams, not for every individual row. The library key is the preset type + DataTable asset + row name, so identical row names in different tables remain distinct.
 
 ## Classification tags
 
-Building and Wall rows have **Preset Tags**: labels, matched by exact spelling, that say what a preset is. PCG graphs use them to pick out generated parts and to choose Buildings from a table. Examples:
+Building, Wall and Streets rows have **Preset Tags**: labels, matched by exact spelling, that say what a preset is. PCG graphs use them to pick out generated parts and to choose Buildings from a table. Examples:
 
 - Building: `Small`, `Residential`, `Commercial`, `Tower`;
-- Wall: `BaseFloor`, `Facade`, `Trim`.
+- Wall: `BaseFloor`, `Facade`, `Trim`;
+- Streets: `Residential`, `OldTown`.
+
+Applying a Streets preset copies its tags to the Streets Network, and from there to every road, junction and lot surface it generates. Set an SA street node's actor selector to **By Tag** to read only those networks.
 
 Tags belong to the preset row or inline preset and are included when that preset is saved. They are separate from the Preset Library's Display Name, Description, Favorite, and Thumbnail metadata. Curve presets do not expose Preset Tags.
 
@@ -99,3 +103,23 @@ Filter **SA Spawn Building → Random From DataTable** candidates by Building ta
 Actor **Save Preset** and library **Save selected actor as new preset** both create rows. When you save, choose whether the actor switches to the saved row: it then follows the shared row instead of its own inline settings. Editing a row in the DataTable changes every actor that uses it when they regenerate, except for values an actor changes with Parameter Overrides.
 
 Commit the DataTable, Preset Library Data Asset, and generated managed thumbnail assets together when sharing presets through source control.
+
+## Streets presets
+
+A Streets preset holds a street look, not a street layout. Select a Streets Network, press **Save selected actor as new preset**, then apply the row to another network to give it the same finish. Applying never touches roads, junctions, lot edits or import data, and one Undo puts the old look back.
+
+A row holds:
+
+- **Road Material**, **Junction Material**, **Road Surface** and **Texture Tile Size**;
+- the lot **Layers**, which make the sidewalks and lot ground;
+- **Preset Tags**;
+- with **Include Street Types** on: the **Street Types**, **Default Street Type** and **Minimum Road Width**;
+- with **Include Detail Settings** on: **Road Detail Mode**, **Curve Detail**, **Detail Sample Distance** and **Facet Angle**.
+
+Saving from a network turns both toggles on. Older rows have them off, so applying one changes only the look.
+
+A network made by [Import Map](/core-actors/import-map) keeps its own street types, Default Street Type and Minimum Road Width, because those come from the map's roads. It takes the rest of the preset. When you apply one, the library says "Street types kept because these streets came from a map import."
+
+To give an import a preset's look from the start, pick it under [Streets preset](/core-actors/import-map#streets-preset) in Import Map.
+
+Each Streets preset gets a rendered thumbnail: a square block cut by a cross street, seen at an angle from above, so the road, junction and lot materials all show. When you edit the row, the library renders a new one.
