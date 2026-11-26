@@ -37,6 +37,7 @@ Walls make the shell; these settings make everything the shell contains and wear
 | **Thickness** | How thick the floor slab is. Default `10`. |
 | **Bends Resolution** | The spacing of the points where the floor follows a bent corner. Lower values give a smoother, heavier edge. Default `50`. |
 | **UV Scale** | `1` maps one 0–1 tile per 15 m; larger values repeat more densely. |
+| **UV Scale X / Y** | Extra texture scale per direction, multiplied with UV Scale. `1` leaves it unchanged. Use it to stretch or squeeze a texture one way, for example for planks or tiles that are not square. |
 | **Fill Color / Edges Color** | Interior and boundary vertex colors. If your material ignores vertex color, set Edges Color to the same color as Fill Color, so a flat floor stays a light mesh. |
 | **Color Blur Iterations** | How softly Fill Color blends into Edges Color: more passes, softer blend. Default `5`. |
 | **Surface Edge Length** | Size of the triangles inside the floor, in centimetres (default `2000`, 20 m); smaller is denser. Used only where it changes something: a floor whose outline is not flat, or whose Edges Color differs from its Fill Color. The triangle count is capped, so it cannot freeze the editor. |
@@ -68,6 +69,7 @@ A flat floor in one color is just its outline, triangulated the way roofs are - 
 | **Extrude** | How thick the roof faces are. Default `20`. |
 | **Material Sloped Faces / Material Flat Faces** | One material for the sloped faces and one for the flat top. |
 | **UV Scale** | Same 15 m baseline as floor surfaces. |
+| **UV Scale X / Y** | Extra texture scale per direction, multiplied with UV Scale, as on floors. `1` leaves it unchanged. |
 | **Convex Edge Preset / Inline Convex Edge Preset** | A Wall preset run along the ridges, such as ridge tiles. The inline preset is used when no DataTable row is picked. |
 | **Concave Edge Preset / Inline Concave Edge Preset** | A Wall preset run along the valleys, where two slopes meet in a fold. |
 | **Border Edge Preset / Inline Border Edge Preset** | A Wall preset run along the roof's outer edge, for gutters and eaves. |

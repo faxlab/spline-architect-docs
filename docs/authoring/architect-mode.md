@@ -179,11 +179,13 @@ Subdivide cuts new streets through a lot you select, previewing them live before
 
 </ClipAside>
 
-1. Regenerate the network first, so its lots carry stable keys. If a lot cannot be read you are told to regenerate and reselect.
+1. Regenerate the network first, so its lots carry stable keys.
 2. With the **Select** tool, click the lot or lots to subdivide.
 3. Press **Subdivide** in the Lots group. Ghost streets appear immediately, one colour per pass.
 4. Change **Seed** and **Merge** in the bar, and the passes and guards in the card. Every edit updates the preview at once. **Reroll** shuffles the layout.
 5. Press **Apply**, or Enter.
+
+Subdivide needs a lot enclosed by one simple loop of streets. When it cannot read a lot's outline, the status line says so, and the Output Log names the street corner that breaks the loop. If you just edited the streets, regenerate the network and select the lot again. Otherwise draw a street across the lot to split it, and subdivide one piece. A lot with a dead-end street reaching into it cannot be subdivided.
 
 ![A two-pass Subdivide preview: an 8-lane arterial pass and a finer default pass, their ghost streets in two colours over the selected lot, with Guards, Merge, Seed, and Apply beneath](/img/screens/subdivide-panel.webp)
 
