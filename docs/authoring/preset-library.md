@@ -106,7 +106,9 @@ Commit the DataTable, Preset Library Data Asset, and generated managed thumbnail
 
 ## Streets presets
 
-A Streets preset holds a street look, not a street layout. Select a Streets Network, press **Save selected actor as new preset**, then apply the row to another network to give it the same finish. Applying never touches roads, junctions, lot edits or import data, and one Undo puts the old look back.
+A Streets preset holds a street look, not a street layout. Select a Streets Network and press **Save Preset** in its Details panel (or **Save selected actor as new preset** here). Then pick the row in another network's **Data Table Preset**, press **Apply** with one or more networks selected, or drag it into the level, which places a small square of streets in that look. Applying never touches roads, junctions, lot edits or import data, and one Undo puts the old look back.
+
+A network that uses a Streets preset stays linked to it, like a Wall to its Wall preset. The settings the preset holds are greyed out on the network. When you edit the row or press **Overwrite**, every linked network in the open level updates. Set the network's preset to **None** to unlink it and edit those settings by hand again.
 
 A row holds:
 
@@ -114,11 +116,12 @@ A row holds:
 - the lot **Layers**, which make the sidewalks and lot ground;
 - **Preset Tags**;
 - with **Include Street Types** on: the **Street Types**, **Default Street Type** and **Minimum Road Width**;
-- with **Include Detail Settings** on: **Road Detail Mode**, **Curve Detail**, **Detail Sample Distance** and **Facet Angle**.
+- with **Include Lot Height & Step Walls** on: the lot height (**Lot Height**, **Auto Slope Limit**, **Steeper Than the Limit**) and the step walls (**Step Walls**, **Step Wall Material**, **Step Wall Texture Height**);
+- with **Include Detail Settings** on: **Road Detail Mode**, **Curve Detail**, **Detail Sample Distance**, **Facet Angle**, **Lot Point Merge Distance**, **Snap Radius** and **Miter Limit**.
 
-Saving from a network turns both toggles on. Older rows have them off, so applying one changes only the look.
+Saving from a network turns all three toggles on. Older rows have them off, so applying one changes only the look.
 
-A network made by [Import Map](/core-actors/import-map) keeps its own street types, Default Street Type and Minimum Road Width, because those come from the map's roads. It takes the rest of the preset. When you apply one, the library says "Street types kept because these streets came from a map import."
+A network made by [Import Map](/core-actors/import-map) keeps its own street types and Default Street Type, because those come from the map's roads. It takes the rest of the preset, Minimum Road Width included. When you apply one, the library says "Street types kept because these streets came from a map import."
 
 To give an import a preset's look from the start, pick it under [Streets preset](/core-actors/import-map#streets-preset) in Import Map.
 

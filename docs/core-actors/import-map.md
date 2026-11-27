@@ -227,7 +227,7 @@ Under the list, **Streets preset** picks the look of the imported streets. Below
 
 ### Streets preset
 
-**None**, the default, imports with the network's current look. Pick a row from the [Preset Library](/authoring/preset-library#streets-presets) to give the imported streets its road and junction materials, Road Surface, lot Layers, detail settings and Preset Tags. The map still decides the street types and widths.
+**None**, the default, imports with the network's current look. Pick a row from the [Preset Library](/authoring/preset-library#streets-presets) to give the imported streets its road and junction materials, Road Surface, lot Layers, lot height, step walls, detail settings, Minimum Road Width and Preset Tags. The map still decides the street types and widths. The preview shows the preset's look, and the imported network stays linked to the preset, so reopening Import Map on it shows the same choice. When you replace an import with **None**, the network keeps the preset it had.
 
 The preset is applied as part of the import, so one Undo removes both. A new import starts from the last choice you made. A reopened import starts at **None**, so **Replace Import Group** keeps the network's current look unless you pick a preset.
 
