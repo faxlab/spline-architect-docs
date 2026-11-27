@@ -56,7 +56,7 @@ Settings are grouped the way you work: **Preset**, **Controls**, **Streets**, **
 | Control | What it does |
 | --- | --- |
 | **Data Table Preset** | Links the network to a [Streets preset](/authoring/preset-library#streets-presets). While it is set, the preset drives the network's look: the settings it holds are greyed out here and follow the preset whenever it changes. Set it to **None** to edit them by hand again; they keep their current values. **Default Street Type** stays yours to change while linked. |
-| **Save Preset** | Saves this network's look as a new Streets preset row. |
+| **Save Preset** | Saves this network's look as a new Streets preset row. With **Use saved preset after save** ticked (the default), the network then links to that row, like a Wall does. |
 
 ### Controls
 
