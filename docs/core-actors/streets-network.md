@@ -48,9 +48,16 @@ To start from a real place instead of drawing, [Import Map](/core-actors/import-
   }
 >
 
-Settings are grouped the way you work: **Controls**, **Streets**, **Sidewalks & Lot Ground**, **Lots**, **Output & Baking**, and a folded **Advanced** section for fine-tuning. Every setting has a tooltip.
+Settings are grouped the way you work: **Preset**, **Controls**, **Streets**, **Sidewalks & Lot Ground**, **Lots**, **Output & Baking**, and a folded **Advanced** section for fine-tuning. Every setting has a tooltip.
 
 </ClipAside>
+### Preset
+
+| Control | What it does |
+| --- | --- |
+| **Data Table Preset** | Links the network to a [Streets preset](/authoring/preset-library#streets-presets). While it is set, the preset drives the network's look: the settings it holds are greyed out here and follow the preset whenever it changes. Set it to **None** to edit them by hand again; they keep their current values. |
+| **Save Preset** | Saves this network's look as a new Streets preset row. |
+
 ### Controls
 
 | Control | What it does |
