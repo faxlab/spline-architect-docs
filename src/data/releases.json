@@ -1,5 +1,48 @@
 [
   {
+    "version": "6.3.2",
+    "date": "2026-11",
+    "engines": "UE 5.8",
+    "summary": "Streets presets: save a street look once and reuse it on other networks and on map imports. Plus Preset Tags for curves, custom pieces and streets, faster curves, and PCG clean-up when a volume is deleted.",
+    "highlights": [
+      "**Streets presets.** Save a Streets network's look as a preset (Save Preset in its Details panel, or in the Preset Library) and reuse it. A preset holds the road and junction materials, road surface, texture tile size, lot layers and preset tags, and can also carry the street types, the detail settings, and the lot height and step walls. See [Preset Library](/authoring/preset-library).",
+      "Streets networks get a **Preset** section like Walls. Pick a row in **Data Table Preset** and the network follows it: a later edit of the row, or an Overwrite from the Preset Library, reaches every linked network. Saving a network as a preset links it to the new row. Default Street Type stays editable; set the preset to None to edit everything again. See [Streets Network](/core-actors/streets-network).",
+      "Import Map: choose a **Streets preset** under Roads. The preview shows its look, and the imported network links to it while keeping the map's street types and widths. See [Import Map](/core-actors/import-map).",
+      "**Preset Tags** for Curve, Custom Piece and Streets presets: a tag typed on the preset lands on the actor and on the meshes it makes, and stays through Bake. SA Spawn Curve outputs SA_PresetTags like SA Spawn Wall.",
+      "PCG: deleting a PCG volume, or undoing it while its graph is still generating, removes the Spline Architect output that graph made.",
+      "Curves generate several times faster, with the same result. A PCG graph dropped into the level generates right away.",
+      "Sidewalk curbs keep their bevel at tight corners.",
+      "Blueprint wall pieces without a set size are measured without running their gameplay.",
+      "Import Map: a stopped region download keeps what it already has and resumes.",
+      "AI agents: the mesh tools never overwrite engine or plugin content, and one Undo fully restores a changed mesh."
+    ],
+    "notes": [
+      "Saved data keeps loading; no setting was removed. A Streets network that is not linked to a preset keeps its bake signature, so baked networks do not show \"Preset changed since bake\".",
+      "Reset to Streets Defaults now also removes the network's preset link.",
+      "Deleting a PCG volume now also deletes the Spline Architect output its graph made, as Undo already did. Volumes unloaded by level streaming or World Partition are not affected."
+    ]
+  },
+  {
+    "version": "6.3.1",
+    "date": "2026-11",
+    "engines": "UE 5.8",
+    "summary": "A fix-up release. Import Map downloads work again for parts of a country, with new texture and custom piece height settings.",
+    "highlights": [
+      "Import Map: downloading map data works again for parts of a country (US states, Canadian provinces, regions of Germany, France, the UK and others). If the map server moves its files again, the plugin looks up the region's current address by itself.",
+      "Import Map: when a download or its size check fails, the window says why in plain words and the button reads \"Try again\".",
+      "Floors and roofs: **UV Scale X / Y**, an extra texture scale per direction for planks or tiles that are not square.",
+      "Custom pieces (Segment): **Override Height** with Custom Piece Height makes the piece exactly that tall whatever the wall height is.",
+      "Mirrored walls: a custom piece appears only on its own mirror half.",
+      "Preset Library: no more blank tiles for presets that only place posts or only leave a gap, and thumbnail rendering can no longer stall the editor.",
+      "Baked actors: spline edits on a baked Wall, Building or Curve are refused again in every case."
+    ],
+    "notes": [
+      "Saved data keeps loading; no setting was renamed or removed. UV Scale X / Y defaults to 1 / 1 and Override Height to off.",
+      "Mirrored walls with custom pieces: pieces that were wrongly repeated on the other mirror half disappear. If you relied on the repeats, add the piece on that half.",
+      "Map data already in a project keeps working. A region download left unfinished by 6.3.0 starts over once."
+    ]
+  },
+  {
     "version": "6.3.0",
     "date": "2026-11",
     "engines": "UE 5.8",
