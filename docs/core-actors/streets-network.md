@@ -55,7 +55,7 @@ Settings are grouped the way you work: **Preset**, **Controls**, **Streets**, **
 
 | Control | What it does |
 | --- | --- |
-| **Data Table Preset** | Links the network to a [Streets preset](/authoring/preset-library#streets-presets). While it is set, the preset drives the network's look: the settings it holds are greyed out here and follow the preset whenever it changes. Set it to **None** to edit them by hand again; they keep their current values. |
+| **Data Table Preset** | Links the network to a [Streets preset](/authoring/preset-library#streets-presets). While it is set, the preset drives the network's look: the settings it holds are greyed out here and follow the preset whenever it changes. Set it to **None** to edit them by hand again; they keep their current values. **Default Street Type** stays yours to change while linked. |
 | **Save Preset** | Saves this network's look as a new Streets preset row. |
 
 ### Controls
@@ -66,7 +66,7 @@ Settings are grouped the way you work: **Preset**, **Controls**, **Streets**, **
 | **Rebuild Network** | Regenerates roads, junctions, lots and surfaces from scratch. |
 | **Import Map...** | Opens [Import Map](/core-actors/import-map) to fill this network with real streets from OpenStreetMap. Replaces the streets already in it; one Undo restores them. |
 | **Review Issues** | Lists the places the last generation flagged - left-out map sections, width conflicts, failed lots - and frames each one. See [Review Issues](/core-actors/import-map#review-issues). |
-| **Reset to Streets Defaults** | Puts the network's look back to what a newly placed Streets actor has: street types (4 and 8 lanes), road and junction materials, sidewalks and lot ground, Minimum Road Width and the default lot settings. Your roads, per-lot edits, seed and booleans stay. Asks first; one Undo restores the previous settings. |
+| **Reset to Streets Defaults** | Puts the network's look back to what a newly placed Streets actor has: street types (4 and 8 lanes), road and junction materials, sidewalks and lot ground, Minimum Road Width and the default lot settings. It also unlinks the network from its Streets preset. Your roads, per-lot edits, seed and booleans stay. Asks first; one Undo restores the previous settings. |
 
 ### Streets
 
